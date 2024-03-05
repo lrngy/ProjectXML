@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<staffs>
+	<staff>
+		<staff_id></staff_id>
+		<staff_info></staff_info>
+		<staff_is_manager></staff_is_manager>
+		<staff_is_seller></staff_is_seller>
+	</staff>
+</staffs>

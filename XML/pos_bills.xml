@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pos_bills>
+	<pos_bill>
+		<pos_bill_id></pos_bill_id>
+		<pos_bill_time></pos_bill_time>
+		<pos_bill_receive></pos_bill_receive>
+		<staff_id></staff_id>
+		<pos_is_sell_bill></pos_is_sell_bill>
+		<warehouse_bill_id></warehouse_bill_id>
+		<finance_bill_id></finance_bill_id>
+		<customer_id></customer_id>
+	</pos_bill>
+</pos_bills>

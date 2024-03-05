@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<medicines>
+	<medicine>
+		<medicine_id></medicine_id>
+		<medicine_expire_date></medicine_expire_date>
+		<medicine_price></medicine_price>
+		<medicine_code></medicine_code>
+		<supplier_id></supplier_id>
+	</medicine>
+</medicines>

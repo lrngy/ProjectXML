@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<finance_bills>
+	<finance_bill>
+		<finance_bill_id></finance_bill_id>
+		<finance_bill_time></finance_bill_time>
+		<finance_bill_change></finance_bill_change>
+		<finance_is_spend_bill></finance_is_spend_bill>
+		<finance_bill_content></finance_bill_content>
+		<staff_id></staff_id>
+	</finance_bill>
+</finance_bills>

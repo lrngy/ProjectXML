@@ -1,9 +1,51 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<staffs>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--<staffs>
 	<staff>
 		<staff_id></staff_id>
 		<staff_info></staff_info>
 		<staff_is_manager></staff_is_manager>
 		<staff_is_seller></staff_is_seller>
 	</staff>
+</staffs>-->
+<staffs>
+  <staff>
+    <staff_id>01</staff_id>
+    <staff_name>Phạm Văn Quyết 100</staff_name>
+    <staff_sex>Nam</staff_sex>
+    <staff_year_of_birth>2002</staff_year_of_birth>
+    <staff_is_manager>true</staff_is_manager>
+    <staff_is_seller>true</staff_is_seller>
+  </staff>
+  <staff>
+    <staff_id>02</staff_id>
+    <staff_name>Phạm Văn Quyết</staff_name>
+    <staff_sex>Nam</staff_sex>
+    <staff_year_of_birth>2002</staff_year_of_birth>
+    <staff_is_manager>true</staff_is_manager>
+    <staff_is_seller>true</staff_is_seller>
+  </staff>
+  <staff>
+    <staff_id>03</staff_id>
+    <staff_name>Phạm Văn Quyết 300</staff_name>
+    <staff_sex>Nam</staff_sex>
+    <staff_year_of_birth>2002</staff_year_of_birth>
+    <staff_is_manager>false</staff_is_manager>
+    <staff_is_seller>false</staff_is_seller>
+  </staff>
+  <staff>
+    <staff_id>04</staff_id>
+    <staff_name>Phạm Thị Thanh</staff_name>
+    <staff_sex>Nữ</staff_sex>
+    <staff_year_of_birth>2004</staff_year_of_birth>
+    <staff_is_manager>false</staff_is_manager>
+    <staff_is_seller>false</staff_is_seller>
+  </staff>
+  <staff>
+    <staff_id>05</staff_id>
+    <staff_name>Phạm Thị Thanh Tâm</staff_name>
+    <staff_sex>Nữ</staff_sex>
+    <staff_year_of_birth>20010</staff_year_of_birth>
+    <staff_is_manager>false</staff_is_manager>
+    <staff_is_seller>false</staff_is_seller>
+  </staff>
 </staffs>

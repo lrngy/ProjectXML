@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <users>
 	<user>
-		<username></username>
-		<password></password>
-		<staff_id></staff_id>
+		<username>admin</username>
+		<password>1</password>
+		<staff_id>s1</staff_id>
+	</user>
+
+	<user>
+		<username>seller</username>
+		<password>1</password>
+		<staff_id>s2</staff_id>
 	</user>
 </users>

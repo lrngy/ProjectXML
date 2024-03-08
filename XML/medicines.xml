@@ -15,6 +15,5 @@
 		<medicine_updated></medicine_updated>
 		<medicine_deleted></medicine_deleted>
 		<category_id>c1</category_id>
-		<medicine_location_id>l1</medicine_location_id>
 	</medicine>
 </medicines>

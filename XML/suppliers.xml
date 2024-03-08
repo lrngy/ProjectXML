@@ -10,7 +10,6 @@
 		<supplier_status></supplier_status>
 		<supplier_created></supplier_created>
 		<supplier_updated></supplier_updated>
-		<supplier_deleted></supplier_deleted>
 		
 	</supplier>
 </suppliers>

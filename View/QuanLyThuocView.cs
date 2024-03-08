@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace ProjectXML.View
 {
@@ -21,12 +22,14 @@ namespace ProjectXML.View
 
         User user;
         CategoryController categoryController = new CategoryController();
+
+        XmlDocument nhacungcap = Config.getDoc("suppliers");
         public QuanLyThuocView(User user)
         {
             InitializeComponent();
             this.user = user;
         }
-        int rowSelected = 0;
+        int rowSelectedTheLoai = 0;
 
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
@@ -40,11 +43,36 @@ namespace ProjectXML.View
                     TheLoai_Load();
                     break;
                 case 2:
+                    NhaCungCap_Load();
                     break;
 
             }
 
         }
+
+        private void NhaCungCap_Load()
+        {
+            int i = 0;
+            ClearInput();
+            dgvNhaCungCap.Rows.Clear();
+            SupplierController supplierController = new SupplierController();
+            List<Supplier> supplierList = supplierController.LoadData();
+            foreach (Supplier supplier in supplierList)
+            {
+                dgvNhaCungCap.Rows.Add(++i, supplier.id, supplier.name, supplier.address, supplier.phone, supplier.email, supplier.status ? "Khả dụng" : "Không khả dụng", supplier.created, supplier.updated);
+            }
+
+            try
+            {
+                dgvNhaCungCap.Rows[rowSelectedTheLoai].Selected = true;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+        }
+
         public void ClearInput()
         {
             tbMaTheLoai.Text = "";
@@ -72,7 +100,7 @@ namespace ProjectXML.View
 
             try
             {
-                dgvTheLoai.Rows[rowSelected].Selected = true;
+                dgvTheLoai.Rows[rowSelectedTheLoai].Selected = true;
             } catch (Exception ex)
             {
 
@@ -127,7 +155,7 @@ namespace ProjectXML.View
             string tenTheLoai = tbTenTheLoai.Text;
             string ghiChu = tbGhiChuTheLoai.Text;
             bool trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
-            string created = dgvTheLoai.Rows[rowSelected].Cells[5].Value.ToString();
+            string created = dgvTheLoai.Rows[rowSelectedTheLoai].Cells[5].Value.ToString();
             if (maTheLoai.Equals(""))
             {
                 CustomMessageBox.ShowError("Vui lòng nhập mã thể loại");

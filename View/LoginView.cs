@@ -24,7 +24,7 @@ namespace ProjectXML.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginView());
+            Application.Run(new QuanLyThuocView(new LoginController().CheckExist("admin", "1")));
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)

@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<medicine_quantities>
-	<medicine_quantity>
-		<medicine_quantity_id></medicine_quantity_id>
-		<medicine_id></medicine_id>
-		<quantity></quantity>
-	</medicine_quantity>
-</medicine_quantities>

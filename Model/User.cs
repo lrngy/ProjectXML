@@ -8,9 +8,9 @@ namespace ProjectXML.Model
 {
     public class User
     {
-        string username { get; set; }
-        string password { get; set; }
-        Staff staff { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public Staff staff { get; set; }
         public User() { }
         public User(string username, string password, Staff staff)
         {

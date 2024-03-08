@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<categories>
+  <category>
+    <category_id>1</category_id>
+    <category_name>1</category_name>
+    <category_note>1</category_note>
+    <category_status>True</category_status>
+    <category_created>08-03-2024 21:51</category_created>
+    <category_updated>
+    </category_updated>
+    <category_deleted>08-03-2024 21:55</category_deleted>
+  </category>
+  <category>
+    <category_id>2</category_id>
+    <category_name>2</category_name>
+    <category_note>3</category_note>
+    <category_status>True</category_status>
+    <category_created>08-03-2024 21:53</category_created>
+    <category_updated>08-03-2024 21:53</category_updated>
+    <category_deleted>
+    </category_deleted>
+  </category>
+</categories>

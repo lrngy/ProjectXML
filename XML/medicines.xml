@@ -1,10 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <medicines>
 	<medicine>
-		<medicine_id></medicine_id>
+		<medicine_id>1</medicine_id>
+		<medicine_name>thuoc khang sinh</medicine_name>
 		<medicine_expire_date></medicine_expire_date>
-		<medicine_price></medicine_price>
-		<medicine_code></medicine_code>
-		<supplier_id></supplier_id>
+		<medicine_unit>hop</medicine_unit>
+		<medicine_price>500000</medicine_price>
+		<medicine_quantity>10</medicine_quantity>
+		<medicine_image></medicine_image>
+		<medicine_description>thuc khang sinh vip</medicine_description>
+		<supplier_id>s1</supplier_id>
+		<medicine_status>1</medicine_status>
+		<medicine_created></medicine_created>
+		<medicine_updated></medicine_updated>
+		<medicine_deleted></medicine_deleted>
+		<category_id>c1</category_id>
+		<medicine_location_id>l1</medicine_location_id>
 	</medicine>
 </medicines>

@@ -1,4 +1,5 @@
 ﻿using ProjectXML.Model;
+using ProjectXML.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,8 @@ namespace ProjectXML.View
 {
     public partial class MainView : Form
     {
-        User user {  get; set; }
+        User user;
+        QuanLyThuocView quanLyThuocView;
         public MainView(User user)
         {
             InitializeComponent();
@@ -22,7 +24,23 @@ namespace ProjectXML.View
 
         private void btnQlyThuoc_Click(object sender, EventArgs e)
         {
+            if (user.staff.isSeller)
+            {
+                CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
+                return;
+            }
+            Show(ref quanLyThuocView, () => new QuanLyThuocView(user));
+        }
 
+        private void Show<T> (ref T form, Func<T> NewInstance) where T: Form
+        {
+            if (form == null || form.IsDisposed)
+            {
+                form = NewInstance();
+                form.FormClosed += (s, args) => this.WindowState = FormWindowState.Normal;
+            }
+            form.Show();
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

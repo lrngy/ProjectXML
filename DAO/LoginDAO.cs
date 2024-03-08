@@ -16,10 +16,16 @@ namespace ProjectXML.DAO
         XmlDocument xmlDoc = Config.getDoc("users");
         public bool isExistAccount(string username, string password)
         {
-            string xPath = $"/users/user[username='{username}' and password='{password}']";
+            XmlNode accountNode = null;
+            try
+            {
+                string xPath = $"/users/user[username='{username}' and password='{password}']";
 
-            XmlNode accountNode = xmlDoc.SelectSingleNode(xPath);
+                accountNode = xmlDoc.SelectSingleNode(xPath);
+            } catch (Exception ex)
+            {
 
+            }
             return accountNode != null;
         }
     }

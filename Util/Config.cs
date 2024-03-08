@@ -13,11 +13,15 @@ namespace ProjectXML.Util
         static string folderXML = "XML";
         public static XmlDocument getDoc(string fileName)
         {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(getPath(fileName));
+            return xmlDoc;
+        }
+        public static string getPath(string fileName)
+        {
             string xmlDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, folderXML);
             string relativePath = Path.Combine(xmlDirectory, fileName + ".xml");
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(relativePath);
-            return xmlDoc;
+            return relativePath;
         }
     }
 }

@@ -8,10 +8,10 @@ namespace ProjectXML.Model
 {
     public class Staff
     {
-        string id { get; set; }
-        string info { get; set; }
-        bool isManager { get; set; }
-        bool isSeller { get; set; }
+        public string id { get; set; }
+        public string info { get; set; }
+        public bool isManager { get; set; }
+        public bool isSeller { get; set; }
 
         public Staff()
         {

@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <suppliers>
 	<supplier>
-		<supplier_id></supplier_id>
-		<supplier_name></supplier_name>
+		<supplier_id>s1</supplier_id>
+		<supplier_name>duoc pham so 1</supplier_name>
+		<suppier_phone></suppier_phone>
+		<supplier_email></supplier_email>
+		<supplier_address></supplier_address>
+		<supplier_note></supplier_note>
+		<supplier_status></supplier_status>
+		<supplier_created></supplier_created>
+		<supplier_updated></supplier_updated>
+		<supplier_deleted></supplier_deleted>
+		
 	</supplier>
 </suppliers>

@@ -106,9 +106,9 @@
   </medicine>
   <medicine>
     <medicine_id>7</medicine_id>
-    <medicine_name>1</medicine_name>
-    <medicine_expire_date>09-03-2045</medicine_expire_date>
-    <medicine_unit>2</medicine_unit>
+    <medicine_name>khang sinh</medicine_name>
+    <medicine_expire_date>03-09-2045</medicine_expire_date>
+    <medicine_unit>3</medicine_unit>
     <medicine_price>1</medicine_price>
     <medicine_quantity>25</medicine_quantity>
     <medicine_image>
@@ -117,8 +117,7 @@
     </medicine_description>
     <supplier_id>1</supplier_id>
     <medicine_created>09-03-2024 13:55</medicine_created>
-    <medicine_updated>
-    </medicine_updated>
+    <medicine_updated>09-03-2024 18:05</medicine_updated>
     <medicine_deleted>
     </medicine_deleted>
     <category_id>4</category_id>

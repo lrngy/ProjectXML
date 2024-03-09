@@ -135,8 +135,10 @@ namespace ProjectXML.View
             HienThiNCC(supplierNodes);
 
             cbTTNCC.SelectedIndex = 0;
-            cbTieuChiNCC.SelectedIndex = 1;
+            cbTieuChiNCC.SelectedIndex = indexTieuChiNCC;
         }
+
+        public int indexTieuChiNCC = 1;
         public void HienThiNCC(XmlNodeList list)
         {
             int i = 0;
@@ -161,6 +163,7 @@ namespace ProjectXML.View
             tbDienThoai.Text = "";
             tbEmail.Text = "";
             tbGhiChuNCC.Text = "";
+            cbTieuChiNCC.SelectedIndex = indexTieuChiNCC;
         }
 
         public void ClearInput()
@@ -374,7 +377,7 @@ namespace ProjectXML.View
             string dienThoai = tbDienThoai.Text;
             string email = tbEmail.Text;
             string ghiChu = tbGhiChuNCC.Text;
-            bool trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
+            string trangThai = cbTTNCC.SelectedIndex == 0 ? "true" : "false";
             if (maNCC.Equals(""))
             {
                 CustomMessageBox.ShowError("Vui lòng nhập mã nhà cung cấp");
@@ -385,6 +388,20 @@ namespace ProjectXML.View
                 CustomMessageBox.ShowError("Vui lòng nhập tên nhà cung cấp");
                 return;
             }
+
+            if (!email.Equals("") && !email.Contains("@"))
+            {
+                CustomMessageBox.ShowError("Email không hợp lệ");
+                return;
+            }
+
+            if (!dienThoai.Equals("") && !int.TryParse(dienThoai, out int dt))
+            {
+                CustomMessageBox.ShowError("Số điện thoại không hợp lệ");
+                return;
+            }
+
+
             XmlNode xmlNode = nhacungcap.SelectSingleNode("/suppliers/supplier[supplier_id='" + maNCC + "']");
             if (xmlNode != null)
             {
@@ -392,34 +409,34 @@ namespace ProjectXML.View
                 return;
             }
 
-            Supplier supplier = new Supplier(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai);
+      
 
             XmlNode supplierNode = nhacungcap.CreateElement("supplier");
 
             XmlNode idNode = nhacungcap.CreateElement("supplier_id");
-            idNode.InnerText = supplier.id;
+            idNode.InnerText = maNCC;
             supplierNode.AppendChild(idNode);
 
             XmlNode nameNode = nhacungcap.CreateElement("supplier_name");
-            nameNode.InnerText = supplier.name;
+            nameNode.InnerText = tenNCC;
             supplierNode.AppendChild(nameNode);
 
 
             XmlNode noteNode = nhacungcap.CreateElement("supplier_note");
-            noteNode.InnerText = supplier.note;
+            noteNode.InnerText = ghiChu;
             supplierNode.AppendChild(noteNode);
 
 
             XmlNode phoneNode = nhacungcap.CreateElement("supplier_phone");
-            phoneNode.InnerText = supplier.phone;
+            phoneNode.InnerText = dienThoai;
             supplierNode.AppendChild(phoneNode);
 
             XmlNode emailNode = nhacungcap.CreateElement("supplier_email");
-            emailNode.InnerText = supplier.email;
+            emailNode.InnerText = email;
             supplierNode.AppendChild(emailNode);
 
             XmlNode statusNode = nhacungcap.CreateElement("supplier_status");
-            statusNode.InnerText = supplier.status.ToString();
+            statusNode.InnerText = trangThai;
             supplierNode.AppendChild(statusNode);
 
 
@@ -436,6 +453,30 @@ namespace ProjectXML.View
             string email = tbEmail.Text;
             string ghiChu = tbGhiChuNCC.Text;
             bool trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
+
+
+            if (maNCC.Equals(""))
+            {
+                CustomMessageBox.ShowError("Vui lòng nhập mã nhà cung cấp");
+                return;
+            }
+            if (tenNCC.Equals(""))
+            {
+                CustomMessageBox.ShowError("Vui lòng nhập tên nhà cung cấp");
+                return;
+            }
+
+            if (!email.Equals("") && !email.Contains("@"))
+            {
+                CustomMessageBox.ShowError("Email không hợp lệ");
+                return;
+            }
+
+            if (!dienThoai.Equals("") && !int.TryParse(dienThoai, out int dt))
+            {
+                CustomMessageBox.ShowError("Số điện thoại không hợp lệ");
+                return;
+            }
             XmlNode xmlNode = nhacungcap.SelectSingleNode("/suppliers/supplier[supplier_id='" + maNCC + "']");
             if (xmlNode == null)
             {
@@ -481,35 +522,30 @@ namespace ProjectXML.View
             switch (tieuChiIndex)
             {
                 case 0:
-
-                    XmlNodeList supplierNodes = nhacungcap.SelectNodes("/suppliers/supplier[supplier_id='" + noidungtimkiem + "']");
+                    XmlNodeList supplierNodes = nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_id,'" + noidungtimkiem + "')]");
                     HienThiNCC(supplierNodes);
                     break;
                 case 1:
-                    XmlNodeList supplierNodes2 = nhacungcap.SelectNodes("/suppliers/supplier[supplier_name='" + noidungtimkiem + "']");
+                    XmlNodeList supplierNodes2 = nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_name,'" + noidungtimkiem + "')]");
                     HienThiNCC(supplierNodes2);
                     break;
                 case 2:
-                    XmlNodeList supplierNodes3 = nhacungcap.SelectNodes("/suppliers/supplier[supplier_phone='" + noidungtimkiem + "']");
+                    XmlNodeList supplierNodes3 = nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_phone,'" + noidungtimkiem + "')]");
                     HienThiNCC(supplierNodes3);
                     break;
                 case 3:
-                    XmlNodeList supplierNodes4 = nhacungcap.SelectNodes("/suppliers/supplier[supplier_email='" + noidungtimkiem + "']");
+                    XmlNodeList supplierNodes4 = nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_email,'" + noidungtimkiem + "')]");
                     HienThiNCC(supplierNodes4);
                     break;
                 case 4:
-                    XmlNodeList supplierNodes5 = nhacungcap.SelectNodes("/suppliers/supplier[supplier_note='" + noidungtimkiem + "']");
+                    XmlNodeList supplierNodes5 = nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_note,'" + noidungtimkiem + "')]");
                     HienThiNCC(supplierNodes5);
                     break;
                 case 5:
-                    XmlNodeList supplierNodes6 = nhacungcap.SelectNodes("/suppliers/supplier[supplier_status='" + noidungtimkiem + "']");
+                    XmlNodeList supplierNodes6 = nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_status,'" + noidungtimkiem + "')]");
                     HienThiNCC(supplierNodes6);
                     break;
-
-
-
             }
-
         }
         public void TimTheLoai()
         {
@@ -561,6 +597,7 @@ namespace ProjectXML.View
 
         private void cbTieuChiNCC_SelectedIndexChanged(object sender, EventArgs e)
         {
+            indexTieuChiNCC = cbTieuChiNCC.SelectedIndex;
             tbTimNCC_TextChanged(sender, e);
         }
 
@@ -955,6 +992,11 @@ namespace ProjectXML.View
             {
                 CustomMessageBox.ShowError("Sự cố khi lưu ảnh");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tbTimNCC.Text = "";
         }
     }
     }

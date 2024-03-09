@@ -1,8 +1,29 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <users>
-	<user>
-		<username></username>
-		<password></password>
-		<staff_id></staff_id>
-	</user>
+  <user>
+    <staff_id>01</staff_id>
+    <username>quyet_cho_321</username>
+    <password>1</password>
+  </user>
+  <user>
+    <staff_id>02</staff_id>
+    <username>quyet_la_cho_haha</username>
+    <password>ahihi_do_ngoc</password>
+  </user>
+  <user>
+    <staff_id>04</staff_id>
+    <username>quyet_la_con_cho</username>
+    <password>1</password>
+  </user>
+  <user>
+    <staff_id>05</staff_id>
+    <username>quyet_la_thang_cho_nhat_trai_dat</username>
+    <password>1</password>
+  </user>
+  <user>
+    <staff_id>06</staff_id>
+    <username>quyet_cho_haha</username>
+    <password>quyet_la_do_con_lon</password>
+  </user>
+	
 </users>

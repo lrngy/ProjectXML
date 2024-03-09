@@ -13,6 +13,7 @@ namespace ProjectXML.View
 {
 
     // git add .
+//<<<<<<< HEAD
     // git commit -m "Quyết - update Quản lý nhân viên - đồng bộ tài khoản người dùng!"
     // git push origin Quyet
 
@@ -22,6 +23,10 @@ namespace ProjectXML.View
     //git reset --hard HEAD~1
     // xóa commit trước đó, đồng thời xóa các thay đổi trước đó
 
+//=======
+//    // git commit -m "Quyet     "
+//    // git push origin Quyet
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
     public partial class QuanLyNhanVienForm : Form
     {
         public QuanLyNhanVienForm()
@@ -41,6 +46,7 @@ namespace ProjectXML.View
             this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                                (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
 
+////<<<<<<< HEAD
             save_add.Enabled = false;
             sua.Enabled = false;
             xoa.Enabled = false;
@@ -58,6 +64,16 @@ namespace ProjectXML.View
         XmlDocument docUser = new XmlDocument();
         XmlElement rootUser;
 
+//=======
+//            save_update.Enabled = false;
+//            HienThi();
+//        }
+
+//        String file_name = "E:\\Check\\ProjectXML\\XML\\staffs.xml";
+//        XmlDocument doc = new XmlDocument();
+//        XmlElement root;
+
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
         private void HienThi()
         {
             try
@@ -65,6 +81,7 @@ namespace ProjectXML.View
                 doc.Load(file_name);
                 root = doc.DocumentElement;
 
+//<<<<<<< HEAD
                 docUser.Load(fileNameUser);
                 rootUser = docUser.DocumentElement;
 
@@ -100,6 +117,23 @@ namespace ProjectXML.View
                             sd++;
                         }
                     }
+//=======
+//                XmlNodeList ds = root.SelectNodes("staff");
+//                int sd = 0;
+//                dataGridView1.Rows.Clear();
+
+//                foreach (XmlNode node in ds)
+//                {
+//                    dataGridView1.Rows.Add();
+//                    //dataGridView1.Rows[sd].Cells[1].Value = node.SelectSingleNode("@staff_id").Value;
+//                    dataGridView1.Rows[sd].Cells[0].Value = node.SelectSingleNode("staff_id").InnerText;
+//                    dataGridView1.Rows[sd].Cells[1].Value = node.SelectSingleNode("staff_name").InnerText;
+//                    dataGridView1.Rows[sd].Cells[2].Value = node.SelectSingleNode("staff_sex").InnerText;
+//                    dataGridView1.Rows[sd].Cells[3].Value = node.SelectSingleNode("staff_year_of_birth").InnerText;
+//                    dataGridView1.Rows[sd].Cells[4].Value = node.SelectSingleNode("staff_is_manager").InnerText;
+//                    dataGridView1.Rows[sd].Cells[5].Value = node.SelectSingleNode("staff_is_seller").InnerText;
+//                    sd++;
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
                 }
             }
             catch (Exception ex)
@@ -110,6 +144,7 @@ namespace ProjectXML.View
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+//<<<<<<< HEAD
             them.Enabled = false; 
             sua.Enabled = true;
             xoa.Enabled = true;
@@ -138,11 +173,24 @@ namespace ProjectXML.View
             {
                 c_staff_is_seller.Checked = false;
             }
+//=======
+//            int t = dataGridView1.CurrentCell.RowIndex;
+//            t_id.Text = dataGridView1.Rows[t].Cells[0].Value.ToString();
+//            t_staff_name.Text = dataGridView1.Rows[t].Cells[1].Value.ToString();
+//            t_staff_sex.Text = dataGridView1.Rows[t].Cells[2].Value.ToString();
+//            t_staff_year_of_birth.Text = dataGridView1.Rows[t].Cells[3].Value.ToString();
+//            c_staff_is_manager.Checked = Boolean.Parse(dataGridView1.Rows[t].Cells[4].Value.ToString());
+//            c_staff_is_seller.Checked = Boolean.Parse(dataGridView1.Rows[t].Cells[5].Value.ToString());
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
         }
 
         private void Back_Click(object sender, EventArgs e)
         {
+//<<<<<<< HEAD
             t_id.ReadOnly = true;
+//=======
+//            t_id.ReadOnly = false;
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
 
             t_id.Text = "";
             t_staff_name.Text = "";
@@ -150,6 +198,7 @@ namespace ProjectXML.View
             t_staff_year_of_birth.Text = "";
             c_staff_is_manager.Checked = false;
             c_staff_is_seller.Checked = false;
+//<<<<<<< HEAD
             bResetPass.Enabled = false;
             tTaiKhoan.Text = "";
             them.Enabled = true;
@@ -157,10 +206,17 @@ namespace ProjectXML.View
             xoa.Enabled = false;
             save_add.Enabled = false;
             bResetPass.Enabled = false;
+//=======
+//            them.Enabled = true;
+//            sua.Enabled = true;
+//            xoa.Enabled = true;
+//            save_update.Enabled = false;
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
         }
 
         private void them_Click(object sender, EventArgs e)
         {
+//<<<<<<< HEAD
             Back_Click(sender, e);
             them.Enabled = false;
             sua.Enabled = false;
@@ -169,8 +225,6 @@ namespace ProjectXML.View
             bResetPass.Enabled = true;
 
             t_id.ReadOnly = false;
-
-           
         }
 
         private void sua_Click(object sender, EventArgs e)
@@ -252,6 +306,8 @@ namespace ProjectXML.View
                 return;
             }
 
+//=======
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             doc.Load(file_name);
             root = doc.DocumentElement;
             XmlNode staff = doc.CreateElement("staff");
@@ -273,6 +329,7 @@ namespace ProjectXML.View
             staff.AppendChild(staff_year_of_birth);
 
             XmlElement staff_is_manager = doc.CreateElement("staff_is_manager");
+//<<<<<<< HEAD
             staff_is_manager.InnerText = (c_staff_is_manager.Checked ? "true" : "");
             staff.AppendChild(staff_is_manager);
 
@@ -310,10 +367,79 @@ namespace ProjectXML.View
             HienThi();
         }
 
+//=======
+//            staff_is_manager.InnerText = (c_staff_is_manager.CheckState.ToString() == "Checked" ? "true" : "false");
+//            staff.AppendChild(staff_is_manager);
+
+//            XmlElement staff_is_seller = doc.CreateElement("staff_is_seller");
+//            staff_is_seller.InnerText = (c_staff_is_seller.CheckState.ToString() == "Checked" ? "true" : "false"); ;
+//            staff.AppendChild(staff_is_seller);
+
+//            Back_Click(sender, e);
+//            root.AppendChild(staff);
+//            doc.Save(file_name);
+//            HienThi();
+//        }
+
+//        private void sua_Click(object sender, EventArgs e)
+//        {
+//            Back_Click(sender, e);
+//            them.Enabled = false;
+//            sua.Enabled = false;
+//            xoa.Enabled = false;
+//            save_update.Enabled = true;
+
+//            t_id.ReadOnly = true;
+//        }
+
+//        private void save_update_Click(object sender, EventArgs e)
+//        {
+//            doc.Load(file_name);
+//            root = doc.DocumentElement;
+
+//            XmlNode staff_old = root.SelectSingleNode("staff[staff_id = '" + t_id.Text + "']");
+//            //MessageBox.Show((staff_old.ToString() == null ? "null" : "not null"));
+//            if (staff_old != null)
+//            {
+//                XmlNode staff_new = doc.CreateElement("staff");
+
+//                XmlElement staff_id = doc.CreateElement("staff_id");
+//                staff_id.InnerText = t_id.Text;
+//                staff_new.AppendChild(staff_id);
+
+//                XmlElement staff_name = doc.CreateElement("staff_name");
+//                staff_name.InnerText = t_staff_name.Text;
+//                staff_new.AppendChild(staff_name);
+
+//                XmlElement staff_sex = doc.CreateElement("staff_sex");
+//                staff_sex.InnerText = t_staff_sex.Text;
+//                staff_new.AppendChild(staff_sex);
+
+//                XmlElement staff_year_of_birth = doc.CreateElement("staff_year_of_birth");
+//                staff_year_of_birth.InnerText = t_staff_year_of_birth.Text;
+//                staff_new.AppendChild(staff_year_of_birth);
+
+//                XmlElement staff_is_manager = doc.CreateElement("staff_is_manager");
+//                staff_is_manager.InnerText = (c_staff_is_manager.CheckState.ToString() == "Checked" ? "true" : "false");
+//                staff_new.AppendChild(staff_is_manager);
+
+//                XmlElement staff_is_seller = doc.CreateElement("staff_is_seller");
+//                staff_is_seller.InnerText = (c_staff_is_seller.CheckState.ToString() == "Checked" ? "true" : "false"); ;
+//                staff_new.AppendChild(staff_is_seller);
+
+//                root.ReplaceChild(staff_new, staff_old);
+//                doc.Save(file_name);
+//                HienThi();
+//            }
+//            Back_Click(sender, e);
+//        }
+
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
         private void xoa_Click(object sender, EventArgs e)
         {
             doc.Load(file_name);
             root = doc.DocumentElement;
+//<<<<<<< HEAD
 
             docUser.Load(fileNameUser);
             rootUser = docUser.DocumentElement;
@@ -326,6 +452,13 @@ namespace ProjectXML.View
                 rootUser.RemoveChild(user_delete);
                 doc.Save(file_name);
                 docUser.Save(fileNameUser);
+//=======
+//            XmlNode staff_delete = root.SelectSingleNode("staff[staff_id = '" + t_id.Text + "']");
+//            if (staff_delete != null)
+//            {
+//                root.RemoveChild(staff_delete);
+//                doc.Save(file_name);
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             }
             dataGridView1.Rows.Clear();
             HienThi();
@@ -350,9 +483,12 @@ namespace ProjectXML.View
                     doc.Load(file_name);
                     root = doc.DocumentElement;
 
+//<<<<<<< HEAD
                     docUser.Load(fileNameUser);
                     rootUser = docUser.DocumentElement;
 
+//=======
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
                     // Tạo danh sách nhân viên phù hợp với điều kiện tìm kiếm
                     //XmlNodeList ds = root.SelectNodes($"staff[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}')]");
                     XmlNodeList ds = root.SelectNodes($"staff[contains(translate(staff_id, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}') or " +
@@ -362,7 +498,11 @@ namespace ProjectXML.View
                                     $"contains(translate(staff_is_manager, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}') or " +
                                     $"contains(translate(staff_is_seller, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}')]");
 
+//<<<<<<< HEAD
                     XmlNodeList users = root.SelectNodes($"staff[contains(translate(username, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}')]");
+//=======
+
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
 
                     // Xóa dữ liệu hiện tại trên DataGridView
                     dataGridView1.Rows.Clear();
@@ -370,6 +510,7 @@ namespace ProjectXML.View
                     int sd = 0;
                     foreach (XmlNode node in ds)
                     {
+//<<<<<<< HEAD
                         foreach (XmlNode user in users)
                         {
                             if(node.SelectSingleNode("staff_id").InnerText == user.SelectSingleNode("staff_id").InnerText)
@@ -385,6 +526,16 @@ namespace ProjectXML.View
                                 sd++;
                             }
                         }
+//=======
+//                        dataGridView1.Rows.Add();
+//                        dataGridView1.Rows[sd].Cells[0].Value = node.SelectSingleNode("staff_id").InnerText;
+//                        dataGridView1.Rows[sd].Cells[1].Value = node.SelectSingleNode("staff_name").InnerText;
+//                        dataGridView1.Rows[sd].Cells[2].Value = node.SelectSingleNode("staff_sex").InnerText;
+//                        dataGridView1.Rows[sd].Cells[3].Value = node.SelectSingleNode("staff_year_of_birth").InnerText;
+//                        dataGridView1.Rows[sd].Cells[4].Value = node.SelectSingleNode("staff_is_manager").InnerText;
+//                        dataGridView1.Rows[sd].Cells[5].Value = node.SelectSingleNode("staff_is_seller").InnerText;
+//                        sd++;
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
                     }
                 }
                 catch (Exception ex)
@@ -394,6 +545,7 @@ namespace ProjectXML.View
             }
         }
 
+//<<<<<<< HEAD
         private void bResetPass_Click(object sender, EventArgs e)
         {
             if (t_id.Text.Trim() == ""  || tTaiKhoan.Text.Trim() == "")
@@ -430,4 +582,7 @@ namespace ProjectXML.View
             }
         }
 }
+//=======
+//    }
+//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
 }

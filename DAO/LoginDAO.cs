@@ -13,9 +13,14 @@ namespace ProjectXML.DAO
 {
     public class LoginDAO
     {
-        XmlDocument xmlDoc = Config.getDoc("users");
+        XmlDocument xmlDoc;
+        public void ReLoadData()
+        {
+            xmlDoc = Config.getDoc("users");
+        }
         public bool isExistAccount(string username, string password)
         {
+            ReLoadData();
             XmlNode accountNode = null;
             try
             {
@@ -28,5 +33,6 @@ namespace ProjectXML.DAO
             }
             return accountNode != null;
         }
+
     }
 }

@@ -48,8 +48,12 @@
   <ItemGroup>
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\CategoryController.cs" />
+    <Compile Include="Controller\MedicineController.cs" />
+    <Compile Include="Controller\SupplierController.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
+    <Compile Include="DAO\MedicineDAO.cs" />
+    <Compile Include="DAO\SupplierDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Medicine.cs" />
@@ -69,6 +73,12 @@
     </Compile>
     <Compile Include="View\DeletedCategory.Designer.cs">
       <DependentUpon>DeletedCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeletedMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DeletedMedicine.Designer.cs">
+      <DependentUpon>DeletedMedicine.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.cs">
       <SubType>Form</SubType>
@@ -100,6 +110,9 @@
     <EmbeddedResource Include="View\DeletedCategory.resx">
       <DependentUpon>DeletedCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\DeletedMedicine.resx">
+      <DependentUpon>DeletedMedicine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,7 +139,6 @@
     <Content Include="XML\customers.xml" />
     <Content Include="XML\finance_bills.xml" />
     <Content Include="XML\medicines.xml" />
-    <Content Include="XML\medicine_locations.xml" />
     <Content Include="XML\pos_bills.xml" />
     <Content Include="XML\staffs.xml" />
     <Content Include="XML\suppliers.xml" />

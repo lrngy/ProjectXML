@@ -12,10 +12,16 @@ namespace ProjectXML.DAO
 {
     public class SupplierDAO
     {
-        XmlDocument supplierDoc = Config.getDoc("suppliers");
+        XmlDocument supplierDoc;
+        public void ReloadData()
+        {
+            supplierDoc = Config.getDoc("suppliers");
+        }
 
         public List<Supplier> GetAll()
         {
+            ReloadData();
+       
             List<Supplier> list = new List<Supplier>();
             try
             {
@@ -24,16 +30,12 @@ namespace ProjectXML.DAO
                 {
                     string id = supplierNode.SelectSingleNode("supplier_id").InnerText;
                     string name = supplierNode.SelectSingleNode("supplier_name").InnerText;
-                    string address = supplierNode.SelectSingleNode("supplier_address").InnerText;
                     string phone = supplierNode.SelectSingleNode("supplier_phone").InnerText;
                     string email = supplierNode.SelectSingleNode("supplier_email").InnerText;
                     string note = supplierNode.SelectSingleNode("supplier_note").InnerText;
                     bool status = bool.Parse(supplierNode.SelectSingleNode("supplier_status").InnerText);
-                    string created = supplierNode.SelectSingleNode("supplier_created").InnerText;
-                    string updated = supplierNode.SelectSingleNode("supplier_updated").InnerText;
-                    string deleted = supplierNode.SelectSingleNode("supplier_deleted").InnerText;
 
-                    Supplier supplier = new Supplier(id, name, phone, email, address, note, status, created, updated, deleted);
+                    Supplier supplier = new Supplier(id, name, phone, email, note, status);
                     list.Add(supplier);
                 }
             }
@@ -46,27 +48,20 @@ namespace ProjectXML.DAO
 
         public Supplier GetById(string id)
         {
+            ReloadData();
             Supplier supplier = null;
             try
             {
                 XmlNode supplierNode = supplierDoc.SelectSingleNode("/suppliers/supplier[supplier_id='" + id + "']");
                 if (supplierNode != null)
                 {
-                    string deleted = supplierNode.SelectSingleNode("supplier_deleted").InnerText;
-                    if (!deleted.Equals(""))
-                    {
-                        return supplier;
-                    }
                     string name = supplierNode.SelectSingleNode("supplier_name").InnerText;
-                    string address = supplierNode.SelectSingleNode("supplier_address").InnerText;
                     string phone = supplierNode.SelectSingleNode("supplier_phone").InnerText;
                     string email = supplierNode.SelectSingleNode("supplier_email").InnerText;
                     string note = supplierNode.SelectSingleNode("supplier_note").InnerText;
                     bool status = bool.Parse(supplierNode.SelectSingleNode("supplier_status").InnerText);
-                    string created = supplierNode.SelectSingleNode("supplier_created").InnerText;
-                    string updated = supplierNode.SelectSingleNode("supplier_updated").InnerText;
 
-                    supplier = new Supplier(id, name, phone, email, address, note, status, created, updated, deleted);
+                    supplier = new Supplier(id, name, phone, email, note, status);
                 }
             }
             catch (Exception ex)
@@ -78,6 +73,7 @@ namespace ProjectXML.DAO
 
         public int Insert(Supplier supplier)
         {
+            ReloadData();
             try
             {
                 XmlNode supplierNode = supplierDoc.CreateElement("supplier");
@@ -89,10 +85,6 @@ namespace ProjectXML.DAO
                 XmlNode nameNode = supplierDoc.CreateElement("supplier_name");
                 nameNode.InnerText = supplier.name;
                 supplierNode.AppendChild(nameNode);
-
-                XmlNode addressNode = supplierDoc.CreateElement("supplier_address");
-                addressNode.InnerText = supplier.address;
-                supplierNode.AppendChild(addressNode);
 
 
                 XmlNode noteNode = supplierDoc.CreateElement("supplier_note");
@@ -112,20 +104,9 @@ namespace ProjectXML.DAO
                 statusNode.InnerText = supplier.status.ToString();
                 supplierNode.AppendChild(statusNode);
 
-                XmlNode createdNode = supplierDoc.CreateElement("supplier_created");
-                createdNode.InnerText = supplier.created;
-                supplierNode.AppendChild(createdNode);
-
-                XmlNode updatedNode = supplierDoc.CreateElement("supplier_updated");
-                updatedNode.InnerText = supplier.updated;
-                supplierNode.AppendChild(updatedNode);
-
-                XmlNode deletedNode = supplierDoc.CreateElement("supplier_deleted");
-                deletedNode.InnerText = supplier.deleted;
-                supplierNode.AppendChild(deletedNode);
 
                 supplierDoc.SelectSingleNode("/suppliers").AppendChild(supplierNode);
-                supplierDoc.Save(Config.getPath("suppliers"));
+                supplierDoc.Save(Config.getXMLPath("suppliers"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -137,19 +118,18 @@ namespace ProjectXML.DAO
 
         public int Update(Supplier supplier)
         {
+            ReloadData();
             try
             {
                 XmlNode suppliers = supplierDoc.SelectSingleNode("/suppliers");
                 XmlNode supplierNode = supplierDoc.SelectSingleNode("/suppliers/supplier[supplier_id='" + supplier.id + "']");
                 supplierNode.SelectSingleNode("supplier_name").InnerText = supplier.name;
-                supplierNode.SelectSingleNode("supplier_address").InnerText = supplier.address;
                 supplierNode.SelectSingleNode("supplier_phone").InnerText = supplier.phone;
                 supplierNode.SelectSingleNode("supplier_email").InnerText = supplier.email;
                 supplierNode.SelectSingleNode("supplier_status").InnerText = supplier.status.ToString();
-                supplierNode.SelectSingleNode("supplier_updated").InnerText = supplier.updated;
 
 
-                supplierDoc.Save(Config.getPath("suppliers"));
+                supplierDoc.Save(Config.getXMLPath("suppliers"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -161,11 +141,12 @@ namespace ProjectXML.DAO
 
         public int Delete(string id)
         {
+            ReloadData();
             try
             {
                 XmlNode supplierNode = supplierDoc.SelectSingleNode("/suppliers/supplier[supplier_id='" + id + "']");
                 supplierNode.SelectSingleNode("supplier_deleted").InnerText = CustomDateTime.GetNow();
-                supplierDoc.Save(Config.getPath("suppliers"));
+                supplierDoc.Save(Config.getXMLPath("suppliers"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -177,11 +158,12 @@ namespace ProjectXML.DAO
 
         internal int Restore(string id)
         {
+            ReloadData();
             try
             {
                 XmlNode supplierNode = supplierDoc.SelectSingleNode("/suppliers/supplier[supplier_id='" + id + "']");
                 supplierNode.SelectSingleNode("supplier_deleted").InnerText = "";
-                supplierDoc.Save(Config.getPath("suppliers"));
+                supplierDoc.Save(Config.getXMLPath("suppliers"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -193,11 +175,12 @@ namespace ProjectXML.DAO
 
         internal int ForceDelete(string id)
         {
+            ReloadData();
             try
             {
                 XmlNode supplierNode = supplierDoc.SelectSingleNode("/suppliers/supplier[supplier_id='" + id + "']");
                 supplierNode.ParentNode.RemoveChild(supplierNode);
-                supplierDoc.Save(Config.getPath("suppliers"));
+                supplierDoc.Save(Config.getXMLPath("suppliers"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)

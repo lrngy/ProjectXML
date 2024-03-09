@@ -12,9 +12,16 @@ namespace ProjectXML.DAO
 {
     public class CategoryDAO
     {
-        XmlDocument categoryDoc = Config.getDoc("categories");
+        XmlDocument categoryDoc;
+
+        internal void ReloadData()
+        {
+            categoryDoc = Config.getDoc("categories");
+        }
         public List<Category> GetAll()
         {
+
+            ReloadData();
             List<Category> list = new List<Category>();
             try
             {
@@ -45,6 +52,8 @@ namespace ProjectXML.DAO
 
         public Category GetById(string id)
         {
+
+            ReloadData();
             Category category = null;
             try
             {
@@ -71,9 +80,18 @@ namespace ProjectXML.DAO
             return category;
         }
 
+        public bool CheckExist(string id)
+        {
+
+            ReloadData();
+            XmlNode categoryNode = categoryDoc.SelectSingleNode("/categories/category[category_id='" + id + "']");
+            return categoryNode != null;
+        }
+
         public int Insert(Category category)
         {
 
+            ReloadData();
             try
             {
                 XmlNode categoryNode = categoryDoc.CreateElement("category");
@@ -107,7 +125,7 @@ namespace ProjectXML.DAO
                 categoryNode.AppendChild(deletedNode);
 
                 categoryDoc.SelectSingleNode("/categories").AppendChild(categoryNode);
-                categoryDoc.Save(Config.getPath("categories"));
+                categoryDoc.Save(Config.getXMLPath("categories"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -119,6 +137,8 @@ namespace ProjectXML.DAO
 
         public int Update(Category category)
         {
+
+            ReloadData();
             try
             {
                 XmlNode categories = categoryDoc.SelectSingleNode("/categories");
@@ -127,7 +147,7 @@ namespace ProjectXML.DAO
                 categoryNode.SelectSingleNode("category_note").InnerText = category.note;
                 categoryNode.SelectSingleNode("category_status").InnerText = category.status.ToString();
                 categoryNode.SelectSingleNode("category_updated").InnerText = category.updated;
-                categoryDoc.Save(Config.getPath("categories"));
+                categoryDoc.Save(Config.getXMLPath("categories"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -139,11 +159,13 @@ namespace ProjectXML.DAO
 
         public int Delete(string maTheLoai)
         {
+
+            ReloadData();
             try
             {
                 XmlNode categoryNode = categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
                 categoryNode.SelectSingleNode("category_deleted").InnerText = CustomDateTime.GetNow();
-                categoryDoc.Save(Config.getPath("categories"));
+                categoryDoc.Save(Config.getXMLPath("categories"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -156,27 +178,51 @@ namespace ProjectXML.DAO
 
         internal int Restore(string maTheLoai)
         {
+
+            ReloadData();
             try
             {
                 XmlNode categoryNode = categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
                 categoryNode.SelectSingleNode("category_deleted").InnerText = "";
-                categoryDoc.Save(Config.getPath("categories"));
+                categoryDoc.Save(Config.getXMLPath("categories"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;   
+                return Predefined.FILE_NOT_FOUND;
             }
         }
 
         internal int ForceDelete(string maTheLoai)
         {
+
+            ReloadData();
             try
             {
                 XmlNode categoryNode = categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
                 categoryNode.ParentNode.RemoveChild(categoryNode);
-                categoryDoc.Save(Config.getPath("categories"));
+                categoryDoc.Save(Config.getXMLPath("categories"));
+                return Predefined.SUCCESS;
+            }
+            catch (XmlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Predefined.FILE_NOT_FOUND;
+            }
+        }
+
+        internal int RestoreAll()
+        {
+            ReloadData();
+            try
+            {
+                XmlNodeList categoryNodes = categoryDoc.SelectNodes("/categories/category");
+                foreach (XmlNode categoryNode in categoryNodes)
+                {
+                    categoryNode.SelectSingleNode("category_deleted").InnerText = "";
+                }
+                categoryDoc.Save(Config.getXMLPath("categories"));
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)

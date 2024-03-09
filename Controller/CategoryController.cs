@@ -23,7 +23,7 @@ namespace ProjectXML.Controller
 
         public int Insert(Category category)
         {
-            if(categoryDAO.GetById(category.id) != null)
+            if(categoryDAO.CheckExist(category.id))
             {
                 return Predefined.ID_EXIST;
             }
@@ -58,6 +58,16 @@ namespace ProjectXML.Controller
         internal int ForceDelete(string maTheLoai)
         {
             return categoryDAO.ForceDelete(maTheLoai);
+        }
+
+        public void ReloadData()
+        {
+            categoryDAO.ReloadData();
+        }
+
+        internal int RestoreAll()
+        {
+            return categoryDAO.RestoreAll();
         }
     }
 }

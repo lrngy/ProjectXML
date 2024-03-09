@@ -113,5 +113,25 @@ namespace ProjectXML.View
                 }
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int state = categoryController.RestoreAll();
+                if (state == Predefined.FILE_NOT_FOUND)
+                {
+                    CustomMessageBox.ShowError("Khôi phục thất bại");
+                    return;
+                }
+                    DeletedCategory_Show();
+                    refreshDeletedCategory();
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

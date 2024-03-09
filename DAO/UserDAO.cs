@@ -11,10 +11,16 @@ namespace ProjectXML.DAO
 {
     public class UserDAO
     {
-        XmlDocument userDoc = Config.getDoc("users");
-        XmlDocument staffDoc = Config.getDoc("staffs");
+        XmlDocument userDoc;
+        XmlDocument staffDoc;
+        public void ReLoadData()
+        {
+            userDoc = Config.getDoc("users");
+            staffDoc = Config.getDoc("staffs");
+        }
         public User getUser(string username)
         {
+            ReLoadData();
             try
             {
                 string xPathUsers = $"//user[username='{username}']";

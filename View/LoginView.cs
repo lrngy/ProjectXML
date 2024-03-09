@@ -20,6 +20,8 @@ namespace ProjectXML.View
             InitializeComponent();
         }
         LoginController loginController = new LoginController();
+
+        [STAThread]
         public static void Main()
         {
             Application.EnableVisualStyles();

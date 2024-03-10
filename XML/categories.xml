@@ -50,4 +50,15 @@
     <category_deleted>
     </category_deleted>
   </category>
+  <category>
+    <category_id>5</category_id>
+    <category_name>Thuốc bổ</category_name>
+    <category_note>2</category_note>
+    <category_status>True</category_status>
+    <category_created>10/03/2024 23:03</category_created>
+    <category_updated>
+    </category_updated>
+    <category_deleted>
+    </category_deleted>
+  </category>
 </categories>

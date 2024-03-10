@@ -46,14 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\CategoryController.cs" />
+    <Compile Include="Controller\MedicineController.cs" />
+    <Compile Include="Controller\SupplierController.cs" />
+    <Compile Include="Controller\UserController.cs" />
+    <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\LoginDAO.cs" />
+    <Compile Include="DAO\MedicineDAO.cs" />
+    <Compile Include="DAO\SupplierDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Medicine.cs" />
+    <Compile Include="Model\MedicineLocation.cs" />
+    <Compile Include="Model\Staff.cs" />
+    <Compile Include="Model\Supplier.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
     <Compile Include="View\QuanLyNhanVienForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\QuanLyNhanVienForm.Designer.cs">
       <DependentUpon>QuanLyNhanVienForm.cs</DependentUpon>
-    </Compile>
+          </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,8 +80,99 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+
+    <Compile Include="Util\Config.cs" />
+    <Compile Include="Util\CustomDateTime.cs" />
+    <Compile Include="Util\CustomMessageBox.cs" />
+    <Compile Include="Util\Predefined.cs" />
+    <Compile Include="Util\Validation.cs" />
+    <Compile Include="View\Dialog\AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ChangePasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ChangePasswordDialog.Designer.cs">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\DeletedCategoryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\DeletedCategoryDialog.Designer.cs">
+      <DependentUpon>DeletedCategoryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\DeletedMedicineDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\DeletedMedicineDialog.Designer.cs">
+      <DependentUpon>DeletedMedicineDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\FilterByRangeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\FilterByRangeDialog.Designer.cs">
+      <DependentUpon>FilterByRangeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLyThuocView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QuanLyThuocView.Designer.cs">
+      <DependentUpon>QuanLyThuocView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ThongTinCaNhanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ThongTinCaNhanView.Designer.cs">
+      <DependentUpon>ThongTinCaNhanView.cs</DependentUpon>
+
+
+
     <EmbeddedResource Include="View\QuanLyNhanVienForm.resx">
       <DependentUpon>QuanLyNhanVienForm.cs</DependentUpon>
+          </EmbeddedResource>
+
+    <EmbeddedResource Include="View\Dialog\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ChangePasswordDialog.resx">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\DeletedCategoryDialog.resx">
+      <DependentUpon>DeletedCategoryDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\DeletedMedicineDialog.resx">
+      <DependentUpon>DeletedMedicineDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\FilterByRangeDialog.resx">
+      <DependentUpon>FilterByRangeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QuanLyThuocView.resx">
+      <DependentUpon>QuanLyThuocView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ThongTinCaNhanView.resx">
+      <DependentUpon>ThongTinCaNhanView.cs</DependentUpon>
+
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -80,20 +188,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="View\add_from_here.txt" />
     <Content Include="XML\customers.xml" />
     <Content Include="XML\finance_bills.xml" />
-    <Content Include="XML\locations.xml" />
     <Content Include="XML\medicines.xml" />
-    <Content Include="XML\medicine_info.xml" />
-    <Content Include="XML\medicine_locations.xml" />
-    <Content Include="XML\medicine_quantities.xml" />
-    <Content Include="XML\medicine_warehouse_bills.xml" />
     <Content Include="XML\pos_bills.xml" />
     <Content Include="XML\staffs.xml" />
     <Content Include="XML\suppliers.xml" />
     <Content Include="XML\users.xml" />
     <Content Include="XML\warehouse_bills.xml" />
+    <Content Include="XML\categories.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,3 +1,4 @@
+
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <pos_bills>
   <pos_bill>
@@ -50,4 +51,5 @@
     <finance_bill_id>2</finance_bill_id>
     <customer_id>2</customer_id>
   </pos_bill>
+
 </pos_bills>

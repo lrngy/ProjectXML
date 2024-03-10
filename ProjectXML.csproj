@@ -35,7 +35,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+
     <Reference Include="System.Windows.Forms.DataVisualization" />
+
+
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="ChiTietChi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +201,7 @@
     <EmbeddedResource Include="View\ThongTinCaNhanView.resx">
       <DependentUpon>ThongTinCaNhanView.cs</DependentUpon>
     </EmbeddedResource>
+
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -211,6 +216,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+
     <None Include="Resources\22.png" />
     <None Include="Resources\72834941.jpg" />
     <Content Include="Resources\chi.png" />
@@ -226,12 +232,14 @@
     <Content Include="XML\customers.xml" />
     <Content Include="XML\finance_bills.xml" />
     <Content Include="XML\medicines.xml" />
+
     <Content Include="XML\pos_bills.xml" />
     <Content Include="XML\staffs.xml" />
     <Content Include="XML\suppliers.xml" />
     <Content Include="XML\users.xml" />
     <Content Include="XML\warehouse_bills.xml" />
     <Content Include="XML\categories.xml" />
+
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

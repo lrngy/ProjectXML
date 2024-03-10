@@ -48,4 +48,16 @@
     <fibnance_bill_content>5</fibnance_bill_content>
     <staff_id>5</staff_id>
   </finance_bill>
+  <finance_bill>
+    <finance_bill_id>
+    </finance_bill_id>
+    <finance_bill_time>15/03/2024</finance_bill_time>
+    <finance_bill_change>
+    </finance_bill_change>
+    <finance_is_spend_bill>unpaid</finance_is_spend_bill>
+    <fibnance_bill_content>
+    </fibnance_bill_content>
+    <staff_id>
+    </staff_id>
+  </finance_bill>
 </finance_bills>

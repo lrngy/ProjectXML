@@ -75,9 +75,10 @@ namespace ProjectXML.View
 
         private void tbUsername_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            lbError.Text = "";
+            if (e.KeyCode == Keys.Enter)
             {
-                btnLogin_Click(sender, e);
+                btnLogin.PerformClick();
             }
         }
     }

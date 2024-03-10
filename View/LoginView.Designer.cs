@@ -52,9 +52,10 @@
             // 
             // tbUsername
             // 
+            this.tbUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUsername.Location = new System.Drawing.Point(184, 197);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(100, 20);
+            this.tbUsername.Size = new System.Drawing.Size(100, 25);
             this.tbUsername.TabIndex = 1;
             this.tbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
             // 
@@ -62,19 +63,20 @@
             // 
             this.lbUsername.AutoSize = true;
             this.lbUsername.BackColor = System.Drawing.SystemColors.Control;
-            this.lbUsername.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsername.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.lbUsername.Location = new System.Drawing.Point(102, 197);
+            this.lbUsername.Location = new System.Drawing.Point(88, 197);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(76, 20);
+            this.lbUsername.Size = new System.Drawing.Size(88, 21);
             this.lbUsername.TabIndex = 2;
-            this.lbUsername.Text = "Tài khoản";
+            this.lbUsername.Text = "Tài khoản:";
             // 
             // btnShowPassword
             // 
+            this.btnShowPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowPassword.Location = new System.Drawing.Point(290, 242);
             this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(22, 20);
+            this.btnShowPassword.Size = new System.Drawing.Size(28, 25);
             this.btnShowPassword.TabIndex = 3;
             this.btnShowPassword.Text = "👁️";
             this.btnShowPassword.UseVisualStyleBackColor = true;
@@ -82,8 +84,8 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(184, 290);
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(187, 295);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(88, 30);
             this.btnLogin.TabIndex = 4;
@@ -93,10 +95,11 @@
             // 
             // tbPassword
             // 
+            this.tbPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPassword.Location = new System.Drawing.Point(184, 242);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(100, 20);
+            this.tbPassword.Size = new System.Drawing.Size(100, 25);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
             // 
@@ -104,13 +107,13 @@
             // 
             this.lbPassword.AutoSize = true;
             this.lbPassword.BackColor = System.Drawing.SystemColors.Control;
-            this.lbPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPassword.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbPassword.Location = new System.Drawing.Point(103, 242);
+            this.lbPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPassword.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.lbPassword.Location = new System.Drawing.Point(90, 244);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(75, 20);
+            this.lbPassword.Size = new System.Drawing.Size(86, 21);
             this.lbPassword.TabIndex = 2;
-            this.lbPassword.Text = "Mật khẩu";
+            this.lbPassword.Text = "Mật khẩu:";
             // 
             // lbError
             // 

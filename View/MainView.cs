@@ -21,6 +21,7 @@ namespace ProjectXML.View
         ThongTinCaNhanView thongTinCaNhanView;
         ChangePasswordDialog changePasswordDialog;
         QuanLyNhanVienView quanLyNhanVienView;
+        QuanLyTaiChinhView quanLyTaiChinhView;
 
 
         public MainView(User user, LoginView loginView)
@@ -71,6 +72,11 @@ namespace ProjectXML.View
                 return;
             }
             Show(ref quanLyNhanVienView, () => new QuanLyNhanVienView());
+        }
+
+        private void btnTaiChinh_Click(object sender, EventArgs e)
+        {
+            Show(ref quanLyTaiChinhView, () => new QuanLyTaiChinhView());
         }
 
         private void btnThongTin_Click(object sender, EventArgs e)
@@ -206,5 +212,7 @@ namespace ProjectXML.View
             AboutDialog aboutDialog = new AboutDialog();
             aboutDialog.ShowDialog();
         }
+
+
     }
 }

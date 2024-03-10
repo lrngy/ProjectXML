@@ -20,6 +20,7 @@ namespace ProjectXML.View
         QuanLyThuocView quanLyThuocView;
         ThongTinCaNhanView thongTinCaNhanView;
         ChangePasswordDialog changePasswordDialog;
+        QuanLyNhanVienView quanLyNhanVienView;
 
 
         public MainView(User user, LoginView loginView)
@@ -69,7 +70,7 @@ namespace ProjectXML.View
                 CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
                 return;
             }
-            //Show(ref quanLyThuocView, () => new QuanLyThuocView(user, 2));
+            Show(ref quanLyNhanVienView, () => new QuanLyNhanVienView());
         }
 
         private void btnThongTin_Click(object sender, EventArgs e)

@@ -35,4 +35,21 @@
     </medicine_deleted>
     <category_id>2</category_id>
   </medicine>
+  <medicine>
+    <medicine_id>3</medicine_id>
+    <medicine_name>thần dược</medicine_name>
+    <medicine_expire_date>01/01/2030</medicine_expire_date>
+    <medicine_unit>hộp</medicine_unit>
+    <medicine_price>3000</medicine_price>
+    <medicine_quantity>1000</medicine_quantity>
+    <medicine_image>E:\Check\ProjectXML\Shared/Medicine/Images\3.jpg</medicine_image>
+    <medicine_description>thuốc kháng sinh</medicine_description>
+    <supplier_id>4</supplier_id>
+    <medicine_created>10/03/2024 21:26</medicine_created>
+    <medicine_updated>
+    </medicine_updated>
+    <medicine_deleted>
+    </medicine_deleted>
+    <category_id>44</category_id>
+  </medicine>
 </medicines>

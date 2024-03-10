@@ -1,6 +1,6 @@
 ﻿namespace ProjectXML.View
 {
-    partial class QuanLyNhanVienForm
+    partial class QuanLyNhanVienView
     {
         /// <summary>
         /// Required designer variable.

@@ -13,7 +13,8 @@
     <staff_name>Quyết</staff_name>
     <staff_sex>Nam</staff_sex>
     <staff_year_of_birth>01/01/2002</staff_year_of_birth>
-    <staff_is_manager>false</staff_is_manager>
+    <staff_is_manager>
+    </staff_is_manager>
     <staff_is_seller>true</staff_is_seller>
   </staff>
 </staffs>

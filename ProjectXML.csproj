@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="ChiTietChi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChiTietChi.Designer.cs">
+      <DependentUpon>ChiTietChi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTietThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChiTietThu.Designer.cs">
+      <DependentUpon>ChiTietThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="Controller\MedicineController.cs" />
@@ -75,10 +91,34 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+
+    <Compile Include="View\QuanLyTaiChinh.cs" />
+    <Compile Include="View\QuanLyTaiChinhFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QuanLyTaiChinhFrm.Designer.cs">
+      <DependentUpon>QuanLyTaiChinhFrm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ChiTietChi.resx">
+      <DependentUpon>ChiTietChi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChiTietThu.resx">
+      <DependentUpon>ChiTietThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QuanLyTaiChinhFrm.resx">
+      <DependentUpon>QuanLyTaiChinhFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Util\Config.cs" />
     <Compile Include="Util\CustomDateTime.cs" />
     <Compile Include="Util\CustomMessageBox.cs" />
@@ -182,6 +222,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+
+    <None Include="Resources\22.png" />
+    <None Include="Resources\72834941.jpg" />
+    <Content Include="Resources\chi.png" />
+    <None Include="Resources\chi1.png" />
+    <None Include="Resources\chi2.png" />
+    <None Include="Resources\chi3.png" />
+    <Content Include="Resources\thu.png" />
+    <None Include="Resources\thu1.png" />
+    <None Include="Resources\thu11.png" />
+    <None Include="Resources\thu12.png" />
+    <None Include="Resources\thu13.png" />
+    <None Include="Resources\thu14.png" />
+    <Content Include="View\add_from_here.txt" />
+
     <Content Include="XML\customers.xml" />
     <Content Include="XML\finance_bills.xml" />
     <Content Include="XML\medicines.xml" />

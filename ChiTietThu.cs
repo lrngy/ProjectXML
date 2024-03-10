@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectXML.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ namespace ProjectXML
 {
     public partial class ChiTietThu : Form
     {
-        string path = @"E:\XML\ProjectXML\XML\finance_bills.xml";
+        string path = Config.getXMLPath("finance_bills");
         XmlDocument xmlDocument;
         XmlElement finance_bills;
         public event EventHandler FormClosedEvent;

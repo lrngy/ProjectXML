@@ -50,7 +50,7 @@ namespace ProjectXML.View
             try
             {
               
-            } catch (Exception ex)
+            } catch (Exception)
             {
                 
             }
@@ -78,7 +78,7 @@ namespace ProjectXML.View
                     CustomMessageBox.ShowError("Khôi phục thất bại");
                 }
 
-            } catch (Exception ex)
+            } catch (Exception)
             {
             }
         }
@@ -108,7 +108,7 @@ namespace ProjectXML.View
                         CustomMessageBox.ShowError("Xóa thất bại");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }
@@ -129,7 +129,7 @@ namespace ProjectXML.View
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

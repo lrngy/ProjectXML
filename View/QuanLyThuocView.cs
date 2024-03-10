@@ -30,14 +30,17 @@ namespace ProjectXML.View
         FilterByRangeDialog filterByRangeDialog;
 
         XmlDocument nhacungcap = Config.getDoc("suppliers");
-        public QuanLyThuocView(User user)
-        {
-            InitializeComponent();
-            this.user = user;
-        }
+
         int rowSelectedTheLoai = 0;
         int rowSelectedThuoc = 0;
         int cbIndexTieuChiThuoc = 1;
+        int tabControlIndex = 0;
+        public QuanLyThuocView(User user, int tabControlIndex)
+        {
+            InitializeComponent();
+            this.user = user;
+            this.tabControlIndex = tabControlIndex;
+        }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -60,8 +63,8 @@ namespace ProjectXML.View
         private void QuanLyThuoc_Load()
         {
             TimThuocTheoDuLieu();
-
             cbTieuChiThuoc.SelectedIndex = cbIndexTieuChiThuoc;
+
 
             cbTLThuoc.Items.Clear();
             cbNccThuoc.Items.Clear();
@@ -84,13 +87,11 @@ namespace ProjectXML.View
                 cbNccThuoc.Items.Add(supplier.id + "-" + supplier.name);
             }
 
-
-
             try
             {
                 dgvThuoc.Rows[rowSelectedThuoc].Selected = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -206,7 +207,7 @@ namespace ProjectXML.View
             {
                 dgvTheLoai.Rows[rowSelectedTheLoai].Selected = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -215,7 +216,7 @@ namespace ProjectXML.View
 
         private void QuanLyThuocView_Load(object sender, EventArgs e)
         {
-            //tabControl1.SelectedIndex = 1;
+            tabControl1.SelectedIndex = tabControlIndex;
             QuanLyThuoc_Load();
         }
 
@@ -311,7 +312,7 @@ namespace ProjectXML.View
                 tbGhiChuTheLoai.Text = dgvTheLoai.Rows[index].Cells[3].Value.ToString();
                 cbTrangThaiTheLoai.SelectedIndex = dgvTheLoai.Rows[index].Cells[4].Value.ToString().Equals("Khả dụng") ? 0 : 1;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ClearInput();
             }
@@ -362,7 +363,7 @@ namespace ProjectXML.View
                 cbTTNCC.SelectedIndex = dgvNhaCungCap.Rows[index].Cells[6].Value.ToString().Equals("Khả dụng") ? 0 : 1;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -514,7 +515,6 @@ namespace ProjectXML.View
                 NhaCungCap_Load();
                 return;
             }
-            int i = 0;
             int tieuChiIndex = cbTieuChiNCC.SelectedIndex;
             dgvNhaCungCap.Rows.Clear();
             switch (tieuChiIndex)
@@ -640,7 +640,7 @@ namespace ProjectXML.View
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ClearInputThuoc();
             }
@@ -651,7 +651,7 @@ namespace ProjectXML.View
         {
             string id = tbMaThuoc.Text;
             string name = tbTenThuoc.Text;
-            string expireDate = dateTimePicker1.Value.ToString("dd-MM-yyyy");
+            string expireDate = dateTimePicker1.Value.ToString("dd/MM/yyyy");
             string unit = tbDVT.Text;
             string quantityText = tbSL.Text;
             string priceText = tbGia.Text;
@@ -744,7 +744,7 @@ namespace ProjectXML.View
             {
                 string id = tbMaThuoc.Text;
                 string name = tbTenThuoc.Text;
-                string expireDate = dateTimePicker1.Value.ToString("dd-MM-yyyy");
+                string expireDate = dateTimePicker1.Value.ToString("dd/MM/yyyy");
                 string unit = tbDVT.Text;
                 string quantityText = tbSL.Text;
                 string priceText = tbGia.Text;
@@ -855,7 +855,7 @@ namespace ProjectXML.View
                     CustomMessageBox.ShowError("Xóa thất bại");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 CustomMessageBox.ShowError("Mã thể loại không hợp lệ");
             }
@@ -882,7 +882,6 @@ namespace ProjectXML.View
                 QuanLyThuoc_Show(list == null ? medicineController.LoadData() : list);
                 return;
             }
-            int i = 0;
             int tieuChiIndex = cbTieuChiThuoc.SelectedIndex;
             dgvThuoc.Rows.Clear();
             List<Medicine> medicineList = list != null ? list : medicineController.LoadData();
@@ -1000,14 +999,13 @@ namespace ProjectXML.View
             tbTimNCC.Text = "";
         }
 
-        int cbIndexLoc = 1;
+        int cbIndexLoc = 0;
         private void ckbLocDuLieuThuoc_CheckedChanged(object sender, EventArgs e)
         {
             cbLocDuLieuThuoc.Visible = ckbLocDuLieuThuoc.Checked;
-            if (!ckbLocDuLieuThuoc.Checked)
+            if (!ckbLocDuLieuThuoc.Checked && filterByRangeDialog != null)
             {
                 filterByRangeDialog.Dispose();
-
             }
 
             cbLocDuLieuThuoc.SelectedIndex = cbIndexLoc;
@@ -1017,8 +1015,9 @@ namespace ProjectXML.View
         public void FilterByRangeDialog_Disposed()
         {
             cbLocDuLieuThuoc.Enabled = true;
-            ckbLocDuLieuThuoc.Checked = false;
-            cbIndexLoc = 1;
+            //ckbLocDuLieuThuoc.Checked = false;
+            cbIndexLoc = 0;
+            cbLocDuLieuThuoc.SelectedIndex = 0;
             QuanLyThuoc_Load();
         }
         public void TimThuocTheoDuLieu()
@@ -1029,7 +1028,7 @@ namespace ProjectXML.View
                 return;
             }
 
-            if (cbLocDuLieuThuoc.SelectedIndex == 0)
+            if (cbLocDuLieuThuoc.SelectedIndex == 1)
             {
 
                 if (filterByRangeDialog == null || filterByRangeDialog.IsDisposed)
@@ -1058,16 +1057,14 @@ namespace ProjectXML.View
                 DateTime expireDate = DateTime.Parse(medicine.expireDate);
                 switch (cbLocDuLieuThuoc.SelectedIndex)
                 {
-
-                    case 1:
-                        return expireDate.CompareTo(DateTime.Now) < 0;
                     case 2:
-                        return expireDate.CompareTo(DateTime.Now) > 0;
+                        return expireDate.CompareTo(DateTime.Now) < 0;
                     case 3:
+                        return expireDate.CompareTo(DateTime.Now) > 0;
+                    case 4:
                         return medicine.quantity <= 0;
-
                     default:
-                        return false;
+                        return true;
                 }
             }).ToList();
             TimThuoc(list);

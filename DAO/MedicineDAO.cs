@@ -63,7 +63,7 @@ namespace ProjectXML.DAO
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -299,7 +299,7 @@ namespace ProjectXML.DAO
             medicineDoc.Save(Config.getXMLPath("medicines"));
             return Predefined.SUCCESS;
 
-            } catch (XmlException ex)
+            } catch (XmlException)
             {
                 return Predefined.FILE_NOT_FOUND;
             }
@@ -317,7 +317,7 @@ namespace ProjectXML.DAO
                 medicineDoc.Save(Config.getXMLPath("medicines"));
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (XmlException)
             {
                 return Predefined.FILE_NOT_FOUND;
             }

@@ -82,7 +82,7 @@ namespace ProjectXML.View.Dialog
             return medicineList.Where(medicine =>
             {
                 DateTime createdDate;
-                if (!DateTime.TryParseExact(medicine.created, "dd-MM-yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture,
+                if (!DateTime.TryParseExact(medicine.created, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture,
 System.Globalization.DateTimeStyles.None, out createdDate))
                 {
                     return false;
@@ -107,7 +107,7 @@ System.Globalization.DateTimeStyles.None, out createdDate))
             return medicineList.Where(medicine =>
             {
                 DateTime expireDate;
-                if (!DateTime.TryParseExact(medicine.expireDate, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture,
+                if (!DateTime.TryParseExact(medicine.expireDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture,
         System.Globalization.DateTimeStyles.None, out expireDate))
                 {
                     return false;

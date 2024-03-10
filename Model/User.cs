@@ -18,5 +18,11 @@ namespace ProjectXML.Model
             this.password = password;
             this.staff = staff;
         }
+        public void Update(User newUser)
+        {
+            this.username = newUser.username;
+            this.password = newUser.password;
+            this.staff = newUser.staff;
+        }
     }
 }

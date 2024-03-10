@@ -27,7 +27,7 @@ namespace ProjectXML.DAO
                 string xPath = $"/users/user[username='{username}' and password='{password}']";
 
                 accountNode = xmlDoc.SelectSingleNode(xPath);
-            } catch (Exception ex)
+            } catch (Exception)
             {
 
             }

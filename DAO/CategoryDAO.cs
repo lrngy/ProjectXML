@@ -43,7 +43,7 @@ namespace ProjectXML.DAO
                     list.Add(category);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -73,7 +73,7 @@ namespace ProjectXML.DAO
                     category = new Category(id, name, note, status, created, updated, deleted);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

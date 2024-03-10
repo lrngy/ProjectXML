@@ -105,7 +105,7 @@ public class MedicineController
              
                 Debug.WriteLine(ex.Message);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

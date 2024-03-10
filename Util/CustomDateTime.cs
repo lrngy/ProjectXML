@@ -8,7 +8,7 @@ namespace ProjectXML.Util
 {
     public class CustomDateTime
     {
-        static string format = "dd-MM-yyyy HH:mm";
+        static string format = "dd/MM/yyyy HH:mm";
         public static string GetNow()
         {
             return DateTime.Now.ToString(format);

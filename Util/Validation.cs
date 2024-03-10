@@ -36,7 +36,7 @@ namespace ProjectXML.Util
 
         public static bool IsDate(string input)
         {
-            // dd-MM-yyyy HH:mm
+            // dd/MM/yyyy HH:mm
             return CustomDateTime.IsDate(input);
         }
     }

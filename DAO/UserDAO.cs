@@ -33,7 +33,9 @@ namespace ProjectXML.DAO
 
                 Staff staff = new Staff(
                     staffId,
-                    staffNode.SelectSingleNode("staff_info").InnerText,
+                    staffNode.SelectSingleNode("staff_name").InnerText,
+                    staffNode.SelectSingleNode("staff_sex").InnerText.Equals("Nam") ? true : false,
+                    staffNode.SelectSingleNode("staff_year_of_birth").InnerText,
                     staffNode.SelectSingleNode("staff_is_manager").InnerText.Equals("true") ? true : false,
                     staffNode.SelectSingleNode("staff_is_seller").InnerText.Equals("true") ? true : false
                     );
@@ -44,6 +46,30 @@ namespace ProjectXML.DAO
 
             }
             return null;
+        }
+
+        internal int Update(User user)
+        {
+            ReLoadData();
+            try
+            {
+                XmlNode staffNode = staffDoc.SelectSingleNode($"//staff[staff_id='{user.staff.id}']");
+                staffNode.SelectSingleNode("staff_name").InnerText = user.staff.name;
+                staffNode.SelectSingleNode("staff_year_of_birth").InnerText = user.staff.birthday;
+                staffNode.SelectSingleNode("staff_sex").InnerText = user.staff.gender ? "Nam" : "Nữ";
+                staffDoc.Save(Config.getXMLPath("staffs"));
+
+
+                string xPathUsers = $"//user[username='{user.username}']";
+                XmlNode accountNode = userDoc.SelectSingleNode(xPathUsers);
+                accountNode.SelectSingleNode("password").InnerText = user.password;
+                userDoc.Save(Config.getXMLPath("users"));
+                return Predefined.SUCCESS;
+            }
+            catch (Exception)
+            {
+                return Predefined.FILE_NOT_FOUND;
+            }
         }
     }
 }

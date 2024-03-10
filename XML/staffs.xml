@@ -1,16 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <staffs>
-	<staff>
-		<staff_id>s1</staff_id>
-		<staff_info>admin account</staff_info>
-		<staff_is_manager>true</staff_is_manager>
-		<staff_is_seller>false</staff_is_seller>
-	</staff>
-
-	<staff>
-		<staff_id>s2</staff_id>
-		<staff_info>seller account</staff_info>
-		<staff_is_manager>false</staff_is_manager>
-		<staff_is_seller>true</staff_is_seller>
-	</staff>
+  <staff>
+    <staff_id>s1</staff_id>
+    <staff_name>Long Nguyễn Hoàng</staff_name>
+    <staff_sex>Nam</staff_sex>
+    <staff_year_of_birth>02/02/2000</staff_year_of_birth>
+    <staff_is_manager>true</staff_is_manager>
+    <staff_is_seller>false</staff_is_seller>
+  </staff>
+  <staff>
+    <staff_id>s2</staff_id>
+    <staff_name>Quyết</staff_name>
+    <staff_sex>Nam</staff_sex>
+    <staff_year_of_birth>01/01/2002</staff_year_of_birth>
+    <staff_is_manager>false</staff_is_manager>
+    <staff_is_seller>true</staff_is_seller>
+  </staff>
 </staffs>

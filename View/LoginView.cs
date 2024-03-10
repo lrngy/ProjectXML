@@ -20,13 +20,14 @@ namespace ProjectXML.View
             InitializeComponent();
         }
         LoginController loginController = new LoginController();
+        MainView mainView;
 
         [STAThread]
         public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuanLyThuocView(new LoginController().CheckExist("admin", "1")));
+            Application.Run(new LoginView());
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
@@ -50,17 +51,24 @@ namespace ProjectXML.View
             if (user is null)
             {
                 lbError.Text = "Tài khoản hoặc mật khẩu không chính xác";
+                return;
             }
-            else
+            tbUsername.Text = "";
+            tbUsername.Focus();
+            tbPassword.Text = "";
+
+            
+            if(mainView == null || mainView.IsDisposed)
             {
-                MainView mainView = new MainView(user);
+                mainView = new MainView(user, this);
+            }
                 mainView.FormClosed += new FormClosedEventHandler((_sender, _formClosed) =>
                 {
                     Application.Exit();
                 });
                 mainView.Show();
                 this.Hide();
-            }
+            
 
 
         }

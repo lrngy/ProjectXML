@@ -10,39 +10,34 @@
 <staffs>
   <staff>
     <staff_id>01</staff_id>
-    <staff_name>Phạm Văn Quyết 100</staff_name>
+    <staff_name>Phạm Văn Quyết 1</staff_name>
     <staff_sex>Nam</staff_sex>
     <staff_year_of_birth>2002</staff_year_of_birth>
     <staff_is_manager>true</staff_is_manager>
-<!--<<<<<<< HEAD-->
     <staff_is_seller>
     </staff_is_seller>
-<!--=======
-    <staff_is_seller>true</staff_is_seller>
->>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7-->
   </staff>
   <staff>
     <staff_id>02</staff_id>
-    <staff_name>Phạm Văn Quyết</staff_name>
+    <staff_name>Phạm Văn Quyết 200</staff_name>
     <staff_sex>Nam</staff_sex>
     <staff_year_of_birth>2002</staff_year_of_birth>
     <staff_is_manager>true</staff_is_manager>
-<!--<<<<<<< HEAD-->
     <staff_is_seller>
     </staff_is_seller>
   </staff>
   <staff>
     <staff_id>04</staff_id>
-    <staff_name>Tiểu Long</staff_name>
+    <staff_name>Tiểu Long Nữ =))</staff_name>
     <staff_sex>Nữ</staff_sex>
     <staff_year_of_birth>2004</staff_year_of_birth>
-    <staff_is_manager>
-    </staff_is_manager>
-    <staff_is_seller>true</staff_is_seller>
+    <staff_is_manager>true</staff_is_manager>
+    <staff_is_seller>
+    </staff_is_seller>
   </staff>
   <staff>
     <staff_id>05</staff_id>
-    <staff_name>Tiểu Long</staff_name>
+    <staff_name>Tiểu Long là Nữ</staff_name>
     <staff_sex>Nữ</staff_sex>
     <staff_year_of_birth>2004</staff_year_of_birth>
     <staff_is_manager>
@@ -51,38 +46,20 @@
   </staff>
   <staff>
     <staff_id>06</staff_id>
-    <staff_name>Phạm Văn Quyết 100</staff_name>
+    <staff_name>Quyết 600</staff_name>
     <staff_sex>Nam</staff_sex>
     <staff_year_of_birth>2002</staff_year_of_birth>
     <staff_is_manager>
     </staff_is_manager>
     <staff_is_seller>true</staff_is_seller>
-<!--=======-->
-    <!--<staff_is_seller>true</staff_is_seller>
   </staff>
   <staff>
-    <staff_id>03</staff_id>
-    <staff_name>Phạm Văn Quyết 300</staff_name>
+    <staff_id>07</staff_id>
+    <staff_name>Quyết 700 nè =))</staff_name>
     <staff_sex>Nam</staff_sex>
     <staff_year_of_birth>2002</staff_year_of_birth>
-    <staff_is_manager>false</staff_is_manager>
-    <staff_is_seller>false</staff_is_seller>
-  </staff>
-  <staff>
-    <staff_id>04</staff_id>
-    <staff_name>Phạm Thị Thanh</staff_name>
-    <staff_sex>Nữ</staff_sex>
-    <staff_year_of_birth>2004</staff_year_of_birth>
-    <staff_is_manager>false</staff_is_manager>
-    <staff_is_seller>false</staff_is_seller>
-  </staff>
-  <staff>
-    <staff_id>05</staff_id>
-    <staff_name>Phạm Thị Thanh Tâm</staff_name>
-    <staff_sex>Nữ</staff_sex>
-    <staff_year_of_birth>20010</staff_year_of_birth>
-    <staff_is_manager>false</staff_is_manager>
-    <staff_is_seller>false</staff_is_seller>
->>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7-->
+    <staff_is_manager>
+    </staff_is_manager>
+    <staff_is_seller>true</staff_is_seller>
   </staff>
 </staffs>

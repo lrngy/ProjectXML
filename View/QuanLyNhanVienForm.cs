@@ -14,7 +14,7 @@ namespace ProjectXML.View
 
     // git add .
 //<<<<<<< HEAD
-    // git commit -m "Quyết - update Quản lý nhân viên - đồng bộ tài khoản người dùng!"
+    // git commit -m "Quyết - update Quản lý nhân viên - !"
     // git push origin Quyet
 
     //git pull origin Quyet
@@ -222,7 +222,6 @@ namespace ProjectXML.View
             sua.Enabled = false;
             xoa.Enabled = false;
             save_add.Enabled = true;
-            bResetPass.Enabled = true;
 
             t_id.ReadOnly = false;
         }
@@ -242,8 +241,8 @@ namespace ProjectXML.View
             root = doc.DocumentElement;
             rootUser = docUser.DocumentElement;
 
-            XmlNode staff_old = root.SelectSingleNode("staff[staff_id = '" + t_id.Text + "']");
-            XmlNode userOld = rootUser.SelectSingleNode("user[staff_id = '" + t_id.Text + "']");
+            XmlNode staff_old = root.SelectSingleNode("staff[staff_id = '" + t_id.Text.Trim() + "']"); 
+            XmlNode userOld = rootUser.SelectSingleNode("user[staff_id = '" + t_id.Text.Trim() + "']");
             //MessageBox.Show((staff_old.ToString() == null ? "null" : "not null"));
             if (staff_old != null && userOld != null)
             {
@@ -251,20 +250,20 @@ namespace ProjectXML.View
                 XmlNode userNew = docUser.CreateElement("user");
 
                 XmlElement staff_id = doc.CreateElement("staff_id");
-                staff_id.InnerText = t_id.Text;
+                staff_id.InnerText = t_id.Text.Trim();
                 staff_new.AppendChild(staff_id);
 
                 XmlElement staff_name = doc.CreateElement("staff_name");
-                staff_name.InnerText = t_staff_name.Text;
+                staff_name.InnerText = t_staff_name.Text.Trim();
                 staff_new.AppendChild(staff_name);
 
                 //////////
                 XmlElement staff_idUser = docUser.CreateElement("staff_id");
-                staff_idUser.InnerText = t_id.Text;
+                staff_idUser.InnerText = t_id.Text.Trim();
                 userNew.AppendChild(staff_idUser);
 
                 XmlElement username = docUser.CreateElement("username");
-                username.InnerText = tTaiKhoan.Text;
+                username.InnerText = tTaiKhoan.Text.Trim();
                 userNew.AppendChild(username);
 
                 XmlElement password = docUser.CreateElement("password");
@@ -273,11 +272,11 @@ namespace ProjectXML.View
                 //////////
 
                 XmlElement staff_sex = doc.CreateElement("staff_sex");
-                staff_sex.InnerText = t_staff_sex.Text;
+                staff_sex.InnerText = t_staff_sex.Text.Trim();
                 staff_new.AppendChild(staff_sex);
 
                 XmlElement staff_year_of_birth = doc.CreateElement("staff_year_of_birth");
-                staff_year_of_birth.InnerText = t_staff_year_of_birth.Text;
+                staff_year_of_birth.InnerText = t_staff_year_of_birth.Text.Trim();
                 staff_new.AppendChild(staff_year_of_birth);
 
                 XmlElement staff_is_manager = doc.CreateElement("staff_is_manager");
@@ -306,30 +305,38 @@ namespace ProjectXML.View
                 return;
             }
 
-//=======
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
+            //=======
+            //>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             doc.Load(file_name);
             root = doc.DocumentElement;
             XmlNode staff = doc.CreateElement("staff");
 
+            XmlNode staffs = root.SelectSingleNode("staff[staff_id = '" + t_id.Text.Trim() + "']");
+            if (staffs != null)
+                if (staffs.SelectSingleNode("staff_id").InnerText != "")
+                {
+                    MessageBox.Show("Đã có nhân viên tồn tại id trên!");
+                    return;
+                }
+
             XmlElement staff_id = doc.CreateElement("staff_id");
-            staff_id.InnerText = t_id.Text;
+            staff_id.InnerText = t_id.Text.Trim();
             staff.AppendChild(staff_id);
 
             XmlElement staff_name = doc.CreateElement("staff_name");
-            staff_name.InnerText = t_staff_name.Text;
+            staff_name.InnerText = t_staff_name.Text.Trim();
             staff.AppendChild(staff_name);
 
             XmlElement staff_sex = doc.CreateElement("staff_sex");
-            staff_sex.InnerText = t_staff_sex.Text;
+            staff_sex.InnerText = t_staff_sex.Text.Trim();
             staff.AppendChild(staff_sex);
 
             XmlElement staff_year_of_birth = doc.CreateElement("staff_year_of_birth");
-            staff_year_of_birth.InnerText = t_staff_year_of_birth.Text;
+            staff_year_of_birth.InnerText = t_staff_year_of_birth.Text.Trim();
             staff.AppendChild(staff_year_of_birth);
 
             XmlElement staff_is_manager = doc.CreateElement("staff_is_manager");
-//<<<<<<< HEAD
+            //<<<<<<< HEAD
             staff_is_manager.InnerText = (c_staff_is_manager.Checked ? "true" : "");
             staff.AppendChild(staff_is_manager);
 
@@ -343,11 +350,11 @@ namespace ProjectXML.View
             XmlNode user = docUser.CreateElement("user");
 
             XmlElement staff_idUser = docUser.CreateElement("staff_id");
-            staff_idUser.InnerText = t_id.Text;
+            staff_idUser.InnerText = t_id.Text.Trim();
             user.AppendChild(staff_idUser);
 
             XmlElement username = docUser.CreateElement("username");
-            username.InnerText = tTaiKhoan.Text;
+            username.InnerText = tTaiKhoan.Text.Trim();
             user.AppendChild(username);
 
             XmlElement password = docUser.CreateElement("password");
@@ -444,21 +451,23 @@ namespace ProjectXML.View
             docUser.Load(fileNameUser);
             rootUser = docUser.DocumentElement;
 
-            XmlNode staff_delete = root.SelectSingleNode("staff[staff_id = '" + t_id.Text + "']");
-            XmlNode user_delete = rootUser.SelectSingleNode("user[staff_id = '" + t_id.Text + "']");
+            XmlNode staff_delete = root.SelectSingleNode("staff[staff_id = '" + t_id.Text.Trim() + "']");
+            XmlNode user_delete = rootUser.SelectSingleNode("user[staff_id = '" + t_id.Text.Trim() + "']");
             if (staff_delete != null && user_delete != null)
             {
                 root.RemoveChild(staff_delete);
                 rootUser.RemoveChild(user_delete);
                 doc.Save(file_name);
                 docUser.Save(fileNameUser);
-//=======
-//            XmlNode staff_delete = root.SelectSingleNode("staff[staff_id = '" + t_id.Text + "']");
-//            if (staff_delete != null)
-//            {
-//                root.RemoveChild(staff_delete);
-//                doc.Save(file_name);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
+                MessageBox.Show("Xóa thành công!");
+
+                //=======
+                //            XmlNode staff_delete = root.SelectSingleNode("staff[staff_id = '" + t_id.Text + "']");
+                //            if (staff_delete != null)
+                //            {
+                //                root.RemoveChild(staff_delete);
+                //                doc.Save(file_name);
+                //>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             }
             dataGridView1.Rows.Clear();
             HienThi();
@@ -483,12 +492,12 @@ namespace ProjectXML.View
                     doc.Load(file_name);
                     root = doc.DocumentElement;
 
-//<<<<<<< HEAD
+                    //<<<<<<< HEAD
                     docUser.Load(fileNameUser);
                     rootUser = docUser.DocumentElement;
 
-//=======
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
+                    //=======
+                    //>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
                     // Tạo danh sách nhân viên phù hợp với điều kiện tìm kiếm
                     //XmlNodeList ds = root.SelectNodes($"staff[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}')]");
                     XmlNodeList ds = root.SelectNodes($"staff[contains(translate(staff_id, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}') or " +
@@ -498,50 +507,68 @@ namespace ProjectXML.View
                                     $"contains(translate(staff_is_manager, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}') or " +
                                     $"contains(translate(staff_is_seller, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}')]");
 
-//<<<<<<< HEAD
-                    XmlNodeList users = root.SelectNodes($"staff[contains(translate(username, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}')]");
-//=======
+                    //<<<<<<< HEAD
+                    XmlNodeList users = rootUser.SelectNodes($"user[contains(translate(username, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}') or " +
+                                    $"contains(translate(staff_id, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{searchText}')]");
 
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
+                    XmlNodeList usersList = rootUser.SelectNodes("user");
+                    XmlNodeList staffsList = root.SelectNodes("staff");
+                    //=======
+
+                    //>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
 
                     // Xóa dữ liệu hiện tại trên DataGridView
                     dataGridView1.Rows.Clear();
-
-                    int sd = 0;
-                    foreach (XmlNode node in ds)
+                    if (ds.Count > 0)
                     {
-//<<<<<<< HEAD
-                        foreach (XmlNode user in users)
-                        {
-                            if(node.SelectSingleNode("staff_id").InnerText == user.SelectSingleNode("staff_id").InnerText)
-                            {
-                                dataGridView1.Rows.Add();
-                                dataGridView1.Rows[sd].Cells[0].Value = node.SelectSingleNode("staff_id").InnerText;
-                                dataGridView1.Rows[sd].Cells[1].Value = node.SelectSingleNode("staff_name").InnerText;
-                                dataGridView1.Rows[sd].Cells[2].Value = node.SelectSingleNode("username").InnerText;
-                                dataGridView1.Rows[sd].Cells[3].Value = node.SelectSingleNode("staff_sex").InnerText;
-                                dataGridView1.Rows[sd].Cells[4].Value = node.SelectSingleNode("staff_year_of_birth").InnerText;
-                                dataGridView1.Rows[sd].Cells[5].Value = node.SelectSingleNode("staff_is_manager").InnerText;
-                                dataGridView1.Rows[sd].Cells[6].Value = node.SelectSingleNode("staff_is_seller").InnerText;
-                                sd++;
-                            }
-                        }
-//=======
-//                        dataGridView1.Rows.Add();
-//                        dataGridView1.Rows[sd].Cells[0].Value = node.SelectSingleNode("staff_id").InnerText;
-//                        dataGridView1.Rows[sd].Cells[1].Value = node.SelectSingleNode("staff_name").InnerText;
-//                        dataGridView1.Rows[sd].Cells[2].Value = node.SelectSingleNode("staff_sex").InnerText;
-//                        dataGridView1.Rows[sd].Cells[3].Value = node.SelectSingleNode("staff_year_of_birth").InnerText;
-//                        dataGridView1.Rows[sd].Cells[4].Value = node.SelectSingleNode("staff_is_manager").InnerText;
-//                        dataGridView1.Rows[sd].Cells[5].Value = node.SelectSingleNode("staff_is_seller").InnerText;
-//                        sd++;
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
+                        DuyetTimKiemPhanTu(ds, usersList);
                     }
+                    if (users.Count > 0)
+                    {
+                        DuyetTimKiemPhanTu(staffsList, users);
+                    }
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Đã xảy ra lỗi khi tìm kiếm: " + ex.Message);
                 }
+            }
+        }
+
+        private void DuyetTimKiemPhanTu(XmlNodeList StaffList, XmlNodeList userList)
+        {
+            int sd = 0;
+            foreach (XmlNode node in StaffList)
+            {
+                //MessageBox.Show(users.Count.ToString());
+                //<<<<<<< HEAD
+                foreach (XmlNode user in userList)
+                {
+                    //MessageBox.Show(node.SelectSingleNode("staff_id").InnerText);
+                    if (node.SelectSingleNode("staff_id").InnerText == user.SelectSingleNode("staff_id").InnerText)
+                    {
+                        dataGridView1.Rows.Add();
+                        dataGridView1.Rows[sd].Cells[0].Value = node.SelectSingleNode("staff_id").InnerText;
+                        dataGridView1.Rows[sd].Cells[1].Value = node.SelectSingleNode("staff_name").InnerText;
+                        dataGridView1.Rows[sd].Cells[2].Value = user.SelectSingleNode("username").InnerText;
+                        dataGridView1.Rows[sd].Cells[3].Value = node.SelectSingleNode("staff_sex").InnerText;
+                        dataGridView1.Rows[sd].Cells[4].Value = node.SelectSingleNode("staff_year_of_birth").InnerText;
+                        dataGridView1.Rows[sd].Cells[5].Value = node.SelectSingleNode("staff_is_manager").InnerText;
+                        dataGridView1.Rows[sd].Cells[6].Value = node.SelectSingleNode("staff_is_seller").InnerText;
+                        sd++;
+                    }
+                }
+                //=======
+                //                        dataGridView1.Rows.Add();
+                //                        dataGridView1.Rows[sd].Cells[0].Value = node.SelectSingleNode("staff_id").InnerText;
+                //                        dataGridView1.Rows[sd].Cells[1].Value = node.SelectSingleNode("staff_name").InnerText;
+                //                        dataGridView1.Rows[sd].Cells[2].Value = node.SelectSingleNode("staff_sex").InnerText;
+                //                        dataGridView1.Rows[sd].Cells[3].Value = node.SelectSingleNode("staff_year_of_birth").InnerText;
+                //                        dataGridView1.Rows[sd].Cells[4].Value = node.SelectSingleNode("staff_is_manager").InnerText;
+                //                        dataGridView1.Rows[sd].Cells[5].Value = node.SelectSingleNode("staff_is_seller").InnerText;
+                //                        sd++;
+                //>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             }
         }
 
@@ -559,17 +586,17 @@ namespace ProjectXML.View
             docUser.Load(fileNameUser);
             rootUser = docUser.DocumentElement;
 
-            XmlNode userOld = rootUser.SelectSingleNode("user[staff_id = '" + t_id.Text + "']");
+            XmlNode userOld = rootUser.SelectSingleNode("user[staff_id = '" + t_id.Text.Trim() + "']");
             if (userOld != null)
             {
                 XmlNode userNew = docUser.CreateElement("user");
 
                 XmlElement staff_idUser = docUser.CreateElement("staff_id");
-                staff_idUser.InnerText = t_id.Text;
+                staff_idUser.InnerText = t_id.Text.Trim();
                 userNew.AppendChild(staff_idUser);
 
                 XmlElement username = docUser.CreateElement("username");
-                username.InnerText = tTaiKhoan.Text;
+                username.InnerText = tTaiKhoan.Text.Trim();
                 userNew.AppendChild(username);
 
                 XmlElement password = docUser.CreateElement("password");

@@ -36,13 +36,19 @@
             this.t_staff_sex = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.t_staff_year_of_birth = new System.Windows.Forms.TextBox();
-//<<<<<<< HEAD
             this.them = new System.Windows.Forms.Button();
             this.sua = new System.Windows.Forms.Button();
             this.xoa = new System.Windows.Forms.Button();
             this.save_add = new System.Windows.Forms.Button();
             this.Back = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.staff_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_year_of_birth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_is_manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_is_seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.t_timKiem = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.c_staff_is_manager = new System.Windows.Forms.RadioButton();
@@ -50,30 +56,6 @@
             this.bResetPass = new System.Windows.Forms.Button();
             this.tTaiKhoan = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.staff_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-//=======
-//            this.c_staff_is_manager = new System.Windows.Forms.CheckBox();
-//            this.c_staff_is_seller = new System.Windows.Forms.CheckBox();
-//            this.them = new System.Windows.Forms.Button();
-//            this.sua = new System.Windows.Forms.Button();
-//            this.xoa = new System.Windows.Forms.Button();
-//            this.save_update = new System.Windows.Forms.Button();
-//            this.Back = new System.Windows.Forms.Button();
-//            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-//            this.staff_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-//            this.staff_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
-            this.staff_sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_year_of_birth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_is_manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_is_seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
-//<<<<<<< HEAD
-//=======
-            //this.t_timKiem = new System.Windows.Forms.TextBox();
-            //this.label5 = new System.Windows.Forms.Label();
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,11 +70,7 @@
             // 
             // t_id
             // 
-//<<<<<<< HEAD
             this.t_id.Location = new System.Drawing.Point(277, 82);
-//=======
-//            this.t_id.Location = new System.Drawing.Point(231, 82);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.t_id.Name = "t_id";
             this.t_id.Size = new System.Drawing.Size(184, 22);
             this.t_id.TabIndex = 2;
@@ -124,11 +102,7 @@
             // 
             // t_staff_sex
             // 
-//<<<<<<< HEAD
             this.t_staff_sex.Location = new System.Drawing.Point(277, 137);
-//=======
-//            this.t_staff_sex.Location = new System.Drawing.Point(231, 137);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.t_staff_sex.Name = "t_staff_sex";
             this.t_staff_sex.Size = new System.Drawing.Size(184, 22);
             this.t_staff_sex.TabIndex = 7;
@@ -149,35 +123,9 @@
             this.t_staff_year_of_birth.Size = new System.Drawing.Size(183, 22);
             this.t_staff_year_of_birth.TabIndex = 9;
             // 
-//<<<<<<< HEAD
             // them
             // 
             this.them.Location = new System.Drawing.Point(138, 543);
-//=======
-//            // c_staff_is_manager
-//            // 
-//            this.c_staff_is_manager.AutoSize = true;
-//            this.c_staff_is_manager.Location = new System.Drawing.Point(186, 187);
-//            this.c_staff_is_manager.Name = "c_staff_is_manager";
-//            this.c_staff_is_manager.Size = new System.Drawing.Size(135, 20);
-//            this.c_staff_is_manager.TabIndex = 10;
-//            this.c_staff_is_manager.Text = "Nhân viên quản lý";
-//            this.c_staff_is_manager.UseVisualStyleBackColor = true;
-//            // 
-//            // c_staff_is_seller
-//            // 
-//            this.c_staff_is_seller.AutoSize = true;
-//            this.c_staff_is_seller.Location = new System.Drawing.Point(571, 187);
-//            this.c_staff_is_seller.Name = "c_staff_is_seller";
-//            this.c_staff_is_seller.Size = new System.Drawing.Size(148, 20);
-//            this.c_staff_is_seller.TabIndex = 11;
-//            this.c_staff_is_seller.Text = "Nhân viên bán hàng";
-//            this.c_staff_is_seller.UseVisualStyleBackColor = true;
-//            // 
-//            // them
-//            // 
-//            this.them.Location = new System.Drawing.Point(141, 496);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.them.Name = "them";
             this.them.Size = new System.Drawing.Size(81, 39);
             this.them.TabIndex = 12;
@@ -187,11 +135,7 @@
             // 
             // sua
             // 
-//<<<<<<< HEAD
             this.sua.Location = new System.Drawing.Point(404, 543);
-//=======
-//            this.sua.Location = new System.Drawing.Point(407, 496);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.sua.Name = "sua";
             this.sua.Size = new System.Drawing.Size(81, 39);
             this.sua.TabIndex = 13;
@@ -201,11 +145,7 @@
             // 
             // xoa
             // 
-//<<<<<<< HEAD
             this.xoa.Location = new System.Drawing.Point(661, 543);
-//=======
-//            this.xoa.Location = new System.Drawing.Point(664, 496);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.xoa.Name = "xoa";
             this.xoa.Size = new System.Drawing.Size(81, 39);
             this.xoa.TabIndex = 13;
@@ -213,9 +153,9 @@
             this.xoa.UseVisualStyleBackColor = true;
             this.xoa.Click += new System.EventHandler(this.xoa_Click);
             // 
-//<<<<<<< HEAD
             // save_add
             // 
+            this.save_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.save_add.Location = new System.Drawing.Point(867, 509);
             this.save_add.Name = "save_add";
             this.save_add.Size = new System.Drawing.Size(94, 49);
@@ -228,21 +168,6 @@
             // 
             this.Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Back.Location = new System.Drawing.Point(867, 573);
-//=======
-//            // save_update
-//            // 
-//            this.save_update.Location = new System.Drawing.Point(870, 462);
-//            this.save_update.Name = "save_update";
-//            this.save_update.Size = new System.Drawing.Size(94, 49);
-//            this.save_update.TabIndex = 13;
-//            this.save_update.Text = "Save update";
-//            this.save_update.UseVisualStyleBackColor = true;
-//            this.save_update.Click += new System.EventHandler(this.save_update_Click);
-//            // 
-//            // Back
-//            // 
-//            this.Back.Location = new System.Drawing.Point(870, 526);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(94, 49);
             this.Back.TabIndex = 13;
@@ -256,19 +181,12 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.staff_id,
             this.staff_name,
-//<<<<<<< HEAD
             this.username,
-//=======
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.staff_sex,
             this.staff_year_of_birth,
             this.staff_is_manager,
             this.staff_is_seller});
-//<<<<<<< HEAD
             this.dataGridView1.Location = new System.Drawing.Point(70, 271);
-//=======
-//            this.dataGridView1.Location = new System.Drawing.Point(62, 241);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -276,7 +194,55 @@
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-//<<<<<<< HEAD
+            // staff_id
+            // 
+            this.staff_id.HeaderText = "id";
+            this.staff_id.MinimumWidth = 6;
+            this.staff_id.Name = "staff_id";
+            this.staff_id.Width = 40;
+            // 
+            // staff_name
+            // 
+            this.staff_name.HeaderText = "Tên nhân viên";
+            this.staff_name.MinimumWidth = 6;
+            this.staff_name.Name = "staff_name";
+            this.staff_name.Width = 125;
+            // 
+            // username
+            // 
+            this.username.HeaderText = "Tài Khoản";
+            this.username.MinimumWidth = 6;
+            this.username.Name = "username";
+            this.username.Width = 125;
+            // 
+            // staff_sex
+            // 
+            this.staff_sex.HeaderText = "Giới tính";
+            this.staff_sex.MinimumWidth = 6;
+            this.staff_sex.Name = "staff_sex";
+            this.staff_sex.Width = 80;
+            // 
+            // staff_year_of_birth
+            // 
+            this.staff_year_of_birth.HeaderText = "Năm sinh";
+            this.staff_year_of_birth.MinimumWidth = 6;
+            this.staff_year_of_birth.Name = "staff_year_of_birth";
+            this.staff_year_of_birth.Width = 80;
+            // 
+            // staff_is_manager
+            // 
+            this.staff_is_manager.HeaderText = "Quản Lý?";
+            this.staff_is_manager.MinimumWidth = 6;
+            this.staff_is_manager.Name = "staff_is_manager";
+            this.staff_is_manager.Width = 90;
+            // 
+            // staff_is_seller
+            // 
+            this.staff_is_seller.HeaderText = "Bán hàng?";
+            this.staff_is_seller.MinimumWidth = 6;
+            this.staff_is_seller.Name = "staff_is_seller";
+            this.staff_is_seller.Width = 90;
+            // 
             // t_timKiem
             // 
             this.t_timKiem.Location = new System.Drawing.Point(472, 25);
@@ -342,111 +308,24 @@
             this.label6.TabIndex = 21;
             this.label6.Text = "Tài khoản";
             // 
-//=======
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
-            // staff_id
-            // 
-            this.staff_id.HeaderText = "id";
-            this.staff_id.MinimumWidth = 6;
-            this.staff_id.Name = "staff_id";
-            this.staff_id.Width = 40;
-            // 
-            // staff_name
-            // 
-            this.staff_name.HeaderText = "Tên nhân viên";
-            this.staff_name.MinimumWidth = 6;
-            this.staff_name.Name = "staff_name";
-            this.staff_name.Width = 125;
-            // 
-//<<<<<<< HEAD
-            // username
-            // 
-            this.username.HeaderText = "Tài Khoản";
-            this.username.MinimumWidth = 6;
-            this.username.Name = "username";
-            this.username.Width = 125;
-            // 
-//=======
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
-            // staff_sex
-            // 
-            this.staff_sex.HeaderText = "Giới tính";
-            this.staff_sex.MinimumWidth = 6;
-            this.staff_sex.Name = "staff_sex";
-            this.staff_sex.Width = 80;
-            // 
-            // staff_year_of_birth
-            // 
-            this.staff_year_of_birth.HeaderText = "Năm sinh";
-            this.staff_year_of_birth.MinimumWidth = 6;
-            this.staff_year_of_birth.Name = "staff_year_of_birth";
-            this.staff_year_of_birth.Width = 80;
-            // 
-            // staff_is_manager
-            // 
-            this.staff_is_manager.HeaderText = "Quản Lý?";
-            this.staff_is_manager.MinimumWidth = 6;
-            this.staff_is_manager.Name = "staff_is_manager";
-            this.staff_is_manager.Width = 90;
-            // 
-            // staff_is_seller
-            // 
-            this.staff_is_seller.HeaderText = "Bán hàng?";
-            this.staff_is_seller.MinimumWidth = 6;
-            this.staff_is_seller.Name = "staff_is_seller";
-            this.staff_is_seller.Width = 90;
-            // 
-//<<<<<<< HEAD
-//=======
-//            // t_timKiem
-//            // 
-//            this.t_timKiem.Location = new System.Drawing.Point(472, 25);
-//            this.t_timKiem.Name = "t_timKiem";
-//            this.t_timKiem.Size = new System.Drawing.Size(184, 22);
-//            this.t_timKiem.TabIndex = 16;
-//            this.t_timKiem.TextChanged += new System.EventHandler(this.t_timKiem_TextChanged);
-//            // 
-//            // label5
-//            // 
-//            this.label5.AutoSize = true;
-//            this.label5.Location = new System.Drawing.Point(391, 25);
-//            this.label5.Name = "label5";
-//            this.label5.Size = new System.Drawing.Size(62, 16);
-//            this.label5.TabIndex = 15;
-//            this.label5.Text = "Tìm kiếm";
-//            // 
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             // QuanLyNhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-//<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1048, 647);
             this.Controls.Add(this.tTaiKhoan);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.bResetPass);
             this.Controls.Add(this.c_staff_is_seller);
             this.Controls.Add(this.c_staff_is_manager);
-//=======
-//            this.ClientSize = new System.Drawing.Size(1048, 588);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.Controls.Add(this.t_timKiem);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Back);
-//<<<<<<< HEAD
             this.Controls.Add(this.save_add);
             this.Controls.Add(this.xoa);
             this.Controls.Add(this.sua);
             this.Controls.Add(this.them);
-//=======
-//            this.Controls.Add(this.save_update);
-//            this.Controls.Add(this.xoa);
-//            this.Controls.Add(this.sua);
-//            this.Controls.Add(this.them);
-//            this.Controls.Add(this.c_staff_is_seller);
-//            this.Controls.Add(this.c_staff_is_manager);
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
             this.Controls.Add(this.t_staff_year_of_birth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.t_staff_sex);

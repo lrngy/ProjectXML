@@ -25,5 +25,9 @@
     <username>quyet_cho_haha</username>
     <password>quyet_la_do_con_lon</password>
   </user>
-	
+  <user>
+    <staff_id>07</staff_id>
+    <username>quyet_cho_haha</username>
+    <password>1</password>
+  </user>
 </users>

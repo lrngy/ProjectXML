@@ -243,7 +243,6 @@ namespace ProjectXML.View
 
             XmlNode staff_old = root.SelectSingleNode("staff[staff_id = '" + t_id.Text.Trim() + "']"); 
             XmlNode userOld = rootUser.SelectSingleNode("user[staff_id = '" + t_id.Text.Trim() + "']");
-            //MessageBox.Show((staff_old.ToString() == null ? "null" : "not null"));
             if (staff_old != null && userOld != null)
             {
                 XmlNode staff_new = doc.CreateElement("staff");

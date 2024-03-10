@@ -7,8 +7,7 @@
     <medicine_unit>hộp</medicine_unit>
     <medicine_price>15000</medicine_price>
     <medicine_quantity>1</medicine_quantity>
-    <medicine_image>
-    </medicine_image>
+    <medicine_image>E:\ProjectXML\Shared/Medicine/Images\1.jpg</medicine_image>
     <medicine_description>
     </medicine_description>
     <supplier_id>1</supplier_id>

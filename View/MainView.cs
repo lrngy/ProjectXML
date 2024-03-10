@@ -20,7 +20,7 @@ namespace ProjectXML.View
         QuanLyThuocView quanLyThuocView;
         ThongTinCaNhanView thongTinCaNhanView;
         ChangePasswordDialog changePasswordDialog;
-        
+
 
         public MainView(User user, LoginView loginView)
         {
@@ -39,7 +39,7 @@ namespace ProjectXML.View
             Show(ref quanLyThuocView, () => new QuanLyThuocView(user, 0));
         }
 
-        private void Show<T> (ref T form, Func<T> NewInstance) where T: Form
+        private void Show<T>(ref T form, Func<T> NewInstance) where T : Form
         {
             if (form == null || form.IsDisposed)
             {
@@ -149,6 +149,61 @@ namespace ProjectXML.View
                 this.Dispose();
                 loginView.Show();
             }
+        }
+
+        private void thuốcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnQlyThuoc.PerformClick();
+        }
+
+        private void danhMụcThuốcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnDanhMuc.PerformClick();
+        }
+
+        private void nhàCungCấpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnNcc.PerformClick();
+        }
+
+        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnNhanVien.PerformClick();
+        }
+
+        private void tàiChínhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnTaiChinh.PerformClick();
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn thoát?");
+            if (confirmResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void cậpNhậtThôngTinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnThongTin.PerformClick();
+        }
+
+        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnChangePassword.PerformClick();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnLogout.PerformClick();
+        }
+
+        private void thôngTinỨngDụngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutDialog aboutDialog = new AboutDialog();
+            aboutDialog.ShowDialog();
         }
     }
 }

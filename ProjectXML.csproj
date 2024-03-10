@@ -69,6 +69,12 @@
     <Compile Include="Util\CustomMessageBox.cs" />
     <Compile Include="Util\Predefined.cs" />
     <Compile Include="Util\Validation.cs" />
+    <Compile Include="View\Dialog\AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\ChangePasswordDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Dialog\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\ChangePasswordDialog.resx">
       <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
     </EmbeddedResource>

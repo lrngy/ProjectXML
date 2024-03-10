@@ -1,10 +1,55 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <medicines>
-	<medicine>
-		<medicine_id></medicine_id>
-		<medicine_expire_date></medicine_expire_date>
-		<medicine_price></medicine_price>
-		<medicine_code></medicine_code>
-		<supplier_id></supplier_id>
-	</medicine>
+  <medicine>
+    <medicine_id>1</medicine_id>
+    <medicine_name>bổ phế</medicine_name>
+    <medicine_expire_date>01/01/1900</medicine_expire_date>
+    <medicine_unit>hộp</medicine_unit>
+    <medicine_price>15000</medicine_price>
+    <medicine_quantity>1</medicine_quantity>
+    <medicine_image>E:\ProjectXML\Shared/Medicine/Images\1.jpg</medicine_image>
+    <medicine_description>
+    </medicine_description>
+    <supplier_id>1</supplier_id>
+    <medicine_created>01/01/2000 11:22</medicine_created>
+    <medicine_updated>
+    </medicine_updated>
+    <medicine_deleted>
+    </medicine_deleted>
+    <category_id>4</category_id>
+  </medicine>
+  <medicine>
+    <medicine_id>2</medicine_id>
+    <medicine_name>ksinh</medicine_name>
+    <medicine_expire_date>01/01/2030</medicine_expire_date>
+    <medicine_unit>hộp</medicine_unit>
+    <medicine_price>30000</medicine_price>
+    <medicine_quantity>1000</medicine_quantity>
+    <medicine_image>
+    </medicine_image>
+    <medicine_description>thuốc kháng sinh</medicine_description>
+    <supplier_id>2</supplier_id>
+    <medicine_created>10/03/2024 11:23</medicine_created>
+    <medicine_updated>10/03/2024 11:23</medicine_updated>
+    <medicine_deleted>
+    </medicine_deleted>
+    <category_id>2</category_id>
+  </medicine>
+  <medicine>
+    <medicine_id>3</medicine_id>
+    <medicine_name>thần dược</medicine_name>
+    <medicine_expire_date>01/01/2030</medicine_expire_date>
+    <medicine_unit>hộp</medicine_unit>
+    <medicine_price>3000</medicine_price>
+    <medicine_quantity>1000</medicine_quantity>
+    <medicine_image>E:\Check\ProjectXML\Shared/Medicine/Images\3.jpg</medicine_image>
+    <medicine_description>thuốc kháng sinh</medicine_description>
+    <supplier_id>4</supplier_id>
+    <medicine_created>10/03/2024 21:26</medicine_created>
+    <medicine_updated>
+    </medicine_updated>
+    <medicine_deleted>
+    </medicine_deleted>
+    <category_id>44</category_id>
+  </medicine>
 </medicines>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace ProjectXML.View
             lbMaNV.Text = user.staff.id;
             lbVaiTro.Text = user.staff.isManager ? "Quản lý" : "Nhân viên";
             tbHoTen.Text = user.staff.name;
-            dateTimePicker1.Text = user.staff.birthday;
+            dateTimePicker1.Text = DateTime.ParseExact(user.staff.birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString();
             radioButton1.Checked = user.staff.gender;
             radioButton2.Checked = !radioButton1.Checked;
 
@@ -63,7 +64,9 @@ namespace ProjectXML.View
                 return;
             }
 
-            if (DateTime.Now.Year - DateTime.Parse(birthday).Year < 18)
+            int birthdayYear = DateTime.ParseExact(birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year;
+
+            if (DateTime.Now.Year - birthdayYear < 18)
             {
                 CustomMessageBox.ShowWarning("Tuổi của bạn phải lớn hơn hoặc bằng 18");
                 return;

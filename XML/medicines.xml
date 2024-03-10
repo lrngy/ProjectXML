@@ -25,8 +25,7 @@
     <medicine_unit>hộp</medicine_unit>
     <medicine_price>30000</medicine_price>
     <medicine_quantity>1000</medicine_quantity>
-    <medicine_image>
-    </medicine_image>
+    <medicine_image>D:\4k2\XML\ProjectXML\Shared/Medicine/Images\2.jpg</medicine_image>
     <medicine_description>thuốc kháng sinh</medicine_description>
     <supplier_id>2</supplier_id>
     <medicine_created>10/03/2024 11:23</medicine_created>
@@ -42,12 +41,12 @@
     <medicine_unit>hộp</medicine_unit>
     <medicine_price>3000</medicine_price>
     <medicine_quantity>1000</medicine_quantity>
-    <medicine_image>E:\Check\ProjectXML\Shared/Medicine/Images\3.jpg</medicine_image>
+    <medicine_image>
+    </medicine_image>
     <medicine_description>thuốc kháng sinh</medicine_description>
-    <supplier_id>4</supplier_id>
+    <supplier_id>7</supplier_id>
     <medicine_created>10/03/2024 21:26</medicine_created>
-    <medicine_updated>
-    </medicine_updated>
+    <medicine_updated>10/03/2024 23:03</medicine_updated>
     <medicine_deleted>
     </medicine_deleted>
     <category_id>44</category_id>

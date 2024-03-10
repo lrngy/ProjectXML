@@ -68,17 +68,23 @@
     <Compile Include="Util\CustomMessageBox.cs" />
     <Compile Include="Util\Predefined.cs" />
     <Compile Include="Util\Validation.cs" />
-    <Compile Include="View\DeletedCategory.cs">
+    <Compile Include="View\Dialog\DeletedCategoryDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\DeletedCategory.Designer.cs">
-      <DependentUpon>DeletedCategory.cs</DependentUpon>
+    <Compile Include="View\Dialog\DeletedCategoryDialog.Designer.cs">
+      <DependentUpon>DeletedCategoryDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\DeletedMedicine.cs">
+    <Compile Include="View\Dialog\DeletedMedicineDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\DeletedMedicine.Designer.cs">
-      <DependentUpon>DeletedMedicine.cs</DependentUpon>
+    <Compile Include="View\Dialog\DeletedMedicineDialog.Designer.cs">
+      <DependentUpon>DeletedMedicineDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\FilterByRangeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\FilterByRangeDialog.Designer.cs">
+      <DependentUpon>FilterByRangeDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.cs">
       <SubType>Form</SubType>
@@ -107,11 +113,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\DeletedCategory.resx">
-      <DependentUpon>DeletedCategory.cs</DependentUpon>
+    <EmbeddedResource Include="View\Dialog\DeletedCategoryDialog.resx">
+      <DependentUpon>DeletedCategoryDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\DeletedMedicine.resx">
-      <DependentUpon>DeletedMedicine.cs</DependentUpon>
+    <EmbeddedResource Include="View\Dialog\DeletedMedicineDialog.resx">
+      <DependentUpon>DeletedMedicineDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\FilterByRangeDialog.resx">
+      <DependentUpon>FilterByRangeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>

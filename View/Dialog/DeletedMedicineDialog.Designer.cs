@@ -1,6 +1,6 @@
 ﻿namespace ProjectXML.View
 {
-    partial class DeletedMedicine
+    partial class DeletedMedicineDialog
     {
         /// <summary>
         /// Required designer variable.

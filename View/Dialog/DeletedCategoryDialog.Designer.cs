@@ -1,6 +1,6 @@
 ﻿namespace ProjectXML.View
 {
-    partial class DeletedCategory
+    partial class DeletedCategoryDialog
     {
         /// <summary>
         /// Required designer variable.

@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace ProjectXML.View
 {
-    public partial class DeletedMedicine : Form
+    public partial class DeletedMedicineDialog : Form
     {
         MedicineController medicineController;
         public delegate void RefreshDeletedMedicine();
         public RefreshDeletedMedicine refreshDeletedMedicine;
-        public DeletedMedicine(MedicineController medicineController)
+        public DeletedMedicineDialog(MedicineController medicineController)
         {
             InitializeComponent();
             this.medicineController = new MedicineController();
@@ -47,15 +47,21 @@ namespace ProjectXML.View
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (dgvDeletedMedicine.Rows.Count == 1)
+            {
+                CustomMessageBox.ShowError("Mục lưu trữ đang trống");
+                return;
+            }
             try
             {
                 int index = dgvDeletedMedicine.CurrentRow.Index;
-                string maTheLoai = dgvDeletedMedicine.Rows[index].Cells[1].Value.ToString();
-                int state = medicineController.Restore(maTheLoai);
+                string maThuoc = dgvDeletedMedicine.Rows[index].Cells[1].Value.ToString();
+                int state = medicineController.Restore(maThuoc);
                 if (state == Predefined.SUCCESS)
                 {
                     DeletedMedicine_Show();
                     refreshDeletedMedicine();
+                    CustomMessageBox.ShowSuccess("Đã khôi phục Mã thuốc " + maThuoc);
                     return;
                 }
                 if (state == Predefined.ID_NOT_EXIST)
@@ -75,6 +81,11 @@ namespace ProjectXML.View
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (dgvDeletedMedicine.Rows.Count == 1)
+            {
+                CustomMessageBox.ShowError("Mục lưu trữ đang trống");
+                return;
+            }
             try
             {
                 int state = medicineController.RestoreAll();
@@ -85,6 +96,8 @@ namespace ProjectXML.View
                 }
                 DeletedMedicine_Show();
                 refreshDeletedMedicine();
+                CustomMessageBox.ShowSuccess("Khôi phục tất cả thuốc thành công");
+                
 
 
             }
@@ -95,9 +108,9 @@ namespace ProjectXML.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(dgvDeletedMedicine.CurrentRow == null)
+            if(dgvDeletedMedicine.Rows.Count == 1)
             {
-                CustomMessageBox.ShowWarning("Mục lưu trữ đang trống");
+                CustomMessageBox.ShowError("Mục lưu trữ đang trống");
                 return;
             }
             var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xóa vĩnh viễn thuốc này?");

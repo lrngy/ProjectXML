@@ -2,6 +2,7 @@
 using ProjectXML.DAO;
 using ProjectXML.Model;
 using ProjectXML.Util;
+using ProjectXML.View.Dialog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,7 @@ namespace ProjectXML.View
         CategoryController categoryController = new CategoryController();
         MedicineController medicineController = new MedicineController();
         SupplierController supplierController = new SupplierController();
+        FilterByRangeDialog filterByRangeDialog;
 
         XmlDocument nhacungcap = Config.getDoc("suppliers");
         public QuanLyThuocView(User user)
@@ -57,11 +59,7 @@ namespace ProjectXML.View
 
         private void QuanLyThuoc_Load()
         {
-            if (tbTimThuoc.Text.Equals(""))
-            {
-                QuanLyThuoc_Show(medicineController.LoadData());
-            }
-            else TimThuoc();
+            TimThuocTheoDuLieu();
 
             cbTieuChiThuoc.SelectedIndex = cbIndexTieuChiThuoc;
 
@@ -346,7 +344,7 @@ namespace ProjectXML.View
 
         private void btnLuuTruTheLoai_Click(object sender, EventArgs e)
         {
-            DeletedCategory deletedCategory = new DeletedCategory(categoryController);
+            DeletedCategoryDialog deletedCategory = new DeletedCategoryDialog(categoryController);
             deletedCategory.refreshDeletedCategory += TheLoai_Load;
             deletedCategory.ShowDialog();
         }
@@ -409,7 +407,7 @@ namespace ProjectXML.View
                 return;
             }
 
-      
+
 
             XmlNode supplierNode = nhacungcap.CreateElement("supplier");
 
@@ -619,10 +617,10 @@ namespace ProjectXML.View
                         break;
                     }
                 }
-               
+
                 string image = medicineController.LoadData().Where(item => item.id.Equals(tbMaThuoc.Text)).FirstOrDefault().image;
-                pictureBoxThuoc.ImageLocation = image.Equals("")? "" :Path.Combine(Config.getImagePath(), $"{tbMaThuoc.Text}.jpg");
-                
+                pictureBoxThuoc.ImageLocation = image.Equals("") ? "" : Path.Combine(Config.getImagePath(), $"{tbMaThuoc.Text}.jpg");
+
 
 
                 dateTimePicker1.Value = DateTime.Parse(dgvThuoc.Rows[index].Cells[4].Value.ToString());
@@ -725,6 +723,7 @@ namespace ProjectXML.View
             if (result == Predefined.SUCCESS)
             {
                 QuanLyThuoc_Load();
+                CustomMessageBox.ShowSuccess("Thêm thông tin thuốc thành công");
                 return;
             }
             if (result == Predefined.ID_EXIST)
@@ -809,6 +808,7 @@ namespace ProjectXML.View
                 if (result == Predefined.SUCCESS)
                 {
                     QuanLyThuoc_Load();
+                    CustomMessageBox.ShowSuccess("Sửa thông tin thuốc thành công");
                     return;
                 }
                 if (result == Predefined.FILE_NOT_FOUND)
@@ -864,29 +864,29 @@ namespace ProjectXML.View
 
         private void btnLuuThuoc_Click(object sender, EventArgs e)
         {
-            DeletedMedicine deletedMedicine = new DeletedMedicine(medicineController);
+            DeletedMedicineDialog deletedMedicine = new DeletedMedicineDialog(medicineController);
             deletedMedicine.refreshDeletedMedicine += QuanLyThuoc_Load;
             deletedMedicine.ShowDialog();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            TimThuoc();
-
+            TimThuocTheoDuLieu();
         }
 
-        private void TimThuoc()
+        private void TimThuoc(List<Medicine> list = null)
         {
             string noidungtimkiem = tbTimThuoc.Text.ToLower().Trim();
             if (noidungtimkiem.Equals(""))
             {
-                QuanLyThuoc_Load();
+                QuanLyThuoc_Show(list == null ? medicineController.LoadData() : list);
                 return;
             }
             int i = 0;
             int tieuChiIndex = cbTieuChiThuoc.SelectedIndex;
             dgvThuoc.Rows.Clear();
-            List<Medicine> medicineList = medicineController.LoadData().Where(medicine =>
+            List<Medicine> medicineList = list != null ? list : medicineController.LoadData();
+            List<Medicine> filterdMedicineList = medicineList.Where(medicine =>
             {
                 switch (tieuChiIndex)
                 {
@@ -918,7 +918,7 @@ namespace ProjectXML.View
                 }
             }).ToList();
 
-            QuanLyThuoc_Show(medicineList);
+            QuanLyThuoc_Show(filterdMedicineList);
 
         }
 
@@ -951,7 +951,8 @@ namespace ProjectXML.View
             if (result == Predefined.ID_NOT_EXIST)
             {
                 CustomMessageBox.ShowWarning("Mã thuốc không tồn tại");
-            } else
+            }
+            else
             {
                 CustomMessageBox.ShowError("Sự cố khi lưu ảnh");
             }
@@ -998,7 +999,87 @@ namespace ProjectXML.View
         {
             tbTimNCC.Text = "";
         }
+
+        int cbIndexLoc = 1;
+        private void ckbLocDuLieuThuoc_CheckedChanged(object sender, EventArgs e)
+        {
+            cbLocDuLieuThuoc.Visible = ckbLocDuLieuThuoc.Checked;
+            if (!ckbLocDuLieuThuoc.Checked)
+            {
+                filterByRangeDialog.Dispose();
+
+            }
+
+            cbLocDuLieuThuoc.SelectedIndex = cbIndexLoc;
+            TimThuocTheoDuLieu();
+        }
+
+        public void FilterByRangeDialog_Disposed()
+        {
+            cbLocDuLieuThuoc.Enabled = true;
+            ckbLocDuLieuThuoc.Checked = false;
+            cbIndexLoc = 1;
+            QuanLyThuoc_Load();
+        }
+        public void TimThuocTheoDuLieu()
+        {
+            if (!ckbLocDuLieuThuoc.Checked)
+            {
+                TimThuoc();
+                return;
+            }
+
+            if (cbLocDuLieuThuoc.SelectedIndex == 0)
+            {
+
+                if (filterByRangeDialog == null || filterByRangeDialog.IsDisposed)
+                {
+                    filterByRangeDialog = new FilterByRangeDialog(medicineController);
+
+                    cbLocDuLieuThuoc.Enabled = false;
+                    filterByRangeDialog.onClick += TimThuoc;
+                    filterByRangeDialog.Disposed += (_sender, _args) =>
+                    {
+                        FilterByRangeDialog_Disposed();
+
+                    };
+                    filterByRangeDialog.FormClosing += (_sender, _args) =>
+                    {
+                        FilterByRangeDialog_Disposed();
+                    };
+                }
+                filterByRangeDialog.Show();
+                filterByRangeDialog.btnFilter.PerformClick();
+                return;
+            }
+
+            List<Medicine> list = medicineController.LoadData().Where(medicine =>
+            {
+                DateTime expireDate = DateTime.Parse(medicine.expireDate);
+                switch (cbLocDuLieuThuoc.SelectedIndex)
+                {
+
+                    case 1:
+                        return expireDate.CompareTo(DateTime.Now) < 0;
+                    case 2:
+                        return expireDate.CompareTo(DateTime.Now) > 0;
+                    case 3:
+                        return medicine.quantity <= 0;
+
+                    default:
+                        return false;
+                }
+            }).ToList();
+            TimThuoc(list);
+        }
+
+        private void cbLocDuLieuThuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbIndexLoc = cbLocDuLieuThuoc.SelectedIndex;
+            TimThuocTheoDuLieu();
+
+        }
     }
-    }
+}
 
 

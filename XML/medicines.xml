@@ -2,78 +2,76 @@
 <medicines>
   <medicine>
     <medicine_id>1</medicine_id>
-    <medicine_name>thuoc khang sinh</medicine_name>
+    <medicine_name>badfdas</medicine_name>
     <category_id>4</category_id>
-    <medicine_expire_date>03-09-2045</medicine_expire_date>
+    <medicine_expire_date>09-03-1994</medicine_expire_date>
     <medicine_quantity>1234</medicine_quantity>
     <medicine_unit>vỉ</medicine_unit>
-    <medicine_price>1</medicine_price>
+    <medicine_price>10000</medicine_price>
     <medicine_image>E:\ProjectXML\Shared/Medicine/Images\1.jpg</medicine_image>
     <medicine_description>thuoc khang sinh</medicine_description>
     <supplier_id>1</supplier_id>
     <medicine_created>
     </medicine_created>
-    <medicine_updated>09-03-2024 13:50</medicine_updated>
+    <medicine_updated>10-03-2024 08:17</medicine_updated>
     <medicine_deleted>
     </medicine_deleted>
   </medicine>
   <medicine>
     <medicine_id>2</medicine_id>
-    <medicine_name>thuoc khang</medicine_name>
-    <medicine_expire_date>03-09-2045</medicine_expire_date>
-    <medicine_unit>hop</medicine_unit>
-    <medicine_price>1</medicine_price>
+    <medicine_name>thuoc khang sinh 12</medicine_name>
+    <medicine_expire_date>09-03-1994</medicine_expire_date>
+    <medicine_unit>vỉ</medicine_unit>
+    <medicine_price>100</medicine_price>
     <medicine_quantity>1234</medicine_quantity>
     <medicine_image>
     </medicine_image>
-    <medicine_description>
-    </medicine_description>
-    <supplier_id>2</supplier_id>
+    <medicine_description>thuoc khang sinh</medicine_description>
+    <supplier_id>1</supplier_id>
     <medicine_created>09-03-2024 13:24</medicine_created>
-    <medicine_updated>09-03-2024 13:43</medicine_updated>
+    <medicine_updated>10-03-2024 10:15</medicine_updated>
     <medicine_deleted>
     </medicine_deleted>
-    <category_id>44</category_id>
+    <category_id>4</category_id>
   </medicine>
   <medicine>
     <medicine_id>3</medicine_id>
-    <medicine_name>thuoc sinh</medicine_name>
-    <medicine_expire_date>09-03-2045</medicine_expire_date>
-    <medicine_unit>hop</medicine_unit>
+    <medicine_name>thuoc khang sinh 1</medicine_name>
+    <medicine_expire_date>09-03-1994</medicine_expire_date>
+    <medicine_unit>vỉ</medicine_unit>
     <medicine_price>1</medicine_price>
     <medicine_quantity>1234</medicine_quantity>
     <medicine_image>E:\ProjectXML\Shared/Medicine/Images\3.jpg</medicine_image>
-    <medicine_description>
-    </medicine_description>
-    <supplier_id>2</supplier_id>
+    <medicine_description>thuoc khang sinh</medicine_description>
+    <supplier_id>1</supplier_id>
     <medicine_created>09-03-2024 13:24</medicine_created>
-    <medicine_updated>09-03-2024 13:43</medicine_updated>
+    <medicine_updated>10-03-2024 10:09</medicine_updated>
     <medicine_deleted>
     </medicine_deleted>
-    <category_id>44</category_id>
+    <category_id>4</category_id>
   </medicine>
   <medicine>
     <medicine_id>4</medicine_id>
-    <medicine_name>thuoc</medicine_name>
-    <medicine_expire_date>09-03-2045</medicine_expire_date>
-    <medicine_unit>hop</medicine_unit>
-    <medicine_price>1</medicine_price>
+    <medicine_name>thuoc khang sinh 33</medicine_name>
+    <medicine_expire_date>03-09-1994</medicine_expire_date>
+    <medicine_unit>vỉ</medicine_unit>
+    <medicine_price>1000</medicine_price>
     <medicine_quantity>1234</medicine_quantity>
     <medicine_image>E:\ProjectXML\Shared/Medicine/Images\4.jpg</medicine_image>
-    <medicine_description>123</medicine_description>
-    <supplier_id>2</supplier_id>
+    <medicine_description>thuoc khang sinh</medicine_description>
+    <supplier_id>1</supplier_id>
     <medicine_created>09-03-2024 13:24</medicine_created>
-    <medicine_updated>09-03-2024 13:43</medicine_updated>
+    <medicine_updated>10-03-2024 08:17</medicine_updated>
     <medicine_deleted>
     </medicine_deleted>
-    <category_id>44</category_id>
+    <category_id>4</category_id>
   </medicine>
   <medicine>
     <medicine_id>5</medicine_id>
     <medicine_name>thuoc bo</medicine_name>
-    <medicine_expire_date>03-09-2045</medicine_expire_date>
+    <medicine_expire_date>09-03-2045</medicine_expire_date>
     <medicine_unit>hop</medicine_unit>
-    <medicine_price>1</medicine_price>
+    <medicine_price>1000</medicine_price>
     <medicine_quantity>1234</medicine_quantity>
     <medicine_image>
     </medicine_image>
@@ -81,7 +79,7 @@
     </medicine_description>
     <supplier_id>2</supplier_id>
     <medicine_created>09-03-2024 13:24</medicine_created>
-    <medicine_updated>09-03-2024 13:43</medicine_updated>
+    <medicine_updated>10-03-2024 08:17</medicine_updated>
     <medicine_deleted>
     </medicine_deleted>
     <category_id>44</category_id>
@@ -91,50 +89,100 @@
     <medicine_name>thuoc khang sinh 2</medicine_name>
     <medicine_expire_date>03-09-2045</medicine_expire_date>
     <medicine_unit>vỉ</medicine_unit>
-    <medicine_price>1</medicine_price>
-    <medicine_quantity>25</medicine_quantity>
+    <medicine_price>1000</medicine_price>
+    <medicine_quantity>26</medicine_quantity>
     <medicine_image>E:\ProjectXML\Shared/Medicine/Images\6.jpg</medicine_image>
     <medicine_description>
     </medicine_description>
     <supplier_id>1</supplier_id>
     <medicine_created>09-03-2024 13:49</medicine_created>
-    <medicine_updated>
-    </medicine_updated>
-    <medicine_deleted>
-    </medicine_deleted>
+    <medicine_updated>10-03-2024 10:10</medicine_updated>
+    <medicine_deleted>10-03-2024 10:11</medicine_deleted>
     <category_id>4</category_id>
   </medicine>
   <medicine>
     <medicine_id>7</medicine_id>
-    <medicine_name>khang sinh</medicine_name>
+    <medicine_name>khang</medicine_name>
     <medicine_expire_date>03-09-2045</medicine_expire_date>
     <medicine_unit>3</medicine_unit>
-    <medicine_price>1</medicine_price>
-    <medicine_quantity>25</medicine_quantity>
+    <medicine_price>1000</medicine_price>
+    <medicine_quantity>0</medicine_quantity>
     <medicine_image>
     </medicine_image>
     <medicine_description>
     </medicine_description>
     <supplier_id>1</supplier_id>
     <medicine_created>09-03-2024 13:55</medicine_created>
-    <medicine_updated>09-03-2024 18:05</medicine_updated>
+    <medicine_updated>10-03-2024 08:17</medicine_updated>
     <medicine_deleted>
     </medicine_deleted>
     <category_id>4</category_id>
   </medicine>
   <medicine>
     <medicine_id>8</medicine_id>
-    <medicine_name>1</medicine_name>
-    <medicine_expire_date>03-09-2045</medicine_expire_date>
-    <medicine_unit>2</medicine_unit>
-    <medicine_price>1</medicine_price>
-    <medicine_quantity>25</medicine_quantity>
+    <medicine_name>ksinh</medicine_name>
+    <medicine_expire_date>09-03-2045</medicine_expire_date>
+    <medicine_unit>3</medicine_unit>
+    <medicine_price>1000</medicine_price>
+    <medicine_quantity>0</medicine_quantity>
     <medicine_image>
     </medicine_image>
     <medicine_description>
     </medicine_description>
     <supplier_id>1</supplier_id>
     <medicine_created>09-03-2024 15:27</medicine_created>
+    <medicine_updated>10-03-2024 08:17</medicine_updated>
+    <medicine_deleted>
+    </medicine_deleted>
+    <category_id>4</category_id>
+  </medicine>
+  <medicine>
+    <medicine_id>9</medicine_id>
+    <medicine_name>khang sinh</medicine_name>
+    <medicine_expire_date>09-03-2045</medicine_expire_date>
+    <medicine_unit>3</medicine_unit>
+    <medicine_price>1000</medicine_price>
+    <medicine_quantity>0</medicine_quantity>
+    <medicine_image>
+    </medicine_image>
+    <medicine_description>
+    </medicine_description>
+    <supplier_id>1</supplier_id>
+    <medicine_created>09-03-2024 15:38</medicine_created>
+    <medicine_updated>10-03-2024 08:17</medicine_updated>
+    <medicine_deleted>
+    </medicine_deleted>
+    <category_id>4</category_id>
+  </medicine>
+  <medicine>
+    <medicine_id>10</medicine_id>
+    <medicine_name>ôii</medicine_name>
+    <medicine_expire_date>09-03-1994</medicine_expire_date>
+    <medicine_unit>Hộp</medicine_unit>
+    <medicine_price>1000</medicine_price>
+    <medicine_quantity>1234</medicine_quantity>
+    <medicine_image>
+    </medicine_image>
+    <medicine_description>thuoc khang sinh</medicine_description>
+    <supplier_id>1</supplier_id>
+    <medicine_created>09-03-2024 22:34</medicine_created>
+    <medicine_updated>10-03-2024 08:17</medicine_updated>
+    <medicine_deleted>
+    </medicine_deleted>
+    <category_id>4</category_id>
+  </medicine>
+  <medicine>
+    <medicine_id>11</medicine_id>
+    <medicine_name>ôii</medicine_name>
+    <medicine_expire_date>03-09-1994</medicine_expire_date>
+    <medicine_unit>Hộp</medicine_unit>
+    <medicine_price>1000</medicine_price>
+    <medicine_quantity>1234</medicine_quantity>
+    <medicine_image>
+    </medicine_image>
+    <medicine_description>thuoc khang sinh</medicine_description>
+    <supplier_id>1</supplier_id>
+    <medicine_created>10-03-2024 08:20</medicine_created>
     <medicine_updated>
     </medicine_updated>
     <medicine_deleted>
@@ -142,18 +190,17 @@
     <category_id>4</category_id>
   </medicine>
   <medicine>
-    <medicine_id>9</medicine_id>
-    <medicine_name>1</medicine_name>
-    <medicine_expire_date>09-03-2045</medicine_expire_date>
-    <medicine_unit>2</medicine_unit>
+    <medicine_id>111</medicine_id>
+    <medicine_name>thuoc khang sinh 1</medicine_name>
+    <medicine_expire_date>03-09-1994</medicine_expire_date>
+    <medicine_unit>vỉ</medicine_unit>
     <medicine_price>1</medicine_price>
-    <medicine_quantity>25</medicine_quantity>
+    <medicine_quantity>1234</medicine_quantity>
     <medicine_image>
     </medicine_image>
-    <medicine_description>
-    </medicine_description>
+    <medicine_description>thuoc khang sinh</medicine_description>
     <supplier_id>1</supplier_id>
-    <medicine_created>09-03-2024 15:38</medicine_created>
+    <medicine_created>10-03-2024 10:16</medicine_created>
     <medicine_updated>
     </medicine_updated>
     <medicine_deleted>

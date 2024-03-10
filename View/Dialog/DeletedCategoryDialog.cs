@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace ProjectXML.View
 {
-    public partial class DeletedCategory : Form
+    public partial class DeletedCategoryDialog : Form
     {
         CategoryController categoryController;
         public delegate void RefreshDeletedCategory();
         public RefreshDeletedCategory refreshDeletedCategory;
-        public DeletedCategory(CategoryController categoryController)
+        public DeletedCategoryDialog(CategoryController categoryController)
         {
             InitializeComponent();
             this.categoryController = categoryController;

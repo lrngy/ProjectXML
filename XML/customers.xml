@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <customers>
 	<customer>
-		<customer_id></customer_id>
-		<customer_phone></customer_phone>
-		<customer_address></customer_address>
+		<customer_id>k1</customer_id>
+		<customer_name>Nguyễn Văn A</customer_name>
+		<customer_phone>0123456789</customer_phone>
+		<customer_address>123 Đường ABC, Quận XYZ, TP HCM</customer_address>
+		<customer_note></customer_note>
+		<customer_status></customer_status>
+		<customer_created></customer_created>
+		<customer_updated></customer_updated>
+		<customer_deleted></customer_deleted>
+		
 	</customer>
 </customers>

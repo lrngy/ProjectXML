@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectXML.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,10 @@ using System.Xml.Linq;
 
 namespace ProjectXML.View
 {
-    public partial class QuanLyTaiChinhFrm : Form
+    public partial class QuanLyTaiChinhView : Form
     {
-        string pathThu = @"E:\XML\ProjectXML\XML\finance_bills.xml";
-        string pathChi = @"E:\XML\ProjectXML\XML\pos_bills.xml";
+        string pathThu = Config.getXMLPath("finance_bills");
+        string pathChi = Config.getXMLPath("pos_bills");
         XmlDocument doc = new XmlDocument();
         XmlElement finance_bills;
         XmlElement pos_bills;
@@ -28,7 +29,7 @@ namespace ProjectXML.View
         private DataTable dataTableThu, dataTableChi;
         private Dictionary<string, decimal> monthlyRevenueChi = new Dictionary<string, decimal>();
         private Dictionary<string, decimal> monthlyRevenueThu = new Dictionary<string, decimal>();
-        public QuanLyTaiChinhFrm()
+        public QuanLyTaiChinhView()
         {
             InitializeComponent();
         }

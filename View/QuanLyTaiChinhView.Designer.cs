@@ -1,6 +1,6 @@
 ﻿namespace ProjectXML.View
 {
-    partial class QuanLyTaiChinhFrm
+    partial class QuanLyTaiChinhView
     {
         /// <summary>
         /// Required designer variable.

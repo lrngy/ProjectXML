@@ -41,7 +41,7 @@ namespace ProjectXML.DAO
                     );
                 return new User(username, password, staff);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

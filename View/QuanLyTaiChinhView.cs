@@ -19,7 +19,11 @@ namespace ProjectXML.View
     {
         string pathThu = Config.getXMLPath("finance_bills");
         string pathChi = Config.getXMLPath("pos_bills");
-        XmlDocument doc = new XmlDocument();
+
+        XmlDocument docChi = Config.getDoc("pos_bills");
+        XmlDocument docThu = Config.getDoc("finance_bills");
+        XmlDocument docNhanVien = Config.getDoc("staffs");
+
         XmlElement finance_bills;
         XmlElement pos_bills;
 
@@ -188,8 +192,7 @@ namespace ProjectXML.View
         {
             dgv.Rows.Clear();
             dgv.Refresh();
-            doc.Load(pathThu);
-            XmlNode finance_bills = doc.SelectSingleNode("/finance_bills");
+            XmlNode finance_bills = docThu.SelectSingleNode("/finance_bills");
             XmlNodeList finance_bill = finance_bills.SelectNodes("/finance_bills/finance_bill");
             int sd = 0;
             foreach (XmlNode node in finance_bill)
@@ -207,8 +210,7 @@ namespace ProjectXML.View
         {
             dgv.Rows.Clear();
             dgv.Refresh();
-            doc.Load(pathChi);
-            XmlNode pos_bills = doc.SelectSingleNode("/pos_bills");
+            XmlNode pos_bills = docChi.SelectSingleNode("/pos_bills");
             XmlNodeList poss_bill_list = pos_bills.SelectNodes("/pos_bills/pos_bill");
             int st = 0;
             foreach (XmlNode xmlnode in poss_bill_list)
@@ -248,54 +250,65 @@ namespace ProjectXML.View
             if(tbMaPThu.Text == "" || tbSoTienThu.Text == "" || tbChiTietThu.Text == "" || tbIDnvThu.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                return;
             }
 
-            doc.Load(pathThu);
-            finance_bills = doc.DocumentElement;
+            finance_bills = docThu.DocumentElement;
             string id = tbMaPThu.Text.Trim();
             XmlNode checkID = finance_bills.SelectSingleNode("/finance_bills/finance_bill[finance_bill_id='" + id + "']");
 
             if(checkID == null)
             {
-                XmlNode finance_bill_node = doc.CreateElement("finance_bill");
+                XmlNode finance_bill_node = docThu.CreateElement("finance_bill");
 
-                XmlElement finance_bill_id = doc.CreateElement("finance_bill_id");
+                XmlElement finance_bill_id = docThu.CreateElement("finance_bill_id");
                 finance_bill_id.InnerText = tbMaPThu.Text.Trim();
 
-                XmlElement finance_bill_time = doc.CreateElement("finance_bill_time");
+                XmlElement finance_bill_time = docThu.CreateElement("finance_bill_time");
                 var datestring = dateTPThu.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
                 finance_bill_time.InnerText = datestring;
 
-                XmlElement finance_bill_change = doc.CreateElement("finance_bill_change");
+                XmlElement finance_bill_change = docThu.CreateElement("finance_bill_change");
                 finance_bill_change.InnerText = tbSoTienThu.Text.Trim();
 
-                XmlElement finance_is_spend_bill = doc.CreateElement("finance_is_spend_bill");
+                XmlElement finance_is_spend_bill = docThu.CreateElement("finance_is_spend_bill");
                 if (rbtnDTTThu.Checked)
                 {
                     finance_is_spend_bill.InnerText = "paid";
                 }
                 else finance_is_spend_bill.InnerText = "unpaid";
 
-                XmlElement fibnance_bill_content = doc.CreateElement("fibnance_bill_content");
+                XmlElement fibnance_bill_content = docThu.CreateElement("fibnance_bill_content");
                 fibnance_bill_content.InnerText = tbChiTietThu.Text.Trim();
 
-                XmlElement staff_id = doc.CreateElement("staff_id");
-                staff_id.InnerText = tbIDnvThu.Text.Trim();
+                string idNhanVien = tbIDnvThu.Text.Trim();
+                XmlNode idNv_Check = docNhanVien.SelectSingleNode("/staffs/staff[staff_id='" + idNhanVien + "']");
+                if(idNv_Check != null)
+                {
+                    XmlElement staff_id = docThu.CreateElement("staff_id");
+                    staff_id.InnerText = tbIDnvThu.Text.Trim();
+                    finance_bill_node.AppendChild(staff_id);
+
+                } else
+                {
+                    MessageBox.Show("Nhân viên không tồn tại!!!");
+                    return;
+                }
 
                 finance_bill_node.AppendChild(finance_bill_id);
                 finance_bill_node.AppendChild(finance_bill_time);
                 finance_bill_node.AppendChild(finance_bill_change);
                 finance_bill_node.AppendChild(finance_is_spend_bill);
                 finance_bill_node.AppendChild(fibnance_bill_content);
-                finance_bill_node.AppendChild(staff_id);
+                
                 finance_bills.AppendChild(finance_bill_node);
-                doc.Save(pathThu);
+                docThu.Save(pathThu);
                 MessageBox.Show("Thêm mới thành công");
                 tbMaPThu.Text = "";
                 tbSoTienThu.Text = "";
                 tbChiTietThu.Text = "";
                 tbIDnvThu.Text = "";
-                HienThiChi(dGVChi);
+                HienThiThu(dGVThu);
                 
             }
             if(checkID != null)
@@ -364,7 +377,7 @@ namespace ProjectXML.View
         private void btnLoc_Click(object sender, EventArgs e)
         {
             string dateLoc = dateTPLoc.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-            XmlNode pos_bills = doc.SelectSingleNode("/pos_bills");
+            XmlNode pos_bills = docChi.SelectSingleNode("/pos_bills");
             XmlNodeList poss_bill_list_after_filter = pos_bills.SelectNodes("/pos_bills/pos_bill[pos_bill_time='" + dateLoc + "']");
             int st = 0;
             dGVChi.Rows.Clear();
@@ -379,19 +392,19 @@ namespace ProjectXML.View
                 dGVChi.Rows[st].Cells[4].Value = xmlnode.SelectSingleNode("staff_id").InnerText;
                 st++;
             }
-            XmlNode finance_bills = doc.SelectSingleNode("/finance_bills");
-            XmlNodeList finance_bills_after_filter = pos_bills.SelectNodes("/finance_bills/finance_bill[finance_bill_time='" + dateLoc + "']");
+            XmlNode finance_bills = docThu.SelectSingleNode("/finance_bills");
+            XmlNodeList finance_bills_after_filter = finance_bills.SelectNodes("/finance_bills/finance_bill[finance_bill_time='" + dateLoc + "']");
             int sr = 0;
             dGVThu.Rows.Clear();
             dGVThu.Refresh();
             foreach (XmlNode xmlnode in finance_bills_after_filter)
             {
                 dGVThu.Rows.Add();
-                dGVThu.Rows[st].Cells[0].Value = xmlnode.SelectSingleNode("pos_bill_id").InnerText;
-                dGVChi.Rows[st].Cells[1].Value = xmlnode.SelectSingleNode("pos_bill_time").InnerText;
-                dGVThu.Rows[st].Cells[2].Value = xmlnode.SelectSingleNode("pos_bill_receive").InnerText;
-                dGVThu.Rows[st].Cells[3].Value = xmlnode.SelectSingleNode("pos_is_sell_bill").InnerText;
-                dGVThu.Rows[st].Cells[4].Value = xmlnode.SelectSingleNode("staff_id").InnerText;
+                dGVThu.Rows[sr].Cells[0].Value = xmlnode.SelectSingleNode("finance_bill_id").InnerText;
+                dGVThu.Rows[sr].Cells[1].Value = xmlnode.SelectSingleNode("finance_bill_time").InnerText;
+                dGVThu.Rows[sr].Cells[2].Value = xmlnode.SelectSingleNode("finance_bill_change").InnerText;
+                dGVThu.Rows[sr].Cells[3].Value = xmlnode.SelectSingleNode("finance_is_spend_bill").InnerText;
+                dGVThu.Rows[sr].Cells[4].Value = xmlnode.SelectSingleNode("staff_id").InnerText;
                 sr++;
             }
         }   
@@ -404,24 +417,24 @@ namespace ProjectXML.View
             {
                 if(maPhieuChiClick != null)
                 {
-                    XmlNode pos_bills = doc.SelectSingleNode("/pos_bills");
+                    XmlNode pos_bills = docChi.SelectSingleNode("/pos_bills");
                     XmlNode RemoveNode = pos_bills.SelectSingleNode("/pos_bills/pos_bill[pos_bill_id='" + maPhieuChiClick + "']");
                     if(RemoveNode != null)
                     {
                         pos_bills.RemoveChild(RemoveNode);
-                        doc.Save(pathChi);
+                        docChi.Save(pathChi);
                         HienThiChi(dGVChi);
                     }
                 }
                 else if (maPhieuThuClick != null)
                 {
-                    XmlNode finance_bills = doc.SelectSingleNode("/finance_bills");
+                    XmlNode finance_bills = docThu.SelectSingleNode("/finance_bills");
                     XmlNode RemoveNode = finance_bills.SelectSingleNode("/finance_bills/finance_bill[finance_bill_id='" + maPhieuThuClick + "']");
                     if (RemoveNode != null)
                     {
                         finance_bills.RemoveChild(RemoveNode);
-                        doc.Save(pathThu);
-                        HienThiChi(dGVThu);
+                        docThu.Save(pathThu);
+                        HienThiThu(dGVThu);
                     }
                 }else
                 {
@@ -444,54 +457,64 @@ namespace ProjectXML.View
             if (tbMaPChi.Text == "" || tbSoTienChi.Text == "" || tbIDnvChi.Text == "" || tbIDKho.Text == "" || tbMaPhieuThu.Text == "" || tbIDKh.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                return;
             }
-            doc.Load(pathChi);
-            pos_bills = doc.DocumentElement;
-            XmlNode pos_bill = doc.CreateElement("pos_bill");
+            pos_bills = docChi.DocumentElement;
+            XmlNode pos_bill = docChi.CreateElement("pos_bill");
             string pos_id = tbMaPChi.Text.ToString().Trim();
             XmlNode checkID = pos_bills.SelectSingleNode("/pos_bills/pos_bill[pos_bill_id='" + pos_id + "']");
             if(checkID == null)
             {
-                XmlElement pos_bill_id = doc.CreateElement("pos_bill_id");
+                XmlElement pos_bill_id = docChi.CreateElement("pos_bill_id");
                 pos_bill_id.InnerText = tbMaPChi.Text.Trim();
 
-                XmlElement pos_bill_time = doc.CreateElement("pos_bill_time");
+                XmlElement pos_bill_time = docChi.CreateElement("pos_bill_time");
                 var datestring = dateTPChi.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
                 pos_bill_time.InnerText = datestring;
 
-                XmlElement pos_bill_receive = doc.CreateElement("pos_bill_receive");
+                XmlElement pos_bill_receive = docChi.CreateElement("pos_bill_receive");
                 pos_bill_receive.InnerText = tbSoTienChi.Text.Trim();
 
-                XmlElement staff_id = doc.CreateElement("staff_id");
-                staff_id.InnerText = tbIDnvChi.Text.Trim();
+                string idNhanVien = tbIDnvChi.Text.Trim();
+                XmlNode idNv_Check = docNhanVien.SelectSingleNode("/staffs/staff[staff_id='" + idNhanVien + "']");
+                if (idNv_Check != null)
+                {
+                    XmlElement staff_id = docChi.CreateElement("staff_id");
+                    staff_id.InnerText = tbIDnvChi.Text.Trim();
+                    pos_bill.AppendChild(staff_id);
+                }
+                else
+                {
+                    MessageBox.Show("Nhân viên không tồn tại!!!");
+                    return;
+                }
 
-                XmlElement pos_is_sell_bill = doc.CreateElement("pos_is_sell_bill");
+                XmlElement pos_is_sell_bill = docChi.CreateElement("pos_is_sell_bill");
                 if (rbtnDTTChi.Checked)
                 {
                     pos_is_sell_bill.InnerText = "paid";
                 }
                 else pos_is_sell_bill.InnerText = "unpaid";
 
-                XmlElement warehouse_bill_id = doc.CreateElement("warehouse_bill_id");
+                XmlElement warehouse_bill_id = docChi.CreateElement("warehouse_bill_id");
                 warehouse_bill_id.InnerText = tbIDKho.Text.Trim();
 
-                XmlElement finance_bill_id = doc.CreateElement("finance_bill_id");
+                XmlElement finance_bill_id = docChi.CreateElement("finance_bill_id");
                 finance_bill_id.InnerText = tbMaPhieuThu.Text.Trim();
 
-                XmlElement customer_id = doc.CreateElement("customer_id");
+                XmlElement customer_id = docChi.CreateElement("customer_id");
                 customer_id.InnerText = tbIDKh.Text.Trim();
 
                 pos_bill.AppendChild(pos_bill_id);
                 pos_bill.AppendChild(pos_bill_time);
                 pos_bill.AppendChild(pos_bill_receive);
-                pos_bill.AppendChild(staff_id);
                 pos_bill.AppendChild(pos_is_sell_bill);
                 pos_bill.AppendChild(warehouse_bill_id);
                 pos_bill.AppendChild(finance_bill_id);
                 pos_bill.AppendChild(customer_id);
 
                 pos_bills.AppendChild(pos_bill);
-                doc.Save(pathChi);
+                docChi.Save(pathChi);
                 MessageBox.Show("Thêm mới phiếu chi thành công");
                 tbMaPChi.Text = "";
                 tbSoTienChi.Text = "";

@@ -42,6 +42,7 @@ namespace ProjectXML
                     tbIDKh.Text = pos_bill_node.SelectSingleNode("customer_id").InnerText;
                     tbIDKho.Text = pos_bill_node.SelectSingleNode("warehouse_bill_id").InnerText;
                     tbIDnvChi.Text = pos_bill_node.SelectSingleNode("staff_id").InnerText;
+                    tbIDnvChi.Enabled = false;
                     string check = pos_bill_node.SelectSingleNode("pos_is_sell_bill").InnerText.Trim();
                     if (check.Equals("paid"))
                     {

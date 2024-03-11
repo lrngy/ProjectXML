@@ -40,6 +40,7 @@ namespace ProjectXML
                     tbSoTienThu2.Text = finance_bill_node.SelectSingleNode("finance_bill_change").InnerText;
                     tbChiTietThu2.Text = finance_bill_node.SelectSingleNode("fibnance_bill_content").InnerText;
                     tbIDnvThu2.Text = finance_bill_node.SelectSingleNode("staff_id").InnerText;
+                    tbIDnvThu2.Enabled = false;
                     string check = finance_bill_node.SelectSingleNode("finance_is_spend_bill").InnerText.Trim();
                     if(check.Equals("paid"))
                     {

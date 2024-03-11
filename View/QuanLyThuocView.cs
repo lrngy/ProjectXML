@@ -63,6 +63,7 @@ namespace ProjectXML.View
         private void QuanLyThuoc_Load()
         {
             TimThuocTheoDuLieu();
+            
             cbTieuChiThuoc.SelectedIndex = cbIndexTieuChiThuoc;
 
 
@@ -116,6 +117,7 @@ namespace ProjectXML.View
 
             ClearInputThuoc();
             pictureBoxThuoc.ImageLocation = "";
+            dgvThuoc_CellClick(new object(), new DataGridViewCellEventArgs(0, rowSelectedThuoc));
         }
         public void ClearInputThuoc()
         {

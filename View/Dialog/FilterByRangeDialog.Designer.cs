@@ -312,7 +312,6 @@
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.groupBox1);
             this.Name = "FilterByRangeDialog";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lọc theo khoảng";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

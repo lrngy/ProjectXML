@@ -160,7 +160,7 @@
             // 
             this.lbHeader.AutoSize = true;
             this.lbHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHeader.Location = new System.Drawing.Point(693, 17);
+            this.lbHeader.Location = new System.Drawing.Point(619, 18);
             this.lbHeader.Name = "lbHeader";
             this.lbHeader.Size = new System.Drawing.Size(152, 20);
             this.lbHeader.TabIndex = 0;
@@ -174,10 +174,10 @@
             this.tabControl1.Controls.Add(this.tabThuoc);
             this.tabControl1.Controls.Add(this.tabTheLoai);
             this.tabControl1.Controls.Add(this.tabNCC);
-            this.tabControl1.Location = new System.Drawing.Point(29, 40);
+            this.tabControl1.Location = new System.Drawing.Point(22, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1385, 674);
+            this.tabControl1.Size = new System.Drawing.Size(1407, 674);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
@@ -196,8 +196,8 @@
             this.tabThuoc.Controls.Add(this.dgvThuoc);
             this.tabThuoc.Location = new System.Drawing.Point(4, 22);
             this.tabThuoc.Name = "tabThuoc";
-            this.tabThuoc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThuoc.Size = new System.Drawing.Size(1377, 648);
+            this.tabThuoc.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabThuoc.Size = new System.Drawing.Size(1399, 648);
             this.tabThuoc.TabIndex = 0;
             this.tabThuoc.Text = "Thuốc";
             this.tabThuoc.UseVisualStyleBackColor = true;
@@ -383,7 +383,7 @@
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox3.Location = new System.Drawing.Point(262, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1088, 222);
+            this.groupBox3.Size = new System.Drawing.Size(1110, 222);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin thuốc";
@@ -391,7 +391,7 @@
             // btnNhapLaiThuoc
             // 
             this.btnNhapLaiThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapLaiThuoc.Location = new System.Drawing.Point(984, 168);
+            this.btnNhapLaiThuoc.Location = new System.Drawing.Point(961, 168);
             this.btnNhapLaiThuoc.Name = "btnNhapLaiThuoc";
             this.btnNhapLaiThuoc.Size = new System.Drawing.Size(74, 37);
             this.btnNhapLaiThuoc.TabIndex = 12;
@@ -402,7 +402,7 @@
             // btnSuaThuoc
             // 
             this.btnSuaThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuaThuoc.Location = new System.Drawing.Point(984, 95);
+            this.btnSuaThuoc.Location = new System.Drawing.Point(961, 95);
             this.btnSuaThuoc.Name = "btnSuaThuoc";
             this.btnSuaThuoc.Size = new System.Drawing.Size(74, 37);
             this.btnSuaThuoc.TabIndex = 11;
@@ -453,7 +453,7 @@
             // btnThemThuoc
             // 
             this.btnThemThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemThuoc.Location = new System.Drawing.Point(984, 25);
+            this.btnThemThuoc.Location = new System.Drawing.Point(961, 25);
             this.btnThemThuoc.Name = "btnThemThuoc";
             this.btnThemThuoc.Size = new System.Drawing.Size(74, 37);
             this.btnThemThuoc.TabIndex = 10;
@@ -515,11 +515,11 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(696, 26);
+            this.label13.Location = new System.Drawing.Point(681, 27);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 20);
+            this.label13.Size = new System.Drawing.Size(90, 20);
             this.label13.TabIndex = 0;
-            this.label13.Text = "Thể loại*:";
+            this.label13.Text = "Danh mục*:";
             // 
             // label19
             // 
@@ -631,9 +631,10 @@
             this.dgvThuoc.MultiSelect = false;
             this.dgvThuoc.Name = "dgvThuoc";
             this.dgvThuoc.ReadOnly = true;
+            this.dgvThuoc.RowHeadersWidth = 62;
             this.dgvThuoc.RowTemplate.Height = 30;
             this.dgvThuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThuoc.Size = new System.Drawing.Size(1323, 249);
+            this.dgvThuoc.Size = new System.Drawing.Size(1345, 249);
             this.dgvThuoc.TabIndex = 19;
             this.dgvThuoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThuoc_CellClick);
             // 
@@ -641,6 +642,7 @@
             // 
             this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column8.HeaderText = "STT";
+            this.Column8.MinimumWidth = 8;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             this.Column8.Width = 50;
@@ -649,6 +651,7 @@
             // 
             this.Column10.FillWeight = 51.5464F;
             this.Column10.HeaderText = "Mã thuốc";
+            this.Column10.MinimumWidth = 8;
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
             // 
@@ -656,13 +659,15 @@
             // 
             this.Column11.FillWeight = 51.5464F;
             this.Column11.HeaderText = "Tên thuốc";
+            this.Column11.MinimumWidth = 8;
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             // 
             // Column19
             // 
             this.Column19.FillWeight = 51.5464F;
-            this.Column19.HeaderText = "Thể loại";
+            this.Column19.HeaderText = "Danh mục";
+            this.Column19.MinimumWidth = 8;
             this.Column19.Name = "Column19";
             this.Column19.ReadOnly = true;
             // 
@@ -670,6 +675,7 @@
             // 
             this.Column12.FillWeight = 51.5464F;
             this.Column12.HeaderText = "Ngày hết hạn";
+            this.Column12.MinimumWidth = 8;
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
             // 
@@ -677,6 +683,7 @@
             // 
             this.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column13.HeaderText = "Số lượng";
+            this.Column13.MinimumWidth = 8;
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
             this.Column13.Width = 50;
@@ -685,6 +692,7 @@
             // 
             this.Column14.FillWeight = 51.5464F;
             this.Column14.HeaderText = "Đơn vị";
+            this.Column14.MinimumWidth = 8;
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
             // 
@@ -692,6 +700,7 @@
             // 
             this.Column15.FillWeight = 51.5464F;
             this.Column15.HeaderText = "Giá";
+            this.Column15.MinimumWidth = 8;
             this.Column15.Name = "Column15";
             this.Column15.ReadOnly = true;
             // 
@@ -699,6 +708,7 @@
             // 
             this.Column16.FillWeight = 51.5464F;
             this.Column16.HeaderText = "Mô tả";
+            this.Column16.MinimumWidth = 8;
             this.Column16.Name = "Column16";
             this.Column16.ReadOnly = true;
             // 
@@ -706,6 +716,7 @@
             // 
             this.Column20.FillWeight = 51.5464F;
             this.Column20.HeaderText = "Nhà cung cấp";
+            this.Column20.MinimumWidth = 8;
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
             // 
@@ -713,6 +724,7 @@
             // 
             this.Column17.FillWeight = 51.5464F;
             this.Column17.HeaderText = "Ngày tạo";
+            this.Column17.MinimumWidth = 8;
             this.Column17.Name = "Column17";
             this.Column17.ReadOnly = true;
             // 
@@ -720,6 +732,7 @@
             // 
             this.Column18.FillWeight = 51.5464F;
             this.Column18.HeaderText = "Ngày cập nhật";
+            this.Column18.MinimumWidth = 8;
             this.Column18.Name = "Column18";
             this.Column18.ReadOnly = true;
             // 
@@ -732,10 +745,10 @@
             this.tabTheLoai.Controls.Add(this.dgvTheLoai);
             this.tabTheLoai.Location = new System.Drawing.Point(4, 22);
             this.tabTheLoai.Name = "tabTheLoai";
-            this.tabTheLoai.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTheLoai.Size = new System.Drawing.Size(1377, 648);
+            this.tabTheLoai.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabTheLoai.Size = new System.Drawing.Size(1376, 648);
             this.tabTheLoai.TabIndex = 1;
-            this.tabTheLoai.Text = "Thể loại";
+            this.tabTheLoai.Text = "Danh mục thuốc";
             this.tabTheLoai.UseVisualStyleBackColor = true;
             // 
             // groupBox5
@@ -745,9 +758,9 @@
             this.groupBox5.Controls.Add(this.cbTieuChiTheLoai);
             this.groupBox5.Controls.Add(this.tbTimTheLoai);
             this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Location = new System.Drawing.Point(907, 17);
+            this.groupBox5.Location = new System.Drawing.Point(944, 17);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(299, 196);
+            this.groupBox5.Size = new System.Drawing.Size(355, 196);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Tìm kiếm";
@@ -837,7 +850,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(43, 17);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(840, 196);
+            this.groupBox1.Size = new System.Drawing.Size(875, 196);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thể loại";
@@ -976,9 +989,10 @@
             this.dgvTheLoai.MultiSelect = false;
             this.dgvTheLoai.Name = "dgvTheLoai";
             this.dgvTheLoai.ReadOnly = true;
+            this.dgvTheLoai.RowHeadersWidth = 62;
             this.dgvTheLoai.RowTemplate.Height = 30;
             this.dgvTheLoai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTheLoai.Size = new System.Drawing.Size(1190, 286);
+            this.dgvTheLoai.Size = new System.Drawing.Size(1270, 286);
             this.dgvTheLoai.TabIndex = 0;
             this.dgvTheLoai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTheLoai_CellClick);
             this.dgvTheLoai.SelectionChanged += new System.EventHandler(this.dgvTheLoai_SelectionChanged);
@@ -987,6 +1001,7 @@
             // 
             this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column7.HeaderText = "STT";
+            this.Column7.MinimumWidth = 8;
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Width = 35;
@@ -994,36 +1009,42 @@
             // Column1
             // 
             this.Column1.HeaderText = "Mã thể loại";
+            this.Column1.MinimumWidth = 8;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Tên thể loại";
+            this.Column2.MinimumWidth = 8;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Ghi chú";
+            this.Column4.MinimumWidth = 8;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Trạng thái";
+            this.Column3.MinimumWidth = 8;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Ngày tạo";
+            this.Column5.MinimumWidth = 8;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Ngày cập nhật";
+            this.Column6.MinimumWidth = 8;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
@@ -1039,8 +1060,8 @@
             this.tabNCC.Controls.Add(this.label7);
             this.tabNCC.Location = new System.Drawing.Point(4, 22);
             this.tabNCC.Name = "tabNCC";
-            this.tabNCC.Padding = new System.Windows.Forms.Padding(3);
-            this.tabNCC.Size = new System.Drawing.Size(1377, 648);
+            this.tabNCC.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabNCC.Size = new System.Drawing.Size(1376, 648);
             this.tabNCC.TabIndex = 2;
             this.tabNCC.Text = "Nhà cung cấp";
             this.tabNCC.UseVisualStyleBackColor = true;
@@ -1113,7 +1134,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(47, 28);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1180, 190);
+            this.groupBox2.Size = new System.Drawing.Size(1243, 190);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nhà cung cấp";
@@ -1288,9 +1309,10 @@
             this.dgvNhaCungCap.MultiSelect = false;
             this.dgvNhaCungCap.Name = "dgvNhaCungCap";
             this.dgvNhaCungCap.ReadOnly = true;
+            this.dgvNhaCungCap.RowHeadersWidth = 62;
             this.dgvNhaCungCap.RowTemplate.Height = 30;
             this.dgvNhaCungCap.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNhaCungCap.Size = new System.Drawing.Size(1206, 291);
+            this.dgvNhaCungCap.Size = new System.Drawing.Size(1243, 291);
             this.dgvNhaCungCap.TabIndex = 4;
             this.dgvNhaCungCap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellClick);
             // 
@@ -1298,6 +1320,7 @@
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn1.HeaderText = "STT";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 35;
@@ -1306,6 +1329,7 @@
             // 
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column9.HeaderText = "Mã nhà cung cấp";
+            this.Column9.MinimumWidth = 8;
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             this.Column9.Width = 130;
@@ -1313,30 +1337,35 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Tên nhà cung cấp";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Điện thoại";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "Email";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "Ghi chú";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "Trạng thái";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
@@ -1365,7 +1394,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1442, 726);
+            this.ClientSize = new System.Drawing.Size(1441, 690);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lbHeader);
             this.Name = "QuanLyThuocView";
@@ -1399,7 +1428,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbHeader;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabThuoc;
         private System.Windows.Forms.TabPage tabTheLoai;
         private System.Windows.Forms.TabPage tabNCC;
@@ -1476,18 +1504,6 @@
         private System.Windows.Forms.ComboBox cbTieuChiTheLoai;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.ComboBox cbTieuChiThuoc;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox tbTimThuoc;
@@ -1505,5 +1521,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.CheckBox ckbLocDuLieuThuoc;
         private System.Windows.Forms.ComboBox cbLocDuLieuThuoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        public System.Windows.Forms.TabControl tabControl1;
     }
 }

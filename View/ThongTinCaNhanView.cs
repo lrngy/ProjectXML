@@ -39,7 +39,14 @@ namespace ProjectXML.View
             lbMaNV.Text = user.staff.id;
             lbVaiTro.Text = user.staff.isManager ? "Quản lý" : "Nhân viên";
             tbHoTen.Text = user.staff.name;
-            dateTimePicker1.Text = DateTime.ParseExact(user.staff.birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString();
+            try
+            {
+                dateTimePicker1.Text = DateTime.ParseExact(user.staff.birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString();
+            }
+            catch (Exception)
+            {
+                dateTimePicker1.Text = DateTime.ParseExact("01/01/2000", "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString();
+            }
             radioButton1.Checked = user.staff.gender;
             radioButton2.Checked = !radioButton1.Checked;
 

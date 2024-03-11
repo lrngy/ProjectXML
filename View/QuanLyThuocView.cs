@@ -49,12 +49,15 @@ namespace ProjectXML.View
             {
                 case 0:
                     QuanLyThuoc_Load();
+                    lbHeader.Text = "QUẢN LÝ THUỐC";
                     break;
                 case 1:
                     TheLoai_Load();
+                    lbHeader.Text = "QUẢN LÝ DANH MỤC THUỐC";
                     break;
                 case 2:
                     NhaCungCap_Load();
+                    lbHeader.Text = "QUẢN LÝ NHÀ CUNG CẤP";
                     break;
             }
 
@@ -1077,7 +1080,10 @@ namespace ProjectXML.View
             cbIndexLoc = cbLocDuLieuThuoc.SelectedIndex;
             TimThuocTheoDuLieu();
 
+
         }
+
+        
     }
 }
 

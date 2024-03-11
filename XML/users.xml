@@ -10,4 +10,9 @@
     <username>seller</username>
     <password>1</password>
   </user>
+  <user>
+    <staff_id>a3</staff_id>
+    <username>cntt</username>
+    <password>1</password>
+  </user>
 </users>

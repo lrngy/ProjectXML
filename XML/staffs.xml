@@ -17,4 +17,13 @@
     </staff_is_manager>
     <staff_is_seller>true</staff_is_seller>
   </staff>
+  <staff>
+    <staff_id>a3</staff_id>
+    <staff_name>J</staff_name>
+    <staff_sex>Nam</staff_sex>
+    <staff_year_of_birth>2</staff_year_of_birth>
+    <staff_is_manager>true</staff_is_manager>
+    <staff_is_seller>
+    </staff_is_seller>
+  </staff>
 </staffs>

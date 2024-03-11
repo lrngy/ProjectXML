@@ -21,30 +21,10 @@
     <warehouse_bill_id>3</warehouse_bill_id>
   </pos_bill>
   <pos_bill>
-    <pos_bill_id>4</pos_bill_id>
-    <pos_bill_time>17/05/2024</pos_bill_time>
-    <pos_bill_receive>1000</pos_bill_receive>
-    <staff_id>1</staff_id>
-    <pos_is_sell_bill>paid</pos_is_sell_bill>
-    <warehouse_bill_id>1</warehouse_bill_id>
-    <finance_bill_id>3</finance_bill_id>
-    <customer_id>1</customer_id>
-  </pos_bill>
-  <pos_bill>
+    <staff_id>s1</staff_id>
     <pos_bill_id>2</pos_bill_id>
-    <pos_bill_time>09/03/2024</pos_bill_time>
+    <pos_bill_time>11/03/2024</pos_bill_time>
     <pos_bill_receive>2</pos_bill_receive>
-    <staff_id>2</staff_id>
-    <pos_is_sell_bill>paid</pos_is_sell_bill>
-    <warehouse_bill_id>2</warehouse_bill_id>
-    <finance_bill_id>2</finance_bill_id>
-    <customer_id>2</customer_id>
-  </pos_bill>
-  <pos_bill>
-    <pos_bill_id>5</pos_bill_id>
-    <pos_bill_time>09/03/2024</pos_bill_time>
-    <pos_bill_receive>2</pos_bill_receive>
-    <staff_id>2</staff_id>
     <pos_is_sell_bill>paid</pos_is_sell_bill>
     <warehouse_bill_id>2</warehouse_bill_id>
     <finance_bill_id>2</finance_bill_id>

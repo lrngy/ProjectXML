@@ -39,6 +39,7 @@ namespace ProjectXML.View
                 return;
             }
             Show(ref quanLyThuocView, () => new QuanLyThuocView(user, 0));
+            quanLyThuocView.tabControl1.SelectTab(0);
         }
 
         private void Show<T>(ref T form, Func<T> NewInstance) where T : Form
@@ -57,11 +58,13 @@ namespace ProjectXML.View
         private void btnDanhMuc_Click(object sender, EventArgs e)
         {
             Show(ref quanLyThuocView, () => new QuanLyThuocView(user, 1));
+            quanLyThuocView.tabControl1.SelectTab(1);
         }
 
         private void btnNcc_Click(object sender, EventArgs e)
         {
             Show(ref quanLyThuocView, () => new QuanLyThuocView(user, 2));
+            quanLyThuocView.tabControl1.SelectTab(2);
         }
 
         private void btnNhanVien_Click(object sender, EventArgs e)

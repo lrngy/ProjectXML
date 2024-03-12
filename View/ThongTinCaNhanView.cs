@@ -1,4 +1,5 @@
 ﻿using ProjectXML.Controller;
+using ProjectXML.DAO;
 using ProjectXML.Model;
 using ProjectXML.Util;
 using ProjectXML.View.Dialog;
@@ -19,6 +20,7 @@ namespace ProjectXML.View
     {
         User user;
         UserController userController = new UserController();
+        
         ChangePasswordDialog changePasswordDialog;
 
         public delegate void OnUpdateHandler();
@@ -36,6 +38,7 @@ namespace ProjectXML.View
 
         public void ThongTinCaNhanShow()
         {
+            user = userController.getUser(user.username);
             lbMaNV.Text = user.staff.id;
             lbVaiTro.Text = user.staff.isManager ? "Quản lý" : "Nhân viên";
             tbHoTen.Text = user.staff.name;

@@ -1,13 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <pos_bills>
+
   <pos_bill>
-    <pos_bill_id>1</pos_bill_id>
+    <pos_bill_id>3</pos_bill_id>
     <pos_bill_time>08/03/2024</pos_bill_time>
-    <pos_bill_receive>10</pos_bill_receive>
-    <finance_bill_id>1</finance_bill_id>
+    <pos_bill_receive>3000</pos_bill_receive>
+    <finance_bill_id>3</finance_bill_id>
+    <pos_is_sell_bill>unpaid</pos_is_sell_bill>
+    <customer_id>3</customer_id>
+    <staff_id>3</staff_id>
+    <warehouse_bill_id>3</warehouse_bill_id>
+  </pos_bill>
+  <pos_bill>
+    <staff_id>s1</staff_id>
+    <pos_bill_id>2</pos_bill_id>
+    <pos_bill_time>11/03/2024</pos_bill_time>
+    <pos_bill_receive>2</pos_bill_receive>
     <pos_is_sell_bill>paid</pos_is_sell_bill>
+    <warehouse_bill_id>2</warehouse_bill_id>
+    <finance_bill_id>2</finance_bill_id>
+    <customer_id>2</customer_id>
+  </pos_bill>
+  <pos_bill>
+    <staff_id>s2</staff_id>
+    <pos_bill_id>4</pos_bill_id>
+    <pos_bill_time>12/03/2024</pos_bill_time>
+    <pos_bill_receive>5000</pos_bill_receive>
+    <pos_is_sell_bill>paid</pos_is_sell_bill>
+    <warehouse_bill_id>4</warehouse_bill_id>
+    <finance_bill_id>12</finance_bill_id>
     <customer_id>1</customer_id>
-    <staff_id>1</staff_id>
-    <warehouse_bill_id>1</warehouse_bill_id>
   </pos_bill>
 </pos_bills>

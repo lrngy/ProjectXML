@@ -22,6 +22,7 @@ namespace ProjectXML
         public ChiTietThu()
         {
             InitializeComponent();
+            tbSoTienThu2.KeyPress += tbSoTienThu2_KeyPress;
         }
         public void ReturnItem(string maPThu)
         {
@@ -114,6 +115,14 @@ namespace ProjectXML
         private void ChiTietThu_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormClosedEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void tbSoTienThu2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -40,20 +40,4 @@
     <fibnance_bill_content>1</fibnance_bill_content>
     <staff_id>1</staff_id>
   </finance_bill>
-  <finance_bill>
-    <finance_bill_id>7</finance_bill_id>
-    <finance_bill_time>11/03/2024</finance_bill_time>
-    <finance_bill_change>7</finance_bill_change>
-    <finance_is_spend_bill>paid</finance_is_spend_bill>
-    <fibnance_bill_content>7</fibnance_bill_content>
-    <staff_id>s1</staff_id>
-  </finance_bill>
-  <finance_bill>
-    <staff_id>s2</staff_id>
-    <finance_bill_id>8</finance_bill_id>
-    <finance_bill_time>11/03/2024</finance_bill_time>
-    <finance_bill_change>7</finance_bill_change>
-    <finance_is_spend_bill>paid</finance_is_spend_bill>
-    <fibnance_bill_content>7</fibnance_bill_content>
-  </finance_bill>
 </finance_bills>

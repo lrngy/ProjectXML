@@ -215,6 +215,7 @@
             this.tbSoTienChi.Name = "tbSoTienChi";
             this.tbSoTienChi.Size = new System.Drawing.Size(151, 30);
             this.tbSoTienChi.TabIndex = 13;
+            this.tbSoTienChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoTienChi_KeyPress);
             // 
             // label14
             // 

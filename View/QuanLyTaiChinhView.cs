@@ -33,9 +33,13 @@ namespace ProjectXML.View
         private DataTable dataTableThu, dataTableChi;
         private Dictionary<string, decimal> monthlyRevenueChi = new Dictionary<string, decimal>();
         private Dictionary<string, decimal> monthlyRevenueThu = new Dictionary<string, decimal>();
+
+        
         public QuanLyTaiChinhView()
         {
             InitializeComponent();
+            tbSoTienThu.KeyPress += tbSoTienThu_KeyPress;
+            tbSoTienChi.KeyPress += tbSoTienChi_KeyPress;
         }
 
         private void QuanLyTaiChinhFrm_Load(object sender, EventArgs e)
@@ -148,7 +152,7 @@ namespace ProjectXML.View
                     dataTableThu.Rows.Add(
                     element.Element("finance_bill_id").Value,
                     element.Element("finance_bill_time").Value,
-                    decimal.Parse(element.Element("finance_bill_change").Value), // Parse as decimal
+                    decimal.Parse(element.Element("finance_bill_change").Value),
                     element.Element("finance_is_spend_bill").Value,
                     element.Element("fibnance_bill_content").Value,
                     element.Element("staff_id").Value
@@ -252,7 +256,6 @@ namespace ProjectXML.View
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
                 return;
             }
-
             finance_bills = docThu.DocumentElement;
             string id = tbMaPThu.Text.Trim();
             XmlNode checkID = finance_bills.SelectSingleNode("/finance_bills/finance_bill[finance_bill_id='" + id + "']");
@@ -356,22 +359,33 @@ namespace ProjectXML.View
 
         private void dGVThu_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int row = dGVThu.CurrentCell.RowIndex;
-            string maPhieuThu = dGVThu.Rows[row].Cells[0].Value.ToString().Trim();
-            ChiTietThu formChiTietThu = new ChiTietThu();
-            formChiTietThu.Show();
-            formChiTietThu.ReturnItem(maPhieuThu);
-            formChiTietThu.FormClosedEvent += (s, ev) => { HienThiThu(dGVThu); };
+            try
+            {
+                int row = dGVThu.CurrentCell.RowIndex;
+                string maPhieuThu = dGVThu.Rows[row].Cells[0].Value.ToString().Trim();
+                ChiTietThu formChiTietThu = new ChiTietThu();
+                formChiTietThu.Show();
+                formChiTietThu.ReturnItem(maPhieuThu);
+                formChiTietThu.FormClosedEvent += (s, ev) => { HienThiThu(dGVThu); };
+            } catch (Exception ex) { }
+            
         }
 
         private void dGVChi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int row = dGVChi.CurrentCell.RowIndex;
-            string maPhieuChi = dGVChi.Rows[row].Cells[0].Value.ToString().Trim();
-            ChiTietChi formChiTietChi = new ChiTietChi();
-            formChiTietChi.Show();
-            formChiTietChi.ReturnItem(maPhieuChi);
-            formChiTietChi.FormClosedEvent += (s, ev) => { HienThiChi(dGVChi); };
+            try
+            {
+                int row = dGVChi.CurrentCell.RowIndex;
+                string maPhieuChi = dGVChi.Rows[row].Cells[0].Value.ToString().Trim();
+                ChiTietChi formChiTietChi = new ChiTietChi();
+                formChiTietChi.Show();
+                formChiTietChi.ReturnItem(maPhieuChi);
+                formChiTietChi.FormClosedEvent += (s, ev) => { HienThiChi(dGVChi); };
+            } catch (Exception ex)
+            {
+
+            }
+            
         }
 
         private void btnLoc_Click(object sender, EventArgs e)
@@ -450,6 +464,27 @@ namespace ProjectXML.View
             HienThiChi(dGVChi);
             HienThiChartThu();
             HienThiChartChi();
+        }
+
+        private void tbSoTienThu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbSoTienThu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbSoTienChi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnChi_Click(object sender, EventArgs e)

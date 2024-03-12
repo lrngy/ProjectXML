@@ -22,6 +22,8 @@ namespace ProjectXML
         public ChiTietChi()
         {
             InitializeComponent();
+            tbSoTienChi.KeyPress += tbSoTienChi_KeyPress;
+
         }
         public void ReturnItem(string maPChi)
         {
@@ -55,6 +57,7 @@ namespace ProjectXML
         }
         private void ChiTietChi_Load(object sender, EventArgs e)
         {
+
         }
         private void btnChi_Click(object sender, EventArgs e)
         {
@@ -125,6 +128,14 @@ namespace ProjectXML
         private void ChiTietChi_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormClosedEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void tbSoTienChi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

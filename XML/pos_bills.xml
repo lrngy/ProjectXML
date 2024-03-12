@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <pos_bills>
-  <pos_bill>
-    <pos_bill_id>1</pos_bill_id>
-    <pos_bill_time>08/03/2024</pos_bill_time>
-    <pos_bill_receive>10</pos_bill_receive>
-    <finance_bill_id>1</finance_bill_id>
-    <pos_is_sell_bill>paid</pos_is_sell_bill>
-    <customer_id>1</customer_id>
-    <staff_id>1</staff_id>
-    <warehouse_bill_id>1</warehouse_bill_id>
-  </pos_bill>
+
   <pos_bill>
     <pos_bill_id>3</pos_bill_id>
     <pos_bill_time>08/03/2024</pos_bill_time>

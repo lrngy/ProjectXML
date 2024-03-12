@@ -35,7 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.t_staff_sex = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.t_staff_year_of_birth = new System.Windows.Forms.TextBox();
             this.them = new System.Windows.Forms.Button();
             this.sua = new System.Windows.Forms.Button();
             this.xoa = new System.Windows.Forms.Button();
@@ -56,6 +55,7 @@
             this.bResetPass = new System.Windows.Forms.Button();
             this.tTaiKhoan = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,13 +115,6 @@
             this.label3.Size = new System.Drawing.Size(63, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Năm sinh";
-            // 
-            // t_staff_year_of_birth
-            // 
-            this.t_staff_year_of_birth.Location = new System.Drawing.Point(651, 137);
-            this.t_staff_year_of_birth.Name = "t_staff_year_of_birth";
-            this.t_staff_year_of_birth.Size = new System.Drawing.Size(183, 22);
-            this.t_staff_year_of_birth.TabIndex = 9;
             // 
             // them
             // 
@@ -308,11 +301,21 @@
             this.label6.TabIndex = 21;
             this.label6.Text = "Tài khoản";
             // 
-            // QuanLyNhanVienForm
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(651, 135);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 23;
+            // 
+            // QuanLyNhanVienView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 647);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.tTaiKhoan);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.bResetPass);
@@ -326,7 +329,6 @@
             this.Controls.Add(this.xoa);
             this.Controls.Add(this.sua);
             this.Controls.Add(this.them);
-            this.Controls.Add(this.t_staff_year_of_birth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.t_staff_sex);
             this.Controls.Add(this.label4);
@@ -334,7 +336,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.t_id);
             this.Controls.Add(this.label1);
-            this.Name = "QuanLyNhanVienForm";
+            this.Name = "QuanLyNhanVienView";
             this.Text = "Form Quản Lý Nhân Viên";
             this.Load += new System.EventHandler(this.QuanLyNhanVienForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -352,7 +354,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox t_staff_sex;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox t_staff_year_of_birth;
 //<<<<<<< HEAD
         private System.Windows.Forms.Button them;
         private System.Windows.Forms.Button sua;
@@ -386,10 +387,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_year_of_birth;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_is_manager;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_is_seller;
-//<<<<<<< HEAD
-//=======
-//        private System.Windows.Forms.TextBox t_timKiem;
-//        private System.Windows.Forms.Label label5;
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        //<<<<<<< HEAD
+        //=======
+        //        private System.Windows.Forms.TextBox t_timKiem;
+        //        private System.Windows.Forms.Label label5;
+        //>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
     }
 }

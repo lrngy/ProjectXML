@@ -2,17 +2,22 @@
 <users>
   <user>
     <staff_id>s2</staff_id>
-    <username>seller</username>
-    <password>1</password>
-  </user>
-  <user>
-    <staff_id>a3</staff_id>
-    <username>cntt</username>
+    <username>admin1</username>
     <password>1</password>
   </user>
   <user>
     <staff_id>s1</staff_id>
     <username>admin</username>
+    <password>1</password>
+  </user>
+  <user>
+    <staff_id>s23</staff_id>
+    <username>seller</username>
+    <password>1</password>
+  </user>
+  <user>
+    <staff_id>s22</staff_id>
+    <username>1</username>
     <password>1</password>
   </user>
 </users>

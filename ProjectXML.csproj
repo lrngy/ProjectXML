@@ -231,7 +231,6 @@
     <Content Include="XML\staffs.xml" />
     <Content Include="XML\suppliers.xml" />
     <Content Include="XML\users.xml" />
-    <Content Include="XML\warehouse_bills.xml" />
     <Content Include="XML\categories.xml" />
   </ItemGroup>
   <ItemGroup />

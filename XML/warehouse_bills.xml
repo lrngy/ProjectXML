@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<warehouse_bills>
-	<warehouse_bill>
-		<warehouse_bill_id></warehouse_bill_id>
-		<warehouse_bill_time></warehouse_bill_time>
-		<staff_id></staff_id>
-		<warehouse_is_import_bill></warehouse_is_import_bill>
-	</warehouse_bill>
-</warehouse_bills>

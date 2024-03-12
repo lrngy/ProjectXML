@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <users>
   <user>
-    <username>admin</username>
-    <password>1</password>
-    <staff_id>s1</staff_id>
-  </user>
-  <user>
     <staff_id>s2</staff_id>
     <username>seller</username>
     <password>1</password>
@@ -13,6 +8,11 @@
   <user>
     <staff_id>a3</staff_id>
     <username>cntt</username>
+    <password>1</password>
+  </user>
+  <user>
+    <staff_id>s1</staff_id>
+    <username>admin</username>
     <password>1</password>
   </user>
 </users>

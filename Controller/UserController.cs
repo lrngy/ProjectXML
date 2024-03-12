@@ -16,7 +16,10 @@ namespace ProjectXML.Controller
         {
             UserDAO = new UserDAO();
         }
-
+        public User getUser(string username)
+        {
+            return UserDAO.getUser(username);
+        }
 
         public int Update(User user)
         {

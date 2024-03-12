@@ -2,18 +2,9 @@
 <staffs>
   <staff>
     <staff_id>s2</staff_id>
-    <staff_name>Quyết</staff_name>
+    <staff_name>Con chó Quyết</staff_name>
     <staff_sex>Nam</staff_sex>
-    <staff_year_of_birth>01/01/2002</staff_year_of_birth>
-    <staff_is_manager>
-    </staff_is_manager>
-    <staff_is_seller>true</staff_is_seller>
-  </staff>
-  <staff>
-    <staff_id>a3</staff_id>
-    <staff_name>J</staff_name>
-    <staff_sex>Nam</staff_sex>
-    <staff_year_of_birth>2</staff_year_of_birth>
+    <staff_year_of_birth>05/12/2005</staff_year_of_birth>
     <staff_is_manager>true</staff_is_manager>
     <staff_is_seller>
     </staff_is_seller>
@@ -23,6 +14,24 @@
     <staff_name>Long Nguyễn</staff_name>
     <staff_sex>Nam</staff_sex>
     <staff_year_of_birth>15/09/2000</staff_year_of_birth>
+    <staff_is_manager>true</staff_is_manager>
+    <staff_is_seller>
+    </staff_is_seller>
+  </staff>
+  <staff>
+    <staff_id>s23</staff_id>
+    <staff_name>Con chó Quyết</staff_name>
+    <staff_sex>Nam</staff_sex>
+    <staff_year_of_birth>2002</staff_year_of_birth>
+    <staff_is_manager>
+    </staff_is_manager>
+    <staff_is_seller>true</staff_is_seller>
+  </staff>
+  <staff>
+    <staff_id>s22</staff_id>
+    <staff_name>Con chó Quyết</staff_name>
+    <staff_sex>Nam</staff_sex>
+    <staff_year_of_birth>05/12/2005</staff_year_of_birth>
     <staff_is_manager>true</staff_is_manager>
     <staff_is_seller>
     </staff_is_seller>

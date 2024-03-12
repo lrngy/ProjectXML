@@ -40,6 +40,8 @@ namespace ProjectXML.View
             sua.Enabled = false;
             xoa.Enabled = false;
             bResetPass.Enabled = false;
+            dateTimePicker1.Text = "01/01/1999";
+            //dateTimePicker1.Text = "00/00/0000";
 
             t_id.ReadOnly = true;
             HienThi();
@@ -115,7 +117,7 @@ namespace ProjectXML.View
             t_staff_name.Text = dataGridView1.Rows[t].Cells[1].Value.ToString();
             tTaiKhoan.Text = dataGridView1.Rows[t].Cells[2].Value.ToString();
             t_staff_sex.Text = dataGridView1.Rows[t].Cells[3].Value.ToString();
-            t_staff_year_of_birth.Text = dataGridView1.Rows[t].Cells[4].Value.ToString();
+            dateTimePicker1.Text = dataGridView1.Rows[t].Cells[4].Value.ToString();
             if (dataGridView1.Rows[t].Cells[5].Value.ToString().Trim() == "true")
             {
                 c_staff_is_manager.Checked = true;
@@ -145,7 +147,7 @@ namespace ProjectXML.View
             t_id.Text = "";
             t_staff_name.Text = "";
             t_staff_sex.Text = "";
-            t_staff_year_of_birth.Text = "";
+            dateTimePicker1.Text = "";
             c_staff_is_manager.Checked = false;
             c_staff_is_seller.Checked = false;
 
@@ -174,7 +176,7 @@ namespace ProjectXML.View
         private void sua_Click(object sender, EventArgs e)
         {
 
-            if (t_id.Text.Trim() == "" && t_staff_name.Text.Trim() == "" && t_staff_sex.Text.Trim() == "" && t_staff_year_of_birth.Text.Trim() == "" && tTaiKhoan.Text.Trim() == "" && c_staff_is_manager.Checked == c_staff_is_seller.Checked)
+            if (t_id.Text.Trim() == "" && t_staff_name.Text.Trim() == "" && t_staff_sex.Text.Trim() == "" && dateTimePicker1.Text.Trim() == "" && tTaiKhoan.Text.Trim() == "" && c_staff_is_manager.Checked == c_staff_is_seller.Checked)
             {
                 MessageBox.Show("Vui lòng nhập đủ thông tin!");
                 return;
@@ -220,7 +222,7 @@ namespace ProjectXML.View
                 staff_new.AppendChild(staff_sex);
 
                 XmlElement staff_year_of_birth = doc.CreateElement("staff_year_of_birth");
-                staff_year_of_birth.InnerText = t_staff_year_of_birth.Text.Trim();
+                staff_year_of_birth.InnerText = dateTimePicker1.Text.Trim();
                 staff_new.AppendChild(staff_year_of_birth);
 
                 XmlElement staff_is_manager = doc.CreateElement("staff_is_manager");
@@ -243,7 +245,7 @@ namespace ProjectXML.View
 
         private void save_add_Click(object sender, EventArgs e)
         {
-            if (t_id.Text.Trim() == "" && t_staff_name.Text.Trim() == "" && t_staff_sex.Text.Trim() == "" && t_staff_year_of_birth.Text.Trim() == "" && tTaiKhoan.Text.Trim() == "" && c_staff_is_manager.Checked == c_staff_is_seller.Checked)
+            if (t_id.Text.Trim() == "" && t_staff_name.Text.Trim() == "" && t_staff_sex.Text.Trim() == "" && dateTimePicker1.Text.Trim() == "" && tTaiKhoan.Text.Trim() == "" && c_staff_is_manager.Checked == c_staff_is_seller.Checked)
             {
                 MessageBox.Show("Vui lòng nhập đủ thông tin!");
                 return;
@@ -274,7 +276,7 @@ namespace ProjectXML.View
             staff.AppendChild(staff_sex);
 
             XmlElement staff_year_of_birth = doc.CreateElement("staff_year_of_birth");
-            staff_year_of_birth.InnerText = t_staff_year_of_birth.Text.Trim();
+            staff_year_of_birth.InnerText = dateTimePicker1.Text.Trim();
             staff.AppendChild(staff_year_of_birth);
 
             XmlElement staff_is_manager = doc.CreateElement("staff_is_manager");

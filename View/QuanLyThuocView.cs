@@ -48,8 +48,14 @@ namespace ProjectXML.View
             switch (tabIndex)
             {
                 case 0:
+                    if(!user.staff.isManager)
+                    {
+                        CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
+                        e.Cancel = true;
+                    }
                     QuanLyThuoc_Load();
                     lbHeader.Text = "QUẢN LÝ THUỐC";
+                   
                     break;
                 case 1:
                     TheLoai_Load();

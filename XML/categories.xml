@@ -1,61 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <categories>
-  <category>
-    <category_id>2</category_id>
-    <category_name>Kháng sinh</category_name>
-    <category_note>3</category_note>
-    <category_status>True</category_status>
-    <category_created>08-03-2024 21:53</category_created>
-    <category_updated>09-03-2024 07:51</category_updated>
-    <category_deleted>
-    </category_deleted>
-  </category>
-  <category>
-    <category_id>3</category_id>
-    <category_name>Giảm đau</category_name>
-    <category_note>3</category_note>
-    <category_status>True</category_status>
-    <category_created>09-03-2024 07:22</category_created>
-    <category_updated>09-03-2024 07:51</category_updated>
-    <category_deleted>
-    </category_deleted>
-  </category>
-  <category>
-    <category_id>1</category_id>
-    <category_name>33</category_name>
-    <category_note>3</category_note>
-    <category_status>True</category_status>
-    <category_created>09-03-2024 07:23</category_created>
-    <category_updated>09-03-2024 07:28</category_updated>
-    <category_deleted>12/03/2024 07:09</category_deleted>
-  </category>
-  <category>
-    <category_id>4</category_id>
-    <category_name>Ho</category_name>
-    <category_note>2</category_note>
-    <category_status>True</category_status>
-    <category_created>09-03-2024 07:25</category_created>
-    <category_updated>09-03-2024 11:39</category_updated>
-    <category_deleted>12/03/2024 07:09</category_deleted>
-  </category>
-  <category>
-    <category_id>44</category_id>
-    <category_name>Thuốc bổ</category_name>
-    <category_note>2</category_note>
-    <category_status>True</category_status>
-    <category_created>09-03-2024 07:44</category_created>
-    <category_updated>09-03-2024 11:46</category_updated>
-    <category_deleted>12/03/2024 07:09</category_deleted>
-  </category>
-  <category>
-    <category_id>5</category_id>
-    <category_name>Thuốc bổ</category_name>
-    <category_note>2</category_note>
-    <category_status>True</category_status>
-    <category_created>10/03/2024 23:03</category_created>
-    <category_updated>
-    </category_updated>
-    <category_deleted>
-    </category_deleted>
-  </category>
+	<category>
+		<category_id>2</category_id>
+		<category_name>Kháng sinh</category_name>
+		<category_note>3</category_note>
+		<category_status>True</category_status>
+		<category_created>08-03-2024 21:53</category_created>
+		<category_updated>09-03-2024 07:51</category_updated>
+		<category_deleted>
+		</category_deleted>
+	</category>
+	<category>
+		<category_id>3</category_id>
+		<category_name>Giảm đau</category_name>
+		<category_note>3</category_note>
+		<category_status>False</category_status>
+		<category_created>09-03-2024 07:22</category_created>
+		<category_updated>11/07/2024 16:10</category_updated>
+		<category_deleted>
+		</category_deleted>
+	</category>
+	<category>
+		<category_id>1</category_id>
+		<category_name>33</category_name>
+		<category_note>3</category_note>
+		<category_status>True</category_status>
+		<category_created>09-03-2024 07:23</category_created>
+		<category_updated>09-03-2024 07:28</category_updated>
+		<category_deleted>12/03/2024 07:09</category_deleted>
+	</category>
+	<category>
+		<category_id>4</category_id>
+		<category_name>Ho</category_name>
+		<category_note>2</category_note>
+		<category_status>True</category_status>
+		<category_created>09-03-2024 07:25</category_created>
+		<category_updated>09-03-2024 11:39</category_updated>
+		<category_deleted>12/03/2024 07:09</category_deleted>
+	</category>
+	<category>
+		<category_id>44</category_id>
+		<category_name>Thuốc bổ</category_name>
+		<category_note>2</category_note>
+		<category_status>True</category_status>
+		<category_created>09-03-2024 07:44</category_created>
+		<category_updated>09-03-2024 11:46</category_updated>
+		<category_deleted>12/03/2024 07:09</category_deleted>
+	</category>
+	<category>
+		<category_id>5</category_id>
+		<category_name>Thuốc bổ</category_name>
+		<category_note>2</category_note>
+		<category_status>True</category_status>
+		<category_created>10/03/2024 23:03</category_created>
+		<category_updated>
+		</category_updated>
+		<category_deleted>
+		</category_deleted>
+	</category>
 </categories>

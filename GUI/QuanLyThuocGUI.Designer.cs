@@ -141,6 +141,12 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabThuoc.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -196,7 +202,7 @@
             this.tabThuoc.Controls.Add(this.dgvThuoc);
             this.tabThuoc.Location = new System.Drawing.Point(4, 22);
             this.tabThuoc.Name = "tabThuoc";
-            this.tabThuoc.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabThuoc.Padding = new System.Windows.Forms.Padding(3);
             this.tabThuoc.Size = new System.Drawing.Size(1399, 648);
             this.tabThuoc.TabIndex = 0;
             this.tabThuoc.Text = "Thuốc";
@@ -213,7 +219,7 @@
             "Đã hết hạn",
             "Còn hạn",
             "Đã hết thuốc"});
-            this.cbLocDuLieuThuoc.Location = new System.Drawing.Point(847, 310);
+            this.cbLocDuLieuThuoc.Location = new System.Drawing.Point(627, 319);
             this.cbLocDuLieuThuoc.Name = "cbLocDuLieuThuoc";
             this.cbLocDuLieuThuoc.Size = new System.Drawing.Size(170, 28);
             this.cbLocDuLieuThuoc.TabIndex = 21;
@@ -224,7 +230,7 @@
             // 
             this.ckbLocDuLieuThuoc.AutoSize = true;
             this.ckbLocDuLieuThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbLocDuLieuThuoc.Location = new System.Drawing.Point(739, 314);
+            this.ckbLocDuLieuThuoc.Location = new System.Drawing.Point(519, 323);
             this.ckbLocDuLieuThuoc.Name = "ckbLocDuLieuThuoc";
             this.ckbLocDuLieuThuoc.Size = new System.Drawing.Size(102, 24);
             this.ckbLocDuLieuThuoc.TabIndex = 20;
@@ -249,7 +255,7 @@
             "Nhà cung cấp",
             "Ngày tạo",
             "Ngày cập nhật"});
-            this.cbTieuChiThuoc.Location = new System.Drawing.Point(1088, 254);
+            this.cbTieuChiThuoc.Location = new System.Drawing.Point(1144, 319);
             this.cbTieuChiThuoc.Name = "cbTieuChiThuoc";
             this.cbTieuChiThuoc.Size = new System.Drawing.Size(182, 28);
             this.cbTieuChiThuoc.TabIndex = 16;
@@ -259,7 +265,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(1038, 262);
+            this.label21.Location = new System.Drawing.Point(1094, 327);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(44, 20);
             this.label21.TabIndex = 11;
@@ -268,7 +274,7 @@
             // tbTimThuoc
             // 
             this.tbTimThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimThuoc.Location = new System.Drawing.Point(847, 255);
+            this.tbTimThuoc.Location = new System.Drawing.Point(903, 320);
             this.tbTimThuoc.Name = "tbTimThuoc";
             this.tbTimThuoc.Size = new System.Drawing.Size(170, 27);
             this.tbTimThuoc.TabIndex = 15;
@@ -278,7 +284,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(766, 262);
+            this.label22.Location = new System.Drawing.Point(822, 327);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(75, 20);
             this.label22.TabIndex = 8;
@@ -333,7 +339,7 @@
             // btnLuuThuoc
             // 
             this.btnLuuThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuuThuoc.Location = new System.Drawing.Point(262, 245);
+            this.btnLuuThuoc.Location = new System.Drawing.Point(27, 314);
             this.btnLuuThuoc.Name = "btnLuuThuoc";
             this.btnLuuThuoc.Size = new System.Drawing.Size(166, 37);
             this.btnLuuThuoc.TabIndex = 14;
@@ -345,7 +351,7 @@
             // 
             this.btnXoaThuoc.BackColor = System.Drawing.Color.LightSalmon;
             this.btnXoaThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaThuoc.Location = new System.Drawing.Point(459, 245);
+            this.btnXoaThuoc.Location = new System.Drawing.Point(224, 314);
             this.btnXoaThuoc.Name = "btnXoaThuoc";
             this.btnXoaThuoc.Size = new System.Drawing.Size(76, 37);
             this.btnXoaThuoc.TabIndex = 13;
@@ -362,9 +368,12 @@
             this.groupBox3.Controls.Add(this.btnSuaThuoc);
             this.groupBox3.Controls.Add(this.dateTimePicker1);
             this.groupBox3.Controls.Add(this.cbNccThuoc);
+            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.cbTLThuoc);
             this.groupBox3.Controls.Add(this.tbMoTa);
             this.groupBox3.Controls.Add(this.btnThemThuoc);
+            this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.tbGia);
             this.groupBox3.Controls.Add(this.tbDVT);
             this.groupBox3.Controls.Add(this.tbSL);
@@ -373,6 +382,9 @@
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.label25);
+            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label16);
@@ -383,7 +395,7 @@
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox3.Location = new System.Drawing.Point(262, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1110, 222);
+            this.groupBox3.Size = new System.Drawing.Size(1110, 281);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin thuốc";
@@ -535,11 +547,11 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(82, 180);
+            this.label18.Location = new System.Drawing.Point(52, 181);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(42, 20);
+            this.label18.Size = new System.Drawing.Size(72, 20);
             this.label18.TabIndex = 0;
-            this.label18.Text = "Giá*:";
+            this.label18.Text = "Giá bán*:";
             // 
             // label17
             // 
@@ -745,8 +757,8 @@
             this.tabTheLoai.Controls.Add(this.dgvTheLoai);
             this.tabTheLoai.Location = new System.Drawing.Point(4, 22);
             this.tabTheLoai.Name = "tabTheLoai";
-            this.tabTheLoai.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabTheLoai.Size = new System.Drawing.Size(1376, 648);
+            this.tabTheLoai.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTheLoai.Size = new System.Drawing.Size(1399, 648);
             this.tabTheLoai.TabIndex = 1;
             this.tabTheLoai.Text = "Danh mục thuốc";
             this.tabTheLoai.UseVisualStyleBackColor = true;
@@ -1060,8 +1072,8 @@
             this.tabNCC.Controls.Add(this.label7);
             this.tabNCC.Location = new System.Drawing.Point(4, 22);
             this.tabNCC.Name = "tabNCC";
-            this.tabNCC.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabNCC.Size = new System.Drawing.Size(1376, 648);
+            this.tabNCC.Padding = new System.Windows.Forms.Padding(3);
+            this.tabNCC.Size = new System.Drawing.Size(1399, 648);
             this.tabNCC.TabIndex = 2;
             this.tabNCC.Text = "Nhà cung cấp";
             this.tabNCC.UseVisualStyleBackColor = true;
@@ -1389,7 +1401,71 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Tìm kiếm:";
             // 
-            // QuanLyThuocView
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(43, 236);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(81, 20);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Giá nhập*:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(130, 228);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(123, 27);
+            this.textBox1.TabIndex = 3;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(352, 239);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(48, 20);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Loại*:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Thuốc kê đơn",
+            "Không kê đơn"});
+            this.comboBox1.Location = new System.Drawing.Point(445, 237);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(118, 28);
+            this.comboBox1.TabIndex = 7;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(655, 245);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(96, 20);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "Vị trí thuốc*:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Thuốc kê đơn",
+            "Không kê đơn"});
+            this.comboBox2.Location = new System.Drawing.Point(788, 242);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(118, 28);
+            this.comboBox2.TabIndex = 7;
+            // 
+            // QuanLyThuocGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1397,7 +1473,7 @@
             this.ClientSize = new System.Drawing.Size(1441, 690);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lbHeader);
-            this.Name = "QuanLyThuocView";
+            this.Name = "QuanLyThuocGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QUẢN LÝ THUỐC";
             this.Load += new System.EventHandler(this.QuanLyThuocView_Load);
@@ -1534,5 +1610,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         public System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label25;
     }
 }

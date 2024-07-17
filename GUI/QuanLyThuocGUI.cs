@@ -107,11 +107,10 @@ namespace ProjectXML.GUI
 
             foreach (var medicine in medicineList)
             {
-                if (!medicine.deleted.Equals("") || medicine.category == null || medicine.supplier == null ||
-                    !medicine.supplier.status || !medicine.category.status) continue;
+                if (!medicine.deleted.Equals("") || medicine.category == null || medicine.supplier == null || !medicine.supplier.status || !medicine.category.status) continue;
 
                 dgvThuoc.Rows.Add(++i, medicine.id, medicine.name, $"{medicine.category.id}-{medicine.category.name}",
-                    medicine.expireDate, medicine.quantity, medicine.unit, medicine.price, medicine.description,
+                    medicine.expireDate, medicine.quantity, medicine.unit, medicine.price_out, medicine.description,
                     $"{medicine.supplier.id}-{medicine.supplier.name}", medicine.created, medicine.updated);
             }
 
@@ -174,7 +173,7 @@ namespace ProjectXML.GUI
             cbTrangThaiTheLoai.SelectedIndex = 0;
         }
 
-        public void TheLoai_Show(List<Category> list)
+        public void TheLoai_Show(List<CategoryDTO> list)
         {
             var i = 0;
             dgvTheLoai.Rows.Clear();
@@ -236,7 +235,7 @@ namespace ProjectXML.GUI
                 return;
             }
 
-            var category = new Category(maTheLoai, tenTheLoai, ghiChu, trangThai, CustomDateTime.GetNow(), "", "");
+            var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, CustomDateTime.GetNow(), "", "");
             var state = categoryController.Insert(category);
 
             if (state == Predefined.SUCCESS)
@@ -264,7 +263,7 @@ namespace ProjectXML.GUI
                 return;
             }
 
-            var category = new Category(maTheLoai, tenTheLoai, ghiChu, trangThai, created, CustomDateTime.GetNow(), "");
+            var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, created, CustomDateTime.GetNow(), "");
             var state = categoryController.Update(category);
 
             if (state == Predefined.SUCCESS)
@@ -706,8 +705,8 @@ namespace ProjectXML.GUI
 
             var supplier = supplierController.LoadData().Where(s => s.id.Equals(nccArr[0])).FirstOrDefault();
             var category = categoryController.LoadData().Where(c => c.id.Equals(tlArr[0])).FirstOrDefault();
-            var newMedicine = new MedicineDTO(id, name, expireDate, unit, price, quantity, image, description, supplier,
-                CustomDateTime.GetNow(), "", "", category);
+            var newMedicine = new MedicineDTO(id, name, expireDate, unit, price, quantity, image, description,
+                CustomDateTime.GetNow(), "", "", supplier, category);
 
 
             var result = medicineController.Insert(newMedicine);
@@ -793,7 +792,7 @@ namespace ProjectXML.GUI
                 var category = categoryController.LoadData().Where(c => c.id.Equals(categoryId)).FirstOrDefault();
 
                 var medicine = new MedicineDTO(id, name, expireDate, unit, price, quantity, image, description,
-                    supplier, created, updated, "", category);
+                     created, updated, "", supplier, category);
 
                 var result = medicineController.Update(medicine);
                 if (result == Predefined.SUCCESS)
@@ -883,7 +882,7 @@ namespace ProjectXML.GUI
                     case 5:
                         return medicine.unit.ToLower().Contains(noidungtimkiem);
                     case 6:
-                        return medicine.price.ToString().ToLower().Contains(noidungtimkiem);
+                        return medicine.price_out.ToString().ToLower().Contains(noidungtimkiem);
                     case 7:
                         return medicine.description.ToLower().Contains(noidungtimkiem);
                     case 8:

@@ -61,7 +61,7 @@ namespace ProjectXML.GUI.Dialog
                 return null;
             }
 
-            return medicineList.Where(medicine => medicine.price >= priceFrom && medicine.price <= priceTo).ToList();
+            return medicineList.Where(medicine => medicine.price_out >= priceFrom && medicine.price_out <= priceTo).ToList();
         }
 
         public List<MedicineDTO> FilterByImportDate(List<MedicineDTO> medicineList)

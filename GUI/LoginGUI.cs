@@ -11,7 +11,11 @@ namespace ProjectXML.GUI
 
         public LoginGUI()
         {
-            InitializeComponent();
+            //InitializeComponent();
+
+            if (mainView == null || mainView.IsDisposed) mainView = new MainGUI(new DTO.UserDTO("admin", "1", new DTO.StaffDTO("1", "long", true, "15/2/2222", true, false, null)), this);
+            mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
+            mainView.Show();
         }
 
         [STAThread]
@@ -50,11 +54,11 @@ namespace ProjectXML.GUI
             tbUsername.Focus();
             tbPassword.Text = "";
 
-
             if (mainView == null || mainView.IsDisposed) mainView = new MainGUI(user, this);
             mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
             mainView.Show();
             Hide();
+
         }
 
         private void tbUsername_KeyDown(object sender, KeyEventArgs e)

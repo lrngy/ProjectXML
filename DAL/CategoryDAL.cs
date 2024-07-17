@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Xml;
 using ProjectXML.DTO;
@@ -16,27 +17,28 @@ namespace ProjectXML.DAL
             categoryDoc = Config.getDoc("categories");
         }
 
-        public List<Category> GetAll()
+        public List<CategoryDTO> GetAll()
         {
             ReloadData();
-            var list = new List<Category>();
+            var list = new List<CategoryDTO>();
             try
             {
-                var categoryNodes = categoryDoc.SelectNodes("/categories/category");
-                foreach (XmlNode categoryNode in categoryNodes)
+                string query = "SELECT * FROM categories";
+                DataTable dt = DB.ExecuteQuery(query);
+                foreach (DataRow dr in dt.Rows)
                 {
-                    var id = categoryNode.SelectSingleNode("category_id").InnerText;
-                    var name = categoryNode.SelectSingleNode("category_name").InnerText;
-                    var note = categoryNode.SelectSingleNode("category_note").InnerText;
-                    var status = bool.Parse(categoryNode.SelectSingleNode("category_status").InnerText);
+                    var id = dr["category_id"].ToString();
+                    var name = dr["category_name"].ToString();
+                    var note = dr["category_note"].ToString();
+                    var status = bool.Parse(dr["category_status"].ToString());
 
 
-                    var created = categoryNode.SelectSingleNode("category_created").InnerText;
-                    var updated = categoryNode.SelectSingleNode("category_updated").InnerText;
-                    var deleted = categoryNode.SelectSingleNode("category_deleted").InnerText;
+                    var created = dr["category_created"].ToString();
+                    var updated = dr["category_updated"].ToString();
+                    var deleted = dr["category_deleted"].ToString();
 
 
-                    var category = new Category(id, name, note, status, created, updated, deleted);
+                    var category = new CategoryDTO(id, name, note, status, created, updated, deleted);
                     list.Add(category);
                 }
             }
@@ -47,23 +49,24 @@ namespace ProjectXML.DAL
             return list;
         }
 
-        public Category GetById(string id)
+        public CategoryDTO GetById(string id)
         {
             ReloadData();
-            Category category = null;
+            CategoryDTO category = null;
             try
             {
-                var categoryNode = categoryDoc.SelectSingleNode("/categories/category[category_id='" + id + "']");
-                if (categoryNode != null)
+                string query = $"SELECT * FROM categories WHERE category_id = ${id}";
+                DataTable dt = DB.ExecuteQuery(query);
+                if (dt.Rows.Count != 0)
                 {
-                    var deleted = categoryNode.SelectSingleNode("category_deleted").InnerText;
+                    var deleted = dt.Rows[0]["category_deleted"].ToString();
                     if (!deleted.Equals("")) return category;
-                    var name = categoryNode.SelectSingleNode("category_name").InnerText;
-                    var note = categoryNode.SelectSingleNode("category_note").InnerText;
-                    var status = bool.Parse(categoryNode.SelectSingleNode("category_status").InnerText);
-                    var created = categoryNode.SelectSingleNode("category_created").InnerText;
-                    var updated = categoryNode.SelectSingleNode("category_updated").InnerText;
-                    category = new Category(id, name, note, status, created, updated, deleted);
+                    var name = dt.Rows[0]["category_name"].ToString();
+                    var note = dt.Rows[0]["category_note"].ToString();
+                    var status = bool.Parse(dt.Rows[0]["category_status"].ToString());
+                    var created = dt.Rows[0]["category_created"].ToString();
+                    var updated = dt.Rows[0]["category_updated"].ToString();
+                    category = new CategoryDTO(id, name, note, status, created, updated, deleted);
                 }
             }
             catch (Exception)
@@ -76,47 +79,56 @@ namespace ProjectXML.DAL
         public bool CheckExist(string id)
         {
             ReloadData();
-            var categoryNode = categoryDoc.SelectSingleNode("/categories/category[category_id='" + id + "']");
-            return categoryNode != null;
-        }
+            string query = $"SELECT * FROM categories WHERE category_id = ${id}";
+            DataTable dt = DB.ExecuteQuery(query);
+            if (dt.Rows.Count == 0) return false;
+            var deleted = dt.Rows[0]["category_deleted"].ToString();
+            return deleted.Equals("");
+            }
+        
 
-        public int Insert(Category category)
+        public int Insert(CategoryDTO category)
         {
             ReloadData();
             try
             {
-                XmlNode categoryNode = categoryDoc.CreateElement("category");
+                //XmlNode categoryNode = categoryDoc.CreateElement("category");
 
-                XmlNode idNode = categoryDoc.CreateElement("category_id");
-                idNode.InnerText = category.id;
-                categoryNode.AppendChild(idNode);
+                //XmlNode idNode = categoryDoc.CreateElement("category_id");
+                //idNode.InnerText = category.id;
+                //categoryNode.AppendChild(idNode);
 
-                XmlNode nameNode = categoryDoc.CreateElement("category_name");
-                nameNode.InnerText = category.name;
-                categoryNode.AppendChild(nameNode);
+                //XmlNode nameNode = categoryDoc.CreateElement("category_name");
+                //nameNode.InnerText = category.name;
+                //categoryNode.AppendChild(nameNode);
 
-                XmlNode noteNode = categoryDoc.CreateElement("category_note");
-                noteNode.InnerText = category.note;
-                categoryNode.AppendChild(noteNode);
+                //XmlNode noteNode = categoryDoc.CreateElement("category_note");
+                //noteNode.InnerText = category.note;
+                //categoryNode.AppendChild(noteNode);
 
-                XmlNode statusNode = categoryDoc.CreateElement("category_status");
-                statusNode.InnerText = category.status.ToString();
-                categoryNode.AppendChild(statusNode);
+                //XmlNode statusNode = categoryDoc.CreateElement("category_status");
+                //statusNode.InnerText = category.status.ToString();
+                //categoryNode.AppendChild(statusNode);
 
-                XmlNode createdNode = categoryDoc.CreateElement("category_created");
-                createdNode.InnerText = category.created;
-                categoryNode.AppendChild(createdNode);
+                //XmlNode createdNode = categoryDoc.CreateElement("category_created");
+                //createdNode.InnerText = category.created;
+                //categoryNode.AppendChild(createdNode);
 
-                XmlNode updatedNode = categoryDoc.CreateElement("category_updated");
-                updatedNode.InnerText = category.updated;
-                categoryNode.AppendChild(updatedNode);
+                //XmlNode updatedNode = categoryDoc.CreateElement("category_updated");
+                //updatedNode.InnerText = category.updated;
+                //categoryNode.AppendChild(updatedNode);
 
-                XmlNode deletedNode = categoryDoc.CreateElement("category_deleted");
-                deletedNode.InnerText = category.deleted;
-                categoryNode.AppendChild(deletedNode);
+                //XmlNode deletedNode = categoryDoc.CreateElement("category_deleted");
+                //deletedNode.InnerText = category.deleted;
+                //categoryNode.AppendChild(deletedNode);
 
-                categoryDoc.SelectSingleNode("/categories").AppendChild(categoryNode);
-                categoryDoc.Save(Config.getXMLPath("categories"));
+                //categoryDoc.SelectSingleNode("/categories").AppendChild(categoryNode);
+                //categoryDoc.Save(Config.getXMLPath("categories"));
+
+                string query = $"INSERT INTO categories VALUES ('{category.id}', '{category.name}', '{category.note}', {category.status}, '{category.created}', '{category.updated}', '{category.deleted}')";
+                DB.ExecuteNonQuery(query);
+
+
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -126,19 +138,23 @@ namespace ProjectXML.DAL
             }
         }
 
-        public int Update(Category category)
+        public int Update(CategoryDTO category)
         {
             ReloadData();
             try
             {
-                var categories = categoryDoc.SelectSingleNode("/categories");
-                var categoryNode =
-                    categoryDoc.SelectSingleNode("/categories/category[category_id='" + category.id + "']");
-                categoryNode.SelectSingleNode("category_name").InnerText = category.name;
-                categoryNode.SelectSingleNode("category_note").InnerText = category.note;
-                categoryNode.SelectSingleNode("category_status").InnerText = category.status.ToString();
-                categoryNode.SelectSingleNode("category_updated").InnerText = category.updated;
-                categoryDoc.Save(Config.getXMLPath("categories"));
+                //var categories = categoryDoc.SelectSingleNode("/categories");
+                //var categoryNode =
+                //    categoryDoc.SelectSingleNode("/categories/category[category_id='" + category.id + "']");
+                //categoryNode.SelectSingleNode("category_name").InnerText = category.name;
+                //categoryNode.SelectSingleNode("category_note").InnerText = category.note;
+                //categoryNode.SelectSingleNode("category_status").InnerText = category.status.ToString();
+                //categoryNode.SelectSingleNode("category_updated").InnerText = category.updated;
+                //categoryDoc.Save(Config.getXMLPath("categories"));
+
+                string query = $"UPDATE categories SET category_name = '{category.name}', category_note = '{category.note}', category_status = {category.status}, category_updated = '{category.updated}' WHERE category_id = '{category.id}'";
+                DB.ExecuteNonQuery(query);
+
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -153,10 +169,14 @@ namespace ProjectXML.DAL
             ReloadData();
             try
             {
-                var categoryNode =
-                    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
-                categoryNode.SelectSingleNode("category_deleted").InnerText = CustomDateTime.GetNow();
-                categoryDoc.Save(Config.getXMLPath("categories"));
+                //var categoryNode =
+                //    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
+                //categoryNode.SelectSingleNode("category_deleted").InnerText = CustomDateTime.GetNow();
+                //categoryDoc.Save(Config.getXMLPath("categories"));
+
+                string query = $"UPDATE categories SET category_deleted = '{CustomDateTime.GetNow()}' WHERE category_id = '{maTheLoai}'";
+                DB.ExecuteNonQuery(query);
+
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -171,10 +191,14 @@ namespace ProjectXML.DAL
             ReloadData();
             try
             {
-                var categoryNode =
-                    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
-                categoryNode.SelectSingleNode("category_deleted").InnerText = "";
-                categoryDoc.Save(Config.getXMLPath("categories"));
+                //var categoryNode =
+                //    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
+                //categoryNode.SelectSingleNode("category_deleted").InnerText = "";
+                //categoryDoc.Save(Config.getXMLPath("categories"));
+
+                string query = $"UPDATE categories SET category_deleted = '' WHERE category_id = '{maTheLoai}'";
+                DB.ExecuteNonQuery(query);
+
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -189,10 +213,14 @@ namespace ProjectXML.DAL
             ReloadData();
             try
             {
-                var categoryNode =
-                    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
-                categoryNode.ParentNode.RemoveChild(categoryNode);
-                categoryDoc.Save(Config.getXMLPath("categories"));
+                //var categoryNode =
+                //    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
+                //categoryNode.ParentNode.RemoveChild(categoryNode);
+                //categoryDoc.Save(Config.getXMLPath("categories"));
+
+                string query = $"DELETE FROM categories WHERE category_id = '{maTheLoai}'";
+                DB.ExecuteNonQuery(query);
+
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -207,10 +235,14 @@ namespace ProjectXML.DAL
             ReloadData();
             try
             {
-                var categoryNodes = categoryDoc.SelectNodes("/categories/category");
-                foreach (XmlNode categoryNode in categoryNodes)
-                    categoryNode.SelectSingleNode("category_deleted").InnerText = "";
-                categoryDoc.Save(Config.getXMLPath("categories"));
+                //var categoryNodes = categoryDoc.SelectNodes("/categories/category");
+                //foreach (XmlNode categoryNode in categoryNodes)
+                //    categoryNode.SelectSingleNode("category_deleted").InnerText = "";
+                //categoryDoc.Save(Config.getXMLPath("categories"));
+
+                string query = $"UPDATE categories SET category_deleted = ''";
+                DB.ExecuteNonQuery(query);
+
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)

@@ -1,13 +1,12 @@
 ﻿namespace ProjectXML.DTO
 {
-    public class Category
+    public class CategoryDTO
     {
-        public Category()
+        public CategoryDTO()
         {
         }
 
-        public Category(string id, string name, string note, bool status, string created, string updated,
-            string deleted)
+        public CategoryDTO(string id, string name, string note, bool status, string created, string updated, string deleted)
         {
             this.id = id;
             this.name = name;
@@ -25,5 +24,6 @@
         public string created { get; set; }
         public string updated { get; set; }
         public string deleted { get; set; }
+
     }
 }

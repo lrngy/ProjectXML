@@ -28,7 +28,7 @@ namespace ProjectXML.GUI.Dialog
                 if (medicine.deleted.Equals("")) continue;
                 dgvDeletedMedicine.Rows.Add(++i, medicine.id, medicine.name,
                     $"{medicine.category.id}-{medicine.category.name}", medicine.expireDate, medicine.quantity,
-                    medicine.unit, medicine.price, medicine.description,
+                    medicine.unit, medicine.price_out, medicine.description,
                     $"{medicine.supplier.id}-{medicine.supplier.name}", medicine.deleted);
             }
         }

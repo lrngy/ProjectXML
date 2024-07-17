@@ -14,18 +14,18 @@ namespace ProjectXML.BUS
 
         public CategoryDAL categoryDAL { get; set; }
 
-        public List<Category> LoadData()
+        public List<CategoryDTO> LoadData()
         {
             return categoryDAL.GetAll();
         }
 
-        public int Insert(Category category)
+        public int Insert(CategoryDTO category)
         {
             if (categoryDAL.CheckExist(category.id)) return Predefined.ID_EXIST;
             return categoryDAL.Insert(category);
         }
 
-        public int Update(Category category)
+        public int Update(CategoryDTO category)
         {
             if (categoryDAL.GetById(category.id) == null) return Predefined.ID_NOT_EXIST;
             return categoryDAL.Update(category);

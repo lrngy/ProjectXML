@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Xml;
 using ProjectXML.DTO;
@@ -12,7 +13,6 @@ namespace ProjectXML.DAL
         private readonly CategoryDAL categoryDAL;
         private XmlDocument medicineDoc;
         private readonly SupplierDAL supplierDAL;
-
 
         public MedicineDAL()
         {
@@ -34,39 +34,44 @@ namespace ProjectXML.DAL
         public List<MedicineDTO> GetAll()
         {
             ReloadData();
-            var list = new List<MedicineDTO>();
+            List<MedicineDTO> medicines = new List<MedicineDTO>();
             try
             {
-                var medicineNodes = medicineDoc.SelectNodes("/medicines/medicine");
-                foreach (XmlNode medicineNode in medicineNodes)
+                string query = "select * from medicines";
+               DataTable dt = DB.ExecuteQuery(query);
+                foreach (DataRow dr in dt.Rows)
                 {
-                    var id = medicineNode.SelectSingleNode("medicine_id").InnerText;
-                    var name = medicineNode.SelectSingleNode("medicine_name").InnerText;
-                    var expire = medicineNode.SelectSingleNode("medicine_expire_date").InnerText;
-                    var unit = medicineNode.SelectSingleNode("medicine_unit").InnerText;
-                    var price = double.Parse(medicineNode.SelectSingleNode("medicine_price").InnerText);
-                    var quantity = int.Parse(medicineNode.SelectSingleNode("medicine_quantity").InnerText);
-                    var image = medicineNode.SelectSingleNode("medicine_image").InnerText;
-                    var description = medicineNode.SelectSingleNode("medicine_description").InnerText;
-                    var supplierId = medicineNode.SelectSingleNode("supplier_id").InnerText;
-                    var created = medicineNode.SelectSingleNode("medicine_created").InnerText;
-                    var updated = medicineNode.SelectSingleNode("medicine_updated").InnerText;
-                    var deleted = medicineNode.SelectSingleNode("medicine_deleted").InnerText;
-                    var categoryId = medicineNode.SelectSingleNode("category_id").InnerText;
+                    string id = dr["medicine_id"].ToString();
+                    string name = dr["medicine_name"].ToString();
+                    string expire = dr["medicine_expire_date"].ToString();
+                    string unit = dr["medicine_unit"].ToString();
+                    double price_in = double.Parse(dr["medicine_price_in"].ToString());
+                    double price_out = double.Parse(dr["medicine_price_out"].ToString());
+                    int quantity = int.Parse(dr["medicine_quantity"].ToString());
+                    string image = dr["medicine_image"].ToString();
+                    string description = dr["medicine_description"].ToString();
+                    string supplierId = dr["supplier_id"].ToString();
+                    string created = dr["medicine_created"].ToString();
+                    string updated = dr["medicine_updated"].ToString();
+                    string deleted = dr["medicine_deleted"].ToString();
+                    string categoryId = dr["category_id"].ToString();
+                    string medicine_location = dr["medicine_location_id"].ToString();
+                    bool medicine_type = dr["medicine_type"].ToString() == "1";
+                    
 
-                    var supplier = supplierDAL.GetById(supplierId);
-                    var category = categoryDAL.GetById(categoryId);
+                    SupplierDTO supplier = supplierDAL.GetById(supplierId);
+                    CategoryDTO category = categoryDAL.GetById(categoryId);
+                    MedicineLocationDTO medicineLocation = new MedicineLocationDTO();
+                    MedicineDTO medicine = new MedicineDTO(id, name, expire, unit, price_in, price_out, quantity, medicine_type, image, description,  created, updated, deleted, supplier,category, medicineLocation);
+                    medicines.Add(medicine);
 
-                    var medicine = new MedicineDTO(id, name, expire, unit, price, quantity, image, description,
-                        supplier, created, updated, deleted, category);
-                    list.Add(medicine);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
             }
-
-            return list;
+            return medicines;
         }
 
         internal MedicineDTO GetById(string id)
@@ -75,27 +80,30 @@ namespace ProjectXML.DAL
             MedicineDTO medicine = null;
             try
             {
-                var medicineNode = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + id + "']");
-                if (medicineNode != null)
+                string query = "select * from medicines where medicine_id = " + id;
+                DataTable dt = DB.ExecuteQuery(query);
+                //var medicineNode = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + id + "']");
+                if (dt.Rows.Count != 0)
                 {
-                    var name = medicineNode.SelectSingleNode("medicine_name").InnerText;
-                    var expire = medicineNode.SelectSingleNode("medicine_expire_date").InnerText;
-                    var unit = medicineNode.SelectSingleNode("medicine_unit").InnerText;
-                    var price = double.Parse(medicineNode.SelectSingleNode("medicine_price").InnerText);
-                    var quantity = int.Parse(medicineNode.SelectSingleNode("medicine_quantity").InnerText);
-                    var image = medicineNode.SelectSingleNode("medicine_image").InnerText;
-                    var description = medicineNode.SelectSingleNode("medicine_description").InnerText;
-                    var supplierId = medicineNode.SelectSingleNode("supplier_id").InnerText;
-                    var created = medicineNode.SelectSingleNode("medicine_created").InnerText;
-                    var updated = medicineNode.SelectSingleNode("medicine_updated").InnerText;
-                    var deleted = medicineNode.SelectSingleNode("medicine_deleted").InnerText;
-                    var categoryId = medicineNode.SelectSingleNode("category_id").InnerText;
+                    var name = dt.Rows[0]["medicine_name"].ToString();
+                    var expire = dt.Rows[0]["medicine_expire_date"].ToString();
+                    var unit = dt.Rows[0]["medicine_unit"].ToString();
+                    var price = double.Parse(dt.Rows[0]["medicine_price"].ToString());
+                    var quantity = int.Parse(dt.Rows[0]["medicine_quantity"].ToString());
+                    var image = dt.Rows[0]["medicine_image"].ToString();
+                    var description = dt.Rows[0]["medicine_description"].ToString();
+                    var supplierId = dt.Rows[0]["supplier_id"].ToString();
+                    var created = dt.Rows[0]["medicine_created"].ToString();
+                    var updated = dt.Rows[0]["medicine_updated"].ToString();
+                    var deleted = dt.Rows[0]["medicine_deleted"].ToString();
+                    var categoryId = dt.Rows[0]["category_id"].ToString();
+
 
                     var supplier = supplierDAL.GetById(supplierId);
                     var category = categoryDAL.GetById(categoryId);
 
-                    medicine = new MedicineDTO(id, name, expire, unit, price, quantity, image, description, supplier,
-                        created, updated, deleted, category);
+                    medicine = new MedicineDTO(id, name, expire, unit, price, quantity, image, description,
+                        created, updated, deleted, supplier,category);
                 }
             }
             catch (Exception ex)
@@ -118,7 +126,7 @@ namespace ProjectXML.DAL
                     medicineNode.SelectSingleNode("medicine_name").InnerText = medicine.name;
                     medicineNode.SelectSingleNode("medicine_expire_date").InnerText = medicine.expireDate;
                     medicineNode.SelectSingleNode("medicine_unit").InnerText = medicine.unit;
-                    medicineNode.SelectSingleNode("medicine_price").InnerText = medicine.price.ToString();
+                    medicineNode.SelectSingleNode("medicine_price").InnerText = medicine.price_out.ToString();
                     medicineNode.SelectSingleNode("medicine_quantity").InnerText = medicine.quantity.ToString();
                     medicineNode.SelectSingleNode("medicine_image").InnerText = medicine.image;
                     medicineNode.SelectSingleNode("medicine_description").InnerText = medicine.description;
@@ -164,7 +172,7 @@ namespace ProjectXML.DAL
                 medicineNode.AppendChild(unitNode);
 
                 XmlNode priceNode = medicineDoc.CreateElement("medicine_price");
-                priceNode.InnerText = newMedicine.price.ToString();
+                priceNode.InnerText = newMedicine.price_out.ToString();
                 medicineNode.AppendChild(priceNode);
 
                 XmlNode quantityNode = medicineDoc.CreateElement("medicine_quantity");

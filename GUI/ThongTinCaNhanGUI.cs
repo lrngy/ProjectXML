@@ -76,7 +76,7 @@ namespace ProjectXML.GUI
             }
 
             var newStaff = new StaffDTO(user.staff.id, name, gender, birthday, user.staff.isManager,
-                user.staff.isSeller);
+                user.staff.isSeller, user.username);
             var newUser = new UserDTO(user.username, user.password, newStaff);
             var result = userController.Update(newUser);
             if (result == Predefined.SUCCESS)

@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ProjectXML.DAL
 {
     internal class DB
     {
-        private static string connectedString = @"Data Source=LONGPC\SQLEXPRESS;Initial Catalog=QlyHieuThuoc;Integrated Security=True";
+        private static string connectString = @"Data Source=LONGPC\SQLEXPRESS;Initial Catalog=QlyHieuThuoc;Integrated Security=True";
         private static SqlConnection GetConnection()
         {
-            return new SqlConnection(connectedString);
+            return new SqlConnection(connectString);
         }
         public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
@@ -46,11 +44,63 @@ namespace ProjectXML.DAL
                         cmd.Parameters.AddRange(parameters);
                     }
                     conn.Open();
+                    try
+                    {
                     int rowsAffected = cmd.ExecuteNonQuery();
-                    conn.Close();
+
                     return rowsAffected;
+                    } catch(Exception ex)
+                    {
+                        Debug.Write(ex.ToString());
+                    }
+                    conn.Close();
+                    return 0;
                 }
             }
         }
+
+        public static int ExecuteTransaction(Dictionary<string, SqlParameter[]> queryParameters)
+        {
+            int result = 0;
+
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                SqlTransaction sqlTran = connection.BeginTransaction();
+                SqlCommand command = connection.CreateCommand();
+                command.Transaction = sqlTran;
+
+                try
+                {
+                    foreach (var entry in queryParameters)
+                    {
+                        command.CommandText = entry.Key;
+                        command.Parameters.Clear();
+                        command.Parameters.AddRange(entry.Value);
+
+                        result += command.ExecuteNonQuery();
+                    }
+
+                    sqlTran.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+
+                    try
+                    {
+                        sqlTran.Rollback();
+                        Debug.WriteLine("Transaction rolled back.");
+                    }
+                    catch (Exception exRollback)
+                    {
+                        Debug.WriteLine("Rollback Error: " + exRollback.Message);
+                    }
+                }
+
+                return result;
+            }
+        }
+
     }
 }

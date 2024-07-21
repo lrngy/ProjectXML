@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Forms;
 using ProjectXML.BUS;
+using ProjectXML.DAL;
 using ProjectXML.DTO;
 using ProjectXML.GUI.Dialog;
 using ProjectXML.Util;
@@ -11,16 +12,18 @@ namespace ProjectXML.GUI
     public partial class ThongTinCaNhanGUI : Form
     {
         public delegate void OnUpdateHandler();
+        public OnUpdateHandler OnUpdate;
 
         private ChangePasswordDialog changePasswordDialog;
-        public OnUpdateHandler OnUpdate;
         private UserDTO user;
+        private readonly StaffDTO staff;
         private readonly UserBUS userController = new UserBUS();
 
         public ThongTinCaNhanGUI(UserDTO user)
         {
             InitializeComponent();
             this.user = user;
+            staff = new StaffDAL().GetByUsername(user.username);
         }
 
         private void ThongTinCaNhanView_Load(object sender, EventArgs e)
@@ -31,21 +34,19 @@ namespace ProjectXML.GUI
         public void ThongTinCaNhanShow()
         {
             user = userController.getUser(user.username);
-            lbMaNV.Text = user.staff.id;
-            lbVaiTro.Text = user.staff.isManager ? "Quản lý" : "Nhân viên";
-            tbHoTen.Text = user.staff.name;
+            lbMaNV.Text = staff.id;
+            lbVaiTro.Text = staff.isManager ? "Quản lý" : "Nhân viên";
+            tbHoTen.Text = staff.name;
             try
             {
-                dateTimePicker1.Text = DateTime
-                    .ParseExact(user.staff.birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString();
+                dateTimePicker1.Text = staff.birthday;
             }
             catch (Exception)
             {
-                dateTimePicker1.Text = DateTime.ParseExact("01/01/2000", "dd/MM/yyyy", CultureInfo.InvariantCulture)
-                    .ToString();
+                dateTimePicker1.Text = "2000-01-01";
             }
 
-            radioButton1.Checked = user.staff.gender;
+            radioButton1.Checked = staff.gender;
             radioButton2.Checked = !radioButton1.Checked;
         }
 
@@ -67,22 +68,23 @@ namespace ProjectXML.GUI
                 return;
             }
 
-            var birthdayYear = DateTime.ParseExact(birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year;
+            var birth = DateTime.ParseExact(birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            if (DateTime.Now.Year - birthdayYear < 18)
+            if (DateTime.Now.Year - birth.Year < 18)
             {
                 CustomMessageBox.ShowWarning("Tuổi của bạn phải lớn hơn hoặc bằng 18");
                 return;
             }
 
-            var newStaff = new StaffDTO(user.staff.id, name, gender, birthday, user.staff.isManager,
-                user.staff.isSeller, user.username);
-            var newUser = new UserDTO(user.username, user.password, newStaff);
-            var result = userController.Update(newUser);
+            var newStaff = new StaffDTO(staff.id, name, gender, birth.ToString("yyyy-MM-dd"), staff.isManager,
+                staff.isSeller, user.username);
+            var newUser = new UserDTO(user.username, user.password);
+            var result = userController.Update(newUser, newStaff);
             if (result == Predefined.SUCCESS)
             {
                 CustomMessageBox.ShowSuccess("Cập nhật thông tin thành công");
                 user.Update(newUser);
+                staff.Update(newStaff);
                 ThongTinCaNhanShow();
                 OnUpdate();
                 return;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -341,6 +342,7 @@ namespace ProjectXML.GUI
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -357,6 +359,7 @@ namespace ProjectXML.GUI
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Xml;
 using ProjectXML.DTO;
@@ -12,14 +13,14 @@ namespace ProjectXML.DAL
     {
         private XmlDocument categoryDoc;
 
-        internal void ReloadData()
-        {
-            categoryDoc = Config.getDoc("categories");
-        }
+        //internal void ReloadData()
+        //{
+        //    categoryDoc = Config.getDoc("categories");
+        //}
 
         public List<CategoryDTO> GetAll()
         {
-            ReloadData();
+            //ReloadData();
             var list = new List<CategoryDTO>();
             try
             {
@@ -51,7 +52,7 @@ namespace ProjectXML.DAL
 
         public CategoryDTO GetById(string id)
         {
-            ReloadData();
+            //ReloadData();
             CategoryDTO category = null;
             try
             {
@@ -76,10 +77,10 @@ namespace ProjectXML.DAL
             return category;
         }
 
-        public bool CheckExist(string id)
+        public bool CheckExist(string name)
         {
-            ReloadData();
-            string query = $"SELECT * FROM categories WHERE category_id = ${id}";
+            //ReloadData();
+            string query = $"SELECT * FROM categories WHERE category_name = ${name}";
             DataTable dt = DB.ExecuteQuery(query);
             if (dt.Rows.Count == 0) return false;
             var deleted = dt.Rows[0]["category_deleted"].ToString();
@@ -89,7 +90,7 @@ namespace ProjectXML.DAL
 
         public int Insert(CategoryDTO category)
         {
-            ReloadData();
+            //ReloadData();
             try
             {
                 //XmlNode categoryNode = categoryDoc.CreateElement("category");
@@ -125,22 +126,27 @@ namespace ProjectXML.DAL
                 //categoryDoc.SelectSingleNode("/categories").AppendChild(categoryNode);
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"INSERT INTO categories VALUES ('{category.id}', '{category.name}', '{category.note}', {category.status}, '{category.created}', '{category.updated}', '{category.deleted}')";
-                DB.ExecuteNonQuery(query);
-
-
+                string query = $"INSERT INTO categories(category_name, category_note, category_status, category_created) VALUES (@name, @note, @status, @created)";
+                SqlParameter[] sqlParameters = {
+      
+                    new SqlParameter("@name", category.name),
+                    new SqlParameter("@note", category.note),
+                    new SqlParameter("@status", category.status),
+                    new SqlParameter("@created", category.created),
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
         public int Update(CategoryDTO category)
         {
-            ReloadData();
+            //ReloadData();
             try
             {
                 //var categories = categoryDoc.SelectSingleNode("/categories");
@@ -160,13 +166,13 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
         public int Delete(string maTheLoai)
         {
-            ReloadData();
+            //ReloadData();
             try
             {
                 //var categoryNode =
@@ -182,13 +188,13 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
         internal int Restore(string maTheLoai)
         {
-            ReloadData();
+            //ReloadData();
             try
             {
                 //var categoryNode =
@@ -196,7 +202,7 @@ namespace ProjectXML.DAL
                 //categoryNode.SelectSingleNode("category_deleted").InnerText = "";
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"UPDATE categories SET category_deleted = '' WHERE category_id = '{maTheLoai}'";
+                string query = $"UPDATE categories SET category_deleted = null WHERE category_id = '{maTheLoai}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -204,13 +210,13 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
         internal int ForceDelete(string maTheLoai)
         {
-            ReloadData();
+            //ReloadData();
             try
             {
                 //var categoryNode =
@@ -226,13 +232,13 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
         internal int RestoreAll()
         {
-            ReloadData();
+            //ReloadData();
             try
             {
                 //var categoryNodes = categoryDoc.SelectNodes("/categories/category");
@@ -240,7 +246,7 @@ namespace ProjectXML.DAL
                 //    categoryNode.SelectSingleNode("category_deleted").InnerText = "";
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"UPDATE categories SET category_deleted = ''";
+                string query = $"UPDATE categories SET category_deleted = null";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -248,7 +254,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
     }

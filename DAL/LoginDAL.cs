@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Xml;
 using ProjectXML.Util;
 
@@ -6,28 +8,16 @@ namespace ProjectXML.DAL
 {
     public class LoginDAL
     {
-        private XmlDocument xmlDoc;
-
-        public void ReLoadData()
-        {
-            xmlDoc = Config.getDoc("users");
-        }
-
         public bool isExistAccount(string username, string password)
         {
-            ReLoadData();
-            XmlNode accountNode = null;
-            try
+            string query = $"SELECT * FROM users WHERE username = @username AND password = @password";
+            SqlParameter[] sqlParameters =
             {
-                var xPath = $"/users/user[username='{username}' and password='{password}']";
-
-                accountNode = xmlDoc.SelectSingleNode(xPath);
-            }
-            catch (Exception)
-            {
-            }
-
-            return accountNode != null;
+                new SqlParameter("@username", username),
+                new SqlParameter("@password", password)
+            };
+            DataTable dt = DB.ExecuteQuery(query, sqlParameters);
+            return dt.Rows.Count != 0;
         }
     }
 }

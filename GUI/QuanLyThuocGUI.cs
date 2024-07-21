@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 using ProjectXML.BUS;
+using ProjectXML.DAL;
 using ProjectXML.DTO;
 using ProjectXML.GUI.Dialog;
 using ProjectXML.Util;
@@ -31,12 +32,14 @@ namespace ProjectXML.GUI
         private readonly int tabControlIndex;
 
         private readonly UserDTO user;
+        private readonly StaffDTO staff;
 
         public QuanLyThuocGUI(UserDTO user, int tabControlIndex)
         {
             InitializeComponent();
             this.user = user;
             this.tabControlIndex = tabControlIndex;
+            staff = new StaffDAL().GetByUsername(user.username);
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
@@ -45,7 +48,7 @@ namespace ProjectXML.GUI
             switch (tabIndex)
             {
                 case 0:
-                    if (!user.staff.isManager)
+                    if (!staff.isManager)
                     {
                         CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
                         e.Cancel = true;
@@ -167,7 +170,6 @@ namespace ProjectXML.GUI
 
         public void ClearInput()
         {
-            tbMaTheLoai.Text = "";
             tbTenTheLoai.Text = "";
             tbGhiChuTheLoai.Text = "";
             cbTrangThaiTheLoai.SelectedIndex = 0;
@@ -219,15 +221,11 @@ namespace ProjectXML.GUI
 
         private void btnThemTheLoai_Click(object sender, EventArgs e)
         {
-            var maTheLoai = tbMaTheLoai.Text;
+            int index = dgvTheLoai.CurrentRow.Index;
+            var maTheLoai = dgvTheLoai.Rows[index].Cells[1].Value.ToString();
             var tenTheLoai = tbTenTheLoai.Text;
             var ghiChu = tbGhiChuTheLoai.Text;
             var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
-            if (maTheLoai.Equals("") || tenTheLoai.Equals(""))
-            {
-                CustomMessageBox.ShowError("Vui lòng nhập mã thể loại");
-                return;
-            }
 
             if (tenTheLoai.Equals(""))
             {
@@ -235,7 +233,7 @@ namespace ProjectXML.GUI
                 return;
             }
 
-            var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, CustomDateTime.GetNow(), "", "");
+            var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, CustomDateTime.GetNow(), null, null);
             var state = categoryController.Insert(category);
 
             if (state == Predefined.SUCCESS)
@@ -245,14 +243,15 @@ namespace ProjectXML.GUI
             }
 
             if (state == Predefined.ID_EXIST)
-                CustomMessageBox.ShowError("Mã thể loại đã tồn tại");
+                CustomMessageBox.ShowError("Tên thể loại đã tồn tại");
             else
                 CustomMessageBox.ShowError("Thêm thất bại");
         }
 
         private void btnSuaTheLoai_Click(object sender, EventArgs e)
         {
-            var maTheLoai = tbMaTheLoai.Text;
+            int index = dgvTheLoai.CurrentRow.Index;
+            var maTheLoai = dgvTheLoai.Rows[index].Cells[1].Value.ToString();
             var tenTheLoai = tbTenTheLoai.Text;
             var ghiChu = tbGhiChuTheLoai.Text;
             var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
@@ -290,13 +289,10 @@ namespace ProjectXML.GUI
         {
             try
             {
-                var index = dgvTheLoai.CurrentRow.Index;
-                rowSelectedTheLoai = index;
-                tbMaTheLoai.Text = dgvTheLoai.Rows[index].Cells[1].Value.ToString();
-                tbTenTheLoai.Text = dgvTheLoai.Rows[index].Cells[2].Value.ToString();
-                tbGhiChuTheLoai.Text = dgvTheLoai.Rows[index].Cells[3].Value.ToString();
+                tbTenTheLoai.Text = dgvTheLoai.SelectedRows[0].Cells[2].Value.ToString();
+                tbGhiChuTheLoai.Text = dgvTheLoai.SelectedRows[0].Cells[3].Value.ToString();
                 cbTrangThaiTheLoai.SelectedIndex =
-                    dgvTheLoai.Rows[index].Cells[4].Value.ToString().Equals("Khả dụng") ? 0 : 1;
+                    dgvTheLoai.SelectedRows[0].Cells[4].Value.ToString().Equals("Khả dụng") ? 0 : 1;
             }
             catch (Exception)
             {
@@ -306,24 +302,32 @@ namespace ProjectXML.GUI
 
         private void btnXoaTheLoai_Click(object sender, EventArgs e)
         {
-            var maTheLoai = tbMaTheLoai.Text;
-            if (maTheLoai.Equals(""))
+            try
             {
-                CustomMessageBox.ShowError("Mã thể loại không hợp lệ");
-                return;
-            }
+                var maTheLoai = dgvTheLoai.SelectedRows[0].Cells[1].Value.ToString();
+                if (maTheLoai.Equals(""))
+                {
+                    CustomMessageBox.ShowError("Mã thể loại không hợp lệ");
+                    return;
+                }
 
-            var state = categoryController.Delete(maTheLoai);
-            if (state == Predefined.SUCCESS)
+                var state = categoryController.Delete(maTheLoai);
+                if (state == Predefined.SUCCESS)
+                {
+                    TheLoai_Load();
+                    return;
+                }
+                if (state == Predefined.ID_NOT_EXIST)
+                    CustomMessageBox.ShowError("Mã thể loại không tồn tại");
+                else
+                    CustomMessageBox.ShowError("Xóa thất bại");
+            } catch(Exception ex)
             {
-                TheLoai_Load();
-                return;
+                Debug.WriteLine("Xoá thất bại: " + ex.Message);
             }
+           
 
-            if (state == Predefined.ID_NOT_EXIST)
-                CustomMessageBox.ShowError("Mã thể loại không tồn tại");
-            else
-                CustomMessageBox.ShowError("Xóa thất bại");
+           
         }
 
         private void btnLuuTruTheLoai_Click(object sender, EventArgs e)
@@ -802,7 +806,7 @@ namespace ProjectXML.GUI
                     return;
                 }
 
-                if (result == Predefined.FILE_NOT_FOUND) MessageBox.Show("Sửa thất bại");
+                if (result == Predefined.ERROR) MessageBox.Show("Sửa thất bại");
             }
             catch (NullReferenceException)
             {

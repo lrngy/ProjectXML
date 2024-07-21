@@ -143,7 +143,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -214,7 +214,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -236,7 +236,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -258,7 +258,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -280,7 +280,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -298,7 +298,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -315,7 +315,7 @@ namespace ProjectXML.DAL
             }
             catch (XmlException)
             {
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -332,7 +332,7 @@ namespace ProjectXML.DAL
             }
             catch (XmlException)
             {
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
     }

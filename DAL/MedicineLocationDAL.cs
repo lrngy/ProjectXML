@@ -93,7 +93,7 @@ namespace ProjectXML.DAL
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -108,7 +108,7 @@ namespace ProjectXML.DAL
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -123,7 +123,7 @@ namespace ProjectXML.DAL
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
 
         }
@@ -139,7 +139,7 @@ namespace ProjectXML.DAL
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
     }

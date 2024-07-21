@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ProjectXML.DAL;
 using ProjectXML.DTO;
 using ProjectXML.GUI.Dialog;
 using ProjectXML.Util;
@@ -15,18 +16,19 @@ namespace ProjectXML.GUI
         private QuanLyThuocGUI quanLyThuocView;
         private ThongTinCaNhanGUI thongTinCaNhanView;
         private readonly UserDTO user;
+        private readonly StaffDTO staff;
 
-
-        public MainGUI(UserDTO user, LoginGUI loginView)
+        public MainGUI(UserDTO user, LoginGUI loginView, StaffDTO staff)
         {
             InitializeComponent();
             this.user = user;
             this.loginView = loginView;
+            this.staff = staff;
         }
 
         private void btnQlyThuoc_Click(object sender, EventArgs e)
         {
-            if (user.staff.isSeller)
+            if (staff.isSeller)
             {
                 CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
                 return;
@@ -63,7 +65,7 @@ namespace ProjectXML.GUI
 
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
-            if (user.staff.isSeller)
+            if (staff.isSeller)
             {
                 CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
                 return;
@@ -85,7 +87,7 @@ namespace ProjectXML.GUI
 
         public void ChangeTextWelcome()
         {
-            lbWelcome.Text = "Xin chào, " + user.staff.name;
+            lbWelcome.Text = "Xin chào, " + staff.name;
         }
 
         private string GetDayOfWeekInVietnamese(DayOfWeek dayOfWeek)

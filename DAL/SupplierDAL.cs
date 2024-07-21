@@ -25,7 +25,7 @@ namespace ProjectXML.DAL
             try
             {
                 string query = "SELECT * FROM suppliers";
-                DataTable dt = DB.ExecuteQuery("SELECT * FROM suppliers");
+                DataTable dt = DB.ExecuteQuery(query);
                 foreach (DataRow dr in dt.Rows)
                 {
                     var id = dr["supplier_id"].ToString();
@@ -126,7 +126,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -154,7 +154,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -175,7 +175,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -196,7 +196,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -217,7 +217,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
     }

@@ -101,7 +101,7 @@ namespace ProjectXML.GUI.Dialog
             try
             {
                 var state = categoryController.RestoreAll();
-                if (state == Predefined.FILE_NOT_FOUND)
+                if (state == Predefined.ERROR)
                 {
                     CustomMessageBox.ShowError("Khôi phục thất bại");
                     return;

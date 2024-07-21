@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\StaffBUS.cs" />
     <Compile Include="ChiTietChi.cs">
       <SubType>Form</SubType>
     </Compile>

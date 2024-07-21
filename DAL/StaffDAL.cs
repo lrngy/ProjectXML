@@ -79,6 +79,37 @@ namespace ProjectXML.DAL
             return staffDTO;
         }
 
+        public StaffDTO GetByUsername(string username)
+        {
+
+            StaffDTO staffDTO = null;
+            try
+            {
+                string query = $"SELECT * FROM staffs where username = '{username}'";
+                DataTable dt = DB.ExecuteQuery(query);
+                if (dt.Rows.Count != 0)
+                {
+                    var id = dt.Rows[0]["staff_id"].ToString();
+                    var name = dt.Rows[0]["staff_name"].ToString();
+                    var sex = bool.Parse(dt.Rows[0]["staff_sex"].ToString());
+                    var yearOfBirth = dt.Rows[0]["staff_year_of_birth"].ToString();
+                    var isManager = bool.Parse(dt.Rows[0]["staff_is_manager"].ToString());
+                    var isSeller = bool.Parse(dt.Rows[0]["staff_is_seller"].ToString());
+                    //var username = dt.Rows[0]["username"].ToString();
+                    //var created = dr["staff_created"].ToString();
+                    //var updated = dr["staff_updated"].ToString();
+                    //var deleted = dr["staff_deleted"].ToString();
+                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error getting staff by username:" + ex);
+            }
+
+            return staffDTO;
+        }
+
         public bool CheckExist(string id)
         {
 
@@ -102,7 +133,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -122,7 +153,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
         internal int Delete(string id)
@@ -138,7 +169,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -155,7 +186,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -178,7 +209,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
 
@@ -200,7 +231,7 @@ namespace ProjectXML.DAL
             catch (XmlException ex)
             {
                 Debug.WriteLine(ex.Message);
-                return Predefined.FILE_NOT_FOUND;
+                return Predefined.ERROR;
             }
         }
     }

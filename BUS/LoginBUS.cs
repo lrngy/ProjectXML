@@ -10,7 +10,9 @@ namespace ProjectXML.BUS
 
         public UserDTO CheckExist(string username, string password)
         {
-            return loginDAL.isExistAccount(username, password) ? userDAL.getUser(username) : null;
+            return loginDAL.isExistAccount(username, password) ? userDAL.GetUser(username) : null;
         }
+
+        
     }
 }

@@ -5,7 +5,7 @@ namespace ProjectXML.Util
 {
     public class CustomDateTime
     {
-        private static readonly string format = "dd/MM/yyyy HH:mm";
+        private static readonly string format = "yyyy-MM-dd HH:mm:ss";
 
         public static string GetNow()
         {

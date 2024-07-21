@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
 using ProjectXML.BUS;
+using ProjectXML.DTO;
 
 namespace ProjectXML.GUI
 {
     public partial class LoginGUI : Form
     {
-        private readonly LoginBUS loginController = new LoginBUS();
+        private readonly LoginBUS loginBus = new LoginBUS();
+        private readonly StaffBUS staffBus = new StaffBUS();
         private MainGUI mainView;
 
         public LoginGUI()
         {
-            //InitializeComponent();
-
-            if (mainView == null || mainView.IsDisposed) mainView = new MainGUI(new DTO.UserDTO("admin", "1", new DTO.StaffDTO("1", "long", true, "15/2/2222", true, false, null)), this);
-            mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
-            mainView.Show();
+            InitializeComponent();
         }
 
         [STAThread]
@@ -43,7 +41,7 @@ namespace ProjectXML.GUI
                 return;
             }
 
-            var user = loginController.CheckExist(username, password);
+            var user = loginBus.CheckExist(username, password);
             if (user is null)
             {
                 lbError.Text = "Tài khoản hoặc mật khẩu không chính xác";
@@ -54,7 +52,14 @@ namespace ProjectXML.GUI
             tbUsername.Focus();
             tbPassword.Text = "";
 
-            if (mainView == null || mainView.IsDisposed) mainView = new MainGUI(user, this);
+
+            var staff = staffBus.GetByUsername(username);
+            if (staff is null)
+            {
+                lbError.Text = "Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !";
+                return;
+            }
+            if (mainView == null || mainView.IsDisposed) mainView = new MainGUI(user, this, staff);
             mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
             mainView.Show();
             Hide();

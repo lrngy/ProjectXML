@@ -27,9 +27,9 @@ namespace ProjectXML.GUI.Dialog
             {
                 if (medicine.deleted.Equals("")) continue;
                 dgvDeletedMedicine.Rows.Add(++i, medicine.id, medicine.name,
-                    $"{medicine.category.id}-{medicine.category.name}", medicine.expireDate, medicine.quantity,
+                    $"{medicine.category.name}", medicine.expireDate, medicine.quantity,
                     medicine.unit, medicine.price_out, medicine.description,
-                    $"{medicine.supplier.id}-{medicine.supplier.name}", medicine.deleted);
+                    $"{medicine.supplier.name}", medicine.deleted);
             }
         }
 
@@ -80,7 +80,7 @@ namespace ProjectXML.GUI.Dialog
             try
             {
                 var state = medicineController.RestoreAll();
-                if (state == Predefined.FILE_NOT_FOUND)
+                if (state == Predefined.ERROR)
                 {
                     CustomMessageBox.ShowError("Khôi phục thất bại");
                     return;

@@ -95,7 +95,7 @@ namespace ProjectXML.BUS
                 }
             }
 
-            return Predefined.FILE_NOT_FOUND;
+            return Predefined.ERROR;
         }
 
         internal int RemoveImage(string id)

@@ -26,5 +26,17 @@
         public bool isSeller { get; set; }
 
         public string username { get; set; }
+
+        public void Update(StaffDTO newStaff)
+        {
+            id = newStaff.id;
+            name = newStaff.name;
+            gender = newStaff.gender;
+            birthday = newStaff.birthday;
+            isManager = newStaff.isManager;
+            isSeller = newStaff.isSeller;
+            username = newStaff.username;
+
+        }
     }
 }

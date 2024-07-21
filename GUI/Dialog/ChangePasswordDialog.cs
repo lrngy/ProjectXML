@@ -47,9 +47,9 @@ namespace ProjectXML.GUI.Dialog
                 return;
             }
 
-            var newUser = new UserDTO(user.username, newPassword, user.staff);
+            var newUser = new UserDTO(user.username, newPassword);
 
-            var result = userController.Update(newUser);
+            var result = userController.UpdatePassword(newUser);
             if (result == Predefined.SUCCESS)
             {
                 CustomMessageBox.ShowSuccess("Đổi mật khẩu thành công");

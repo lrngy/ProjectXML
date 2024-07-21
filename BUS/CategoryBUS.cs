@@ -47,10 +47,10 @@ namespace ProjectXML.BUS
             return categoryDAL.ForceDelete(maTheLoai);
         }
 
-        public void ReloadData()
-        {
-            categoryDAL.ReloadData();
-        }
+        //public void ReloadData()
+        //{
+        //    categoryDAL.ReloadData();
+        //}
 
         internal int RestoreAll()
         {

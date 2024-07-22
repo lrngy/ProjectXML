@@ -10,6 +10,7 @@ using ProjectXML.DAL;
 using ProjectXML.DTO;
 using ProjectXML.GUI.Dialog;
 using ProjectXML.Util;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectXML.GUI
 {
@@ -28,7 +29,7 @@ namespace ProjectXML.GUI
 
         private int rowSelectedTheLoai;
         private int rowSelectedThuoc;
-        private readonly SupplierBUS supplierController = new SupplierBUS();
+        private readonly SupplierBUS supplierBUS = new SupplierBUS();
         private readonly int tabControlIndex;
 
         private readonly UserDTO user;
@@ -85,7 +86,7 @@ namespace ProjectXML.GUI
                 cbTLThuoc.Items.Add(category.id + "-" + category.name);
             }
 
-            var supplierList = supplierController.LoadData();
+            var supplierList = supplierBUS.LoadData();
             foreach (var supplier in supplierList)
             {
                 if (!supplier.status) continue;
@@ -96,8 +97,9 @@ namespace ProjectXML.GUI
             {
                 dgvThuoc.Rows[rowSelectedThuoc].Selected = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine("Lỗi hiển thị thuốc: " + ex.Message);
             }
         }
 
@@ -134,32 +136,40 @@ namespace ProjectXML.GUI
 
         private void NhaCungCap_Load()
         {
-            var supplierNodes = nhacungcap.SelectNodes("/suppliers/supplier");
-            HienThiNCC(supplierNodes);
+            List<SupplierDTO> suppliers = supplierBUS.LoadData();
+            HienThiNCC(suppliers);
 
             cbTTNCC.SelectedIndex = 0;
             cbTieuChiNCC.SelectedIndex = indexTieuChiNCC;
         }
 
-        public void HienThiNCC(XmlNodeList list)
+        public void HienThiNCC(List<SupplierDTO> list)
         {
             var i = 0;
             dgvNhaCungCap.Rows.Clear();
 
 
             var supplierNodes = list;
-            foreach (XmlNode supplierNode in supplierNodes)
+            foreach (SupplierDTO s in supplierNodes)
             {
-                var id = supplierNode.SelectSingleNode("supplier_id").InnerText;
-                var name = supplierNode.SelectSingleNode("supplier_name").InnerText;
-                var phone = supplierNode.SelectSingleNode("supplier_phone").InnerText;
-                var email = supplierNode.SelectSingleNode("supplier_email").InnerText;
-                var note = supplierNode.SelectSingleNode("supplier_note").InnerText;
-                var status = bool.Parse(supplierNode.SelectSingleNode("supplier_status").InnerText);
+                var id = s.id;
+                var name = s.name;
+                var phone = s.phone;
+                var email = s.email;
+                var note = s.note;
+                var status = s.status;
+                var created = s.created;
+                var updated = s.updated;
 
-                dgvNhaCungCap.Rows.Add(++i, id, name, phone, email, note, status ? "Khả dụng" : "Không khả dụng");
+                dgvNhaCungCap.Rows.Add(++i, id, name, phone, email, note, status ? "Khả dụng" : "Không khả dụng", created, updated);
             }
 
+            ClearInputSupplier();
+            dgvNhaCungCap.ClearSelection();
+        }
+
+        private void ClearInputSupplier()
+        {
             tbMaNCC.Text = "";
             tbTenNCC.Text = "";
             tbDienThoai.Text = "";
@@ -168,7 +178,7 @@ namespace ProjectXML.GUI
             cbTieuChiNCC.SelectedIndex = indexTieuChiNCC;
         }
 
-        public void ClearInput()
+        public void ClearInputCategory()
         {
             tbTenTheLoai.Text = "";
             tbGhiChuTheLoai.Text = "";
@@ -193,11 +203,13 @@ namespace ProjectXML.GUI
                     category.status ? "Khả dụng" : "Không khả dụng", category.created, category.updated);
             }
 
-            ClearInput();
+            ClearInputCategory();
+            dgvTheLoai.ClearSelection();
         }
 
         private void TheLoai_Load()
         {
+        
             if (tbTimTheLoai.Text.Equals(""))
                 TheLoai_Show(categoryController.LoadData());
             else TimTheLoai();
@@ -206,7 +218,7 @@ namespace ProjectXML.GUI
 
             try
             {
-                dgvTheLoai.Rows[rowSelectedTheLoai].Selected = true;
+                //dgvTheLoai.Rows[rowSelectedTheLoai].Selected = true;
             }
             catch (Exception)
             {
@@ -221,60 +233,85 @@ namespace ProjectXML.GUI
 
         private void btnThemTheLoai_Click(object sender, EventArgs e)
         {
-            int index = dgvTheLoai.CurrentRow.Index;
-            var maTheLoai = dgvTheLoai.Rows[index].Cells[1].Value.ToString();
-            var tenTheLoai = tbTenTheLoai.Text;
-            var ghiChu = tbGhiChuTheLoai.Text;
-            var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
-
-            if (tenTheLoai.Equals(""))
+            try
             {
-                CustomMessageBox.ShowError("Vui lòng nhập tên thể loại");
-                return;
+                int index = dgvTheLoai.CurrentRow.Index;
+                var tenTheLoai = tbTenTheLoai.Text;
+                var ghiChu = tbGhiChuTheLoai.Text;
+                var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
+
+                if (tenTheLoai.Equals(""))
+                {
+                    //CustomMessageBox.ShowError("Vui lòng nhập tên thể loại");
+                    ShowValidateError(tbTenTheLoai, "Vui lòng nhập tên thể loại");
+                    return;
+                }
+
+                var category = new CategoryDTO(tenTheLoai, ghiChu, trangThai, CustomDateTime.GetNow(), null, null);
+                var state = categoryController.Insert(category);
+
+                if (state == Predefined.SUCCESS)
+                {
+                    TheLoai_Load();
+                    return;
+                }
+
+                if (state == Predefined.ID_EXIST)
+                    //CustomMessageBox.ShowError("Tên thể loại đã tồn tại");
+                    ShowValidateError(tbTenTheLoai, "Tên thể loại đã tồn tại");
+                else
+                    CustomMessageBox.ShowError("Thêm thất bại");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Thêm thất bại: " + ex.Message);
             }
 
-            var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, CustomDateTime.GetNow(), null, null);
-            var state = categoryController.Insert(category);
+        }
 
-            if (state == Predefined.SUCCESS)
-            {
-                TheLoai_Load();
-                return;
-            }
-
-            if (state == Predefined.ID_EXIST)
-                CustomMessageBox.ShowError("Tên thể loại đã tồn tại");
-            else
-                CustomMessageBox.ShowError("Thêm thất bại");
+        private void ShowValidateError(Control control, string message)
+        {
+            errorProvider1.SetError(control, message);
+            toolTip1.SetToolTip(control, message);
+            toolTip1.Show(message, control, 0, control.Height, 3000);
         }
 
         private void btnSuaTheLoai_Click(object sender, EventArgs e)
         {
-            int index = dgvTheLoai.CurrentRow.Index;
-            var maTheLoai = dgvTheLoai.Rows[index].Cells[1].Value.ToString();
-            var tenTheLoai = tbTenTheLoai.Text;
-            var ghiChu = tbGhiChuTheLoai.Text;
-            var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
-            var created = dgvTheLoai.Rows[rowSelectedTheLoai].Cells[5].Value.ToString();
-            if (maTheLoai.Equals(""))
+            try
             {
-                CustomMessageBox.ShowError("Vui lòng nhập mã thể loại");
-                return;
+                int index = dgvTheLoai.CurrentRow.Index;
+                var maTheLoai = dgvTheLoai.Rows[index].Cells[1].Value.ToString();
+                var tenTheLoai = tbTenTheLoai.Text;
+                var ghiChu = tbGhiChuTheLoai.Text;
+                var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
+                var created = dgvTheLoai.Rows[index].Cells[5].Value.ToString();
+                if (maTheLoai.Equals(""))
+                {
+                    CustomMessageBox.ShowError("Vui lòng nhập mã thể loại");
+                    return;
+                }
+
+                var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, created, CustomDateTime.GetNow(), "");
+                var state = categoryController.Update(category);
+
+                if (state == Predefined.SUCCESS)
+                {
+                    TheLoai_Load();
+                    return;
+                }
+
+                if (state == Predefined.ID_NOT_EXIST)
+                    CustomMessageBox.ShowError("Mã thể loại không tồn tại");
+                else
+                    CustomMessageBox.ShowError("Sửa thất bại");
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Sửa thất bại: " + ex.Message);
             }
 
-            var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, created, CustomDateTime.GetNow(), "");
-            var state = categoryController.Update(category);
-
-            if (state == Predefined.SUCCESS)
-            {
-                TheLoai_Load();
-                return;
-            }
-
-            if (state == Predefined.ID_NOT_EXIST)
-                CustomMessageBox.ShowError("Mã thể loại không tồn tại");
-            else
-                CustomMessageBox.ShowError("Sửa thất bại");
         }
 
         private void dgvTheLoai_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
@@ -296,7 +333,7 @@ namespace ProjectXML.GUI
             }
             catch (Exception)
             {
-                ClearInput();
+                ClearInputCategory();
             }
         }
 
@@ -321,13 +358,14 @@ namespace ProjectXML.GUI
                     CustomMessageBox.ShowError("Mã thể loại không tồn tại");
                 else
                     CustomMessageBox.ShowError("Xóa thất bại");
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Debug.WriteLine("Xoá thất bại: " + ex.Message);
             }
-           
 
-           
+
+
         }
 
         private void btnLuuTruTheLoai_Click(object sender, EventArgs e)
@@ -351,6 +389,7 @@ namespace ProjectXML.GUI
             }
             catch (Exception)
             {
+                ClearInputSupplier();
             }
         }
 
@@ -361,7 +400,7 @@ namespace ProjectXML.GUI
             var dienThoai = tbDienThoai.Text;
             var email = tbEmail.Text;
             var ghiChu = tbGhiChuNCC.Text;
-            var trangThai = cbTTNCC.SelectedIndex == 0 ? "true" : "false";
+            var trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
             if (maNCC.Equals(""))
             {
                 CustomMessageBox.ShowError("Vui lòng nhập mã nhà cung cấp");
@@ -386,46 +425,21 @@ namespace ProjectXML.GUI
                 return;
             }
 
+            SupplierDTO newSupplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, CustomDateTime.GetNow(), "", "");
 
-            var xmlNode = nhacungcap.SelectSingleNode("/suppliers/supplier[supplier_id='" + maNCC + "']");
-            if (xmlNode != null)
+            int result = supplierBUS.Insert(newSupplierDTO);
+            if (result == Predefined.ID_EXIST)
             {
                 CustomMessageBox.ShowError("Mã nhà cung cấp đã tồn tại");
                 return;
             }
+            else if (result == Predefined.ERROR)
+            {
+                CustomMessageBox.ShowError("Không thể thêm nhà cung cấp này");
+                return;
+            }
 
 
-            XmlNode supplierNode = nhacungcap.CreateElement("supplier");
-
-            XmlNode idNode = nhacungcap.CreateElement("supplier_id");
-            idNode.InnerText = maNCC;
-            supplierNode.AppendChild(idNode);
-
-            XmlNode nameNode = nhacungcap.CreateElement("supplier_name");
-            nameNode.InnerText = tenNCC;
-            supplierNode.AppendChild(nameNode);
-
-
-            XmlNode noteNode = nhacungcap.CreateElement("supplier_note");
-            noteNode.InnerText = ghiChu;
-            supplierNode.AppendChild(noteNode);
-
-
-            XmlNode phoneNode = nhacungcap.CreateElement("supplier_phone");
-            phoneNode.InnerText = dienThoai;
-            supplierNode.AppendChild(phoneNode);
-
-            XmlNode emailNode = nhacungcap.CreateElement("supplier_email");
-            emailNode.InnerText = email;
-            supplierNode.AppendChild(emailNode);
-
-            XmlNode statusNode = nhacungcap.CreateElement("supplier_status");
-            statusNode.InnerText = trangThai;
-            supplierNode.AppendChild(statusNode);
-
-
-            nhacungcap.SelectSingleNode("/suppliers").AppendChild(supplierNode);
-            nhacungcap.Save(Config.getXMLPath("suppliers"));
             NhaCungCap_Load();
         }
 
@@ -441,7 +455,7 @@ namespace ProjectXML.GUI
 
             if (maNCC.Equals(""))
             {
-                CustomMessageBox.ShowError("Vui lòng nhập mã nhà cung cấp");
+                CustomMessageBox.ShowError("Vui lòng chọn nhà cung cấp muốn chỉnh sửa");
                 return;
             }
 
@@ -463,34 +477,38 @@ namespace ProjectXML.GUI
                 return;
             }
 
-            var xmlNode = nhacungcap.SelectSingleNode("/suppliers/supplier[supplier_id='" + maNCC + "']");
-            if (xmlNode == null)
+            SupplierDTO supplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, "", CustomDateTime.GetNow(), "");
+
+            int result = supplierBUS.Update(supplierDTO);
+            if (result == Predefined.ID_NOT_EXIST)
             {
-                CustomMessageBox.ShowError("Mã nhà cung cấp không hợp lệ");
+                CustomMessageBox.ShowError("Mã nhà cung cấp không tồn tại");
                 return;
             }
-
-            xmlNode.SelectSingleNode("supplier_name").InnerText = tenNCC;
-            xmlNode.SelectSingleNode("supplier_phone").InnerText = dienThoai;
-            xmlNode.SelectSingleNode("supplier_email").InnerText = email;
-            xmlNode.SelectSingleNode("supplier_note").InnerText = ghiChu;
-            xmlNode.SelectSingleNode("supplier_status").InnerText = trangThai.ToString();
-            nhacungcap.Save(Config.getXMLPath("suppliers"));
+            else if (result == Predefined.ERROR)
+            {
+                CustomMessageBox.ShowError("Không thể sửa nhà cung cấp này");
+                return;
+            }
             NhaCungCap_Load();
         }
 
         private void btnXoaNCC_Click(object sender, EventArgs e)
         {
             var maNCC = tbMaNCC.Text;
-            var xmlNode = nhacungcap.SelectSingleNode("/suppliers/supplier[supplier_id='" + maNCC + "']");
-            if (xmlNode == null)
+            if (maNCC.Equals(""))
             {
-                CustomMessageBox.ShowError("Mã nhà cung cấp không hợp lệ");
+                CustomMessageBox.ShowError("Vui lòng chọn nhà cung cấp muốn xoá !");
+                return;
+            }
+            int result = supplierBUS.ForceDelete(maNCC);
+            if (result == Predefined.ID_NOT_EXIST)
+            {
+                CustomMessageBox.ShowError("Mã nhà cung cấp không tồn tại");
                 return;
             }
 
-            nhacungcap.SelectSingleNode("/suppliers").RemoveChild(xmlNode);
-            nhacungcap.Save(Config.getXMLPath("suppliers"));
+
             NhaCungCap_Load();
         }
 
@@ -505,42 +523,29 @@ namespace ProjectXML.GUI
 
             var tieuChiIndex = cbTieuChiNCC.SelectedIndex;
             dgvNhaCungCap.Rows.Clear();
-            switch (tieuChiIndex)
+            var supplierList = supplierBUS.LoadData().Where(supplier =>
             {
-                case 0:
-                    var supplierNodes =
-                        nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_id,'" + noidungtimkiem + "')]");
-                    HienThiNCC(supplierNodes);
-                    break;
-                case 1:
-                    var supplierNodes2 =
-                        nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_name,'" + noidungtimkiem + "')]");
-                    HienThiNCC(supplierNodes2);
-                    break;
-                case 2:
-                    var supplierNodes3 =
-                        nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_phone,'" + noidungtimkiem +
-                                               "')]");
-                    HienThiNCC(supplierNodes3);
-                    break;
-                case 3:
-                    var supplierNodes4 =
-                        nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_email,'" + noidungtimkiem +
-                                               "')]");
-                    HienThiNCC(supplierNodes4);
-                    break;
-                case 4:
-                    var supplierNodes5 =
-                        nhacungcap.SelectNodes("/suppliers/supplier[contains(supplier_note,'" + noidungtimkiem + "')]");
-                    HienThiNCC(supplierNodes5);
-                    break;
-                case 5:
-                    var supplierNodes6 =
-                        nhacungcap.SelectNodes(
-                            "/suppliers/supplier[contains(supplier_status,'" + noidungtimkiem + "')]");
-                    HienThiNCC(supplierNodes6);
-                    break;
-            }
+                switch (tieuChiIndex)
+                {
+                    case 0:
+                        return supplier.id.ToLower().Contains(noidungtimkiem);
+                    case 1:
+                        return supplier.name.ToLower().Contains(noidungtimkiem);
+                    case 2:
+                        return supplier.phone.ToLower().Contains(noidungtimkiem);
+                    case 3:
+                        return supplier.email.ToLower().Contains(noidungtimkiem);
+
+                    case 4:
+                        return supplier.note.ToLower().Contains(noidungtimkiem);
+                    case 5:
+                        return (supplier.status ? "Khả dụng" : "Không khả dụng").ToLower().Contains(noidungtimkiem);
+
+                    default:
+                        return false;
+                }
+            }).ToList();
+            HienThiNCC(supplierList);
         }
 
         public void TimTheLoai()
@@ -707,7 +712,7 @@ namespace ProjectXML.GUI
 
             var image = "";
 
-            var supplier = supplierController.LoadData().Where(s => s.id.Equals(nccArr[0])).FirstOrDefault();
+            var supplier = supplierBUS.LoadData().Where(s => s.id.Equals(nccArr[0])).FirstOrDefault();
             var category = categoryController.LoadData().Where(c => c.id.Equals(tlArr[0])).FirstOrDefault();
             var newMedicine = new MedicineDTO(id, name, expireDate, unit, price, quantity, image, description,
                 CustomDateTime.GetNow(), "", "", supplier, category);
@@ -792,7 +797,7 @@ namespace ProjectXML.GUI
                     return;
                 }
 
-                var supplier = supplierController.LoadData().Where(s => s.id.Equals(supplierId)).FirstOrDefault();
+                var supplier = supplierBUS.LoadData().Where(s => s.id.Equals(supplierId)).FirstOrDefault();
                 var category = categoryController.LoadData().Where(c => c.id.Equals(categoryId)).FirstOrDefault();
 
                 var medicine = new MedicineDTO(id, name, expireDate, unit, price, quantity, image, description,
@@ -1034,6 +1039,11 @@ namespace ProjectXML.GUI
         {
             cbIndexLoc = cbLocDuLieuThuoc.SelectedIndex;
             TimThuocTheoDuLieu();
+        }
+
+        private void tbTenTheLoai_TextChanged(object sender, EventArgs e)
+        {
+            ShowValidateError(tbTenTheLoai, "");
         }
     }
 }

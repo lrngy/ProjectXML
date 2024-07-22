@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 using ProjectXML.BUS;
 using ProjectXML.Util;
@@ -11,7 +13,6 @@ namespace ProjectXML.GUI.Dialog
 
         private readonly CategoryBUS categoryController;
         public RefreshDeletedCategory refreshDeletedCategory;
-
         public DeletedCategoryDialog(CategoryBUS categoryController)
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace ProjectXML.GUI.Dialog
             var i = 0;
             var categoryController = new CategoryBUS();
             var categoryList = categoryController.LoadData();
+
             foreach (var category in categoryList)
             {
                 if (category.deleted.Equals("")) continue;
@@ -72,12 +74,13 @@ namespace ProjectXML.GUI.Dialog
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?");
-            if (confirmResult == DialogResult.Yes)
-                try
+            try
+            {
+                var maTheLoai = dgvDeletedTheLoai.SelectedRows[0].Cells[1].Value.ToString();
+                var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?");
+                if (confirmResult == DialogResult.Yes)
                 {
-                    var index = dgvDeletedTheLoai.CurrentRow.Index;
-                    var maTheLoai = dgvDeletedTheLoai.Rows[index].Cells[1].Value.ToString();
+
                     var state = categoryController.ForceDelete(maTheLoai);
                     if (state == Predefined.SUCCESS)
                     {
@@ -91,28 +94,35 @@ namespace ProjectXML.GUI.Dialog
                     else
                         CustomMessageBox.ShowError("Xóa thất bại");
                 }
-                catch (Exception)
-                {
-                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
         }
+    
 
-        private void button3_Click(object sender, EventArgs e)
+
+    
+
+    private void button3_Click(object sender, EventArgs e)
+    {
+        try
         {
-            try
+            var state = categoryController.RestoreAll();
+            if (state == Predefined.ERROR)
             {
-                var state = categoryController.RestoreAll();
-                if (state == Predefined.ERROR)
-                {
-                    CustomMessageBox.ShowError("Khôi phục thất bại");
-                    return;
-                }
+                CustomMessageBox.ShowError("Khôi phục thất bại");
+                return;
+            }
 
-                DeletedCategory_Show();
-                refreshDeletedCategory();
-            }
-            catch (Exception)
-            {
-            }
+            DeletedCategory_Show();
+            refreshDeletedCategory();
+        }
+        catch (Exception)
+        {
         }
     }
+}
 }

@@ -17,7 +17,7 @@
             this.deleted = deleted;
         }
 
-        public CategoryDTO( string name, string note, bool status, string created, string updated, string deleted)
+        public CategoryDTO(string name, string note, bool status, string created, string updated, string deleted)
         {
             this.id = id;
             this.name = name;

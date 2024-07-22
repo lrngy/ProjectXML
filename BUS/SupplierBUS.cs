@@ -31,20 +31,28 @@ namespace ProjectXML.BUS
             return supplierDAL.Update(supplier);
         }
 
-        public int Delete(string maNCC)
+        public int Delete(string id)
         {
-            if (supplierDAL.GetById(maNCC) == null) return Predefined.ID_NOT_EXIST;
-            return supplierDAL.Delete(maNCC);
+            if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
+            return supplierDAL.Delete(id);
         }
 
-        internal int Restore(string maNCC)
+        public int Restore(string id)
         {
-            return supplierDAL.Restore(maNCC);
+            if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
+            return supplierDAL.Restore(id);
         }
 
-        internal int ForceDelete(string maNCC)
+        public int ForceDelete(string id)
         {
-            return supplierDAL.ForceDelete(maNCC);
+            if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
+            return supplierDAL.ForceDelete(id);
+        }
+
+        public int RestoreAll(string id)
+        {
+            if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
+            return supplierDAL.RestoreAll(id);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ProjectXML.BUS
 
         public int Insert(CategoryDTO category)
         {
-            if (categoryDAL.CheckExist(category.id)) return Predefined.ID_EXIST;
+            if (categoryDAL.CheckExistName(category.name)) return Predefined.ID_EXIST;
             return categoryDAL.Insert(category);
         }
 

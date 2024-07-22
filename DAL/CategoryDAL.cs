@@ -11,12 +11,6 @@ namespace ProjectXML.DAL
 {
     public class CategoryDAL
     {
-        private XmlDocument categoryDoc;
-
-        //internal void ReloadData()
-        //{
-        //    categoryDoc = Config.getDoc("categories");
-        //}
 
         public List<CategoryDTO> GetAll()
         {
@@ -77,11 +71,12 @@ namespace ProjectXML.DAL
             return category;
         }
 
-        public bool CheckExist(string name)
+        public bool CheckExistName(string name)
         {
             //ReloadData();
-            string query = $"SELECT * FROM categories WHERE category_name = ${name}";
-            DataTable dt = DB.ExecuteQuery(query);
+            string query = $"SELECT * FROM categories WHERE category_name = @name";
+            SqlParameter[] sqlParameters = { new SqlParameter("@name", name) };
+            DataTable dt = DB.ExecuteQuery(query, sqlParameters);
             if (dt.Rows.Count == 0) return false;
             var deleted = dt.Rows[0]["category_deleted"].ToString();
             return deleted.Equals("");
@@ -126,9 +121,8 @@ namespace ProjectXML.DAL
                 //categoryDoc.SelectSingleNode("/categories").AppendChild(categoryNode);
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"INSERT INTO categories(category_name, category_note, category_status, category_created) VALUES (@name, @note, @status, @created)";
+                string query = "INSERT INTO categories(category_name, category_note, category_status, category_created) VALUES (@name, @note, @status, @created)";
                 SqlParameter[] sqlParameters = {
-      
                     new SqlParameter("@name", category.name),
                     new SqlParameter("@note", category.note),
                     new SqlParameter("@status", category.status),
@@ -158,7 +152,7 @@ namespace ProjectXML.DAL
                 //categoryNode.SelectSingleNode("category_updated").InnerText = category.updated;
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"UPDATE categories SET category_name = '{category.name}', category_note = '{category.note}', category_status = {category.status}, category_updated = '{category.updated}' WHERE category_id = '{category.id}'";
+                string query = $"UPDATE categories SET category_name = '{category.name}', category_note = '{category.note}', category_status = {(category.status ? 1 : 0)}, category_updated = '{category.updated}' WHERE category_id = '{category.id}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;

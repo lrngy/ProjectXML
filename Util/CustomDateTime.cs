@@ -17,5 +17,18 @@ namespace ProjectXML.Util
             DateTime date;
             return DateTime.TryParseExact(input, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
         }
+
+        //public static string GetDateValidate(string input)
+        //{
+ 
+        //    return DateTime.ParseExact(input, format, CultureInfo.InvariantCulture).ToString();
+        //}
+
+        public static TimeSpan CompareDateTime(string datetime1, string datetime2)
+        {
+            DateTime one = DateTime.Parse(datetime1);
+            DateTime two = DateTime.Parse(datetime2);
+            return one - two;
+        }
     }
 }

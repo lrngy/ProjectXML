@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectXML.BUS;
 using ProjectXML.DTO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ProjectXML.GUI
 {
@@ -9,6 +11,7 @@ namespace ProjectXML.GUI
     {
         private readonly LoginBUS loginBus = new LoginBUS();
         private readonly StaffBUS staffBus = new StaffBUS();
+        private readonly UserBUS userBUS = new UserBUS();
         private MainGUI mainView;
 
         public LoginGUI()
@@ -51,18 +54,36 @@ namespace ProjectXML.GUI
             tbUsername.Text = "";
             tbUsername.Focus();
             tbPassword.Text = "";
+            user.guid = Guid.NewGuid().ToString();
 
+        
+            bool isLoggedIn = loginBus.Login(user);
+            if (!isLoggedIn)
+            {
+                lbError.Text = "Đăng nhập thất bại. Vui lòng liên hệ quản lý !";
+                return;
+            }
+         
+             StartMainGUI(user);
+        }
 
-            var staff = staffBus.GetByUsername(username);
+        private void StartMainGUI(UserDTO user)
+        {
+            Hide();
+            var staff = staffBus.GetByUsername(user.username);
             if (staff is null)
             {
                 lbError.Text = "Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !";
                 return;
             }
-            if (mainView == null || mainView.IsDisposed) mainView = new MainGUI(user, this, staff);
+            if (mainView == null || mainView.IsDisposed)
+            {
+                mainView = new MainGUI(user, this, staff);
+
             mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
+            }
             mainView.Show();
-            Hide();
+       
 
         }
 
@@ -70,6 +91,23 @@ namespace ProjectXML.GUI
         {
             lbError.Text = "";
             if (e.KeyCode == Keys.Enter) btnLogin.PerformClick();
+        }
+
+        private void LoginGUI_Load(object sender, EventArgs e)
+        {
+
+
+            this.BeginInvoke(new Action(() =>
+            {
+               LoginLog log = loginBus.CheckLoggedIn();
+                if (log is null)
+                {
+                    return;
+                }
+                UserDTO user = userBUS.getUser(log.username);
+                StartMainGUI(user);
+            }));
+
         }
     }
 }

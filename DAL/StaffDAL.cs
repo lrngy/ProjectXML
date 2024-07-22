@@ -68,7 +68,7 @@ namespace ProjectXML.DAL
                     //var deleted = dr["staff_deleted"].ToString();
 
 
-                    StaffDTO staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
+                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
 
                 }
             }

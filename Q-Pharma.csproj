@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -87,6 +87,7 @@
     <Compile Include="DAL\DB.cs" />
     <Compile Include="DAL\MedicineLocationDAL.cs" />
     <Compile Include="DAL\StaffDAL.cs" />
+    <Compile Include="DTO\LoginLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\CategoryBUS.cs" />

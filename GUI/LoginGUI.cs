@@ -59,6 +59,14 @@ namespace ProjectXML.GUI
                 lbError.Text = "Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !";
                 return;
             }
+
+            user.guid = Guid.NewGuid().ToString();
+            bool isLoggedIn = loginBus.Login(user);
+            if (!isLoggedIn)
+            {
+                lbError.Text = "Đăng nhập thất bại. Vui lòng liên hệ quản lý !";
+                return;
+            }
             if (mainView == null || mainView.IsDisposed) mainView = new MainGUI(user, this, staff);
             mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
             mainView.Show();
@@ -70,6 +78,11 @@ namespace ProjectXML.GUI
         {
             lbError.Text = "";
             if (e.KeyCode == Keys.Enter) btnLogin.PerformClick();
+        }
+
+        private void LoginGUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

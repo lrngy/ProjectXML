@@ -126,7 +126,7 @@
             this.lbError.Size = new System.Drawing.Size(0, 15);
             this.lbError.TabIndex = 5;
             // 
-            // LoginView
+            // LoginGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,9 +142,10 @@
             this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.lbLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "LoginView";
+            this.Name = "LoginGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QUẢN LÝ HIỆU THUỐC";
+            this.Load += new System.EventHandler(this.LoginGUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

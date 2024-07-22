@@ -13,6 +13,19 @@ namespace ProjectXML.BUS
             return loginDAL.isExistAccount(username, password) ? userDAL.GetUser(username) : null;
         }
 
-        
+        public bool Login(UserDTO user)
+        {
+            return loginDAL.Login(user);
+        }
+
+        public bool Logout(UserDTO user)
+        {
+            return loginDAL.Logout(user);
+        }
+
+        public bool CheckLoggedIn(UserDTO user)
+        {
+            return loginDAL.CheckLoggedIn(user);
+        }
     }
 }

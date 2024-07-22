@@ -204,12 +204,16 @@ namespace ProjectXML.GUI
             }
 
             ClearInputCategory();
-            dgvTheLoai.ClearSelection();
+            this.BeginInvoke(new Action(() =>
+            {
+                dgvTheLoai.ClearSelection();
+            }));
+
         }
 
         private void TheLoai_Load()
         {
-        
+
             if (tbTimTheLoai.Text.Equals(""))
                 TheLoai_Show(categoryController.LoadData());
             else TimTheLoai();
@@ -235,7 +239,7 @@ namespace ProjectXML.GUI
         {
             try
             {
-                int index = dgvTheLoai.CurrentRow.Index;
+
                 var tenTheLoai = tbTenTheLoai.Text;
                 var ghiChu = tbGhiChuTheLoai.Text;
                 var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
@@ -273,22 +277,28 @@ namespace ProjectXML.GUI
         {
             errorProvider1.SetError(control, message);
             toolTip1.SetToolTip(control, message);
-            toolTip1.Show(message, control, 0, control.Height, 3000);
+            toolTip1.Show(message, control, 0, control.Height, 2000);
         }
 
         private void btnSuaTheLoai_Click(object sender, EventArgs e)
         {
             try
             {
-                int index = dgvTheLoai.CurrentRow.Index;
-                var maTheLoai = dgvTheLoai.Rows[index].Cells[1].Value.ToString();
+                var maTheLoai = dgvTheLoai.SelectedRows[0].Cells[1].Value.ToString();
                 var tenTheLoai = tbTenTheLoai.Text;
                 var ghiChu = tbGhiChuTheLoai.Text;
                 var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
-                var created = dgvTheLoai.Rows[index].Cells[5].Value.ToString();
+                var created = dgvTheLoai.SelectedRows[0].Cells[5].Value.ToString();
                 if (maTheLoai.Equals(""))
                 {
-                    CustomMessageBox.ShowError("Vui lòng nhập mã thể loại");
+                    CustomMessageBox.ShowError("Vui lòng chọn thể loại muốn sửa");
+                    return;
+                }
+
+                if (tenTheLoai.Equals(""))
+                {
+                    //CustomMessageBox.ShowError("Vui lòng nhập tên thể loại");
+                    ShowValidateError(tbTenTheLoai, "Vui lòng nhập tên thể loại");
                     return;
                 }
 
@@ -395,126 +405,157 @@ namespace ProjectXML.GUI
 
         private void btnThemNCC_Click(object sender, EventArgs e)
         {
-            var maNCC = tbMaNCC.Text;
-            var tenNCC = tbTenNCC.Text;
-            var dienThoai = tbDienThoai.Text;
-            var email = tbEmail.Text;
-            var ghiChu = tbGhiChuNCC.Text;
-            var trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
-            if (maNCC.Equals(""))
+            try
             {
-                CustomMessageBox.ShowError("Vui lòng nhập mã nhà cung cấp");
-                return;
-            }
+                var maNCC = dgvNhaCungCap.SelectedRows[0].Cells[1].Value.ToString();
+                var tenNCC = tbTenNCC.Text;
+                var dienThoai = tbDienThoai.Text;
+                var email = tbEmail.Text;
+                var ghiChu = tbGhiChuNCC.Text;
+                var trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
+                bool isValidated = true;
+                if (maNCC.Equals(""))
+                {
+                    ShowValidateError(tbMaNCC, "Vui lòng nhập mã nhà cung cấp");
+                    isValidated = false;
+                }
 
-            if (tenNCC.Equals(""))
+                if (tenNCC.Equals(""))
+                {
+                    ShowValidateError(tbTenNCC, "Vui lòng nhập tên nhà cung cấp");
+                    isValidated = false;
+
+                }
+
+                if (!email.Equals("") && !email.Contains("@"))
+                {
+                    ShowValidateError(tbEmail, "Email không hợp lệ");
+                    isValidated = false;
+                }
+
+                if (!dienThoai.Equals("") && !int.TryParse(dienThoai, out var dt))
+                {
+                    ShowValidateError(tbDienThoai, "Số điện thoại không hợp lệ");
+                    isValidated = false;
+                }
+
+                if (!isValidated) return;
+
+                SupplierDTO newSupplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, CustomDateTime.GetNow(), "", "");
+
+                int result = supplierBUS.Insert(newSupplierDTO);
+                if (result == Predefined.ID_EXIST)
+                {
+                    ShowValidateError(tbMaNCC, "Mã nhà cung cấp đã tồn tại");
+                }
+                else if (result == Predefined.ERROR)
+                {
+                    CustomMessageBox.ShowError("Không thể thêm nhà cung cấp này");
+                    return;
+                }
+                NhaCungCap_Load();
+            }
+            catch (Exception ex)
             {
-                CustomMessageBox.ShowError("Vui lòng nhập tên nhà cung cấp");
-                return;
+                Debug.WriteLine("Thêm thất bại: " + ex.Message);
             }
-
-            if (!email.Equals("") && !email.Contains("@"))
-            {
-                CustomMessageBox.ShowError("Email không hợp lệ");
-                return;
-            }
-
-            if (!dienThoai.Equals("") && !int.TryParse(dienThoai, out var dt))
-            {
-                CustomMessageBox.ShowError("Số điện thoại không hợp lệ");
-                return;
-            }
-
-            SupplierDTO newSupplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, CustomDateTime.GetNow(), "", "");
-
-            int result = supplierBUS.Insert(newSupplierDTO);
-            if (result == Predefined.ID_EXIST)
-            {
-                CustomMessageBox.ShowError("Mã nhà cung cấp đã tồn tại");
-                return;
-            }
-            else if (result == Predefined.ERROR)
-            {
-                CustomMessageBox.ShowError("Không thể thêm nhà cung cấp này");
-                return;
-            }
-
-
-            NhaCungCap_Load();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            var maNCC = tbMaNCC.Text;
-            var tenNCC = tbTenNCC.Text;
-            var dienThoai = tbDienThoai.Text;
-            var email = tbEmail.Text;
-            var ghiChu = tbGhiChuNCC.Text;
-            var trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
-
-
-            if (maNCC.Equals(""))
+            try
             {
-                CustomMessageBox.ShowError("Vui lòng chọn nhà cung cấp muốn chỉnh sửa");
-                return;
-            }
+                var maNCC = dgvNhaCungCap.SelectedRows[0].Cells[1].Value.ToString().Trim();
+                var tenNCC = tbTenNCC.Text.Trim();
+                var dienThoai = tbDienThoai.Text;
+                var email = tbEmail.Text;
+                var ghiChu = tbGhiChuNCC.Text.Trim();
+                var trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
+                bool isValidated = true;
 
-            if (tenNCC.Equals(""))
-            {
-                CustomMessageBox.ShowError("Vui lòng nhập tên nhà cung cấp");
-                return;
-            }
+                if (maNCC.Equals(""))
+                {
+                    CustomMessageBox.ShowError("Vui lòng chọn nhà cung cấp muốn chỉnh sửa");
+                    return;
+                }
 
-            if (!email.Equals("") && !email.Contains("@"))
-            {
-                CustomMessageBox.ShowError("Email không hợp lệ");
-                return;
-            }
+                if (tenNCC.Equals(""))
+                {
+                    ShowValidateError(tbTenNCC, "Vui lòng nhập tên nhà cung cấp");
+                    isValidated = false;
+                }
 
-            if (!dienThoai.Equals("") && !int.TryParse(dienThoai, out var dt))
-            {
-                CustomMessageBox.ShowError("Số điện thoại không hợp lệ");
-                return;
-            }
+                if (!email.Equals("") && !email.Contains("@"))
+                {
+                    ShowValidateError(tbEmail, "Email không hợp lệ");
+                    isValidated = false;
+                }
 
-            SupplierDTO supplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, "", CustomDateTime.GetNow(), "");
+                if (!dienThoai.Equals("") && !int.TryParse(dienThoai, out var dt))
+                {
+                    ShowValidateError(tbDienThoai, "Số điện thoại không hợp lệ");
+                    isValidated = false;
+                }
 
-            int result = supplierBUS.Update(supplierDTO);
-            if (result == Predefined.ID_NOT_EXIST)
-            {
-                CustomMessageBox.ShowError("Mã nhà cung cấp không tồn tại");
-                return;
+                if (!isValidated) return;
+
+                SupplierDTO supplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, "", CustomDateTime.GetNow(), "");
+
+                int result = supplierBUS.Update(supplierDTO);
+                if (result == Predefined.ID_NOT_EXIST)
+                {
+                    ShowValidateError(tbMaNCC, "Mã nhà cung cấp không tồn tại");
+                }
+                else if (result == Predefined.ERROR)
+                {
+                    CustomMessageBox.ShowError("Không thể sửa nhà cung cấp này");
+                    return;
+                }
+                NhaCungCap_Load();
             }
-            else if (result == Predefined.ERROR)
+            catch (Exception ex)
             {
-                CustomMessageBox.ShowError("Không thể sửa nhà cung cấp này");
-                return;
+                Debug.WriteLine("Sửa thất bại" + ex.Message);
             }
-            NhaCungCap_Load();
         }
 
         private void btnXoaNCC_Click(object sender, EventArgs e)
         {
-            var maNCC = tbMaNCC.Text;
-            if (maNCC.Equals(""))
+            try
             {
-                CustomMessageBox.ShowError("Vui lòng chọn nhà cung cấp muốn xoá !");
-                return;
+                var maNCC = dgvNhaCungCap.SelectedRows[0].Cells[1].Value.ToString();
+                if (maNCC.Equals(""))
+                {
+                    CustomMessageBox.ShowError("Vui lòng chọn nhà cung cấp muốn xoá !");
+                    return;
+                }
+
+                var choice = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xoá nhà cung cấp này không?");
+                if (choice == DialogResult.No)
+                {
+                    return;
+                }
+
+                int result = supplierBUS.ForceDelete(maNCC);
+                if (result == Predefined.ID_NOT_EXIST)
+                {
+                    //CustomMessageBox.ShowError("Mã nhà cung cấp không tồn tại");
+                    //return;
+                    ShowValidateError(tbMaNCC, "Mã nhà cung cấp không tồn tại");
+                }
+
+                NhaCungCap_Load();
             }
-            int result = supplierBUS.ForceDelete(maNCC);
-            if (result == Predefined.ID_NOT_EXIST)
+            catch (Exception ex)
             {
-                CustomMessageBox.ShowError("Mã nhà cung cấp không tồn tại");
-                return;
+                Debug.WriteLine("Xoá thất bại: " + ex.Message);
             }
 
-
-            NhaCungCap_Load();
         }
 
         private void tbTimNCC_TextChanged(object sender, EventArgs e)
         {
-            var noidungtimkiem = tbTimNCC.Text;
+            var noidungtimkiem = tbTimNCC.Text.ToLower().Trim();
             if (noidungtimkiem.Equals(""))
             {
                 NhaCungCap_Load();
@@ -550,6 +591,7 @@ namespace ProjectXML.GUI
 
         public void TimTheLoai()
         {
+
             var noidungtimkiem = tbTimTheLoai.Text.ToLower().Trim();
             if (noidungtimkiem.Equals(""))
             {
@@ -823,7 +865,7 @@ namespace ProjectXML.GUI
         {
             try
             {
-                var maThuoc = dgvThuoc.Rows[dgvThuoc.CurrentRow.Index].Cells[1].Value.ToString();
+                var maThuoc = dgvThuoc.SelectedRows[0].Cells[1].Value.ToString();
                 if (maThuoc.Equals(""))
                 {
                     CustomMessageBox.ShowError("Mã thể loại không hợp lệ");
@@ -969,10 +1011,6 @@ namespace ProjectXML.GUI
                 CustomMessageBox.ShowError("Sự cố khi lưu ảnh");
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tbTimNCC.Text = "";
-        }
 
         private void ckbLocDuLieuThuoc_CheckedChanged(object sender, EventArgs e)
         {
@@ -1044,6 +1082,11 @@ namespace ProjectXML.GUI
         private void tbTenTheLoai_TextChanged(object sender, EventArgs e)
         {
             ShowValidateError(tbTenTheLoai, "");
+        }
+
+        private void tbMaNCC_TextChanged(object sender, EventArgs e)
+        {
+            ShowValidateError((Control)sender, "");
         }
     }
 }

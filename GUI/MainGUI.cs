@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ProjectXML.BUS;
 using ProjectXML.DAL;
 using ProjectXML.DTO;
 using ProjectXML.GUI.Dialog;
@@ -17,6 +18,7 @@ namespace ProjectXML.GUI
         private ThongTinCaNhanGUI thongTinCaNhanView;
         private readonly UserDTO user;
         private readonly StaffDTO staff;
+        private readonly LoginBUS loginBUS = new LoginBUS();
 
         public MainGUI(UserDTO user, LoginGUI loginView, StaffDTO staff)
         {
@@ -147,6 +149,7 @@ namespace ProjectXML.GUI
             var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn đăng xuất?");
             if (confirmResult == DialogResult.Yes)
             {
+                loginBUS.Logout(user);
                 Dispose();
                 loginView.Show();
             }
@@ -202,6 +205,16 @@ namespace ProjectXML.GUI
         {
             var aboutDialog = new AboutDialog();
             aboutDialog.ShowDialog();
+        }
+
+        private void MainGUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn thoát?");
+            if (result == DialogResult.No) e.Cancel = true;
+            //else
+            //{
+            //    loginBUS.Logout(user);
+            //}
         }
     }
 }

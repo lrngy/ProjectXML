@@ -10,30 +10,29 @@ using ProjectXML.DAL;
 using ProjectXML.DTO;
 using ProjectXML.GUI.Dialog;
 using ProjectXML.Util;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectXML.GUI
 {
     public partial class QuanLyThuocGUI : Form
     {
         private readonly CategoryBUS categoryController = new CategoryBUS();
+        private readonly MedicineBUS medicineController = new MedicineBUS();
+
+        private readonly XmlDocument nhacungcap = Config.getDoc("suppliers");
+        private readonly StaffDTO staff;
+        private readonly SupplierBUS supplierBUS = new SupplierBUS();
+        private readonly int tabControlIndex;
+
+        private readonly UserDTO user;
 
         private int cbIndexLoc;
         private int cbIndexTieuChiThuoc = 1;
         private FilterByRangeDialog filterByRangeDialog;
 
         public int indexTieuChiNCC = 1;
-        private readonly MedicineBUS medicineController = new MedicineBUS();
-
-        private readonly XmlDocument nhacungcap = Config.getDoc("suppliers");
 
         private int rowSelectedTheLoai;
         private int rowSelectedThuoc;
-        private readonly SupplierBUS supplierBUS = new SupplierBUS();
-        private readonly int tabControlIndex;
-
-        private readonly UserDTO user;
-        private readonly StaffDTO staff;
 
         public QuanLyThuocGUI(UserDTO user, int tabControlIndex)
         {
@@ -112,7 +111,8 @@ namespace ProjectXML.GUI
 
             foreach (var medicine in medicineList)
             {
-                if (!medicine.deleted.Equals("") || medicine.category == null || medicine.supplier == null || !medicine.supplier.status || !medicine.category.status) continue;
+                if (!medicine.deleted.Equals("") || medicine.category == null || medicine.supplier == null ||
+                    !medicine.supplier.status || !medicine.category.status) continue;
 
                 dgvThuoc.Rows.Add(++i, medicine.id, medicine.name, $"{medicine.category.id}-{medicine.category.name}",
                     medicine.expireDate, medicine.quantity, medicine.unit, medicine.price_out, medicine.description,
@@ -136,7 +136,7 @@ namespace ProjectXML.GUI
 
         private void NhaCungCap_Load()
         {
-            List<SupplierDTO> suppliers = supplierBUS.LoadData();
+            var suppliers = supplierBUS.LoadData();
             HienThiNCC(suppliers);
 
             cbTTNCC.SelectedIndex = 0;
@@ -150,7 +150,7 @@ namespace ProjectXML.GUI
 
 
             var supplierNodes = list;
-            foreach (SupplierDTO s in supplierNodes)
+            foreach (var s in supplierNodes)
             {
                 var id = s.id;
                 var name = s.name;
@@ -161,7 +161,8 @@ namespace ProjectXML.GUI
                 var created = s.created;
                 var updated = s.updated;
 
-                dgvNhaCungCap.Rows.Add(++i, id, name, phone, email, note, status ? "Khả dụng" : "Không khả dụng", created, updated);
+                dgvNhaCungCap.Rows.Add(++i, id, name, phone, email, note, status ? "Khả dụng" : "Không khả dụng",
+                    created, updated);
             }
 
             ClearInputSupplier();
@@ -204,16 +205,11 @@ namespace ProjectXML.GUI
             }
 
             ClearInputCategory();
-            this.BeginInvoke(new Action(() =>
-            {
-                dgvTheLoai.ClearSelection();
-            }));
-
+            BeginInvoke(new Action(() => { dgvTheLoai.ClearSelection(); }));
         }
 
         private void TheLoai_Load()
         {
-
             if (tbTimTheLoai.Text.Equals(""))
                 TheLoai_Show(categoryController.LoadData());
             else TimTheLoai();
@@ -239,7 +235,6 @@ namespace ProjectXML.GUI
         {
             try
             {
-
                 var tenTheLoai = tbTenTheLoai.Text;
                 var ghiChu = tbGhiChuTheLoai.Text;
                 var trangThai = cbTrangThaiTheLoai.SelectedIndex == 0 ? true : false;
@@ -270,7 +265,6 @@ namespace ProjectXML.GUI
             {
                 Debug.WriteLine("Thêm thất bại: " + ex.Message);
             }
-
         }
 
         private void ShowValidateError(Control control, string message)
@@ -302,7 +296,8 @@ namespace ProjectXML.GUI
                     return;
                 }
 
-                var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, created, CustomDateTime.GetNow(), "");
+                var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, created,
+                    CustomDateTime.GetNow(), "");
                 var state = categoryController.Update(category);
 
                 if (state == Predefined.SUCCESS)
@@ -315,13 +310,11 @@ namespace ProjectXML.GUI
                     CustomMessageBox.ShowError("Mã thể loại không tồn tại");
                 else
                     CustomMessageBox.ShowError("Sửa thất bại");
-
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Sửa thất bại: " + ex.Message);
             }
-
         }
 
         private void dgvTheLoai_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
@@ -364,6 +357,7 @@ namespace ProjectXML.GUI
                     TheLoai_Load();
                     return;
                 }
+
                 if (state == Predefined.ID_NOT_EXIST)
                     CustomMessageBox.ShowError("Mã thể loại không tồn tại");
                 else
@@ -373,9 +367,6 @@ namespace ProjectXML.GUI
             {
                 Debug.WriteLine("Xoá thất bại: " + ex.Message);
             }
-
-
-
         }
 
         private void btnLuuTruTheLoai_Click(object sender, EventArgs e)
@@ -413,7 +404,7 @@ namespace ProjectXML.GUI
                 var email = tbEmail.Text;
                 var ghiChu = tbGhiChuNCC.Text;
                 var trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
-                bool isValidated = true;
+                var isValidated = true;
                 if (maNCC.Equals(""))
                 {
                     ShowValidateError(tbMaNCC, "Vui lòng nhập mã nhà cung cấp");
@@ -424,7 +415,6 @@ namespace ProjectXML.GUI
                 {
                     ShowValidateError(tbTenNCC, "Vui lòng nhập tên nhà cung cấp");
                     isValidated = false;
-
                 }
 
                 if (!email.Equals("") && !email.Contains("@"))
@@ -441,9 +431,10 @@ namespace ProjectXML.GUI
 
                 if (!isValidated) return;
 
-                SupplierDTO newSupplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, CustomDateTime.GetNow(), "", "");
+                var newSupplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai,
+                    CustomDateTime.GetNow(), "", "");
 
-                int result = supplierBUS.Insert(newSupplierDTO);
+                var result = supplierBUS.Insert(newSupplierDTO);
                 if (result == Predefined.ID_EXIST)
                 {
                     ShowValidateError(tbMaNCC, "Mã nhà cung cấp đã tồn tại");
@@ -453,6 +444,7 @@ namespace ProjectXML.GUI
                     CustomMessageBox.ShowError("Không thể thêm nhà cung cấp này");
                     return;
                 }
+
                 NhaCungCap_Load();
             }
             catch (Exception ex)
@@ -471,7 +463,7 @@ namespace ProjectXML.GUI
                 var email = tbEmail.Text;
                 var ghiChu = tbGhiChuNCC.Text.Trim();
                 var trangThai = cbTTNCC.SelectedIndex == 0 ? true : false;
-                bool isValidated = true;
+                var isValidated = true;
 
                 if (maNCC.Equals(""))
                 {
@@ -499,9 +491,10 @@ namespace ProjectXML.GUI
 
                 if (!isValidated) return;
 
-                SupplierDTO supplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, "", CustomDateTime.GetNow(), "");
+                var supplierDTO = new SupplierDTO(maNCC, tenNCC, dienThoai, email, ghiChu, trangThai, "",
+                    CustomDateTime.GetNow(), "");
 
-                int result = supplierBUS.Update(supplierDTO);
+                var result = supplierBUS.Update(supplierDTO);
                 if (result == Predefined.ID_NOT_EXIST)
                 {
                     ShowValidateError(tbMaNCC, "Mã nhà cung cấp không tồn tại");
@@ -511,6 +504,7 @@ namespace ProjectXML.GUI
                     CustomMessageBox.ShowError("Không thể sửa nhà cung cấp này");
                     return;
                 }
+
                 NhaCungCap_Load();
             }
             catch (Exception ex)
@@ -531,18 +525,13 @@ namespace ProjectXML.GUI
                 }
 
                 var choice = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xoá nhà cung cấp này không?");
-                if (choice == DialogResult.No)
-                {
-                    return;
-                }
+                if (choice == DialogResult.No) return;
 
-                int result = supplierBUS.ForceDelete(maNCC);
+                var result = supplierBUS.ForceDelete(maNCC);
                 if (result == Predefined.ID_NOT_EXIST)
-                {
                     //CustomMessageBox.ShowError("Mã nhà cung cấp không tồn tại");
                     //return;
                     ShowValidateError(tbMaNCC, "Mã nhà cung cấp không tồn tại");
-                }
 
                 NhaCungCap_Load();
             }
@@ -550,7 +539,6 @@ namespace ProjectXML.GUI
             {
                 Debug.WriteLine("Xoá thất bại: " + ex.Message);
             }
-
         }
 
         private void tbTimNCC_TextChanged(object sender, EventArgs e)
@@ -591,7 +579,6 @@ namespace ProjectXML.GUI
 
         public void TimTheLoai()
         {
-
             var noidungtimkiem = tbTimTheLoai.Text.ToLower().Trim();
             if (noidungtimkiem.Equals(""))
             {
@@ -843,7 +830,7 @@ namespace ProjectXML.GUI
                 var category = categoryController.LoadData().Where(c => c.id.Equals(categoryId)).FirstOrDefault();
 
                 var medicine = new MedicineDTO(id, name, expireDate, unit, price, quantity, image, description,
-                     created, updated, "", supplier, category);
+                    created, updated, "", supplier, category);
 
                 var result = medicineController.Update(medicine);
                 if (result == Predefined.SUCCESS)

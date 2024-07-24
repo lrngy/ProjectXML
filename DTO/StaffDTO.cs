@@ -6,7 +6,8 @@
         {
         }
 
-        public StaffDTO(string id, string name, bool gender, string birthday, bool isManager, bool isSeller, string username)
+        public StaffDTO(string id, string name, bool gender, string birthday, bool isManager, bool isSeller,
+            string username)
         {
             this.id = id;
             this.name = name;
@@ -36,7 +37,6 @@
             isManager = newStaff.isManager;
             isSeller = newStaff.isSeller;
             username = newStaff.username;
-
         }
     }
 }

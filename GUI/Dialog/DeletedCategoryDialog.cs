@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Reflection;
 using System.Windows.Forms;
 using ProjectXML.BUS;
 using ProjectXML.Util;
@@ -13,6 +12,7 @@ namespace ProjectXML.GUI.Dialog
 
         private readonly CategoryBUS categoryController;
         public RefreshDeletedCategory refreshDeletedCategory;
+
         public DeletedCategoryDialog(CategoryBUS categoryController)
         {
             InitializeComponent();
@@ -80,7 +80,6 @@ namespace ProjectXML.GUI.Dialog
                 var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?");
                 if (confirmResult == DialogResult.Yes)
                 {
-
                     var state = categoryController.ForceDelete(maTheLoai);
                     if (state == Predefined.SUCCESS)
                     {
@@ -99,30 +98,26 @@ namespace ProjectXML.GUI.Dialog
             {
                 Debug.WriteLine(ex.Message);
             }
-
         }
-    
 
 
-    
-
-    private void button3_Click(object sender, EventArgs e)
-    {
-        try
+        private void button3_Click(object sender, EventArgs e)
         {
-            var state = categoryController.RestoreAll();
-            if (state == Predefined.ERROR)
+            try
             {
-                CustomMessageBox.ShowError("Khôi phục thất bại");
-                return;
-            }
+                var state = categoryController.RestoreAll();
+                if (state == Predefined.ERROR)
+                {
+                    CustomMessageBox.ShowError("Khôi phục thất bại");
+                    return;
+                }
 
-            DeletedCategory_Show();
-            refreshDeletedCategory();
-        }
-        catch (Exception)
-        {
+                DeletedCategory_Show();
+                refreshDeletedCategory();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
-}
 }

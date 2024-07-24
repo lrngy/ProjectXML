@@ -1,12 +1,9 @@
-﻿using ProjectXML.DTO;
-using ProjectXML.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectXML.DTO;
+using ProjectXML.Util;
 
 namespace ProjectXML.DAL
 {
@@ -17,7 +14,7 @@ namespace ProjectXML.DAL
             var list = new List<MedicineLocationDTO>();
             try
             {
-                DataTable dt = DB.ExecuteQuery("SELECT * FROM medicine_locations");
+                var dt = DB.ExecuteQuery("SELECT * FROM medicine_locations");
                 foreach (DataRow dr in dt.Rows)
                 {
                     var id = dr["medicine_location_id"].ToString();
@@ -39,14 +36,14 @@ namespace ProjectXML.DAL
 
             return list;
         }
+
         public MedicineLocationDTO GetById(string id)
         {
-
             MedicineLocationDTO medicineLocationDTO = null;
             try
             {
-                string query = "SELECT * FROM medicine_locations WHERE medicine_location_id = " + id;
-                DataTable dt = DB.ExecuteQuery("SELECT * FROM medicine_locations WHERE medicine_location_id = " + id);
+                var query = "SELECT * FROM medicine_locations WHERE medicine_location_id = " + id;
+                var dt = DB.ExecuteQuery("SELECT * FROM medicine_locations WHERE medicine_location_id = " + id);
                 if (dt.Rows.Count != 0)
                 {
                     var name = dt.Rows[0]["medicine_location_name"].ToString();
@@ -71,7 +68,11 @@ namespace ProjectXML.DAL
         {
             try
             {
-                string query = "INSERT INTO medicine_locations (medicine_location_name, medicine_location_note, medicine_location_status, medicine_location_created, medicine_location_updated, medicine_location_deleted) VALUES ('" + medicineLocationDTO.name + "', '" + medicineLocationDTO.note + "', " + medicineLocationDTO.status + ", '" + medicineLocationDTO.created + "', '" + medicineLocationDTO.updated + "', '" + medicineLocationDTO.deleted + "')";
+                var query =
+                    "INSERT INTO medicine_locations (medicine_location_name, medicine_location_note, medicine_location_status, medicine_location_created, medicine_location_updated, medicine_location_deleted) VALUES ('" +
+                    medicineLocationDTO.name + "', '" + medicineLocationDTO.note + "', " + medicineLocationDTO.status +
+                    ", '" + medicineLocationDTO.created + "', '" + medicineLocationDTO.updated + "', '" +
+                    medicineLocationDTO.deleted + "')";
                 DB.ExecuteNonQuery(query);
                 return true;
             }
@@ -86,7 +87,13 @@ namespace ProjectXML.DAL
         {
             try
             {
-                string query = "UPDATE medicine_locations SET medicine_location_name = '" + medicineLocationDTO.name + "', medicine_location_note = '" + medicineLocationDTO.note + "', medicine_location_status = " + medicineLocationDTO.status + ", medicine_location_created = '" + medicineLocationDTO.created + "', medicine_location_updated = '" + medicineLocationDTO.updated + "', medicine_location_deleted = '" + medicineLocationDTO.deleted + "' WHERE medicine_location_id = " + medicineLocationDTO.id;
+                var query = "UPDATE medicine_locations SET medicine_location_name = '" + medicineLocationDTO.name +
+                            "', medicine_location_note = '" + medicineLocationDTO.note +
+                            "', medicine_location_status = " + medicineLocationDTO.status +
+                            ", medicine_location_created = '" + medicineLocationDTO.created +
+                            "', medicine_location_updated = '" + medicineLocationDTO.updated +
+                            "', medicine_location_deleted = '" + medicineLocationDTO.deleted +
+                            "' WHERE medicine_location_id = " + medicineLocationDTO.id;
                 DB.ExecuteNonQuery(query);
                 return Predefined.SUCCESS;
             }
@@ -101,7 +108,8 @@ namespace ProjectXML.DAL
         {
             try
             {
-                string query = "UPDATE medicine_locations SET medicine_location_deleted = '" + CustomDateTime.GetNow() + "' WHERE medicine_location_id = " + id;
+                var query = "UPDATE medicine_locations SET medicine_location_deleted = '" + CustomDateTime.GetNow() +
+                            "' WHERE medicine_location_id = " + id;
                 DB.ExecuteNonQuery(query);
                 return Predefined.SUCCESS;
             }
@@ -116,7 +124,7 @@ namespace ProjectXML.DAL
         {
             try
             {
-                string query = "UPDATE medicine_locations SET medicine_location_deleted = ''";
+                var query = "UPDATE medicine_locations SET medicine_location_deleted = ''";
                 DB.ExecuteNonQuery(query);
                 return Predefined.SUCCESS;
             }
@@ -125,14 +133,13 @@ namespace ProjectXML.DAL
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
             }
-
         }
 
         public int ForceDelete(string id)
         {
             try
             {
-                string query = "DELETE FROM medicine_locations WHERE medicine_location_id = " + id;
+                var query = "DELETE FROM medicine_locations WHERE medicine_location_id = " + id;
                 DB.ExecuteNonQuery(query);
                 return Predefined.SUCCESS;
             }
@@ -144,6 +151,3 @@ namespace ProjectXML.DAL
         }
     }
 }
-
-
-

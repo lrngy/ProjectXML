@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectXML.BUS;
 using ProjectXML.DTO;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ProjectXML.GUI
 {
@@ -14,17 +12,10 @@ namespace ProjectXML.GUI
         private readonly UserBUS userBUS = new UserBUS();
         private MainGUI mainView;
 
+
         public LoginGUI()
         {
             InitializeComponent();
-        }
-
-        [STAThread]
-        public static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginGUI());
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
@@ -56,15 +47,15 @@ namespace ProjectXML.GUI
             tbPassword.Text = "";
             user.guid = Guid.NewGuid().ToString();
 
-        
-            bool isLoggedIn = loginBus.Login(user);
+
+            var isLoggedIn = loginBus.Login(user);
             if (!isLoggedIn)
             {
                 lbError.Text = "Đăng nhập thất bại. Vui lòng liên hệ quản lý !";
                 return;
             }
-         
-             StartMainGUI(user);
+
+            StartMainGUI(user);
         }
 
         private void StartMainGUI(UserDTO user)
@@ -76,38 +67,21 @@ namespace ProjectXML.GUI
                 lbError.Text = "Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !";
                 return;
             }
+
             if (mainView == null || mainView.IsDisposed)
             {
                 mainView = new MainGUI(user, this, staff);
 
-            mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
+                mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
             }
-            mainView.Show();
-       
 
+            mainView.Show();
         }
 
         private void tbUsername_KeyDown(object sender, KeyEventArgs e)
         {
             lbError.Text = "";
             if (e.KeyCode == Keys.Enter) btnLogin.PerformClick();
-        }
-
-        private void LoginGUI_Load(object sender, EventArgs e)
-        {
-
-
-            this.BeginInvoke(new Action(() =>
-            {
-               LoginLog log = loginBus.CheckLoggedIn();
-                if (log is null)
-                {
-                    return;
-                }
-                UserDTO user = userBUS.getUser(log.username);
-                StartMainGUI(user);
-            }));
-
         }
     }
 }

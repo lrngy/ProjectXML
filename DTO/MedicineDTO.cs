@@ -1,14 +1,16 @@
-﻿using System;
-
-namespace ProjectXML.DTO
+﻿namespace ProjectXML.DTO
 {
     public class MedicineDTO
     {
+        public bool type;
+
         public MedicineDTO()
         {
         }
 
-        public MedicineDTO(string id, string name, string expireDate, string unit, double price_in, double price_out, int quantity, bool type, string image, string description, string created, string updated, string deleted, SupplierDTO supplier, CategoryDTO category, MedicineLocationDTO location)
+        public MedicineDTO(string id, string name, string expireDate, string unit, double price_in, double price_out,
+            int quantity, bool type, string image, string description, string created, string updated, string deleted,
+            SupplierDTO supplier, CategoryDTO category, MedicineLocationDTO location)
         {
             this.id = id;
             this.name = name;
@@ -28,7 +30,9 @@ namespace ProjectXML.DTO
             this.location = location;
         }
 
-        public MedicineDTO(string id, string name, string expireDate, string unit, double price_out, int quantity, string image, string description, string created, string updated, string deleted, SupplierDTO supplier, CategoryDTO category)
+        public MedicineDTO(string id, string name, string expireDate, string unit, double price_out, int quantity,
+            string image, string description, string created, string updated, string deleted, SupplierDTO supplier,
+            CategoryDTO category)
         {
             this.id = id;
             this.name = name;
@@ -53,7 +57,6 @@ namespace ProjectXML.DTO
         public double price_in { get; set; }
         public double price_out { get; set; }
         public int quantity { get; set; }
-        public bool type;
         public string image { get; set; }
 
         public string description { get; set; }

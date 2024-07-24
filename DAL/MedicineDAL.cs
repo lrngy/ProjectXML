@@ -11,8 +11,8 @@ namespace ProjectXML.DAL
     public class MedicineDAL
     {
         private readonly CategoryDAL categoryDAL;
-        private XmlDocument medicineDoc;
         private readonly SupplierDAL supplierDAL;
+        private XmlDocument medicineDoc;
 
         public MedicineDAL()
         {
@@ -34,43 +34,44 @@ namespace ProjectXML.DAL
         public List<MedicineDTO> GetAll()
         {
             ReloadData();
-            List<MedicineDTO> medicines = new List<MedicineDTO>();
+            var medicines = new List<MedicineDTO>();
             try
             {
-                string query = "select * from medicines";
-               DataTable dt = DB.ExecuteQuery(query);
+                var query = "select * from medicines";
+                var dt = DB.ExecuteQuery(query);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    string id = dr["medicine_id"].ToString();
-                    string name = dr["medicine_name"].ToString();
-                    string expire = dr["medicine_expire_date"].ToString();
-                    string unit = dr["medicine_unit"].ToString();
-                    double price_in = double.Parse(dr["medicine_price_in"].ToString());
-                    double price_out = double.Parse(dr["medicine_price_out"].ToString());
-                    int quantity = int.Parse(dr["medicine_quantity"].ToString());
-                    string image = dr["medicine_image"].ToString();
-                    string description = dr["medicine_description"].ToString();
-                    string supplierId = dr["supplier_id"].ToString();
-                    string created = dr["medicine_created"].ToString();
-                    string updated = dr["medicine_updated"].ToString();
-                    string deleted = dr["medicine_deleted"].ToString();
-                    string categoryId = dr["category_id"].ToString();
-                    string medicine_location = dr["medicine_location_id"].ToString();
-                    bool medicine_type = dr["medicine_type"].ToString() == "1";
-                    
+                    var id = dr["medicine_id"].ToString();
+                    var name = dr["medicine_name"].ToString();
+                    var expire = dr["medicine_expire_date"].ToString();
+                    var unit = dr["medicine_unit"].ToString();
+                    var price_in = double.Parse(dr["medicine_price_in"].ToString());
+                    var price_out = double.Parse(dr["medicine_price_out"].ToString());
+                    var quantity = int.Parse(dr["medicine_quantity"].ToString());
+                    var image = dr["medicine_image"].ToString();
+                    var description = dr["medicine_description"].ToString();
+                    var supplierId = dr["supplier_id"].ToString();
+                    var created = dr["medicine_created"].ToString();
+                    var updated = dr["medicine_updated"].ToString();
+                    var deleted = dr["medicine_deleted"].ToString();
+                    var categoryId = dr["category_id"].ToString();
+                    var medicine_location = dr["medicine_location_id"].ToString();
+                    var medicine_type = dr["medicine_type"].ToString() == "1";
 
-                    SupplierDTO supplier = supplierDAL.GetById(supplierId);
-                    CategoryDTO category = categoryDAL.GetById(categoryId);
-                    MedicineLocationDTO medicineLocation = new MedicineLocationDTO();
-                    MedicineDTO medicine = new MedicineDTO(id, name, expire, unit, price_in, price_out, quantity, medicine_type, image, description,  created, updated, deleted, supplier,category, medicineLocation);
+
+                    var supplier = supplierDAL.GetById(supplierId);
+                    var category = categoryDAL.GetById(categoryId);
+                    var medicineLocation = new MedicineLocationDTO();
+                    var medicine = new MedicineDTO(id, name, expire, unit, price_in, price_out, quantity, medicine_type,
+                        image, description, created, updated, deleted, supplier, category, medicineLocation);
                     medicines.Add(medicine);
-
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
+
             return medicines;
         }
 
@@ -80,8 +81,8 @@ namespace ProjectXML.DAL
             MedicineDTO medicine = null;
             try
             {
-                string query = "select * from medicines where medicine_id = " + id;
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = "select * from medicines where medicine_id = " + id;
+                var dt = DB.ExecuteQuery(query);
                 //var medicineNode = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + id + "']");
                 if (dt.Rows.Count != 0)
                 {
@@ -103,7 +104,7 @@ namespace ProjectXML.DAL
                     var category = categoryDAL.GetById(categoryId);
 
                     medicine = new MedicineDTO(id, name, expire, unit, price, quantity, image, description,
-                        created, updated, deleted, supplier,category);
+                        created, updated, deleted, supplier, category);
                 }
             }
             catch (Exception ex)

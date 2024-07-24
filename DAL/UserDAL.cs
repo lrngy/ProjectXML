@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using ProjectXML.DTO;
@@ -15,19 +14,16 @@ namespace ProjectXML.DAL
             UserDTO user = null;
             try
             {
-                string query = "SELECT * FROM users WHERE username = @username";
+                var query = "SELECT * FROM users WHERE username = @username";
                 SqlParameter[] parameters = { new SqlParameter("@username", username) };
-                DataTable dt = DB.ExecuteQuery(query, parameters);
+                var dt = DB.ExecuteQuery(query, parameters);
 
                 if (dt.Rows.Count > 0)
-                {
                     user = new UserDTO
                     {
                         username = dt.Rows[0]["username"].ToString(),
-                        password = dt.Rows[0]["password"].ToString(),
-
+                        password = dt.Rows[0]["password"].ToString()
                     };
-                }
             }
             catch (Exception ex)
             {
@@ -45,18 +41,20 @@ namespace ProjectXML.DAL
                 {
                     {
                         "UPDATE users SET password = @password WHERE username = @username",
-                          new[] { new SqlParameter("@password", user.password), new SqlParameter("@username", user.username)
-                    } 
-                },
-                    {
-                    "UPDATE staffs SET staff_name = @staffName, staff_year_of_birth = @staffYearOfBirth, staff_sex = @staffSex WHERE staff_id = @staffId",
-                    new []
+                        new[]
                         {
-                             new SqlParameter("@staffName", staff.name),
-                             new SqlParameter("@staffYearOfBirth", staff.birthday),
-                             new SqlParameter("@staffSex", staff.gender),
-                             new SqlParameter("@staffId", staff.id)
-                         }
+                            new SqlParameter("@password", user.password), new SqlParameter("@username", user.username)
+                        }
+                    },
+                    {
+                        "UPDATE staffs SET staff_name = @staffName, staff_year_of_birth = @staffYearOfBirth, staff_sex = @staffSex WHERE staff_id = @staffId",
+                        new[]
+                        {
+                            new SqlParameter("@staffName", staff.name),
+                            new SqlParameter("@staffYearOfBirth", staff.birthday),
+                            new SqlParameter("@staffSex", staff.gender),
+                            new SqlParameter("@staffId", staff.id)
+                        }
                     }
                 };
                 DB.ExecuteTransaction(query);
@@ -73,8 +71,9 @@ namespace ProjectXML.DAL
         {
             try
             {
-                string query = "UPDATE users SET password = @password WHERE username = @username";
-                SqlParameter[] parameters = { new SqlParameter("@password", user.password), new SqlParameter("@username", user.username) };
+                var query = "UPDATE users SET password = @password WHERE username = @username";
+                SqlParameter[] parameters =
+                    { new SqlParameter("@password", user.password), new SqlParameter("@username", user.username) };
                 DB.ExecuteNonQuery(query, parameters);
                 return Predefined.SUCCESS;
             }

@@ -12,12 +12,13 @@ namespace ProjectXML.GUI
     public partial class ThongTinCaNhanGUI : Form
     {
         public delegate void OnUpdateHandler();
-        public OnUpdateHandler OnUpdate;
 
-        private ChangePasswordDialog changePasswordDialog;
-        private UserDTO user;
         private readonly StaffDTO staff;
         private readonly UserBUS userController = new UserBUS();
+
+        private ChangePasswordDialog changePasswordDialog;
+        public OnUpdateHandler OnUpdate;
+        private UserDTO user;
 
         public ThongTinCaNhanGUI(UserDTO user)
         {

@@ -11,15 +11,14 @@ namespace ProjectXML.DAL
 {
     public class CategoryDAL
     {
-
         public List<CategoryDTO> GetAll()
         {
             //ReloadData();
             var list = new List<CategoryDTO>();
             try
             {
-                string query = "SELECT * FROM categories";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = "SELECT * FROM categories";
+                var dt = DB.ExecuteQuery(query);
                 foreach (DataRow dr in dt.Rows)
                 {
                     var id = dr["category_id"].ToString();
@@ -50,8 +49,8 @@ namespace ProjectXML.DAL
             CategoryDTO category = null;
             try
             {
-                string query = $"SELECT * FROM categories WHERE category_id = ${id}";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = $"SELECT * FROM categories WHERE category_id = ${id}";
+                var dt = DB.ExecuteQuery(query);
                 if (dt.Rows.Count != 0)
                 {
                     var deleted = dt.Rows[0]["category_deleted"].ToString();
@@ -74,14 +73,14 @@ namespace ProjectXML.DAL
         public bool CheckExistName(string name)
         {
             //ReloadData();
-            string query = $"SELECT * FROM categories WHERE category_name = @name";
+            var query = "SELECT * FROM categories WHERE category_name = @name";
             SqlParameter[] sqlParameters = { new SqlParameter("@name", name) };
-            DataTable dt = DB.ExecuteQuery(query, sqlParameters);
+            var dt = DB.ExecuteQuery(query, sqlParameters);
             if (dt.Rows.Count == 0) return false;
             var deleted = dt.Rows[0]["category_deleted"].ToString();
             return deleted.Equals("");
-            }
-        
+        }
+
 
         public int Insert(CategoryDTO category)
         {
@@ -121,12 +120,14 @@ namespace ProjectXML.DAL
                 //categoryDoc.SelectSingleNode("/categories").AppendChild(categoryNode);
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = "INSERT INTO categories(category_name, category_note, category_status, category_created) VALUES (@name, @note, @status, @created)";
-                SqlParameter[] sqlParameters = {
+                var query =
+                    "INSERT INTO categories(category_name, category_note, category_status, category_created) VALUES (@name, @note, @status, @created)";
+                SqlParameter[] sqlParameters =
+                {
                     new SqlParameter("@name", category.name),
                     new SqlParameter("@note", category.note),
                     new SqlParameter("@status", category.status),
-                    new SqlParameter("@created", category.created),
+                    new SqlParameter("@created", category.created)
                 };
                 DB.ExecuteNonQuery(query, sqlParameters);
                 return Predefined.SUCCESS;
@@ -152,7 +153,8 @@ namespace ProjectXML.DAL
                 //categoryNode.SelectSingleNode("category_updated").InnerText = category.updated;
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"UPDATE categories SET category_name = '{category.name}', category_note = '{category.note}', category_status = {(category.status ? 1 : 0)}, category_updated = '{category.updated}' WHERE category_id = '{category.id}'";
+                var query =
+                    $"UPDATE categories SET category_name = '{category.name}', category_note = '{category.note}', category_status = {(category.status ? 1 : 0)}, category_updated = '{category.updated}' WHERE category_id = '{category.id}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -174,7 +176,8 @@ namespace ProjectXML.DAL
                 //categoryNode.SelectSingleNode("category_deleted").InnerText = CustomDateTime.GetNow();
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"UPDATE categories SET category_deleted = '{CustomDateTime.GetNow()}' WHERE category_id = '{maTheLoai}'";
+                var query =
+                    $"UPDATE categories SET category_deleted = '{CustomDateTime.GetNow()}' WHERE category_id = '{maTheLoai}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -196,7 +199,7 @@ namespace ProjectXML.DAL
                 //categoryNode.SelectSingleNode("category_deleted").InnerText = "";
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"UPDATE categories SET category_deleted = null WHERE category_id = '{maTheLoai}'";
+                var query = $"UPDATE categories SET category_deleted = null WHERE category_id = '{maTheLoai}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -218,7 +221,7 @@ namespace ProjectXML.DAL
                 //categoryNode.ParentNode.RemoveChild(categoryNode);
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"DELETE FROM categories WHERE category_id = '{maTheLoai}'";
+                var query = $"DELETE FROM categories WHERE category_id = '{maTheLoai}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -240,7 +243,7 @@ namespace ProjectXML.DAL
                 //    categoryNode.SelectSingleNode("category_deleted").InnerText = "";
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"UPDATE categories SET category_deleted = null";
+                var query = "UPDATE categories SET category_deleted = null";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;

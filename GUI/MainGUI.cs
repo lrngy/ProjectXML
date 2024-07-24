@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using ProjectXML.BUS;
-using ProjectXML.DAL;
 using ProjectXML.DTO;
 using ProjectXML.GUI.Dialog;
 using ProjectXML.Util;
@@ -11,14 +10,14 @@ namespace ProjectXML.GUI
     public partial class MainGUI : Form
     {
         private ChangePasswordDialog changePasswordDialog;
-        private readonly LoginGUI loginView;
+        private readonly LoginBUS loginBUS = new LoginBUS();
+        private LoginGUI loginView;
         private QuanLyNhanVienGUI quanLyNhanVienView;
         private QuanLyTaiChinhGUI quanLyTaiChinhView;
         private QuanLyThuocGUI quanLyThuocView;
+        private readonly StaffDTO staff;
         private ThongTinCaNhanGUI thongTinCaNhanView;
         private readonly UserDTO user;
-        private readonly StaffDTO staff;
-        private readonly LoginBUS loginBUS = new LoginBUS();
 
         public MainGUI(UserDTO user, LoginGUI loginView, StaffDTO staff)
         {
@@ -151,6 +150,7 @@ namespace ProjectXML.GUI
             {
                 loginBUS.Logout(user);
                 Dispose();
+                if (loginView == null || loginView.IsDisposed) loginView = new LoginGUI();
                 loginView.Show();
             }
         }

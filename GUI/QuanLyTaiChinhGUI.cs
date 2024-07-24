@@ -13,20 +13,19 @@ namespace ProjectXML.GUI
 {
     public partial class QuanLyTaiChinhGUI : Form
     {
-        private DataTable dataTableThu, dataTableChi;
-
         private readonly XmlDocument docChi = Config.getDoc("pos_bills");
         private readonly XmlDocument docNhanVien = Config.getDoc("staffs");
         private readonly XmlDocument docThu = Config.getDoc("finance_bills");
+        private readonly Dictionary<string, decimal> monthlyRevenueChi = new Dictionary<string, decimal>();
+        private readonly Dictionary<string, decimal> monthlyRevenueThu = new Dictionary<string, decimal>();
+        private readonly string pathChi = Config.getXMLPath("pos_bills");
+        private readonly string pathThu = Config.getXMLPath("finance_bills");
+        private DataTable dataTableThu, dataTableChi;
 
         private XmlElement finance_bills;
         private string maPhieuChiClick;
 
         private string maPhieuThuClick;
-        private readonly Dictionary<string, decimal> monthlyRevenueChi = new Dictionary<string, decimal>();
-        private readonly Dictionary<string, decimal> monthlyRevenueThu = new Dictionary<string, decimal>();
-        private readonly string pathChi = Config.getXMLPath("pos_bills");
-        private readonly string pathThu = Config.getXMLPath("finance_bills");
         private XmlElement pos_bills;
 
 

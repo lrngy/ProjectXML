@@ -23,6 +23,5 @@
             username = newUser.username;
             password = newUser.password;
         }
-
     }
 }

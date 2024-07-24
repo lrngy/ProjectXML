@@ -1,13 +1,10 @@
-﻿using ProjectXML.DTO;
-using ProjectXML.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
+using ProjectXML.DTO;
+using ProjectXML.Util;
 
 namespace ProjectXML.DAL
 {
@@ -18,8 +15,8 @@ namespace ProjectXML.DAL
             var list = new List<StaffDTO>();
             try
             {
-                string query = "SELECT * FROM staffs";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = "SELECT * FROM staffs";
+                var dt = DB.ExecuteQuery(query);
                 foreach (DataRow dr in dt.Rows)
                 {
                     var id = dr["staff_id"].ToString();
@@ -34,7 +31,7 @@ namespace ProjectXML.DAL
                     //var deleted = dr["staff_deleted"].ToString();
 
 
-                    StaffDTO staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
+                    var staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
 
                     list.Add(staff);
                 }
@@ -48,13 +45,11 @@ namespace ProjectXML.DAL
 
         public StaffDTO GetById(string id)
         {
-
             StaffDTO staffDTO = null;
             try
             {
-
-                string query = $"SELECT * FROM staffs where staff_id = {id}";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = $"SELECT * FROM staffs where staff_id = {id}";
+                var dt = DB.ExecuteQuery(query);
                 if (dt.Rows.Count != 0)
                 {
                     var name = dt.Rows[0]["staff_name"].ToString();
@@ -69,7 +64,6 @@ namespace ProjectXML.DAL
 
 
                     staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
-
                 }
             }
             catch (Exception)
@@ -81,12 +75,11 @@ namespace ProjectXML.DAL
 
         public StaffDTO GetByUsername(string username)
         {
-
             StaffDTO staffDTO = null;
             try
             {
-                string query = $"SELECT * FROM staffs where username = '{username}'";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = $"SELECT * FROM staffs where username = '{username}'";
+                var dt = DB.ExecuteQuery(query);
                 if (dt.Rows.Count != 0)
                 {
                     var id = dt.Rows[0]["staff_id"].ToString();
@@ -112,9 +105,8 @@ namespace ProjectXML.DAL
 
         public bool CheckExist(string id)
         {
-
-            string query = $"SELECT * FROM staffs where staff_id = {id}";
-            DataTable dt = DB.ExecuteQuery(query);
+            var query = $"SELECT * FROM staffs where staff_id = {id}";
+            var dt = DB.ExecuteQuery(query);
             if (dt.Rows.Count == 0) return false;
             return true;
         }
@@ -122,10 +114,10 @@ namespace ProjectXML.DAL
 
         public int Insert(StaffDTO staffDTO)
         {
-
             try
             {
-                string query = $"INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
+                var query =
+                    "INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
                     $"VALUES({staffDTO.id}, {staffDTO.name}, {staffDTO.gender}, {staffDTO.birthday}, {staffDTO.isManager}, {staffDTO.isSeller}, '', '', '', {staffDTO.username})";
 
                 return Predefined.SUCCESS;
@@ -139,11 +131,10 @@ namespace ProjectXML.DAL
 
         public int Update(StaffDTO staffDTO)
         {
-
             try
             {
-                string query = $"UPDATE QlyHieuThuoc.dbo.staffs" +
-                    $"SET staff_name='{staffDTO.name}', staff_sex={staffDTO.gender}, staff_year_of_birth='{staffDTO.birthday}', staff_is_manager={staffDTO.isManager}, staff_is_seller={staffDTO.isSeller}, staff_created='', staff_updated='', staff_deleted='', username='{staffDTO.username}' WHERE staff_id='{staffDTO.id}'";
+                var query = "UPDATE QlyHieuThuoc.dbo.staffs" +
+                            $"SET staff_name='{staffDTO.name}', staff_sex={staffDTO.gender}, staff_year_of_birth='{staffDTO.birthday}', staff_is_manager={staffDTO.isManager}, staff_is_seller={staffDTO.isSeller}, staff_created='', staff_updated='', staff_deleted='', username='{staffDTO.username}' WHERE staff_id='{staffDTO.id}'";
 
 
                 DB.ExecuteNonQuery(query);
@@ -156,12 +147,12 @@ namespace ProjectXML.DAL
                 return Predefined.ERROR;
             }
         }
+
         internal int Delete(string id)
         {
-
             try
             {
-                string query = $"UPDATE staffs SET staff_deleted = '{CustomDateTime.GetNow()}' WHERE staff_id = '{id}'";
+                var query = $"UPDATE staffs SET staff_deleted = '{CustomDateTime.GetNow()}' WHERE staff_id = '{id}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -175,10 +166,9 @@ namespace ProjectXML.DAL
 
         internal int Restore(string id)
         {
-
             try
             {
-                string query = $"UPDATE staffs SET staff_deleted = '' WHERE staff_id = '{id}'";
+                var query = $"UPDATE staffs SET staff_deleted = '' WHERE staff_id = '{id}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -191,17 +181,15 @@ namespace ProjectXML.DAL
         }
 
 
-
         internal int ForceDelete(string id)
         {
-       
             try
             {
                 //var supplierNode = supplierDoc.SelectSingleNode("/suppliers/supplier[supplier_id='" + id + "']");
                 //supplierNode.ParentNode.RemoveChild(supplierNode);
                 //supplierDoc.Save(Config.getXMLPath("suppliers"));
 
-                string query = $"DELETE FROM staffs WHERE staff_id = '{id}'";
+                var query = $"DELETE FROM staffs WHERE staff_id = '{id}'";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;
@@ -215,7 +203,6 @@ namespace ProjectXML.DAL
 
         internal int RestoreAll()
         {
-          
             try
             {
                 //var categoryNodes = categoryDoc.SelectNodes("/categories/category");
@@ -223,7 +210,7 @@ namespace ProjectXML.DAL
                 //    categoryNode.SelectSingleNode("category_deleted").InnerText = "";
                 //categoryDoc.Save(Config.getXMLPath("categories"));
 
-                string query = $"UPDATE staffs SET staff_deleted = ''";
+                var query = "UPDATE staffs SET staff_deleted = ''";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;

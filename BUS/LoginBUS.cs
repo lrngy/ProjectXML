@@ -1,8 +1,6 @@
 ﻿using ProjectXML.DAL;
 using ProjectXML.DTO;
 using ProjectXML.Util;
-using System;
-using System.Globalization;
 
 namespace ProjectXML.BUS
 {
@@ -28,16 +26,16 @@ namespace ProjectXML.BUS
 
         public LoginLog CheckLoggedIn()
         {
-            LoginLog loginLog = loginDAL.GetLoginLog();
-            string currentTime = CustomDateTime.GetNow();
-            string loginTime = loginLog.loginTime;
-
-            TimeSpan timeSpan = CustomDateTime.CompareDateTime(currentTime, loginTime);
-            if (!loginLog.logoutTime.Equals("") || timeSpan.TotalHours > 12)
-            {
+            var loginLog = loginDAL.GetLoginLog();
+            if (loginLog == null)
                 return null;
-            }
-            return loginDAL.GetLoginLog();
+
+            var currentTime = CustomDateTime.GetNow();
+            var loginTime = loginLog.loginTime;
+
+            var timeSpan = CustomDateTime.CompareDateTime(currentTime, loginTime);
+            if (timeSpan.TotalHours <= 12 && string.IsNullOrEmpty(loginLog.logoutTime)) return loginLog;
+            return null;
         }
     }
 }

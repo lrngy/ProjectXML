@@ -20,14 +20,14 @@ namespace ProjectXML.Util
 
         //public static string GetDateValidate(string input)
         //{
- 
+
         //    return DateTime.ParseExact(input, format, CultureInfo.InvariantCulture).ToString();
         //}
 
         public static TimeSpan CompareDateTime(string datetime1, string datetime2)
         {
-            DateTime one = DateTime.Parse(datetime1);
-            DateTime two = DateTime.Parse(datetime2);
+            var one = DateTime.Parse(datetime1);
+            var two = DateTime.Parse(datetime2);
             return one - two;
         }
     }

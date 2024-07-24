@@ -6,7 +6,8 @@
         {
         }
 
-        public SupplierDTO(string id, string name, string phone, string email, string note, bool status, string created, string updated, string deleted)
+        public SupplierDTO(string id, string name, string phone, string email, string note, bool status, string created,
+            string updated, string deleted)
         {
             this.id = id;
             this.name = name;
@@ -29,6 +30,5 @@
         public string created { get; set; }
         public string updated { get; set; }
         public string deleted { get; set; }
-
     }
 }

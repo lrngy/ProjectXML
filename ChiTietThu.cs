@@ -8,8 +8,8 @@ namespace ProjectXML
 {
     public partial class ChiTietThu : Form
     {
-        private XmlElement finance_bills;
         private readonly string path = Config.getXMLPath("finance_bills");
+        private XmlElement finance_bills;
         private XmlDocument xmlDocument;
 
         public ChiTietThu()

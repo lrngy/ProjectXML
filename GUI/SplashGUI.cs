@@ -3,6 +3,7 @@ using System.Threading;
 using System.Windows.Forms;
 using ProjectXML.BUS;
 using ProjectXML.DTO;
+using ProjectXML.Util;
 
 namespace ProjectXML.GUI
 {
@@ -47,21 +48,29 @@ namespace ProjectXML.GUI
             if (this.Opacity < 1)
             {
                 this.Opacity += opacityIncrement;
+                return;
             }
             else
             {
                 timer1.Stop();
                 Hide();
-                var log = loginBUS.CheckLoggedIn();
-                if (log is null)
+                try
                 {
-                    loginGUI.Show();
-                    return;
-                }
+                    var log = loginBUS.CheckLoggedIn();
+                    if (log is null)
+                    {
+                        loginGUI.Show();
+                        return;
+                    }
 
-                var user = userBUS.getUser(log.username);
-                user.guid = log.id;
-                StartMainGUI(user);
+                    var user = userBUS.getUser(log.username);
+                    user.guid = log.id;
+                    StartMainGUI(user);
+                } catch (Exception ex)
+                {
+                    CustomMessageBox.ShowError(Properties.Resources.DatabaseConnectionError);
+                    Application.Exit();
+                }
             }
         }
 

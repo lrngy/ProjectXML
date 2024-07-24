@@ -61,12 +61,93 @@ namespace ProjectXML.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !.
+        /// </summary>
+        internal static string AccountNotValid {
+            get {
+                return ResourceManager.GetString("AccountNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string ChangePasswordFail {
+            get {
+                return ResourceManager.GetString("ChangePasswordFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đổi mật khẩu thành công.
+        /// </summary>
+        internal static string ChangePasswordSuccess {
+            get {
+                return ResourceManager.GetString("ChangePasswordSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không thể kết nối đến cơ sở dữ liệu.
+        /// </summary>
+        internal static string DatabaseConnectionError {
+            get {
+                return ResourceManager.GetString("DatabaseConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng nhập thất bại. Vui lòng liên hệ quản lý !.
+        /// </summary>
+        internal static string LoginFail {
+            get {
+                return ResourceManager.GetString("LoginFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu mới không khớp.
+        /// </summary>
+        internal static string NewPasswordNotCorrect {
+            get {
+                return ResourceManager.GetString("NewPasswordNotCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu cũ không đúng.
+        /// </summary>
+        internal static string OldPasswordNotCorrect {
+            get {
+                return ResourceManager.GetString("OldPasswordNotCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập đầy đủ thông tin.
+        /// </summary>
+        internal static string PleaseEnterCompleteInfo {
+            get {
+                return ResourceManager.GetString("PleaseEnterCompleteInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap SplashScreen {
             get {
                 object obj = ResourceManager.GetObject("SplashScreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản hoặc mật khẩu không chính xác.
+        /// </summary>
+        internal static string WrongUsernameOrPassword {
+            get {
+                return ResourceManager.GetString("WrongUsernameOrPassword", resourceCulture);
             }
         }
     }

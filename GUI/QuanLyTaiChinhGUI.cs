@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using System.Xml.Linq;
+using ProjectXML.Properties;
 using ProjectXML.Util;
 
 namespace ProjectXML.GUI
@@ -235,7 +236,7 @@ namespace ProjectXML.GUI
         {
             if (tbMaPThu.Text == "" || tbSoTienThu.Text == "" || tbChiTietThu.Text == "" || tbIDnvThu.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                MessageBox.Show(Resources.PleaseEnterCompleteInfo);
                 return;
             }
 
@@ -466,7 +467,7 @@ namespace ProjectXML.GUI
             if (tbMaPChi.Text == "" || tbSoTienChi.Text == "" || tbIDnvChi.Text == "" || tbIDKho.Text == "" ||
                 tbMaPhieuThu.Text == "" || tbIDKh.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                MessageBox.Show(Resources.PleaseEnterCompleteInfo);
                 return;
             }
 

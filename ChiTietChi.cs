@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
+using ProjectXML.Properties;
 using ProjectXML.Util;
 
 namespace ProjectXML
@@ -56,7 +57,7 @@ namespace ProjectXML
         private void btnChi_Click(object sender, EventArgs e)
         {
             if (tbMaPChi.Text == "" || tbSoTienChi.Text == "" || tbIDKh.Text == "" || tbIDnvChi.Text == "" ||
-                tbIDKho.Text == "") MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                tbIDKho.Text == "") MessageBox.Show(Resources.PleaseEnterCompleteInfo);
 
             xmlDocument.Load(path);
             pos_bills = xmlDocument.DocumentElement;

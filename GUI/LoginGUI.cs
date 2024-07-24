@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using ProjectXML.BUS;
 using ProjectXML.DTO;
+using ProjectXML.Properties;
 
 namespace ProjectXML.GUI
 {
@@ -31,14 +32,14 @@ namespace ProjectXML.GUI
             var isEmptyField = username.Equals("") || password.Equals("");
             if (isEmptyField)
             {
-                lbError.Text = "Vui lòng nhập đầy đủ thông tin";
+                lbError.Text = Resources.PleaseEnterCompleteInfo;
                 return;
             }
 
             var user = loginBus.CheckExist(username, password);
             if (user is null)
             {
-                lbError.Text = "Tài khoản hoặc mật khẩu không chính xác";
+                lbError.Text = Resources.WrongUsernameOrPassword;
                 return;
             }
 
@@ -51,20 +52,13 @@ namespace ProjectXML.GUI
             var isLoggedIn = loginBus.Login(user);
             if (!isLoggedIn)
             {
-                lbError.Text = "Đăng nhập thất bại. Vui lòng liên hệ quản lý !";
-                return;
+                lbError.Text = Resources.LoginFail;
             }
 
-            StartMainGUI(user);
-        }
-
-        private void StartMainGUI(UserDTO user)
-        {
-            Hide();
             var staff = staffBus.GetByUsername(user.username);
             if (staff is null)
             {
-                lbError.Text = "Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !";
+                lbError.Text = Resources.AccountNotValid;
                 return;
             }
 
@@ -74,9 +68,10 @@ namespace ProjectXML.GUI
 
                 mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
             }
-
+            Hide();
             mainView.Show();
         }
+
 
         private void tbUsername_KeyDown(object sender, KeyEventArgs e)
         {

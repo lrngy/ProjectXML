@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ProjectXML.BUS;
 using ProjectXML.DTO;
+using ProjectXML.Properties;
 using ProjectXML.Util;
 
 namespace ProjectXML.GUI.Dialog
@@ -38,7 +39,7 @@ namespace ProjectXML.GUI.Dialog
             var to = tbGiaKT.Text;
             if (from.Equals("") || to.Equals(""))
             {
-                CustomMessageBox.ShowWarning("Vui lòng nhập đầy đủ thông tin");
+                CustomMessageBox.ShowWarning(Resources.PleaseEnterCompleteInfo);
                 return null;
             }
 
@@ -115,7 +116,7 @@ namespace ProjectXML.GUI.Dialog
             var to = tbSLKT.Text;
             if (from.Equals("") || to.Equals(""))
             {
-                CustomMessageBox.ShowWarning("Vui lòng nhập đầy đủ thông tin");
+                CustomMessageBox.ShowWarning(Resources.PleaseEnterCompleteInfo);
                 return null;
             }
 

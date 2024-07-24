@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
+using ProjectXML.Properties;
 using ProjectXML.Util;
 
 namespace ProjectXML
@@ -55,7 +56,7 @@ namespace ProjectXML
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             if (tbMaPThu2.Text == "" || tbSoTienThu2.Text == "" || tbChiTietThu2.Text == "" || tbIDnvThu2.Text == "")
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                MessageBox.Show(Resources.PleaseEnterCompleteInfo);
 
             xmlDocument.Load(path);
             finance_bills = xmlDocument.DocumentElement;

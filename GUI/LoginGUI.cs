@@ -5,7 +5,7 @@ using QPharma.Properties;
 
 namespace QPharma.GUI
 {
-    public partial class LoginGUI : Form
+    public partial class LoginGUI : BaseForm
     {
         private readonly LoginBUS loginBus = new LoginBUS();
         private readonly StaffBUS staffBus = new StaffBUS();
@@ -16,7 +16,6 @@ namespace QPharma.GUI
         public LoginGUI()
         {
             InitializeComponent();
-            Icon = Resources.appicon;
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)

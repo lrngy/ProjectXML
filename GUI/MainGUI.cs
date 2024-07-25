@@ -8,7 +8,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI
 {
-    public partial class MainGUI : Form
+    public partial class MainGUI : BaseForm
     {
         private readonly LoginBUS loginBUS = new LoginBUS();
         private readonly StaffDTO staff;
@@ -23,10 +23,13 @@ namespace QPharma.GUI
         public MainGUI(UserDTO user, LoginGUI loginView, StaffDTO staff)
         {
             InitializeComponent();
-            Icon = Resources.appicon;
             this.user = user;
             this.loginView = loginView;
             this.staff = staff;
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.UserPaint, true);
         }
 
         private void btnQlyThuoc_Click(object sender, EventArgs e)

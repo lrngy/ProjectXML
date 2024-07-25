@@ -92,6 +92,12 @@
     <Compile Include="DAL\MedicineLocationDAL.cs" />
     <Compile Include="DAL\StaffDAL.cs" />
     <Compile Include="DTO\LoginLog.cs" />
+    <Compile Include="GUI\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\SplashGUI.cs">
       <SubType>Form</SubType>
     </Compile>

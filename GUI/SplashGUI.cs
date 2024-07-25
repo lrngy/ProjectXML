@@ -7,7 +7,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI
 {
-    public partial class SplashGUI : Form
+    public partial class SplashGUI : BaseForm
     {
         private readonly LoginBUS loginBUS = new LoginBUS();
         private readonly LoginGUI loginGUI = new LoginGUI();
@@ -20,7 +20,6 @@ namespace QPharma.GUI
         public SplashGUI()
         {
             InitializeComponent();
-            Icon = Resources.appicon;
         }
 
 

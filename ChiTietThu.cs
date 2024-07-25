@@ -2,12 +2,13 @@
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
+using QPharma.GUI;
 using QPharma.Properties;
 using QPharma.Util;
 
 namespace QPharma
 {
-    public partial class ChiTietThu : Form
+    public partial class ChiTietThu : BaseForm
     {
         private readonly string path = Config.getXMLPath("finance_bills");
         private XmlElement finance_bills;
@@ -16,7 +17,6 @@ namespace QPharma
         public ChiTietThu()
         {
             InitializeComponent();
-            Icon = Resources.appicon;
             tbSoTienThu2.KeyPress += tbSoTienThu2_KeyPress;
         }
 

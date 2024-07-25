@@ -2,22 +2,11 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
-using QPharma.Properties;
 using QPharma.Util;
 
 namespace QPharma.GUI
 {
-    // git add .
-    // git commit -m "Quyết - update Quản lý nhân viên - !"
-    // git push origin Quyet
-
-    //git pull origin Quyet
-    //lệnh giải quyết xung đột
-
-    //git reset --hard HEAD~1
-    // xóa commit trước đó, đồng thời xóa các thay đổi trước đó
-
-    public partial class QuanLyNhanVienGUI : Form
+    public partial class QuanLyNhanVienGUI : BaseForm
     {
         private readonly XmlDocument doc = new XmlDocument();
         private readonly XmlDocument docUser = new XmlDocument();
@@ -31,7 +20,6 @@ namespace QPharma.GUI
         public QuanLyNhanVienGUI()
         {
             InitializeComponent();
-            Icon = Resources.appicon;
         }
 
 

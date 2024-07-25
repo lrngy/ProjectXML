@@ -14,7 +14,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI
 {
-    public partial class QuanLyThuocGUI : Form
+    public partial class QuanLyThuocGUI : BaseForm
     {
         private readonly CategoryBUS categoryController = new CategoryBUS();
         private readonly MedicineBUS medicineController = new MedicineBUS();
@@ -38,7 +38,6 @@ namespace QPharma.GUI
         public QuanLyThuocGUI(UserDTO user, int tabControlIndex)
         {
             InitializeComponent();
-            Icon = Resources.appicon;
             this.user = user;
             this.tabControlIndex = tabControlIndex;
             staff = new StaffDAL().GetByUsername(user.username);

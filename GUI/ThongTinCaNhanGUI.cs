@@ -10,7 +10,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI
 {
-    public partial class ThongTinCaNhanGUI : Form
+    public partial class ThongTinCaNhanGUI : BaseForm
     {
         public delegate void OnUpdateHandler();
 
@@ -24,7 +24,6 @@ namespace QPharma.GUI
         public ThongTinCaNhanGUI(UserDTO user)
         {
             InitializeComponent();
-            Icon = Resources.appicon;
             this.user = user;
             staff = new StaffDAL().GetByUsername(user.username);
         }

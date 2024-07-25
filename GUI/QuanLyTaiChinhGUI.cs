@@ -12,7 +12,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI
 {
-    public partial class QuanLyTaiChinhGUI : Form
+    public partial class QuanLyTaiChinhGUI : BaseForm
     {
         private readonly XmlDocument docChi = Config.getDoc("pos_bills");
         private readonly XmlDocument docNhanVien = Config.getDoc("staffs");
@@ -33,7 +33,6 @@ namespace QPharma.GUI
         public QuanLyTaiChinhGUI()
         {
             InitializeComponent();
-            Icon = Resources.appicon;
             tbSoTienThu.KeyPress += tbSoTienThu_KeyPress;
             tbSoTienChi.KeyPress += tbSoTienChi_KeyPress;
         }

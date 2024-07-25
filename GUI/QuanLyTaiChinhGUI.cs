@@ -7,10 +7,10 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using System.Xml.Linq;
-using ProjectXML.Properties;
-using ProjectXML.Util;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
     public partial class QuanLyTaiChinhGUI : Form
     {
@@ -33,6 +33,7 @@ namespace ProjectXML.GUI
         public QuanLyTaiChinhGUI()
         {
             InitializeComponent();
+            Icon = Resources.appicon;
             tbSoTienThu.KeyPress += tbSoTienThu_KeyPress;
             tbSoTienChi.KeyPress += tbSoTienChi_KeyPress;
         }
@@ -236,7 +237,7 @@ namespace ProjectXML.GUI
         {
             if (tbMaPThu.Text == "" || tbSoTienThu.Text == "" || tbChiTietThu.Text == "" || tbIDnvThu.Text == "")
             {
-                MessageBox.Show(Resources.PleaseEnterCompleteInfo);
+                MessageBox.Show(Resources.Please_enter_complete_info);
                 return;
             }
 
@@ -467,7 +468,7 @@ namespace ProjectXML.GUI
             if (tbMaPChi.Text == "" || tbSoTienChi.Text == "" || tbIDnvChi.Text == "" || tbIDKho.Text == "" ||
                 tbMaPhieuThu.Text == "" || tbIDKh.Text == "")
             {
-                MessageBox.Show(Resources.PleaseEnterCompleteInfo);
+                MessageBox.Show(Resources.Please_enter_complete_info);
                 return;
             }
 

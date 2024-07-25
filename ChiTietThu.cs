@@ -2,10 +2,10 @@
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
-using ProjectXML.Properties;
-using ProjectXML.Util;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML
+namespace QPharma
 {
     public partial class ChiTietThu : Form
     {
@@ -16,6 +16,7 @@ namespace ProjectXML
         public ChiTietThu()
         {
             InitializeComponent();
+            Icon = Resources.appicon;
             tbSoTienThu2.KeyPress += tbSoTienThu2_KeyPress;
         }
 
@@ -56,7 +57,7 @@ namespace ProjectXML
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             if (tbMaPThu2.Text == "" || tbSoTienThu2.Text == "" || tbChiTietThu2.Text == "" || tbIDnvThu2.Text == "")
-                MessageBox.Show(Resources.PleaseEnterCompleteInfo);
+                MessageBox.Show(Resources.Please_enter_complete_info);
 
             xmlDocument.Load(path);
             finance_bills = xmlDocument.DocumentElement;

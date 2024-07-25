@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ProjectXML.Util
+namespace QPharma.Util
 {
     public class CustomMessageBox
     {

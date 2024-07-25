@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjectXML.Properties {
+namespace QPharma.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ProjectXML.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProjectXML.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("QPharma.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,74 +61,507 @@ namespace ProjectXML.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !.
+        ///   Looks up a localized string similar to Tài khoản không tồn tại.
         /// </summary>
-        internal static string AccountNotValid {
+        internal static string Account_does_not_exist {
             get {
-                return ResourceManager.GetString("AccountNotValid", resourceCulture);
+                return ResourceManager.GetString("Account does not exist", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !.
         /// </summary>
-        internal static string ChangePasswordFail {
+        internal static string Account_not_valid {
             get {
-                return ResourceManager.GetString("ChangePasswordFail", resourceCulture);
+                return ResourceManager.GetString("Account not valid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thêm thất bại.
+        /// </summary>
+        internal static string Add_failed {
+            get {
+                return ResourceManager.GetString("Add failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thêm thất bại.
+        /// </summary>
+        internal static string Add_failled {
+            get {
+                return ResourceManager.GetString("Add failled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thêm thông tin thuốc thành công.
+        /// </summary>
+        internal static string Added_medicine_information_successfully {
+            get {
+                return ResourceManager.GetString("Added medicine information successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon appicon {
+            get {
+                object obj = ResourceManager.GetObject("appicon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có chắc chắn muốn xoá nhà cung cấp này không?.
+        /// </summary>
+        internal static string Are_you_sure_you_want_to_remove_this_supplier_ {
+            get {
+                return ResourceManager.GetString("Are you sure you want to remove this supplier?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Khả dụng.
+        /// </summary>
+        internal static string Available {
+            get {
+                return ResourceManager.GetString("Available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lỗi thêm thuốc.
+        /// </summary>
+        internal static string Cannot_added_this_medicine {
+            get {
+                return ResourceManager.GetString("Cannot added this medicine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không thể sửa nhà cung cấp này.
+        /// </summary>
+        internal static string Cannot_edit_this_supplier {
+            get {
+                return ResourceManager.GetString("Cannot edit this supplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sự cố khi lưu ảnh.
+        /// </summary>
+        internal static string Cannot_save_this_image {
+            get {
+                return ResourceManager.GetString("Cannot save this image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã thể loại không tồn tại.
+        /// </summary>
+        internal static string Category_ID_does_not_exist {
+            get {
+                return ResourceManager.GetString("Category ID does not exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã thể loại không hợp lệ.
+        /// </summary>
+        internal static string Category_ID_does_not_valid {
+            get {
+                return ResourceManager.GetString("Category ID does not valid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QUẢN LÝ DANH MỤC THUỐC.
+        /// </summary>
+        internal static string Category_management {
+            get {
+                return ResourceManager.GetString("Category management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên thể loại đã tồn tại.
+        /// </summary>
+        internal static string Category_name_already_exists {
+            get {
+                return ResourceManager.GetString("Category name already exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đổi ảnh thành công.
+        /// </summary>
+        internal static string Change_image_successfully {
+            get {
+                return ResourceManager.GetString("Change image successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đổi mật khẩu thất bại.
+        /// </summary>
+        internal static string Change_password_fail {
+            get {
+                return ResourceManager.GetString("Change password fail", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Đổi mật khẩu thành công.
         /// </summary>
-        internal static string ChangePasswordSuccess {
+        internal static string Change_password_success {
             get {
-                return ResourceManager.GetString("ChangePasswordSuccess", resourceCulture);
+                return ResourceManager.GetString("Change password success", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Không thể kết nối đến cơ sở dữ liệu.
         /// </summary>
-        internal static string DatabaseConnectionError {
+        internal static string Database_connection_error {
             get {
-                return ResourceManager.GetString("DatabaseConnectionError", resourceCulture);
+                return ResourceManager.GetString("Database connection error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}, ngày {1} tháng {2} năm {3}.
+        /// </summary>
+        internal static string Date_format {
+            get {
+                return ResourceManager.GetString("Date format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xóa thất bại.
+        /// </summary>
+        internal static string Delete_failed {
+            get {
+                return ResourceManager.GetString("Delete failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn không có quyền truy cập chức năng này.
+        /// </summary>
+        internal static string Do_not_have_permission_to_access {
+            get {
+                return ResourceManager.GetString("Do not have permission to access", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có chắc chắn muốn xóa ảnh này?.
+        /// </summary>
+        internal static string Do_you_want_to_delete_this_image {
+            get {
+                return ResourceManager.GetString("Do you want to delete this image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sửa thất bại.
+        /// </summary>
+        internal static string Edit_failed {
+            get {
+                return ResourceManager.GetString("Edit failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có chắc chắn muốn thoát?.
+        /// </summary>
+        internal static string Exit_confirm {
+            get {
+                return ResourceManager.GetString("Exit confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thứ sáu.
+        /// </summary>
+        internal static string Friday {
+            get {
+                return ResourceManager.GetString("Friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xin chào, {0}.
+        /// </summary>
+        internal static string Hello_text {
+            get {
+                return ResourceManager.GetString("Hello text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email không hợp lệ.
+        /// </summary>
+        internal static string Invalid_email {
+            get {
+                return ResourceManager.GetString("Invalid email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã thuốc không hợp lệ.
+        /// </summary>
+        internal static string Invalid_Medicine_ID {
+            get {
+                return ResourceManager.GetString("Invalid Medicine ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không hợp lệ.
+        /// </summary>
+        internal static string Invalid_phone_number {
+            get {
+                return ResourceManager.GetString("Invalid phone number", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Đăng nhập thất bại. Vui lòng liên hệ quản lý !.
         /// </summary>
-        internal static string LoginFail {
+        internal static string Login_fail {
             get {
-                return ResourceManager.GetString("LoginFail", resourceCulture);
+                return ResourceManager.GetString("Login fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có chắc chắn muốn đăng xuất?.
+        /// </summary>
+        internal static string Logout_confirm {
+            get {
+                return ResourceManager.GetString("Logout confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quản lý.
+        /// </summary>
+        internal static string Manager {
+            get {
+                return ResourceManager.GetString("Manager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã thuốc đã tồn tại.
+        /// </summary>
+        internal static string Medicine_ID_already_exist {
+            get {
+                return ResourceManager.GetString("Medicine ID already exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã thuốc không tồn tại.
+        /// </summary>
+        internal static string Medicine_ID_is_not_exist {
+            get {
+                return ResourceManager.GetString("Medicine ID is not exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QUẢN LÝ THUỐC.
+        /// </summary>
+        internal static string Medicine_management {
+            get {
+                return ResourceManager.GetString("Medicine management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thứ hai.
+        /// </summary>
+        internal static string Monday {
+            get {
+                return ResourceManager.GetString("Monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên không được quá {0} ký tự.
+        /// </summary>
+        internal static string Name_cannot_exceed_value {
+            get {
+                return ResourceManager.GetString("Name cannot exceed value", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Mật khẩu mới không khớp.
         /// </summary>
-        internal static string NewPasswordNotCorrect {
+        internal static string New_password_not_correct {
             get {
-                return ResourceManager.GetString("NewPasswordNotCorrect", resourceCulture);
+                return ResourceManager.GetString("New password not correct", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Mật khẩu cũ không đúng.
         /// </summary>
-        internal static string OldPasswordNotCorrect {
+        internal static string Old_password_not_correct {
             get {
-                return ResourceManager.GetString("OldPasswordNotCorrect", resourceCulture);
+                return ResourceManager.GetString("Old password not correct", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Vui lòng nhập đầy đủ thông tin.
         /// </summary>
-        internal static string PleaseEnterCompleteInfo {
+        internal static string Please_enter_complete_info {
             get {
-                return ResourceManager.GetString("PleaseEnterCompleteInfo", resourceCulture);
+                return ResourceManager.GetString("Please enter complete info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tên thể loại.
+        /// </summary>
+        internal static string Please_input_category_name {
+            get {
+                return ResourceManager.GetString("Please input category name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập mã nhà cung cấp.
+        /// </summary>
+        internal static string Please_input_supplier_ID {
+            get {
+                return ResourceManager.GetString("Please input supplier ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tên nhà cung cấp.
+        /// </summary>
+        internal static string Please_input_supplier_name {
+            get {
+                return ResourceManager.GetString("Please input supplier name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tên của bạn.
+        /// </summary>
+        internal static string Please_input_your_name {
+            get {
+                return ResourceManager.GetString("Please input your name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng chọn thể loại..
+        /// </summary>
+        internal static string Please_select_a_category {
+            get {
+                return ResourceManager.GetString("Please select a category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng chọn nhà cung cấp.
+        /// </summary>
+        internal static string Please_select_a_supplier {
+            get {
+                return ResourceManager.GetString("Please select a supplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng chọn thuốc hợp lệ.
+        /// </summary>
+        internal static string Please_select_a_valid_medicine {
+            get {
+                return ResourceManager.GetString("Please select a valid medicine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng chọn thể loại muốn sửa.
+        /// </summary>
+        internal static string Please_select_the_category_you_want_to_edit {
+            get {
+                return ResourceManager.GetString("Please select the category you want to edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng chọn nhà cung cấp muốn xoá !.
+        /// </summary>
+        internal static string Please_select_the_supplier_you_want_to_delete_ {
+            get {
+                return ResourceManager.GetString("Please select the supplier you want to delete!", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng chọn nhà cung cấp muốn chỉnh sửa.
+        /// </summary>
+        internal static string Please_select_the_supplier_you_want_to_edit {
+            get {
+                return ResourceManager.GetString("Please select the supplier you want to edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giá phải là số.
+        /// </summary>
+        internal static string Price_must_be_a_number {
+            get {
+                return ResourceManager.GetString("Price must be a number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giá phải lớn hơn hoặc bằng 0..
+        /// </summary>
+        internal static string Price_must_be_greater_or_equal_0 {
+            get {
+                return ResourceManager.GetString("Price must be greater or equal 0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số lượng phải là số.
+        /// </summary>
+        internal static string Quantity_must_be_a_number {
+            get {
+                return ResourceManager.GetString("Quantity must be a number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số lượng phải lớn hơn hoặc bằng 0..
+        /// </summary>
+        internal static string Quantity_must_be_greater_or_equal_0 {
+            get {
+                return ResourceManager.GetString("Quantity must be greater or equal 0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thứ bảy.
+        /// </summary>
+        internal static string Saturday {
+            get {
+                return ResourceManager.GetString("Saturday", resourceCulture);
             }
         }
         
@@ -143,11 +576,137 @@ namespace ProjectXML.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nhân viên.
+        /// </summary>
+        internal static string Staff {
+            get {
+                return ResourceManager.GetString("Staff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sửa thông tin thuốc thành công.
+        /// </summary>
+        internal static string Successfully_edited_medicine_information {
+            get {
+                return ResourceManager.GetString("Successfully edited medicine information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chủ nhật.
+        /// </summary>
+        internal static string Sunday {
+            get {
+                return ResourceManager.GetString("Sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã nhà cung cấp đã tồn tại.
+        /// </summary>
+        internal static string Supplier_ID_already_exists {
+            get {
+                return ResourceManager.GetString("Supplier ID already exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã nhà cung cấp không tồn tại.
+        /// </summary>
+        internal static string Supplier_ID_is_not_exist {
+            get {
+                return ResourceManager.GetString("Supplier ID is not exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QUẢN LÝ NHÀ CUNG CẤP.
+        /// </summary>
+        internal static string Supplier_management {
+            get {
+                return ResourceManager.GetString("Supplier management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không thể thêm nhà cung cấp này.
+        /// </summary>
+        internal static string This_provider_cannot_be_added {
+            get {
+                return ResourceManager.GetString("This provider cannot be added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thứ năm.
+        /// </summary>
+        internal static string Thursday {
+            get {
+                return ResourceManager.GetString("Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thứ ba.
+        /// </summary>
+        internal static string Tuesday {
+            get {
+                return ResourceManager.GetString("Tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không khả dụng.
+        /// </summary>
+        internal static string Unavailable {
+            get {
+                return ResourceManager.GetString("Unavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật thông tin thất bại.
+        /// </summary>
+        internal static string Update_information_failed {
+            get {
+                return ResourceManager.GetString("Update information failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật thông tin thành công.
+        /// </summary>
+        internal static string Update_information_success {
+            get {
+                return ResourceManager.GetString("Update information success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thứ tư.
+        /// </summary>
+        internal static string Wednesday {
+            get {
+                return ResourceManager.GetString("Wednesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tài khoản hoặc mật khẩu không chính xác.
         /// </summary>
-        internal static string WrongUsernameOrPassword {
+        internal static string Wrong_username_or_password {
             get {
-                return ResourceManager.GetString("WrongUsernameOrPassword", resourceCulture);
+                return ResourceManager.GetString("Wrong username or password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuổi của bạn phải lớn hơn hoặc bằng {0}.
+        /// </summary>
+        internal static string Your_age_must_be_greater_or_equal_value {
+            get {
+                return ResourceManager.GetString("Your age must be greater or equal value", resourceCulture);
             }
         }
     }

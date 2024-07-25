@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.DTO;
-using ProjectXML.Properties;
+using QPharma.BUS;
+using QPharma.Properties;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
     public partial class LoginGUI : Form
     {
@@ -17,6 +16,7 @@ namespace ProjectXML.GUI
         public LoginGUI()
         {
             InitializeComponent();
+            Icon = Resources.appicon;
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
@@ -32,14 +32,14 @@ namespace ProjectXML.GUI
             var isEmptyField = username.Equals("") || password.Equals("");
             if (isEmptyField)
             {
-                lbError.Text = Resources.PleaseEnterCompleteInfo;
+                lbError.Text = Resources.Please_enter_complete_info;
                 return;
             }
 
             var user = loginBus.CheckExist(username, password);
             if (user is null)
             {
-                lbError.Text = Resources.WrongUsernameOrPassword;
+                lbError.Text = Resources.Wrong_username_or_password;
                 return;
             }
 
@@ -50,15 +50,12 @@ namespace ProjectXML.GUI
 
 
             var isLoggedIn = loginBus.Login(user);
-            if (!isLoggedIn)
-            {
-                lbError.Text = Resources.LoginFail;
-            }
+            if (!isLoggedIn) lbError.Text = Resources.Login_fail;
 
             var staff = staffBus.GetByUsername(user.username);
             if (staff is null)
             {
-                lbError.Text = Resources.AccountNotValid;
+                lbError.Text = Resources.Account_not_valid;
                 return;
             }
 
@@ -68,6 +65,7 @@ namespace ProjectXML.GUI
 
                 mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
             }
+
             Hide();
             mainView.Show();
         }
@@ -77,6 +75,11 @@ namespace ProjectXML.GUI
         {
             lbError.Text = "";
             if (e.KeyCode == Keys.Enter) btnLogin.PerformClick();
+        }
+
+        private void LoginGUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

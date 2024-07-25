@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.Util
+﻿namespace QPharma.Util
 {
     public class Predefined
     {

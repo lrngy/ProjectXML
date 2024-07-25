@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.Util;
+using QPharma.BUS;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI.Dialog
+namespace QPharma.GUI.Dialog
 {
     public partial class DeletedCategoryDialog : Form
     {
@@ -63,7 +64,7 @@ namespace ProjectXML.GUI.Dialog
                 }
 
                 if (state == Predefined.ID_NOT_EXIST)
-                    CustomMessageBox.ShowError("Mã thể loại không tồn tại");
+                    CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
                 else
                     CustomMessageBox.ShowError("Khôi phục thất bại");
             }
@@ -89,9 +90,9 @@ namespace ProjectXML.GUI.Dialog
                     }
 
                     if (state == Predefined.ID_NOT_EXIST)
-                        CustomMessageBox.ShowError("Mã thể loại không tồn tại");
+                        CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
                     else
-                        CustomMessageBox.ShowError("Xóa thất bại");
+                        CustomMessageBox.ShowError(Resources.Delete_failed);
                 }
             }
             catch (Exception ex)

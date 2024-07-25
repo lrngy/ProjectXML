@@ -1,8 +1,9 @@
-﻿using ProjectXML.DAL;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+﻿using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.BUS
+namespace QPharma.BUS
 {
     public class LoginBUS
     {
@@ -34,7 +35,8 @@ namespace ProjectXML.BUS
             var loginTime = loginLog.loginTime;
 
             var timeSpan = CustomDateTime.CompareDateTime(currentTime, loginTime);
-            if (timeSpan.TotalHours <= 12 && string.IsNullOrEmpty(loginLog.logoutTime)) return loginLog;
+            if (timeSpan.TotalMinutes <= Development.Default.SessionDurationMinute &&
+                string.IsNullOrEmpty(loginLog.logoutTime)) return loginLog;
             return null;
         }
     }

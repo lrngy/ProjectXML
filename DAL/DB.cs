@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using QPharma.Properties;
 
-namespace ProjectXML.DAL
+namespace QPharma.DAL
 {
     internal class DB
     {
-        private static readonly string connectString =
-            @"Data Source=LONGPC\SQLEXPRESS;Initial Catalog=QlyHieuThuoc;Integrated Security=True";
+        private static string connectString;
 
         private static SqlConnection GetConnection()
         {
+#if Development
+            connectString = Development.Default.ConnectionString;
+#elif Production
+                    connectString = Production.Default.ConnectionString;
+#endif
             return new SqlConnection(connectString);
         }
 

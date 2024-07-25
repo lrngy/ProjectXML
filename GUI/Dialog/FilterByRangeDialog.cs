@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.DTO;
-using ProjectXML.Properties;
-using ProjectXML.Util;
+using QPharma.BUS;
+using QPharma.DTO;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI.Dialog
+namespace QPharma.GUI.Dialog
 {
     public partial class FilterByRangeDialog : Form
     {
@@ -39,7 +39,7 @@ namespace ProjectXML.GUI.Dialog
             var to = tbGiaKT.Text;
             if (from.Equals("") || to.Equals(""))
             {
-                CustomMessageBox.ShowWarning(Resources.PleaseEnterCompleteInfo);
+                CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
                 return null;
             }
 
@@ -116,7 +116,7 @@ namespace ProjectXML.GUI.Dialog
             var to = tbSLKT.Text;
             if (from.Equals("") || to.Equals(""))
             {
-                CustomMessageBox.ShowWarning(Resources.PleaseEnterCompleteInfo);
+                CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
                 return null;
             }
 

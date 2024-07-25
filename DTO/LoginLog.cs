@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.DTO
+﻿namespace QPharma.DTO
 {
     public class LoginLog
     {

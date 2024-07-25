@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using QPharma.DTO;
+using QPharma.Util;
 
-namespace ProjectXML.DAL
+namespace QPharma.DAL
 {
     internal class MedicineLocationDAL
     {

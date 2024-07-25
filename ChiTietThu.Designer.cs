@@ -1,4 +1,6 @@
-﻿namespace ProjectXML
+﻿using QPharma.Properties;
+
+namespace QPharma
 {
     partial class ChiTietThu
     {
@@ -122,7 +124,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 25);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Nhân viên";
+            this.label8.Text = Resources.Staff;
             // 
             // tbChiTietThu2
             // 

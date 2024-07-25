@@ -1,4 +1,6 @@
-﻿namespace ProjectXML.GUI
+﻿using QPharma.Properties;
+
+namespace QPharma.GUI
 {
     partial class QuanLyThuocGUI
     {
@@ -173,7 +175,7 @@
             this.lbHeader.Name = "lbHeader";
             this.lbHeader.Size = new System.Drawing.Size(152, 20);
             this.lbHeader.TabIndex = 0;
-            this.lbHeader.Text = "QUẢN LÝ THUỐC";
+            this.lbHeader.Text = Resources.Medicine_management;
             // 
             // tabControl1
             // 
@@ -938,8 +940,8 @@
             this.cbTrangThaiTheLoai.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTrangThaiTheLoai.FormattingEnabled = true;
             this.cbTrangThaiTheLoai.Items.AddRange(new object[] {
-            "Khả dụng",
-            "Không khả dụng"});
+            Resources.Available,
+            Resources.Unavailable});
             this.cbTrangThaiTheLoai.Location = new System.Drawing.Point(466, 49);
             this.cbTrangThaiTheLoai.Name = "cbTrangThaiTheLoai";
             this.cbTrangThaiTheLoai.Size = new System.Drawing.Size(170, 28);
@@ -1056,7 +1058,6 @@
             this.dgvTheLoai.Size = new System.Drawing.Size(1270, 286);
             this.dgvTheLoai.TabIndex = 0;
             this.dgvTheLoai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTheLoai_CellClick);
-            this.dgvTheLoai.SelectionChanged += new System.EventHandler(this.dgvTheLoai_SelectionChanged);
             // 
             // Column7
             // 
@@ -1195,8 +1196,8 @@
             this.cbTTNCC.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTTNCC.FormattingEnabled = true;
             this.cbTTNCC.Items.AddRange(new object[] {
-            "Khả dụng",
-            "Không khả dụng"});
+            Resources.Available,
+            Resources.Unavailable});
             this.cbTTNCC.Location = new System.Drawing.Point(507, 104);
             this.cbTTNCC.Name = "cbTTNCC";
             this.cbTTNCC.Size = new System.Drawing.Size(170, 28);
@@ -1477,7 +1478,7 @@
             this.Controls.Add(this.lbHeader);
             this.Name = "QuanLyThuocGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QUẢN LÝ THUỐC";
+            this.Text = Resources.Medicine_management;
             this.Load += new System.EventHandler(this.QuanLyThuocView_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabThuoc.ResumeLayout(false);

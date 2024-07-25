@@ -1,7 +1,7 @@
-﻿using ProjectXML.DAL;
-using ProjectXML.DTO;
+﻿using QPharma.DAL;
+using QPharma.DTO;
 
-namespace ProjectXML.BUS
+namespace QPharma.BUS
 {
     internal class StaffBUS
     {

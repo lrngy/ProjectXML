@@ -2,9 +2,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
-using ProjectXML.Util;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
     // git add .
     // git commit -m "Quyết - update Quản lý nhân viên - !"
@@ -30,6 +31,7 @@ namespace ProjectXML.GUI
         public QuanLyNhanVienGUI()
         {
             InitializeComponent();
+            Icon = Resources.appicon;
         }
 
 

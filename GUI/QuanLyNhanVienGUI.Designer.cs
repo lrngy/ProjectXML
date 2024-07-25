@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.GUI
+﻿namespace QPharma.GUI
 {
     partial class QuanLyNhanVienGUI
     {

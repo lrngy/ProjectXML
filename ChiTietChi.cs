@@ -2,10 +2,10 @@
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
-using ProjectXML.Properties;
-using ProjectXML.Util;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML
+namespace QPharma
 {
     public partial class ChiTietChi : Form
     {
@@ -16,6 +16,7 @@ namespace ProjectXML
         public ChiTietChi()
         {
             InitializeComponent();
+            Icon = Resources.appicon;
             tbSoTienChi.KeyPress += tbSoTienChi_KeyPress;
         }
 
@@ -57,7 +58,7 @@ namespace ProjectXML
         private void btnChi_Click(object sender, EventArgs e)
         {
             if (tbMaPChi.Text == "" || tbSoTienChi.Text == "" || tbIDKh.Text == "" || tbIDnvChi.Text == "" ||
-                tbIDKho.Text == "") MessageBox.Show(Resources.PleaseEnterCompleteInfo);
+                tbIDKho.Text == "") MessageBox.Show(Resources.Please_enter_complete_info);
 
             xmlDocument.Load(path);
             pos_bills = xmlDocument.DocumentElement;

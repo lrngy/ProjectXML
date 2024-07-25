@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using ProjectXML.DAL;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.Util;
 
-namespace ProjectXML.BUS
+namespace QPharma.BUS
 {
     public class MedicineBUS
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace ProjectXML.Util
+namespace QPharma.Util
 {
     public class CustomDateTime
     {

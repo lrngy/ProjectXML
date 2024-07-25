@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Threading;
 using System.Windows.Forms;
-using ProjectXML.GUI;
+using QPharma.GUI;
 
-namespace ProjectXML
+namespace QPharma
 {
     internal static class Program
     {
@@ -12,12 +11,7 @@ namespace ProjectXML
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            SplashGUI splashGui = new SplashGUI();
-
-            Application.Run(splashGui);
-
-
+            Application.Run(new SplashGUI());
         }
     }
 }

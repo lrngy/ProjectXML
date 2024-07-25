@@ -5,13 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
-using ProjectXML.BUS;
-using ProjectXML.DAL;
-using ProjectXML.DTO;
-using ProjectXML.GUI.Dialog;
-using ProjectXML.Util;
+using QPharma.BUS;
+using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.GUI.Dialog;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
     public partial class QuanLyThuocGUI : Form
     {
@@ -37,6 +38,7 @@ namespace ProjectXML.GUI
         public QuanLyThuocGUI(UserDTO user, int tabControlIndex)
         {
             InitializeComponent();
+            Icon = Resources.appicon;
             this.user = user;
             this.tabControlIndex = tabControlIndex;
             staff = new StaffDAL().GetByUsername(user.username);
@@ -50,21 +52,21 @@ namespace ProjectXML.GUI
                 case 0:
                     if (!staff.isManager)
                     {
-                        CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
+                        CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
                         e.Cancel = true;
                     }
 
                     QuanLyThuoc_Load();
-                    lbHeader.Text = "QUẢN LÝ THUỐC";
+                    lbHeader.Text = Resources.Medicine_management;
 
                     break;
                 case 1:
                     TheLoai_Load();
-                    lbHeader.Text = "QUẢN LÝ DANH MỤC THUỐC";
+                    lbHeader.Text = Resources.Category_management;
                     break;
                 case 2:
                     NhaCungCap_Load();
-                    lbHeader.Text = "QUẢN LÝ NHÀ CUNG CẤP";
+                    lbHeader.Text = Resources.Supplier_management;
                     break;
             }
         }
@@ -98,7 +100,7 @@ namespace ProjectXML.GUI
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Lỗi hiển thị thuốc: " + ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -161,7 +163,8 @@ namespace ProjectXML.GUI
                 var created = s.created;
                 var updated = s.updated;
 
-                dgvNhaCungCap.Rows.Add(++i, id, name, phone, email, note, status ? "Khả dụng" : "Không khả dụng",
+                dgvNhaCungCap.Rows.Add(++i, id, name, phone, email, note,
+                    status ? Resources.Available : Resources.Unavailable,
                     created, updated);
             }
 
@@ -196,12 +199,12 @@ namespace ProjectXML.GUI
             {
                 if (!category.deleted.Equals(""))
                 {
-                    Debug.WriteLine("Deleted: " + category.deleted);
+                    Debug.WriteLine(category.deleted);
                     continue;
                 }
 
                 dgvTheLoai.Rows.Add(++i, category.id, category.name, category.note,
-                    category.status ? "Khả dụng" : "Không khả dụng", category.created, category.updated);
+                    category.status ? Resources.Available : Resources.Unavailable, category.created, category.updated);
             }
 
             ClearInputCategory();
@@ -215,14 +218,6 @@ namespace ProjectXML.GUI
             else TimTheLoai();
 
             cbTieuChiTheLoai.SelectedIndex = cbIndexTieuChiThuoc;
-
-            try
-            {
-                //dgvTheLoai.Rows[rowSelectedTheLoai].Selected = true;
-            }
-            catch (Exception)
-            {
-            }
         }
 
         private void QuanLyThuocView_Load(object sender, EventArgs e)
@@ -242,7 +237,7 @@ namespace ProjectXML.GUI
                 if (tenTheLoai.Equals(""))
                 {
                     //CustomMessageBox.ShowError("Vui lòng nhập tên thể loại");
-                    ShowValidateError(tbTenTheLoai, "Vui lòng nhập tên thể loại");
+                    ShowValidateError(tbTenTheLoai, Resources.Please_input_category_name);
                     return;
                 }
 
@@ -257,13 +252,13 @@ namespace ProjectXML.GUI
 
                 if (state == Predefined.ID_EXIST)
                     //CustomMessageBox.ShowError("Tên thể loại đã tồn tại");
-                    ShowValidateError(tbTenTheLoai, "Tên thể loại đã tồn tại");
+                    ShowValidateError(tbTenTheLoai, Resources.Category_name_already_exists);
                 else
-                    CustomMessageBox.ShowError("Thêm thất bại");
+                    CustomMessageBox.ShowError(Resources.Add_failed);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Thêm thất bại: " + ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -285,14 +280,14 @@ namespace ProjectXML.GUI
                 var created = dgvTheLoai.SelectedRows[0].Cells[5].Value.ToString();
                 if (maTheLoai.Equals(""))
                 {
-                    CustomMessageBox.ShowError("Vui lòng chọn thể loại muốn sửa");
+                    CustomMessageBox.ShowError(Resources.Please_select_the_category_you_want_to_edit);
                     return;
                 }
 
                 if (tenTheLoai.Equals(""))
                 {
                     //CustomMessageBox.ShowError("Vui lòng nhập tên thể loại");
-                    ShowValidateError(tbTenTheLoai, "Vui lòng nhập tên thể loại");
+                    ShowValidateError(tbTenTheLoai, Resources.Please_input_category_name);
                     return;
                 }
 
@@ -307,22 +302,14 @@ namespace ProjectXML.GUI
                 }
 
                 if (state == Predefined.ID_NOT_EXIST)
-                    CustomMessageBox.ShowError("Mã thể loại không tồn tại");
+                    CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
                 else
-                    CustomMessageBox.ShowError("Sửa thất bại");
+                    CustomMessageBox.ShowError(Resources.Edit_failed);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Sửa thất bại: " + ex.Message);
+                Debug.WriteLine(ex.Message);
             }
-        }
-
-        private void dgvTheLoai_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-        }
-
-        private void dgvTheLoai_SelectionChanged(object sender, EventArgs e)
-        {
         }
 
         private void dgvTheLoai_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -332,7 +319,7 @@ namespace ProjectXML.GUI
                 tbTenTheLoai.Text = dgvTheLoai.SelectedRows[0].Cells[2].Value.ToString();
                 tbGhiChuTheLoai.Text = dgvTheLoai.SelectedRows[0].Cells[3].Value.ToString();
                 cbTrangThaiTheLoai.SelectedIndex =
-                    dgvTheLoai.SelectedRows[0].Cells[4].Value.ToString().Equals("Khả dụng") ? 0 : 1;
+                    dgvTheLoai.SelectedRows[0].Cells[4].Value.ToString().Equals(Resources.Available) ? 0 : 1;
             }
             catch (Exception)
             {
@@ -347,7 +334,7 @@ namespace ProjectXML.GUI
                 var maTheLoai = dgvTheLoai.SelectedRows[0].Cells[1].Value.ToString();
                 if (maTheLoai.Equals(""))
                 {
-                    CustomMessageBox.ShowError("Mã thể loại không hợp lệ");
+                    CustomMessageBox.ShowError(Resources.Category_ID_does_not_valid);
                     return;
                 }
 
@@ -359,13 +346,13 @@ namespace ProjectXML.GUI
                 }
 
                 if (state == Predefined.ID_NOT_EXIST)
-                    CustomMessageBox.ShowError("Mã thể loại không tồn tại");
+                    CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
                 else
-                    CustomMessageBox.ShowError("Xóa thất bại");
+                    CustomMessageBox.ShowError(Resources.Delete_failed);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Xoá thất bại: " + ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -386,7 +373,9 @@ namespace ProjectXML.GUI
                 tbDienThoai.Text = dgvNhaCungCap.Rows[index].Cells[3].Value.ToString();
                 tbEmail.Text = dgvNhaCungCap.Rows[index].Cells[4].Value.ToString();
                 tbGhiChuNCC.Text = dgvNhaCungCap.Rows[index].Cells[5].Value.ToString();
-                cbTTNCC.SelectedIndex = dgvNhaCungCap.Rows[index].Cells[6].Value.ToString().Equals("Khả dụng") ? 0 : 1;
+                cbTTNCC.SelectedIndex = dgvNhaCungCap.Rows[index].Cells[6].Value.ToString().Equals(Resources.Available)
+                    ? 0
+                    : 1;
             }
             catch (Exception)
             {
@@ -407,25 +396,25 @@ namespace ProjectXML.GUI
                 var isValidated = true;
                 if (maNCC.Equals(""))
                 {
-                    ShowValidateError(tbMaNCC, "Vui lòng nhập mã nhà cung cấp");
+                    ShowValidateError(tbMaNCC, Resources.Please_input_supplier_ID);
                     isValidated = false;
                 }
 
                 if (tenNCC.Equals(""))
                 {
-                    ShowValidateError(tbTenNCC, "Vui lòng nhập tên nhà cung cấp");
+                    ShowValidateError(tbTenNCC, Resources.Please_input_supplier_name);
                     isValidated = false;
                 }
 
                 if (!email.Equals("") && !email.Contains("@"))
                 {
-                    ShowValidateError(tbEmail, "Email không hợp lệ");
+                    ShowValidateError(tbEmail, Resources.Invalid_email);
                     isValidated = false;
                 }
 
                 if (!dienThoai.Equals("") && !int.TryParse(dienThoai, out var dt))
                 {
-                    ShowValidateError(tbDienThoai, "Số điện thoại không hợp lệ");
+                    ShowValidateError(tbDienThoai, Resources.Invalid_phone_number);
                     isValidated = false;
                 }
 
@@ -437,11 +426,11 @@ namespace ProjectXML.GUI
                 var result = supplierBUS.Insert(newSupplierDTO);
                 if (result == Predefined.ID_EXIST)
                 {
-                    ShowValidateError(tbMaNCC, "Mã nhà cung cấp đã tồn tại");
+                    ShowValidateError(tbMaNCC, Resources.Supplier_ID_already_exists);
                 }
                 else if (result == Predefined.ERROR)
                 {
-                    CustomMessageBox.ShowError("Không thể thêm nhà cung cấp này");
+                    CustomMessageBox.ShowError(Resources.This_provider_cannot_be_added);
                     return;
                 }
 
@@ -449,7 +438,7 @@ namespace ProjectXML.GUI
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Thêm thất bại: " + ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -467,25 +456,25 @@ namespace ProjectXML.GUI
 
                 if (maNCC.Equals(""))
                 {
-                    CustomMessageBox.ShowError("Vui lòng chọn nhà cung cấp muốn chỉnh sửa");
+                    CustomMessageBox.ShowError(Resources.Please_select_the_supplier_you_want_to_edit);
                     return;
                 }
 
                 if (tenNCC.Equals(""))
                 {
-                    ShowValidateError(tbTenNCC, "Vui lòng nhập tên nhà cung cấp");
+                    ShowValidateError(tbTenNCC, Resources.Please_input_supplier_name);
                     isValidated = false;
                 }
 
                 if (!email.Equals("") && !email.Contains("@"))
                 {
-                    ShowValidateError(tbEmail, "Email không hợp lệ");
+                    ShowValidateError(tbEmail, Resources.Invalid_email);
                     isValidated = false;
                 }
 
                 if (!dienThoai.Equals("") && !int.TryParse(dienThoai, out var dt))
                 {
-                    ShowValidateError(tbDienThoai, "Số điện thoại không hợp lệ");
+                    ShowValidateError(tbDienThoai, Resources.Invalid_phone_number);
                     isValidated = false;
                 }
 
@@ -497,11 +486,11 @@ namespace ProjectXML.GUI
                 var result = supplierBUS.Update(supplierDTO);
                 if (result == Predefined.ID_NOT_EXIST)
                 {
-                    ShowValidateError(tbMaNCC, "Mã nhà cung cấp không tồn tại");
+                    ShowValidateError(tbMaNCC, Resources.Supplier_ID_is_not_exist);
                 }
                 else if (result == Predefined.ERROR)
                 {
-                    CustomMessageBox.ShowError("Không thể sửa nhà cung cấp này");
+                    CustomMessageBox.ShowError(Resources.Cannot_edit_this_supplier);
                     return;
                 }
 
@@ -509,7 +498,7 @@ namespace ProjectXML.GUI
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Sửa thất bại" + ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -520,18 +509,18 @@ namespace ProjectXML.GUI
                 var maNCC = dgvNhaCungCap.SelectedRows[0].Cells[1].Value.ToString();
                 if (maNCC.Equals(""))
                 {
-                    CustomMessageBox.ShowError("Vui lòng chọn nhà cung cấp muốn xoá !");
+                    CustomMessageBox.ShowError(Resources.Please_select_the_supplier_you_want_to_delete_);
                     return;
                 }
 
-                var choice = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xoá nhà cung cấp này không?");
+                var choice = CustomMessageBox.ShowQuestion(Resources.Are_you_sure_you_want_to_remove_this_supplier_);
                 if (choice == DialogResult.No) return;
 
                 var result = supplierBUS.ForceDelete(maNCC);
                 if (result == Predefined.ID_NOT_EXIST)
                     //CustomMessageBox.ShowError("Mã nhà cung cấp không tồn tại");
                     //return;
-                    ShowValidateError(tbMaNCC, "Mã nhà cung cấp không tồn tại");
+                    ShowValidateError(tbMaNCC, Resources.Supplier_ID_is_not_exist);
 
                 NhaCungCap_Load();
             }
@@ -568,7 +557,8 @@ namespace ProjectXML.GUI
                     case 4:
                         return supplier.note.ToLower().Contains(noidungtimkiem);
                     case 5:
-                        return (supplier.status ? "Khả dụng" : "Không khả dụng").ToLower().Contains(noidungtimkiem);
+                        return (supplier.status ? Resources.Available : Resources.Unavailable).ToLower()
+                            .Contains(noidungtimkiem);
 
                     default:
                         return false;
@@ -601,7 +591,8 @@ namespace ProjectXML.GUI
                     case 2:
                         return category.note.ToLower().Contains(noidungtimkiem);
                     case 3:
-                        return (category.status ? "Khả dụng" : "Không khả dụng").ToLower().Contains(noidungtimkiem);
+                        return (category.status ? Resources.Available : Resources.Unavailable).ToLower()
+                            .Contains(noidungtimkiem);
                     case 4:
                         return category.created.ToLower().Contains(noidungtimkiem);
                     case 5:
@@ -689,32 +680,32 @@ namespace ProjectXML.GUI
             if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(unit) ||
                 string.IsNullOrEmpty(quantityText) || string.IsNullOrEmpty(priceText))
             {
-                CustomMessageBox.ShowWarning("Vui lòng điền đầy đủ thông tin.");
+                CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
                 return;
             }
 
 
             if (!int.TryParse(quantityText, out var quantity))
             {
-                CustomMessageBox.ShowWarning("Số lượng phải là số.");
+                CustomMessageBox.ShowWarning(Resources.Quantity_must_be_a_number);
                 return;
             }
 
             if (!double.TryParse(priceText, out var price))
             {
-                CustomMessageBox.ShowWarning("Giá phải là số.");
+                CustomMessageBox.ShowWarning(Resources.Price_must_be_a_number);
                 return;
             }
 
             if (quantity < 0)
             {
-                CustomMessageBox.ShowWarning("Số lượng phải lớn hơn hoặc bằng 0.");
+                CustomMessageBox.ShowWarning(Resources.Quantity_must_be_greater_or_equal_0);
                 return;
             }
 
             if (price < 0)
             {
-                CustomMessageBox.ShowWarning("Giá phải lớn hơn hoặc bằng 0.");
+                CustomMessageBox.ShowWarning(Resources.Price_must_be_greater_or_equal_0);
                 return;
             }
 
@@ -722,13 +713,13 @@ namespace ProjectXML.GUI
             var nccIndex = cbNccThuoc.SelectedIndex;
             if (tlIndex == -1)
             {
-                CustomMessageBox.ShowWarning("Vui lòng chọn thể loại.");
+                CustomMessageBox.ShowWarning(Resources.Please_select_a_category);
                 return;
             }
 
             if (nccIndex == -1)
             {
-                CustomMessageBox.ShowWarning("Vui lòng chọn nhà cung cấp.");
+                CustomMessageBox.ShowWarning(Resources.Please_select_a_supplier);
                 return;
             }
 
@@ -753,14 +744,14 @@ namespace ProjectXML.GUI
             if (result == Predefined.SUCCESS)
             {
                 QuanLyThuoc_Load();
-                CustomMessageBox.ShowSuccess("Thêm thông tin thuốc thành công");
+                CustomMessageBox.ShowSuccess(Resources.Added_medicine_information_successfully);
                 return;
             }
 
             if (result == Predefined.ID_EXIST)
-                CustomMessageBox.ShowError("Mã thuốc đã tồn tại.");
+                CustomMessageBox.ShowError(Resources.Medicine_ID_already_exist);
             else
-                CustomMessageBox.ShowError("Lỗi thêm thuốc.");
+                CustomMessageBox.ShowError(Resources.Cannot_added_this_medicine);
         }
 
         private void btnSuaThuoc_Click(object sender, EventArgs e)
@@ -783,32 +774,32 @@ namespace ProjectXML.GUI
                 if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(unit) ||
                     string.IsNullOrEmpty(quantityText) || string.IsNullOrEmpty(priceText))
                 {
-                    CustomMessageBox.ShowWarning("Vui lòng điền đầy đủ thông tin.");
+                    CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
                     return;
                 }
 
 
                 if (!int.TryParse(quantityText, out var quantity))
                 {
-                    CustomMessageBox.ShowWarning("Số lượng phải là số.");
+                    CustomMessageBox.ShowWarning(Resources.Quantity_must_be_a_number);
                     return;
                 }
 
                 if (!double.TryParse(priceText, out var price))
                 {
-                    CustomMessageBox.ShowWarning("Giá phải là số.");
+                    CustomMessageBox.ShowWarning(Resources.Price_must_be_a_number);
                     return;
                 }
 
                 if (quantity < 0)
                 {
-                    CustomMessageBox.ShowWarning("Số lượng phải lớn hơn hoặc bằng 0.");
+                    CustomMessageBox.ShowWarning(Resources.Quantity_must_be_greater_or_equal_0);
                     return;
                 }
 
                 if (price < 0)
                 {
-                    CustomMessageBox.ShowWarning("Giá phải lớn hơn hoặc bằng 0.");
+                    CustomMessageBox.ShowWarning(Resources.Price_must_be_greater_or_equal_0);
                     return;
                 }
 
@@ -816,13 +807,13 @@ namespace ProjectXML.GUI
                 var nccIndex = cbNccThuoc.SelectedIndex;
                 if (tlIndex == -1)
                 {
-                    CustomMessageBox.ShowWarning("Vui lòng chọn thể loại.");
+                    CustomMessageBox.ShowWarning(Resources.Please_select_a_category);
                     return;
                 }
 
                 if (nccIndex == -1)
                 {
-                    CustomMessageBox.ShowWarning("Vui lòng chọn nhà cung cấp.");
+                    CustomMessageBox.ShowWarning(Resources.Please_select_a_supplier);
                     return;
                 }
 
@@ -836,15 +827,15 @@ namespace ProjectXML.GUI
                 if (result == Predefined.SUCCESS)
                 {
                     QuanLyThuoc_Load();
-                    CustomMessageBox.ShowSuccess("Sửa thông tin thuốc thành công");
+                    CustomMessageBox.ShowSuccess(Resources.Successfully_edited_medicine_information);
                     return;
                 }
 
-                if (result == Predefined.ERROR) MessageBox.Show("Sửa thất bại");
+                if (result == Predefined.ERROR) MessageBox.Show(Resources.Edit_failed);
             }
             catch (NullReferenceException)
             {
-                CustomMessageBox.ShowError("Mã thuốc không hợp lệ");
+                CustomMessageBox.ShowError(Resources.Invalid_Medicine_ID);
             }
         }
 
@@ -855,7 +846,7 @@ namespace ProjectXML.GUI
                 var maThuoc = dgvThuoc.SelectedRows[0].Cells[1].Value.ToString();
                 if (maThuoc.Equals(""))
                 {
-                    CustomMessageBox.ShowError("Mã thể loại không hợp lệ");
+                    CustomMessageBox.ShowError(Resources.Category_ID_does_not_valid);
                     return;
                 }
 
@@ -869,13 +860,13 @@ namespace ProjectXML.GUI
                 }
 
                 if (state == Predefined.ID_NOT_EXIST)
-                    CustomMessageBox.ShowError("Mã thể loại không tồn tại");
+                    CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
                 else
-                    CustomMessageBox.ShowError("Xóa thất bại");
+                    CustomMessageBox.ShowError(Resources.Delete_failed);
             }
             catch (Exception)
             {
-                CustomMessageBox.ShowError("Mã thể loại không hợp lệ");
+                CustomMessageBox.ShowError(Resources.Category_ID_does_not_valid);
             }
         }
 
@@ -953,7 +944,7 @@ namespace ProjectXML.GUI
             var medicineId = tbMaThuoc.Text;
             if (medicineId.Equals(""))
             {
-                CustomMessageBox.ShowError("Vui lòng chọn thuốc hợp lệ");
+                CustomMessageBox.ShowError(Resources.Please_select_a_valid_medicine);
                 return;
             }
 
@@ -961,15 +952,15 @@ namespace ProjectXML.GUI
 
             if (result == Predefined.SUCCESS)
             {
-                CustomMessageBox.ShowSuccess("Đổi ảnh thành công");
+                CustomMessageBox.ShowSuccess(Resources.Change_image_successfully);
                 QuanLyThuoc_Load();
                 return;
             }
 
             if (result == Predefined.ID_NOT_EXIST)
-                CustomMessageBox.ShowWarning("Mã thuốc không tồn tại");
+                CustomMessageBox.ShowWarning(Resources.Medicine_ID_is_not_exist);
             else
-                CustomMessageBox.ShowError("Sự cố khi lưu ảnh");
+                CustomMessageBox.ShowError(Resources.Cannot_save_this_image);
         }
 
         private void btnXoaAnh_Click(object sender, EventArgs e)
@@ -977,11 +968,11 @@ namespace ProjectXML.GUI
             var medicineId = tbMaThuoc.Text;
             if (medicineId.Equals(""))
             {
-                CustomMessageBox.ShowError("Vui lòng chọn thuốc hợp lệ");
+                CustomMessageBox.ShowError(Resources.Please_select_a_valid_medicine);
                 return;
             }
 
-            var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xóa ảnh này?");
+            var confirmResult = CustomMessageBox.ShowQuestion(Resources.Do_you_want_to_delete_this_image);
             if (confirmResult == DialogResult.No) return;
 
             var result = medicineController.RemoveImage(medicineId);
@@ -993,9 +984,9 @@ namespace ProjectXML.GUI
             }
 
             if (result == Predefined.ID_NOT_EXIST)
-                CustomMessageBox.ShowWarning("Mã thuốc không tồn tại");
+                CustomMessageBox.ShowWarning(Resources.Medicine_ID_is_not_exist);
             else
-                CustomMessageBox.ShowError("Sự cố khi lưu ảnh");
+                CustomMessageBox.ShowError(Resources.Cannot_save_this_image);
         }
 
 

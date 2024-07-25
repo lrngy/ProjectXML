@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.DTO;
-using ProjectXML.GUI.Dialog;
-using ProjectXML.Util;
+using QPharma.BUS;
+using QPharma.DTO;
+using QPharma.GUI.Dialog;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
     public partial class MainGUI : Form
     {
-        private ChangePasswordDialog changePasswordDialog;
         private readonly LoginBUS loginBUS = new LoginBUS();
+        private readonly StaffDTO staff;
+        private readonly UserDTO user;
+        private ChangePasswordDialog changePasswordDialog;
         private LoginGUI loginView;
         private QuanLyNhanVienGUI quanLyNhanVienView;
         private QuanLyTaiChinhGUI quanLyTaiChinhView;
         private QuanLyThuocGUI quanLyThuocView;
-        private readonly StaffDTO staff;
         private ThongTinCaNhanGUI thongTinCaNhanView;
-        private readonly UserDTO user;
 
         public MainGUI(UserDTO user, LoginGUI loginView, StaffDTO staff)
         {
             InitializeComponent();
+            Icon = Resources.appicon;
             this.user = user;
             this.loginView = loginView;
             this.staff = staff;
@@ -31,7 +33,7 @@ namespace ProjectXML.GUI
         {
             if (staff.isSeller)
             {
-                CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
+                CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
                 return;
             }
 
@@ -68,7 +70,7 @@ namespace ProjectXML.GUI
         {
             if (staff.isSeller)
             {
-                CustomMessageBox.ShowError("Bạn không có quyền truy cập chức năng này");
+                CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
                 return;
             }
 
@@ -88,7 +90,7 @@ namespace ProjectXML.GUI
 
         public void ChangeTextWelcome()
         {
-            lbWelcome.Text = "Xin chào, " + staff.name;
+            lbWelcome.Text = string.Format(Resources.Hello_text, staff.name);
         }
 
         private string GetDayOfWeekInVietnamese(DayOfWeek dayOfWeek)
@@ -96,19 +98,19 @@ namespace ProjectXML.GUI
             switch (dayOfWeek)
             {
                 case DayOfWeek.Sunday:
-                    return "Chủ nhật";
+                    return Resources.Sunday;
                 case DayOfWeek.Monday:
-                    return "Thứ hai";
+                    return Resources.Monday;
                 case DayOfWeek.Tuesday:
-                    return "Thứ ba";
+                    return Resources.Tuesday;
                 case DayOfWeek.Wednesday:
-                    return "Thứ tư";
+                    return Resources.Wednesday;
                 case DayOfWeek.Thursday:
-                    return "Thứ năm";
+                    return Resources.Thursday;
                 case DayOfWeek.Friday:
-                    return "Thứ sáu";
+                    return Resources.Friday;
                 case DayOfWeek.Saturday:
-                    return "Thứ bảy";
+                    return Resources.Saturday;
                 default:
                     return "";
             }
@@ -118,7 +120,7 @@ namespace ProjectXML.GUI
         {
             ChangeTextWelcome();
             var currentDate = DateTime.Now;
-            var formattedDate = string.Format("{0}, ngày {1} tháng {2} năm {3}",
+            var formattedDate = string.Format(Resources.Date_format,
                 GetDayOfWeekInVietnamese(currentDate.DayOfWeek),
                 currentDate.Day,
                 currentDate.Month,
@@ -127,10 +129,10 @@ namespace ProjectXML.GUI
             lbDate.Text = formattedDate;
 
 
-            lbTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            lbTime.Text = DateTime.Now.ToString(Development.Default.TimeFormat);
             var timer = new Timer();
             timer.Interval = 1000;
-            timer.Tick += (s, args) => { lbTime.Text = DateTime.Now.ToString("HH:mm:ss"); };
+            timer.Tick += (s, args) => { lbTime.Text = DateTime.Now.ToString(Development.Default.TimeFormat); };
             timer.Start();
         }
 
@@ -145,7 +147,7 @@ namespace ProjectXML.GUI
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn đăng xuất?");
+            var confirmResult = CustomMessageBox.ShowQuestion(Resources.Logout_confirm);
             if (confirmResult == DialogResult.Yes)
             {
                 loginBUS.Logout(user);
@@ -182,7 +184,7 @@ namespace ProjectXML.GUI
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn thoát?");
+            var confirmResult = CustomMessageBox.ShowQuestion(Resources.Exit_confirm);
             if (confirmResult == DialogResult.Yes) Application.Exit();
         }
 
@@ -209,12 +211,13 @@ namespace ProjectXML.GUI
 
         private void MainGUI_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn thoát?");
+            var result = CustomMessageBox.ShowQuestion(Resources.Exit_confirm);
             if (result == DialogResult.No) e.Cancel = true;
-            //else
-            //{
-            //    loginBUS.Logout(user);
-            //}
+        }
+
+        private void MainGUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Net.Mail;
 
-namespace ProjectXML.Util
+namespace QPharma.Util
 {
     public class Validation
     {

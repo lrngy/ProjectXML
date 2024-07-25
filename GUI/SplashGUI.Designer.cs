@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.GUI
+﻿namespace QPharma.GUI
 {
     partial class SplashGUI
     {
@@ -41,7 +41,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ProjectXML.Properties.Resources.SplashScreen;
+            this.BackgroundImage = global::QPharma.Properties.Resources.SplashScreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;

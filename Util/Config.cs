@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml;
 
-namespace ProjectXML.Util
+namespace QPharma.Util
 {
     public class Config
     {

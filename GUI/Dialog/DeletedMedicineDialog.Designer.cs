@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.GUI.Dialog
+﻿namespace QPharma.GUI.Dialog
 {
     partial class DeletedMedicineDialog
     {

@@ -1,4 +1,4 @@
-﻿namespace ProjectXML
+﻿namespace QPharma
 {
     partial class ChiTietChi
     {

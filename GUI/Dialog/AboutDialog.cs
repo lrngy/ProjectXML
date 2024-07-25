@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ProjectXML.GUI.Dialog
+namespace QPharma.GUI.Dialog
 {
     public partial class AboutDialog : Form
     {

@@ -1,26 +1,26 @@
 ﻿using System;
-using System.Threading;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using QPharma.BUS;
+using QPharma.DTO;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
     public partial class SplashGUI : Form
     {
         private readonly LoginBUS loginBUS = new LoginBUS();
         private readonly LoginGUI loginGUI = new LoginGUI();
+        private readonly double opacityIncrement = 0.05;
         private readonly StaffBUS staffBUS = new StaffBUS();
         private readonly UserBUS userBUS = new UserBUS();
         private MainGUI mainGUI;
-        private double opacityIncrement = 0.05;
 
 
         public SplashGUI()
         {
             InitializeComponent();
-            loginGUI.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
+            Icon = Resources.appicon;
         }
 
 
@@ -33,44 +33,37 @@ namespace ProjectXML.GUI
                 return;
             }
 
-            if (mainGUI == null || mainGUI.IsDisposed)
-            {
-                mainGUI = new MainGUI(user, null, staff);
-
-                mainGUI.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
-            }
-
+            if (mainGUI == null || mainGUI.IsDisposed) mainGUI = new MainGUI(user, null, staff);
             mainGUI.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (this.Opacity < 1)
+            if (Opacity < 1)
             {
-                this.Opacity += opacityIncrement;
+                Opacity += opacityIncrement;
                 return;
             }
-            else
-            {
-                timer1.Stop();
-                Hide();
-                try
-                {
-                    var log = loginBUS.CheckLoggedIn();
-                    if (log is null)
-                    {
-                        loginGUI.Show();
-                        return;
-                    }
 
-                    var user = userBUS.getUser(log.username);
-                    user.guid = log.id;
-                    StartMainGUI(user);
-                } catch (Exception ex)
+            timer1.Stop();
+            Hide();
+            try
+            {
+                var log = loginBUS.CheckLoggedIn();
+                if (log is null)
                 {
-                    CustomMessageBox.ShowError(Properties.Resources.DatabaseConnectionError);
-                    Application.Exit();
+                    loginGUI.Show();
+                    return;
                 }
+
+                var user = userBUS.getUser(log.username);
+                user.guid = log.id;
+                StartMainGUI(user);
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.ShowError(Resources.Database_connection_error);
+                Application.Exit();
             }
         }
 

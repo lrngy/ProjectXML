@@ -267,6 +267,14 @@
     <None Include="Resources\72834941.jpg" />
     <None Include="Resources\SplashScreen.jpeg" />
     <None Include="Resources\appicon.ico" />
+    <None Include="Resources\btnThongTin.Image.png" />
+    <None Include="Resources\btnTaiChinh.Image.png" />
+    <None Include="Resources\btnQlyThuoc.Image.png" />
+    <None Include="Resources\btnNhanVien.Image.png" />
+    <None Include="Resources\btnNcc.Image.png" />
+    <None Include="Resources\btnDanhMuc.Image.png" />
+    <None Include="Resources\MainBackgroundImage.jpg" />
+    <None Include="Resources\LoginBackgroundImage.jpg" />
     <Content Include="XML\customers.xml" />
     <Content Include="XML\finance_bills.xml" />
     <Content Include="XML\medicines.xml" />

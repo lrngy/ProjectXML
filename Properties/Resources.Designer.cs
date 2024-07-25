@@ -134,6 +134,66 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnDanhMuc_Image {
+            get {
+                object obj = ResourceManager.GetObject("btnDanhMuc_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnNcc_Image {
+            get {
+                object obj = ResourceManager.GetObject("btnNcc_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnNhanVien_Image {
+            get {
+                object obj = ResourceManager.GetObject("btnNhanVien_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnQlyThuoc_Image {
+            get {
+                object obj = ResourceManager.GetObject("btnQlyThuoc_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnTaiChinh_Image {
+            get {
+                object obj = ResourceManager.GetObject("btnTaiChinh_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnThongTin_Image {
+            get {
+                object obj = ResourceManager.GetObject("btnThongTin_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lỗi thêm thuốc.
         /// </summary>
         internal static string Cannot_added_this_medicine {
@@ -341,11 +401,31 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LoginBackgroundImage {
+            get {
+                object obj = ResourceManager.GetObject("LoginBackgroundImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bạn có chắc chắn muốn đăng xuất?.
         /// </summary>
         internal static string Logout_confirm {
             get {
                 return ResourceManager.GetString("Logout confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainBackgroundImage {
+            get {
+                object obj = ResourceManager.GetObject("MainBackgroundImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

@@ -10,7 +10,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI.Dialog
 {
-    public partial class FilterByRangeDialog : Form
+    public partial class FilterByRangeDialog : BaseForm
     {
         public delegate void OnClickFilter(List<MedicineDTO> list);
 

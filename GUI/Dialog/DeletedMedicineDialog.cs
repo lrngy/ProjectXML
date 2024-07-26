@@ -6,7 +6,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI.Dialog
 {
-    public partial class DeletedMedicineDialog : Form
+    public partial class DeletedMedicineDialog : BaseForm
     {
         public delegate void RefreshDeletedMedicine();
 

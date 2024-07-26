@@ -358,4 +358,38 @@
   <data name="MainBackgroundImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MainBackgroundImage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ictuLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ictuLogo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Class" xml:space="preserve">
+    <value>Lớp</value>
+  </data>
+  <data name="ClassValue" xml:space="preserve">
+    <value>CNTT K19P</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>Giảng viên</value>
+  </data>
+  <data name="LecturerValue" xml:space="preserve">
+    <value>cô Nguyễn Lan Oanh</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Thành viên</value>
+  </data>
+  <data name="MembersValue" xml:space="preserve">
+    <value>Nguyễn Mạnh Cường;
+Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="SubjectValue" xml:space="preserve">
+    <value>Ứng dụng công nghệ phát triển phần mềm</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Năm</value>
+  </data>
+  <data name="YearValue" xml:space="preserve">
+    <value>2024</value>
+  </data>
 </root>

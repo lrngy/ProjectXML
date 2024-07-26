@@ -14,14 +14,13 @@ namespace QPharma.GUI
         private readonly double opacityIncrement = 0.05;
         private readonly StaffBUS staffBUS = new StaffBUS();
         private readonly UserBUS userBUS = new UserBUS();
+        private Timer delayTimer;
         private MainGUI mainGUI;
-
 
         public SplashGUI()
         {
             InitializeComponent();
         }
-
 
         private void StartMainGUI(UserDTO user)
         {
@@ -45,7 +44,18 @@ namespace QPharma.GUI
             }
 
             timer1.Stop();
-            Hide();
+
+            delayTimer = new Timer();
+            delayTimer.Interval = 500;
+            delayTimer.Tick += DelayTimer_Tick;
+            delayTimer.Start();
+        }
+
+        private void DelayTimer_Tick(object sender, EventArgs e)
+        {
+            delayTimer.Stop();
+            delayTimer.Dispose();
+
             try
             {
                 var log = loginBUS.CheckLoggedIn();
@@ -63,6 +73,10 @@ namespace QPharma.GUI
             {
                 CustomMessageBox.ShowError(Resources.Database_connection_error);
                 Application.Exit();
+            }
+            finally
+            {
+                Hide();
             }
         }
 

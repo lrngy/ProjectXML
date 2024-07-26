@@ -7,7 +7,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI.Dialog
 {
-    public partial class DeletedCategoryDialog : Form
+    public partial class DeletedCategoryDialog : BaseForm
     {
         public delegate void RefreshDeletedCategory();
 

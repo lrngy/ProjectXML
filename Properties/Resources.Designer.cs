@@ -284,6 +284,24 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lớp.
+        /// </summary>
+        internal static string Class {
+            get {
+                return ResourceManager.GetString("Class", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CNTT K19P.
+        /// </summary>
+        internal static string ClassValue {
+            get {
+                return ResourceManager.GetString("ClassValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Không thể kết nối đến cơ sở dữ liệu.
         /// </summary>
         internal static string Database_connection_error {
@@ -365,6 +383,16 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ictuLogo {
+            get {
+                object obj = ResourceManager.GetObject("ictuLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email không hợp lệ.
         /// </summary>
         internal static string Invalid_email {
@@ -388,6 +416,24 @@ namespace QPharma.Properties {
         internal static string Invalid_phone_number {
             get {
                 return ResourceManager.GetString("Invalid phone number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giảng viên.
+        /// </summary>
+        internal static string Lecturer {
+            get {
+                return ResourceManager.GetString("Lecturer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cô Nguyễn Lan Oanh.
+        /// </summary>
+        internal static string LecturerValue {
+            get {
+                return ResourceManager.GetString("LecturerValue", resourceCulture);
             }
         }
         
@@ -462,6 +508,25 @@ namespace QPharma.Properties {
         internal static string Medicine_management {
             get {
                 return ResourceManager.GetString("Medicine management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thành viên.
+        /// </summary>
+        internal static string Members {
+            get {
+                return ResourceManager.GetString("Members", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nguyễn Mạnh Cường;
+        ///Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết.
+        /// </summary>
+        internal static string MembersValue {
+            get {
+                return ResourceManager.GetString("MembersValue", resourceCulture);
             }
         }
         
@@ -665,6 +730,24 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Môn học.
+        /// </summary>
+        internal static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ứng dụng công nghệ phát triển phần mềm.
+        /// </summary>
+        internal static string SubjectValue {
+            get {
+                return ResourceManager.GetString("SubjectValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sửa thông tin thuốc thành công.
         /// </summary>
         internal static string Successfully_edited_medicine_information {
@@ -778,6 +861,24 @@ namespace QPharma.Properties {
         internal static string Wrong_username_or_password {
             get {
                 return ResourceManager.GetString("Wrong username or password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Năm.
+        /// </summary>
+        internal static string Year {
+            get {
+                return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2024.
+        /// </summary>
+        internal static string YearValue {
+            get {
+                return ResourceManager.GetString("YearValue", resourceCulture);
             }
         }
         

@@ -7,7 +7,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI.Dialog
 {
-    public partial class ChangePasswordDialog : Form
+    public partial class ChangePasswordDialog : BaseForm
     {
         private readonly UserDTO user;
         private readonly UserBUS userController = new UserBUS();

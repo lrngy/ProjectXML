@@ -26,10 +26,6 @@ namespace QPharma.GUI
             this.user = user;
             this.loginView = loginView;
             this.staff = staff;
-            DoubleBuffered = true;
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.UserPaint, true);
         }
 
         private void btnQlyThuoc_Click(object sender, EventArgs e)
@@ -87,7 +83,7 @@ namespace QPharma.GUI
 
         private void btnThongTin_Click(object sender, EventArgs e)
         {
-            Show(ref thongTinCaNhanView, () => new ThongTinCaNhanGUI(user));
+            Show(ref thongTinCaNhanView, () => new ThongTinCaNhanGUI(user, staff));
             thongTinCaNhanView.OnUpdate += ChangeTextWelcome;
         }
 

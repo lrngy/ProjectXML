@@ -21,11 +21,11 @@ namespace QPharma.GUI
         public OnUpdateHandler OnUpdate;
         private UserDTO user;
 
-        public ThongTinCaNhanGUI(UserDTO user)
+        public ThongTinCaNhanGUI(UserDTO user, StaffDTO staff)
         {
             InitializeComponent();
             this.user = user;
-            staff = new StaffDAL().GetByUsername(user.username);
+            this.staff = staff;
         }
 
         private void ThongTinCaNhanView_Load(object sender, EventArgs e)

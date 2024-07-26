@@ -54,9 +54,9 @@ namespace QPharma.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("30")]
-        public long MaxNameLength {
+        public int MaxNameLength {
             get {
-                return ((long)(this["MaxNameLength"]));
+                return ((int)(this["MaxNameLength"]));
             }
         }
         
@@ -75,6 +75,24 @@ namespace QPharma.Properties {
         public string DefaultDate {
             get {
                 return ((string)(this["DefaultDate"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double OpacityIncrement {
+            get {
+                return ((double)(this["OpacityIncrement"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int DelayTimerSplash {
+            get {
+                return ((int)(this["DelayTimerSplash"]));
             }
         }
     }

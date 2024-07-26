@@ -392,4 +392,13 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
   <data name="YearValue" xml:space="preserve">
     <value>2024</value>
   </data>
+  <data name="Prescription drug" xml:space="preserve">
+    <value>Kê đơn</value>
+  </data>
+  <data name="Unprescription drug" xml:space="preserve">
+    <value>Không kê đơn</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+	  <value>&lt;&lt; Thêm &gt;&gt;</value>
+  </data>
 </root>

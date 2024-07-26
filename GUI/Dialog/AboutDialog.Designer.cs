@@ -84,7 +84,7 @@
             // 
             this.lbMembers.AutoSize = true;
             this.lbMembers.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMembers.Location = new System.Drawing.Point(80, 309);
+            this.lbMembers.Location = new System.Drawing.Point(24, 309);
             this.lbMembers.Name = "lbMembers";
             this.lbMembers.Size = new System.Drawing.Size(13, 20);
             this.lbMembers.TabIndex = 3;

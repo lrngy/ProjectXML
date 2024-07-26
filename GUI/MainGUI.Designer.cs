@@ -92,7 +92,7 @@ namespace QPharma.GUI
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(40, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(1);
             this.groupBox1.Size = new System.Drawing.Size(685, 256);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -407,7 +407,7 @@ namespace QPharma.GUI
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QUẢN LÝ HIỆU THUỐC - TỔNG QUAN";
+            this.Text = "Q-Pharma - TỔNG QUAN";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainGUI_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainGUI_FormClosed);
             this.Load += new System.EventHandler(this.MainView_Load);

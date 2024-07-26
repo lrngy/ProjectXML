@@ -18,6 +18,7 @@ namespace QPharma.GUI
     {
         private readonly CategoryBUS categoryController = new CategoryBUS();
         private readonly MedicineBUS medicineController = new MedicineBUS();
+        private readonly MedicineLocationBUS medicineLocationBUS = new MedicineLocationBUS();
 
         private readonly XmlDocument nhacungcap = Config.getDoc("suppliers");
         private readonly StaffDTO staff;
@@ -73,12 +74,12 @@ namespace QPharma.GUI
         private void QuanLyThuoc_Load()
         {
             TimThuocTheoDuLieu();
-
-            cbTieuChiThuoc.SelectedIndex = cbIndexTieuChiThuoc;
-
-
             cbTLThuoc.Items.Clear();
             cbNccThuoc.Items.Clear();
+            cbTieuChiThuoc.SelectedIndex = cbIndexTieuChiThuoc;
+            cbLoai.Items.Clear();
+            cbLoai.Items.Add(Resources.Prescription_drug);
+            cbLoai.Items.Add(Resources.Unprescription_drug);
             var categoryList = categoryController.LoadData();
             foreach (var category in categoryList)
             {
@@ -86,12 +87,23 @@ namespace QPharma.GUI
                 cbTLThuoc.Items.Add(category.id + "-" + category.name);
             }
 
+            cbTLThuoc.Items.Add(Resources.Add);
+
             var supplierList = supplierBUS.LoadData();
             foreach (var supplier in supplierList)
             {
                 if (!supplier.status) continue;
                 cbNccThuoc.Items.Add(supplier.id + "-" + supplier.name);
             }
+            cbNccThuoc.Items.Add(Resources.Add);
+
+            var medicineLocationList = medicineLocationBUS.LoadData();
+            foreach (var medicineLocation in medicineLocationList)
+            {
+                if (!medicineLocation.status) continue;
+                cbVitri.Items.Add(medicineLocation.id + "-" + medicineLocation.name);
+            }
+            cbVitri.Items.Add(Resources.Add);
 
             try
             {
@@ -115,9 +127,10 @@ namespace QPharma.GUI
                 if (!medicine.deleted.Equals("") || medicine.category == null || medicine.supplier == null ||
                     !medicine.supplier.status || !medicine.category.status) continue;
 
-                dgvThuoc.Rows.Add(++i, medicine.id, medicine.name, $"{medicine.category.id}-{medicine.category.name}",
-                    medicine.expireDate, medicine.quantity, medicine.unit, medicine.price_out, medicine.description,
-                    $"{medicine.supplier.id}-{medicine.supplier.name}", medicine.created, medicine.updated);
+                dgvThuoc.Rows.Add(++i, medicine.id, medicine.name, medicine.quantity, medicine.price_out,
+                    $"{medicine.category.id}-{medicine.category.name}", medicine.type ? Resources.Prescription_drug : Resources.Unprescription_drug,
+                 medicine.unit, medicine.expireDate,
+                 $"{medicine.supplier.id}-{medicine.supplier.name}", medicine.price_in, $"{medicine.location.id} - {medicine.location.name}", medicine.created, medicine.description, medicine.updated);
             }
 
             ClearInputThuoc();
@@ -318,7 +331,7 @@ namespace QPharma.GUI
                 tbTenTheLoai.Text = dgvTheLoai.SelectedRows[0].Cells[2].Value.ToString();
                 tbGhiChuTheLoai.Text = dgvTheLoai.SelectedRows[0].Cells[3].Value.ToString();
                 cbTrangThaiTheLoai.SelectedIndex =
-                    dgvTheLoai.SelectedRows[0].Cells[4].Value.ToString().Equals(Resources.Available) ? 0 : 1;
+                dgvTheLoai.SelectedRows[0].Cells[4].Value.ToString().Equals(Resources.Available) ? 0 : 1;
             }
             catch (Exception)
             {
@@ -1064,6 +1077,16 @@ namespace QPharma.GUI
         private void tbMaNCC_TextChanged(object sender, EventArgs e)
         {
             ShowValidateError((Control)sender, "");
+        }
+
+        private void cbTLThuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            if (comboBox.SelectedIndex == comboBox.Items.Count - 1)
+            {
+                comboBox.SelectedIndex = -1;
+            }
+           
         }
     }
 }

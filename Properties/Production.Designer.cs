@@ -25,19 +25,74 @@ namespace QPharma.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
-        public string xinchao {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LONGPC\\SQLEXPRESS;Initial Catalog=QlyHieuThuoc;Integrated Security=Tr" +
+            "ue")]
+        public string ConnectionString {
             get {
-                return ((string)(this["xinchao"]));
+                return ((string)(this["ConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
-        public string ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int SessionDurationMinute {
             get {
-                return ((string)(this["ConnectionString"]));
+                return ((int)(this["SessionDurationMinute"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HH:mm:ss")]
+        public string TimeFormat {
+            get {
+                return ((string)(this["TimeFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int MaxNameLength {
+            get {
+                return ((int)(this["MaxNameLength"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("18")]
+        public int MinAge {
+            get {
+                return ((int)(this["MinAge"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000-01-01")]
+        public string DefaultDate {
+            get {
+                return ((string)(this["DefaultDate"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.05")]
+        public double OpacityIncrement {
+            get {
+                return ((double)(this["OpacityIncrement"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int DelayTimerSplash {
+            get {
+                return ((int)(this["DelayTimerSplash"]));
             }
         }
     }

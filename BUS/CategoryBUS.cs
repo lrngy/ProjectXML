@@ -37,22 +37,17 @@ namespace QPharma.BUS
             return categoryDAL.Delete(maTheLoai);
         }
 
-        internal int Restore(string maTheLoai)
-        {
-            return categoryDAL.Restore(maTheLoai);
-        }
-
-        internal int ForceDelete(string maTheLoai)
+        public int ForceDelete(string maTheLoai)
         {
             return categoryDAL.ForceDelete(maTheLoai);
         }
 
-        //public void ReloadData()
-        //{
-        //    categoryDAL.ReloadData();
-        //}
+        public int Restore(string maTheLoai)
+        {
+            return categoryDAL.Restore(maTheLoai);
+        }
 
-        internal int RestoreAll()
+        public int RestoreAll()
         {
             return categoryDAL.RestoreAll();
         }

@@ -9,15 +9,10 @@ namespace QPharma.DAL
 {
     internal class DB
     {
-        private static string connectString;
+        private static string connectString = Development.Default.ConnectionString;
 
         private static SqlConnection GetConnection()
         {
-#if Development
-            connectString = Development.Default.ConnectionString;
-#elif Production
-                    connectString = Production.Default.ConnectionString;
-#endif
             return new SqlConnection(connectString);
         }
 

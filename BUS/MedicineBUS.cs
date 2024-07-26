@@ -18,16 +18,16 @@ namespace QPharma.BUS
             medicineDAL = new MedicineDAL(categoryController.categoryDAL, supplierController.supplierDAL);
         }
 
-        public MedicineDAL medicineDAL { get; set; }
-        public CategoryBUS categoryController { get; set; }
-        public SupplierBUS supplierController { get; set; }
+        private MedicineDAL medicineDAL { get; set; }
+        private CategoryBUS categoryController { get; set; }
+        private SupplierBUS supplierController { get; set; }
 
         public List<MedicineDTO> LoadData()
         {
             return medicineDAL.GetAll();
         }
 
-        internal int Insert(MedicineDTO newMedicine)
+        public int Insert(MedicineDTO newMedicine)
         {
             if (medicineDAL.GetById(newMedicine.id) != null) return Predefined.ID_EXIST;
             return medicineDAL.Insert(newMedicine);
@@ -45,17 +45,17 @@ namespace QPharma.BUS
             return medicineDAL.Delete(id);
         }
 
-        internal int Restore(string id)
+        public int Restore(string id)
         {
             return medicineDAL.Restore(id);
         }
 
-        internal int ForceDelete(string id)
+        public int ForceDelete(string id)
         {
             return medicineDAL.ForceDelete(id);
         }
 
-        internal int RestoreAll()
+        public int RestoreAll()
         {
             return medicineDAL.RestoreAll();
         }

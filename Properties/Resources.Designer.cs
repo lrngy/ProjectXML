@@ -79,6 +79,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;&lt; Thêm &gt;&gt;.
+        /// </summary>
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thêm thất bại.
         /// </summary>
         internal static string Add_failed {
@@ -666,6 +675,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kê đơn.
+        /// </summary>
+        internal static string Prescription_drug {
+            get {
+                return ResourceManager.GetString("Prescription drug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giá phải là số.
         /// </summary>
         internal static string Price_must_be_a_number {
@@ -825,6 +843,15 @@ namespace QPharma.Properties {
         internal static string Unavailable {
             get {
                 return ResourceManager.GetString("Unavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không kê đơn.
+        /// </summary>
+        internal static string Unprescription_drug {
+            get {
+                return ResourceManager.GetString("Unprescription drug", resourceCulture);
             }
         }
         

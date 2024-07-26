@@ -57,12 +57,12 @@ namespace QPharma.GUI
             this.btnSuaThuoc = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbNccThuoc = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbVitri = new System.Windows.Forms.ComboBox();
+            this.cbLoai = new System.Windows.Forms.ComboBox();
             this.cbTLThuoc = new System.Windows.Forms.ComboBox();
             this.tbMoTa = new System.Windows.Forms.TextBox();
             this.btnThemThuoc = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbGiaNhap = new System.Windows.Forms.TextBox();
             this.tbGia = new System.Windows.Forms.TextBox();
             this.tbDVT = new System.Windows.Forms.TextBox();
             this.tbSL = new System.Windows.Forms.TextBox();
@@ -84,13 +84,16 @@ namespace QPharma.GUI
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabTheLoai = new System.Windows.Forms.TabPage();
@@ -145,10 +148,10 @@ namespace QPharma.GUI
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
@@ -175,7 +178,7 @@ namespace QPharma.GUI
             this.lbHeader.Name = "lbHeader";
             this.lbHeader.Size = new System.Drawing.Size(152, 20);
             this.lbHeader.TabIndex = 0;
-            this.lbHeader.Text = Resources.Medicine_management;
+            this.lbHeader.Text = "QUẢN LÝ THUỐC";
             // 
             // tabControl1
             // 
@@ -211,7 +214,6 @@ namespace QPharma.GUI
             this.tabThuoc.Size = new System.Drawing.Size(1399, 648);
             this.tabThuoc.TabIndex = 0;
             this.tabThuoc.Text = "Thuốc";
-            this.tabThuoc.UseVisualStyleBackColor = true;
             // 
             // cbLocDuLieuThuoc
             // 
@@ -300,7 +302,7 @@ namespace QPharma.GUI
             this.groupBox4.Controls.Add(this.pictureBoxThuoc);
             this.groupBox4.Controls.Add(this.btnXoaAnh);
             this.groupBox4.Controls.Add(this.btnDoiAnh);
-            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(27, 7);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(218, 270);
@@ -368,17 +370,16 @@ namespace QPharma.GUI
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.BackColor = System.Drawing.Color.PeachPuff;
             this.groupBox3.Controls.Add(this.btnNhapLaiThuoc);
             this.groupBox3.Controls.Add(this.btnSuaThuoc);
             this.groupBox3.Controls.Add(this.dateTimePicker1);
             this.groupBox3.Controls.Add(this.cbNccThuoc);
-            this.groupBox3.Controls.Add(this.comboBox2);
-            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.cbVitri);
+            this.groupBox3.Controls.Add(this.cbLoai);
             this.groupBox3.Controls.Add(this.cbTLThuoc);
             this.groupBox3.Controls.Add(this.tbMoTa);
             this.groupBox3.Controls.Add(this.btnThemThuoc);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.tbGiaNhap);
             this.groupBox3.Controls.Add(this.tbGia);
             this.groupBox3.Controls.Add(this.tbDVT);
             this.groupBox3.Controls.Add(this.tbSL);
@@ -396,8 +397,7 @@ namespace QPharma.GUI
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(262, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1110, 281);
@@ -408,7 +408,7 @@ namespace QPharma.GUI
             // btnNhapLaiThuoc
             // 
             this.btnNhapLaiThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapLaiThuoc.Location = new System.Drawing.Point(961, 168);
+            this.btnNhapLaiThuoc.Location = new System.Drawing.Point(978, 198);
             this.btnNhapLaiThuoc.Name = "btnNhapLaiThuoc";
             this.btnNhapLaiThuoc.Size = new System.Drawing.Size(74, 37);
             this.btnNhapLaiThuoc.TabIndex = 12;
@@ -419,7 +419,7 @@ namespace QPharma.GUI
             // btnSuaThuoc
             // 
             this.btnSuaThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuaThuoc.Location = new System.Drawing.Point(961, 95);
+            this.btnSuaThuoc.Location = new System.Drawing.Point(978, 125);
             this.btnSuaThuoc.Name = "btnSuaThuoc";
             this.btnSuaThuoc.Size = new System.Drawing.Size(74, 37);
             this.btnSuaThuoc.TabIndex = 11;
@@ -433,62 +433,59 @@ namespace QPharma.GUI
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(445, 175);
+            this.dateTimePicker1.Location = new System.Drawing.Point(462, 220);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(142, 27);
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 27);
             this.dateTimePicker1.TabIndex = 6;
             this.dateTimePicker1.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
             // cbNccThuoc
             // 
             this.cbNccThuoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbNccThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNccThuoc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNccThuoc.FormattingEnabled = true;
-            this.cbNccThuoc.Location = new System.Drawing.Point(778, 97);
+            this.cbNccThuoc.Location = new System.Drawing.Point(778, 37);
             this.cbNccThuoc.Name = "cbNccThuoc";
-            this.cbNccThuoc.Size = new System.Drawing.Size(118, 28);
+            this.cbNccThuoc.Size = new System.Drawing.Size(127, 28);
             this.cbNccThuoc.TabIndex = 8;
+            this.cbNccThuoc.SelectedIndexChanged += new System.EventHandler(this.cbTLThuoc_SelectedIndexChanged);
             // 
-            // comboBox2
+            // cbVitri
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Thuốc kê đơn",
-            "Không kê đơn"});
-            this.comboBox2.Location = new System.Drawing.Point(788, 242);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(118, 28);
-            this.comboBox2.TabIndex = 7;
+            this.cbVitri.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbVitri.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbVitri.FormattingEnabled = true;
+            this.cbVitri.Location = new System.Drawing.Point(782, 157);
+            this.cbVitri.Name = "cbVitri";
+            this.cbVitri.Size = new System.Drawing.Size(123, 28);
+            this.cbVitri.TabIndex = 7;
+            this.cbVitri.SelectedIndexChanged += new System.EventHandler(this.cbTLThuoc_SelectedIndexChanged);
             // 
-            // comboBox1
+            // cbLoai
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Thuốc kê đơn",
-            "Không kê đơn"});
-            this.comboBox1.Location = new System.Drawing.Point(445, 237);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(118, 28);
-            this.comboBox1.TabIndex = 7;
+            this.cbLoai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLoai.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLoai.FormattingEnabled = true;
+            this.cbLoai.Location = new System.Drawing.Point(459, 96);
+            this.cbLoai.Name = "cbLoai";
+            this.cbLoai.Size = new System.Drawing.Size(127, 28);
+            this.cbLoai.TabIndex = 7;
             // 
             // cbTLThuoc
             // 
             this.cbTLThuoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTLThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTLThuoc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTLThuoc.FormattingEnabled = true;
-            this.cbTLThuoc.Location = new System.Drawing.Point(776, 25);
+            this.cbTLThuoc.Location = new System.Drawing.Point(456, 37);
             this.cbTLThuoc.Name = "cbTLThuoc";
-            this.cbTLThuoc.Size = new System.Drawing.Size(118, 28);
+            this.cbTLThuoc.Size = new System.Drawing.Size(127, 28);
             this.cbTLThuoc.TabIndex = 7;
+            this.cbTLThuoc.SelectedIndexChanged += new System.EventHandler(this.cbTLThuoc_SelectedIndexChanged);
             // 
             // tbMoTa
             // 
-            this.tbMoTa.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMoTa.Location = new System.Drawing.Point(735, 178);
+            this.tbMoTa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMoTa.Location = new System.Drawing.Point(735, 221);
             this.tbMoTa.Name = "tbMoTa";
             this.tbMoTa.Size = new System.Drawing.Size(171, 27);
             this.tbMoTa.TabIndex = 9;
@@ -496,7 +493,7 @@ namespace QPharma.GUI
             // btnThemThuoc
             // 
             this.btnThemThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemThuoc.Location = new System.Drawing.Point(961, 25);
+            this.btnThemThuoc.Location = new System.Drawing.Point(978, 55);
             this.btnThemThuoc.Name = "btnThemThuoc";
             this.btnThemThuoc.Size = new System.Drawing.Size(74, 37);
             this.btnThemThuoc.TabIndex = 10;
@@ -504,171 +501,171 @@ namespace QPharma.GUI
             this.btnThemThuoc.UseVisualStyleBackColor = true;
             this.btnThemThuoc.Click += new System.EventHandler(this.btnThemThuoc_Click);
             // 
-            // textBox1
+            // tbGiaNhap
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(130, 228);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(123, 27);
-            this.textBox1.TabIndex = 3;
+            this.tbGiaNhap.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGiaNhap.Location = new System.Drawing.Point(782, 95);
+            this.tbGiaNhap.Name = "tbGiaNhap";
+            this.tbGiaNhap.Size = new System.Drawing.Size(123, 27);
+            this.tbGiaNhap.TabIndex = 3;
             // 
             // tbGia
             // 
-            this.tbGia.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGia.Location = new System.Drawing.Point(130, 175);
+            this.tbGia.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGia.Location = new System.Drawing.Point(138, 225);
             this.tbGia.Name = "tbGia";
-            this.tbGia.Size = new System.Drawing.Size(123, 27);
+            this.tbGia.Size = new System.Drawing.Size(124, 27);
             this.tbGia.TabIndex = 3;
             // 
             // tbDVT
             // 
-            this.tbDVT.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDVT.Location = new System.Drawing.Point(445, 98);
+            this.tbDVT.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDVT.Location = new System.Drawing.Point(460, 158);
             this.tbDVT.Name = "tbDVT";
-            this.tbDVT.Size = new System.Drawing.Size(144, 27);
+            this.tbDVT.Size = new System.Drawing.Size(126, 27);
             this.tbDVT.TabIndex = 5;
             // 
             // tbSL
             // 
-            this.tbSL.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSL.Location = new System.Drawing.Point(130, 100);
+            this.tbSL.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSL.Location = new System.Drawing.Point(138, 158);
             this.tbSL.Name = "tbSL";
-            this.tbSL.Size = new System.Drawing.Size(121, 27);
+            this.tbSL.Size = new System.Drawing.Size(124, 27);
             this.tbSL.TabIndex = 2;
             // 
             // tbTenThuoc
             // 
-            this.tbTenThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTenThuoc.Location = new System.Drawing.Point(445, 23);
+            this.tbTenThuoc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTenThuoc.Location = new System.Drawing.Point(138, 92);
             this.tbTenThuoc.Name = "tbTenThuoc";
-            this.tbTenThuoc.Size = new System.Drawing.Size(144, 27);
+            this.tbTenThuoc.Size = new System.Drawing.Size(124, 27);
             this.tbTenThuoc.TabIndex = 4;
             // 
             // tbMaThuoc
             // 
-            this.tbMaThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMaThuoc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbMaThuoc.Location = new System.Drawing.Point(138, 30);
             this.tbMaThuoc.Name = "tbMaThuoc";
-            this.tbMaThuoc.Size = new System.Drawing.Size(113, 27);
+            this.tbMaThuoc.Size = new System.Drawing.Size(124, 27);
             this.tbMaThuoc.TabIndex = 1;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(655, 100);
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(655, 40);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(115, 20);
+            this.label14.Size = new System.Drawing.Size(109, 20);
             this.label14.TabIndex = 0;
             this.label14.Text = "Nhà cung cấp*:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(681, 27);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(361, 37);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 20);
+            this.label13.Size = new System.Drawing.Size(85, 20);
             this.label13.TabIndex = 0;
             this.label13.Text = "Danh mục*:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(676, 185);
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(665, 225);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 20);
+            this.label19.Size = new System.Drawing.Size(51, 20);
             this.label19.TabIndex = 0;
             this.label19.Text = "Mô tả:";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(655, 245);
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(674, 161);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(96, 20);
+            this.label25.Size = new System.Drawing.Size(90, 20);
             this.label25.TabIndex = 0;
             this.label25.Text = "Vị trí thuốc*:";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(352, 239);
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(389, 99);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(48, 20);
+            this.label24.Size = new System.Drawing.Size(46, 20);
             this.label24.TabIndex = 0;
             this.label24.Text = "Loại*:";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(43, 236);
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(689, 98);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(81, 20);
+            this.label23.Size = new System.Drawing.Size(77, 20);
             this.label23.TabIndex = 0;
             this.label23.Text = "Giá nhập*:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(52, 181);
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(43, 225);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(72, 20);
+            this.label18.Size = new System.Drawing.Size(69, 20);
             this.label18.TabIndex = 0;
             this.label18.Text = "Giá bán*:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(343, 101);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(358, 161);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(96, 20);
+            this.label17.Size = new System.Drawing.Size(90, 20);
             this.label17.TabIndex = 0;
             this.label17.Text = "Đơn vị tính*:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(43, 107);
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(43, 161);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(81, 20);
+            this.label16.Size = new System.Drawing.Size(78, 20);
             this.label16.TabIndex = 0;
             this.label16.Text = "Số lượng*:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(352, 29);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(43, 99);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 20);
+            this.label12.Size = new System.Drawing.Size(82, 20);
             this.label12.TabIndex = 0;
             this.label12.Text = "Tên thuốc*:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(324, 180);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(341, 225);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(113, 20);
+            this.label15.Size = new System.Drawing.Size(106, 20);
             this.label15.TabIndex = 0;
             this.label15.Text = "Ngày hết hạn*:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(43, 32);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 20);
+            this.label11.Size = new System.Drawing.Size(84, 20);
             this.label11.TabIndex = 0;
             this.label11.Text = "Mã thuốc* :";
             // 
@@ -680,7 +677,7 @@ namespace QPharma.GUI
             this.dgvThuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -691,13 +688,16 @@ namespace QPharma.GUI
             this.Column8,
             this.Column10,
             this.Column11,
-            this.Column19,
-            this.Column12,
             this.Column13,
-            this.Column14,
             this.Column15,
-            this.Column16,
+            this.Column19,
+            this.Column23,
+            this.Column14,
+            this.Column12,
             this.Column20,
+            this.Column24,
+            this.Column25,
+            this.Column16,
             this.Column17,
             this.Column18});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -744,22 +744,6 @@ namespace QPharma.GUI
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             // 
-            // Column19
-            // 
-            this.Column19.FillWeight = 51.5464F;
-            this.Column19.HeaderText = "Danh mục";
-            this.Column19.MinimumWidth = 8;
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.FillWeight = 51.5464F;
-            this.Column12.HeaderText = "Ngày hết hạn";
-            this.Column12.MinimumWidth = 8;
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
             // Column13
             // 
             this.Column13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -769,29 +753,43 @@ namespace QPharma.GUI
             this.Column13.ReadOnly = true;
             this.Column13.Width = 50;
             // 
-            // Column14
-            // 
-            this.Column14.FillWeight = 51.5464F;
-            this.Column14.HeaderText = "Đơn vị";
-            this.Column14.MinimumWidth = 8;
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
             // Column15
             // 
             this.Column15.FillWeight = 51.5464F;
-            this.Column15.HeaderText = "Giá";
+            this.Column15.HeaderText = "Giá bán";
             this.Column15.MinimumWidth = 8;
             this.Column15.Name = "Column15";
             this.Column15.ReadOnly = true;
             // 
-            // Column16
+            // Column19
             // 
-            this.Column16.FillWeight = 51.5464F;
-            this.Column16.HeaderText = "Mô tả";
-            this.Column16.MinimumWidth = 8;
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
+            this.Column19.FillWeight = 51.5464F;
+            this.Column19.HeaderText = "Danh mục";
+            this.Column19.MinimumWidth = 8;
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
+            // 
+            // Column23
+            // 
+            this.Column23.HeaderText = "Loại";
+            this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.FillWeight = 51.5464F;
+            this.Column14.HeaderText = "Đơn vị tính";
+            this.Column14.MinimumWidth = 8;
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.FillWeight = 51.5464F;
+            this.Column12.HeaderText = "Ngày hết hạn";
+            this.Column12.MinimumWidth = 8;
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
             // 
             // Column20
             // 
@@ -800,6 +798,26 @@ namespace QPharma.GUI
             this.Column20.MinimumWidth = 8;
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
+            // 
+            // Column24
+            // 
+            this.Column24.HeaderText = "Giá nhập";
+            this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            // 
+            // Column25
+            // 
+            this.Column25.HeaderText = "Vị trí thuốc";
+            this.Column25.Name = "Column25";
+            this.Column25.ReadOnly = true;
+            // 
+            // Column16
+            // 
+            this.Column16.FillWeight = 51.5464F;
+            this.Column16.HeaderText = "Mô tả";
+            this.Column16.MinimumWidth = 8;
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
             // 
             // Column17
             // 
@@ -830,7 +848,6 @@ namespace QPharma.GUI
             this.tabTheLoai.Size = new System.Drawing.Size(1399, 648);
             this.tabTheLoai.TabIndex = 1;
             this.tabTheLoai.Text = "Danh mục thuốc";
-            this.tabTheLoai.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -940,8 +957,8 @@ namespace QPharma.GUI
             this.cbTrangThaiTheLoai.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTrangThaiTheLoai.FormattingEnabled = true;
             this.cbTrangThaiTheLoai.Items.AddRange(new object[] {
-            Resources.Available,
-            Resources.Unavailable});
+            global::QPharma.Properties.Resources.Available,
+            global::QPharma.Properties.Resources.Unavailable});
             this.cbTrangThaiTheLoai.Location = new System.Drawing.Point(466, 49);
             this.cbTrangThaiTheLoai.Name = "cbTrangThaiTheLoai";
             this.cbTrangThaiTheLoai.Size = new System.Drawing.Size(170, 28);
@@ -1112,7 +1129,6 @@ namespace QPharma.GUI
             // 
             // tabNCC
             // 
-            this.tabNCC.BackColor = System.Drawing.Color.White;
             this.tabNCC.Controls.Add(this.cbTieuChiNCC);
             this.tabNCC.Controls.Add(this.tbTimNCC);
             this.tabNCC.Controls.Add(this.btnXoaNCC);
@@ -1196,8 +1212,8 @@ namespace QPharma.GUI
             this.cbTTNCC.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTTNCC.FormattingEnabled = true;
             this.cbTTNCC.Items.AddRange(new object[] {
-            Resources.Available,
-            Resources.Unavailable});
+            global::QPharma.Properties.Resources.Available,
+            global::QPharma.Properties.Resources.Unavailable});
             this.cbTTNCC.Location = new System.Drawing.Point(507, 104);
             this.cbTTNCC.Name = "cbTTNCC";
             this.cbTTNCC.Size = new System.Drawing.Size(170, 28);
@@ -1427,6 +1443,18 @@ namespace QPharma.GUI
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "Ngày tạo";
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            // 
+            // Column22
+            // 
+            this.Column22.HeaderText = "Ngày cập nhật";
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1447,18 +1475,6 @@ namespace QPharma.GUI
             this.label7.TabIndex = 5;
             this.label7.Text = "Tìm kiếm:";
             // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "Ngày tạo";
-            this.Column21.Name = "Column21";
-            this.Column21.ReadOnly = true;
-            // 
-            // Column22
-            // 
-            this.Column22.HeaderText = "Ngày cập nhật";
-            this.Column22.Name = "Column22";
-            this.Column22.ReadOnly = true;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -1472,13 +1488,12 @@ namespace QPharma.GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1441, 690);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lbHeader);
             this.Name = "QuanLyThuocGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = Resources.Medicine_management;
+            this.Text = "QUẢN LÝ THUỐC";
             this.Load += new System.EventHandler(this.QuanLyThuocView_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabThuoc.ResumeLayout(false);
@@ -1598,28 +1613,31 @@ namespace QPharma.GUI
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.CheckBox ckbLocDuLieuThuoc;
         private System.Windows.Forms.ComboBox cbLocDuLieuThuoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         public System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cbLoai;
+        private System.Windows.Forms.TextBox tbGiaNhap;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbVitri;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
     }
 }

@@ -11,7 +11,7 @@ namespace QPharma.GUI
     {
         private readonly LoginBUS loginBUS = new LoginBUS();
         private readonly LoginGUI loginGUI = new LoginGUI();
-        private readonly double opacityIncrement = 0.05;
+        private readonly double opacityIncrement = Development.Default.OpacityIncrement;
         private readonly StaffBUS staffBUS = new StaffBUS();
         private readonly UserBUS userBUS = new UserBUS();
         private Timer delayTimer;
@@ -46,7 +46,7 @@ namespace QPharma.GUI
             timer1.Stop();
 
             delayTimer = new Timer();
-            delayTimer.Interval = 500;
+            delayTimer.Interval = Development.Default.DelayTimerSplash;
             delayTimer.Tick += DelayTimer_Tick;
             delayTimer.Start();
         }

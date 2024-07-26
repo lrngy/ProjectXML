@@ -189,7 +189,7 @@ namespace QPharma.DAL
             }
         }
 
-        internal int RestoreAll(string id)
+        internal int RestoreAll()
         {
             try
             {

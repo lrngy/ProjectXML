@@ -43,16 +43,16 @@ namespace QPharma.BUS
             return supplierDAL.Restore(id);
         }
 
+        public int RestoreAll()
+        {
+            return supplierDAL.RestoreAll();
+        }
+
         public int ForceDelete(string id)
         {
             if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
             return supplierDAL.ForceDelete(id);
         }
 
-        public int RestoreAll(string id)
-        {
-            if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
-            return supplierDAL.RestoreAll(id);
-        }
     }
 }

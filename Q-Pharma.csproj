@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\MedicineLocationBUS.cs" />
     <Compile Include="BUS\StaffBUS.cs" />
     <Compile Include="ChiTietChi.cs">
       <SubType>Form</SubType>
@@ -132,6 +133,8 @@
     <Compile Include="GUI\QuanLyNhanVienGUI.Designer.cs">
       <DependentUpon>QuanLyNhanVienGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Development.cs" />
+    <Compile Include="Properties\Production.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

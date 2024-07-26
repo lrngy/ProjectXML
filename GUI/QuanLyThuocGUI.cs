@@ -83,7 +83,7 @@ namespace QPharma.GUI
             var categoryList = categoryController.LoadData();
             foreach (var category in categoryList)
             {
-                if (!category.deleted.Equals("") || !category.status) continue;
+                if (!category.status || !category.deleted.Equals("")) continue;
                 cbTLThuoc.Items.Add(category.id + "-" + category.name);
             }
 
@@ -92,17 +92,19 @@ namespace QPharma.GUI
             var supplierList = supplierBUS.LoadData();
             foreach (var supplier in supplierList)
             {
-                if (!supplier.status) continue;
+                if (!supplier.status || !supplier.deleted.Equals("")) continue;
                 cbNccThuoc.Items.Add(supplier.id + "-" + supplier.name);
             }
+
             cbNccThuoc.Items.Add(Resources.Add);
 
             var medicineLocationList = medicineLocationBUS.LoadData();
             foreach (var medicineLocation in medicineLocationList)
             {
-                if (!medicineLocation.status) continue;
+                if (!medicineLocation.status || !medicineLocation.deleted.Equals("")) continue;
                 cbVitri.Items.Add(medicineLocation.id + "-" + medicineLocation.name);
             }
+
             cbVitri.Items.Add(Resources.Add);
 
             try
@@ -127,10 +129,17 @@ namespace QPharma.GUI
                 if (!medicine.deleted.Equals("") || medicine.category == null || medicine.supplier == null ||
                     !medicine.supplier.status || !medicine.category.status) continue;
 
-                dgvThuoc.Rows.Add(++i, medicine.id, medicine.name, medicine.quantity, medicine.price_out,
-                    $"{medicine.category.id}-{medicine.category.name}", medicine.type ? Resources.Prescription_drug : Resources.Unprescription_drug,
-                 medicine.unit, medicine.expireDate,
-                 $"{medicine.supplier.id}-{medicine.supplier.name}", medicine.price_in, $"{medicine.location.id} - {medicine.location.name}", medicine.created, medicine.description, medicine.updated);
+                dgvThuoc.Rows.Add(
+                    ++i, medicine.id, medicine.name, medicine.quantity, medicine.price_out,
+                    $"{medicine.category.id}-{medicine.category.name}",
+                    medicine.type ? Resources.Prescription_drug : Resources.Unprescription_drug,
+                    medicine.unit, medicine.expireDate,
+                    $"{medicine.supplier.id}-{medicine.supplier.name}",
+                    medicine.price_in,
+                    $"{medicine.location.id} - {medicine.location.name}",
+                    medicine.created,
+                    medicine.description,
+                    medicine.updated);
             }
 
             ClearInputThuoc();
@@ -175,7 +184,8 @@ namespace QPharma.GUI
                 var created = s.created;
                 var updated = s.updated;
 
-                dgvNhaCungCap.Rows.Add(++i, id, name, phone, email, note,
+                dgvNhaCungCap.Rows.Add(
+                    ++i, id, name, phone, email, note,
                     status ? Resources.Available : Resources.Unavailable,
                     created, updated);
             }
@@ -331,7 +341,7 @@ namespace QPharma.GUI
                 tbTenTheLoai.Text = dgvTheLoai.SelectedRows[0].Cells[2].Value.ToString();
                 tbGhiChuTheLoai.Text = dgvTheLoai.SelectedRows[0].Cells[3].Value.ToString();
                 cbTrangThaiTheLoai.SelectedIndex =
-                dgvTheLoai.SelectedRows[0].Cells[4].Value.ToString().Equals(Resources.Available) ? 0 : 1;
+                    dgvTheLoai.SelectedRows[0].Cells[4].Value.ToString().Equals(Resources.Available) ? 0 : 1;
             }
             catch (Exception)
             {
@@ -1082,11 +1092,7 @@ namespace QPharma.GUI
         private void cbTLThuoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             var comboBox = sender as ComboBox;
-            if (comboBox.SelectedIndex == comboBox.Items.Count - 1)
-            {
-                comboBox.SelectedIndex = -1;
-            }
-           
+            if (comboBox.SelectedIndex == comboBox.Items.Count - 1) comboBox.SelectedIndex = -1;
         }
     }
 }

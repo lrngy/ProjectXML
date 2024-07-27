@@ -68,7 +68,38 @@ namespace QPharma.GUI
                     NhaCungCap_Load();
                     lbHeader.Text = Resources.Supplier_management;
                     break;
+                case 3:
+                    ViTriThuoc_Load();
+                    lbHeader.Text = Resources.Medicine_location_management;
+                    break;
             }
+        }
+
+        private void ViTriThuoc_Load()
+        {
+            var listViTriThuoc = medicineLocationBUS.LoadData();
+            HienThiViTriThuoc(listViTriThuoc);
+        }
+
+        private void HienThiViTriThuoc(List<MedicineLocationDTO> list)
+        {
+            dgvViTriThuoc.Rows.Clear();
+            tbTenViTri.Text = "";
+            tbGhiChuViTri.Text = "";
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (!list[i].status || !list[i].deleted.Equals("")) continue;
+                dgvViTriThuoc.Rows.Add(
+                    i + 1,
+                    list[i].id,
+                    list[i].name,
+                    list[i].note,
+                    list[i].status ? Resources.Available : Resources.Unavailable,
+                    list[i].created,
+                    list[i].updated);
+            }
+
         }
 
         private void QuanLyThuoc_Load()
@@ -175,6 +206,7 @@ namespace QPharma.GUI
             var supplierNodes = list;
             foreach (var s in supplierNodes)
             {
+                if (!s.deleted.Equals("")) continue;
                 var id = s.id;
                 var name = s.name;
                 var phone = s.phone;
@@ -221,7 +253,6 @@ namespace QPharma.GUI
             {
                 if (!category.deleted.Equals(""))
                 {
-                    Debug.WriteLine(category.deleted);
                     continue;
                 }
 
@@ -235,11 +266,7 @@ namespace QPharma.GUI
 
         private void TheLoai_Load()
         {
-            if (tbTimTheLoai.Text.Equals(""))
-                TheLoai_Show(categoryController.LoadData());
-            else TimTheLoai();
-
-            cbTieuChiTheLoai.SelectedIndex = cbIndexTieuChiThuoc;
+            TimTheLoai();
         }
 
         private void QuanLyThuocView_Load(object sender, EventArgs e)
@@ -324,7 +351,7 @@ namespace QPharma.GUI
                 }
 
                 if (state == Predefined.ID_NOT_EXIST)
-                    CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
+                    ShowValidateError(tbTenTheLoai, Resources.Category_ID_does_not_exist);
                 else
                     CustomMessageBox.ShowError(Resources.Edit_failed);
             }
@@ -409,7 +436,7 @@ namespace QPharma.GUI
         {
             try
             {
-                var maNCC = dgvNhaCungCap.SelectedRows[0].Cells[1].Value.ToString();
+                var maNCC = tbMaNCC.Text;
                 var tenNCC = tbTenNCC.Text;
                 var dienThoai = tbDienThoai.Text;
                 var email = tbEmail.Text;
@@ -449,8 +476,9 @@ namespace QPharma.GUI
                 if (result == Predefined.ID_EXIST)
                 {
                     ShowValidateError(tbMaNCC, Resources.Supplier_ID_already_exists);
+                    return;
                 }
-                else if (result == Predefined.ERROR)
+                if (result == Predefined.ERROR)
                 {
                     CustomMessageBox.ShowError(Resources.This_provider_cannot_be_added);
                     return;
@@ -591,42 +619,48 @@ namespace QPharma.GUI
 
         public void TimTheLoai()
         {
-            var noidungtimkiem = tbTimTheLoai.Text.ToLower().Trim();
-            if (noidungtimkiem.Equals(""))
+            try
             {
-                var index = cbTieuChiTheLoai.SelectedIndex;
-                TheLoai_Load();
-                cbTieuChiTheLoai.SelectedIndex = index;
-                return;
-            }
-
-            var tieuChiIndex = cbTieuChiTheLoai.SelectedIndex;
-            dgvTheLoai.Rows.Clear();
-            var categoryList = categoryController.LoadData().Where(category =>
-            {
-                switch (tieuChiIndex)
+                if (tbTimTheLoai.Text.Equals(""))
                 {
-                    case 0:
-                        return category.id.ToLower().Contains(noidungtimkiem);
-                    case 1:
-                        return category.name.ToLower().Contains(noidungtimkiem);
-                    case 2:
-                        return category.note.ToLower().Contains(noidungtimkiem);
-                    case 3:
-                        return (category.status ? Resources.Available : Resources.Unavailable).ToLower()
-                            .Contains(noidungtimkiem);
-                    case 4:
-                        return category.created.ToLower().Contains(noidungtimkiem);
-                    case 5:
-                        return category.updated.ToLower().Contains(noidungtimkiem);
-
-                    default:
-                        return false;
+                    var index = cbTieuChiTheLoai.SelectedIndex;
+                    TheLoai_Show(categoryController.LoadData());
+                    cbTieuChiTheLoai.SelectedIndex = index;
+                    return;
                 }
-            }).ToList();
+                var noidungtimkiem = tbTimTheLoai.Text.ToLower().Trim();
+                var tieuChiIndex = cbTieuChiTheLoai.SelectedIndex;
+                dgvTheLoai.Rows.Clear();
+                var categoryList = categoryController.LoadData().Where(category =>
+                {
+                    switch (tieuChiIndex)
+                    {
+                        case 0:
+                            return category.id.ToLower().Contains(noidungtimkiem);
+                        case 1:
+                            return category.name.ToLower().Contains(noidungtimkiem);
+                        case 2:
+                            return category.note.ToLower().Contains(noidungtimkiem);
+                        case 3:
+                            return (category.status ? Resources.Available : Resources.Unavailable).ToLower()
+                                .Contains(noidungtimkiem);
+                        case 4:
+                            return category.created.ToLower().Contains(noidungtimkiem);
+                        case 5:
+                            return category.updated.ToLower().Contains(noidungtimkiem);
+
+                        default:
+                            return false;
+                    }
+                }).ToList();
 
 
-            TheLoai_Show(categoryList);
+                TheLoai_Show(categoryList);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         private void tbTimTheLoai_TextChanged(object sender, EventArgs e)
@@ -649,7 +683,7 @@ namespace QPharma.GUI
         {
             try
             {
-                var index = e.RowIndex;
+                var index = dgvThuoc.SelectedRows[0].Index;
                 rowSelectedThuoc = index;
                 tbMaThuoc.Text = dgvThuoc.Rows[index].Cells[1].Value.ToString();
                 tbTenThuoc.Text = dgvThuoc.Rows[index].Cells[2].Value.ToString();

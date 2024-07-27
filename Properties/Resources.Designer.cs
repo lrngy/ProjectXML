@@ -512,6 +512,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to QUẢN LÝ VỊ TRÍ THUỐC.
+        /// </summary>
+        internal static string Medicine_location_management {
+            get {
+                return ResourceManager.GetString("Medicine location management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QUẢN LÝ THUỐC.
         /// </summary>
         internal static string Medicine_management {

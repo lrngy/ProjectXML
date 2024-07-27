@@ -84,42 +84,8 @@ namespace QPharma.DAL
 
         public int Insert(CategoryDTO category)
         {
-            //ReloadData();
             try
             {
-                //XmlNode categoryNode = categoryDoc.CreateElement("category");
-
-                //XmlNode idNode = categoryDoc.CreateElement("category_id");
-                //idNode.InnerText = category.id;
-                //categoryNode.AppendChild(idNode);
-
-                //XmlNode nameNode = categoryDoc.CreateElement("category_name");
-                //nameNode.InnerText = category.name;
-                //categoryNode.AppendChild(nameNode);
-
-                //XmlNode noteNode = categoryDoc.CreateElement("category_note");
-                //noteNode.InnerText = category.note;
-                //categoryNode.AppendChild(noteNode);
-
-                //XmlNode statusNode = categoryDoc.CreateElement("category_status");
-                //statusNode.InnerText = category.status.ToString();
-                //categoryNode.AppendChild(statusNode);
-
-                //XmlNode createdNode = categoryDoc.CreateElement("category_created");
-                //createdNode.InnerText = category.created;
-                //categoryNode.AppendChild(createdNode);
-
-                //XmlNode updatedNode = categoryDoc.CreateElement("category_updated");
-                //updatedNode.InnerText = category.updated;
-                //categoryNode.AppendChild(updatedNode);
-
-                //XmlNode deletedNode = categoryDoc.CreateElement("category_deleted");
-                //deletedNode.InnerText = category.deleted;
-                //categoryNode.AppendChild(deletedNode);
-
-                //categoryDoc.SelectSingleNode("/categories").AppendChild(categoryNode);
-                //categoryDoc.Save(Config.getXMLPath("categories"));
-
                 var query =
                     "INSERT INTO categories(category_name, category_note, category_status, category_created) VALUES (@name, @note, @status, @created)";
                 SqlParameter[] sqlParameters =
@@ -141,25 +107,23 @@ namespace QPharma.DAL
 
         public int Update(CategoryDTO category)
         {
-            //ReloadData();
             try
             {
-                //var categories = categoryDoc.SelectSingleNode("/categories");
-                //var categoryNode =
-                //    categoryDoc.SelectSingleNode("/categories/category[category_id='" + category.id + "']");
-                //categoryNode.SelectSingleNode("category_name").InnerText = category.name;
-                //categoryNode.SelectSingleNode("category_note").InnerText = category.note;
-                //categoryNode.SelectSingleNode("category_status").InnerText = category.status.ToString();
-                //categoryNode.SelectSingleNode("category_updated").InnerText = category.updated;
-                //categoryDoc.Save(Config.getXMLPath("categories"));
-
                 var query =
-                    $"UPDATE categories SET category_name = '{category.name}', category_note = '{category.note}', category_status = {(category.status ? 1 : 0)}, category_updated = '{category.updated}' WHERE category_id = '{category.id}'";
-                DB.ExecuteNonQuery(query);
+                    $"UPDATE categories SET category_name = @name, category_note = @note, category_status = @status, category_updated = @updated WHERE category_id = @id";
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@name", category.name),
+                    new SqlParameter("@note", category.note),
+                    new SqlParameter("@status", category.status),
+                    new SqlParameter("@updated", category.updated),
+                    new SqlParameter("@id", category.id)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
 
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
@@ -168,21 +132,19 @@ namespace QPharma.DAL
 
         public int Delete(string maTheLoai)
         {
-            //ReloadData();
             try
             {
-                //var categoryNode =
-                //    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
-                //categoryNode.SelectSingleNode("category_deleted").InnerText = CustomDateTime.GetNow();
-                //categoryDoc.Save(Config.getXMLPath("categories"));
-
                 var query =
-                    $"UPDATE categories SET category_deleted = '{CustomDateTime.GetNow()}' WHERE category_id = '{maTheLoai}'";
-                DB.ExecuteNonQuery(query);
+                    $"UPDATE categories SET category_deleted = @deleted WHERE category_id = @id";
+                SqlParameter[] sqlParameters = {
+                    new SqlParameter("@id", maTheLoai),
+                    new SqlParameter("@deleted", CustomDateTime.GetNow())
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
 
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
@@ -191,20 +153,17 @@ namespace QPharma.DAL
 
         internal int Restore(string maTheLoai)
         {
-            //ReloadData();
             try
             {
-                //var categoryNode =
-                //    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
-                //categoryNode.SelectSingleNode("category_deleted").InnerText = "";
-                //categoryDoc.Save(Config.getXMLPath("categories"));
-
-                var query = $"UPDATE categories SET category_deleted = null WHERE category_id = '{maTheLoai}'";
-                DB.ExecuteNonQuery(query);
+                var query = "UPDATE categories SET category_deleted = null WHERE category_id = @id";
+                SqlParameter[] sqlParameters = {
+                    new SqlParameter("@id", maTheLoai)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
 
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
@@ -213,20 +172,16 @@ namespace QPharma.DAL
 
         internal int ForceDelete(string maTheLoai)
         {
-            //ReloadData();
             try
             {
-                //var categoryNode =
-                //    categoryDoc.SelectSingleNode("/categories/category[category_id='" + maTheLoai + "']");
-                //categoryNode.ParentNode.RemoveChild(categoryNode);
-                //categoryDoc.Save(Config.getXMLPath("categories"));
-
-                var query = $"DELETE FROM categories WHERE category_id = '{maTheLoai}'";
-                DB.ExecuteNonQuery(query);
-
+                var query = $"DELETE FROM categories WHERE category_id = @id";
+                SqlParameter[] sqlParameters = {
+                        new SqlParameter("@id", maTheLoai)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
@@ -235,20 +190,13 @@ namespace QPharma.DAL
 
         internal int RestoreAll()
         {
-            //ReloadData();
             try
             {
-                //var categoryNodes = categoryDoc.SelectNodes("/categories/category");
-                //foreach (XmlNode categoryNode in categoryNodes)
-                //    categoryNode.SelectSingleNode("category_deleted").InnerText = "";
-                //categoryDoc.Save(Config.getXMLPath("categories"));
-
                 var query = "UPDATE categories SET category_deleted = null";
                 DB.ExecuteNonQuery(query);
-
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;

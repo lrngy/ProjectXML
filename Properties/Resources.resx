@@ -401,4 +401,7 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
   <data name="Add" xml:space="preserve">
 	  <value>&lt;&lt; Thêm &gt;&gt;</value>
   </data>
+  <data name="Medicine location management" xml:space="preserve">
+	  <value>QUẢN LÝ VỊ TRÍ THUỐC</value>
+  </data>
 </root>

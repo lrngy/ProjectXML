@@ -3,16 +3,21 @@ using ProjectXML.Util;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace ProjectXML.DAL
 {
-    internal class StaffDAL
+    // Lớp csdl
+    internal class StaffDAL 
     {
+        // Lấy tất cả
         public List<StaffDTO> GetAll()
         {
             var list = new List<StaffDTO>();
@@ -28,7 +33,7 @@ namespace ProjectXML.DAL
                     var yearOfBirth = dr["staff_year_of_birth"].ToString();
                     var isManager = bool.Parse(dr["staff_is_manager"].ToString());
                     var isSeller = bool.Parse(dr["staff_is_seller"].ToString());
-                    var username = dt.Rows[0]["username"].ToString();
+                    var username = dr["username"].ToString();
                     //var created = dr["staff_created"].ToString();
                     //var updated = dr["staff_updated"].ToString();
                     //var deleted = dr["staff_deleted"].ToString();
@@ -46,13 +51,13 @@ namespace ProjectXML.DAL
             return list;
         }
 
+        // Lấy bởi tên id
         public StaffDTO GetById(string id)
         {
 
             StaffDTO staffDTO = null;
             try
             {
-
                 string query = $"SELECT * FROM staffs where staff_id = {id}";
                 DataTable dt = DB.ExecuteQuery(query);
                 if (dt.Rows.Count != 0)
@@ -67,9 +72,7 @@ namespace ProjectXML.DAL
                     //var updated = dr["staff_updated"].ToString();
                     //var deleted = dr["staff_deleted"].ToString();
 
-
-                    StaffDTO staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
-
+                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
                 }
             }
             catch (Exception)
@@ -79,6 +82,7 @@ namespace ProjectXML.DAL
             return staffDTO;
         }
 
+        // Lấy bởi tên người dùng
         public StaffDTO GetByUsername(string username)
         {
 
@@ -110,6 +114,7 @@ namespace ProjectXML.DAL
             return staffDTO;
         }
 
+        // Kiểm tra tồn tại
         public bool CheckExist(string id)
         {
 
@@ -119,15 +124,25 @@ namespace ProjectXML.DAL
             return true;
         }
 
-
+        // Chèn
         public int Insert(StaffDTO staffDTO)
         {
-
             try
             {
-                string query = $"INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
-                    $"VALUES({staffDTO.id}, {staffDTO.name}, {staffDTO.gender}, {staffDTO.birthday}, {staffDTO.isManager}, {staffDTO.isSeller}, '', '', '', {staffDTO.username})";
+                // Chuỗi ngày tháng ban đầu
+                string dateString = staffDTO.birthday;
 
+                // Chuyển đổi thành đối tượng DateTime
+                DateTime date = DateTime.ParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                // Chuyển đổi thành định dạng "yy MM dd"
+                string formattedDate = date.ToString("yyyy-MM-dd");
+
+                string query = $"INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
+                    $"VALUES('{staffDTO.id}', '{staffDTO.name}', '{staffDTO.gender}', '{formattedDate}', '{staffDTO.isManager}', '{staffDTO.isSeller}', '', '', '', '{staffDTO.username}')";
+
+                MessageBox.Show(query);
+                if (DB.ExecuteQuery(query, null) == null) return Predefined.ERROR;
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -137,17 +152,19 @@ namespace ProjectXML.DAL
             }
         }
 
+        // Cập nhật
         public int Update(StaffDTO staffDTO)
         {
 
             try
             {
                 string query = $"UPDATE QlyHieuThuoc.dbo.staffs" +
-                    $"SET staff_name='{staffDTO.name}', staff_sex={staffDTO.gender}, staff_year_of_birth='{staffDTO.birthday}', staff_is_manager={staffDTO.isManager}, staff_is_seller={staffDTO.isSeller}, staff_created='', staff_updated='', staff_deleted='', username='{staffDTO.username}' WHERE staff_id='{staffDTO.id}'";
+                    $"SET staff_name='{staffDTO.name}', staff_sex={staffDTO.gender}, " +
+                    $"staff_year_of_birth='{staffDTO.birthday}', staff_is_manager={staffDTO.isManager}, " +
+                    $"staff_is_seller={staffDTO.isSeller}, staff_created='', staff_updated='', staff_deleted='', " +
+                    $"username='{staffDTO.username}' WHERE staff_id='{staffDTO.id}'";
 
-
-                DB.ExecuteNonQuery(query);
-
+                if (DB.ExecuteQuery(query, null) == null) return Predefined.ERROR;
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -156,6 +173,8 @@ namespace ProjectXML.DAL
                 return Predefined.ERROR;
             }
         }
+
+        // Xóa bỏ
         internal int Delete(string id)
         {
 
@@ -173,6 +192,7 @@ namespace ProjectXML.DAL
             }
         }
 
+        // Khôi phục
         internal int Restore(string id)
         {
 
@@ -190,11 +210,9 @@ namespace ProjectXML.DAL
             }
         }
 
-
-
+        // Buộc xóa
         internal int ForceDelete(string id)
         {
-       
             try
             {
                 //var supplierNode = supplierDoc.SelectSingleNode("/suppliers/supplier[supplier_id='" + id + "']");
@@ -213,6 +231,7 @@ namespace ProjectXML.DAL
             }
         }
 
+        // Khôi phục lại tất cả
         internal int RestoreAll()
         {
           

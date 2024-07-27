@@ -138,5 +138,14 @@ primary key (supplier_id, medicine_id, supplier_history_created)
 )
 go;
 
+create table login_log(
+login_log_id varchar(100) primary key,
+username varchar(30) foreign key references users(username),
+login_time datetime,
+logout_time datetime
+)
+
+
+
 
 

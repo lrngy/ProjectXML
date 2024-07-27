@@ -29,5 +29,9 @@ namespace ProjectXML.BUS
             if (UserDAL.GetUser(user.username) == null) return Predefined.ID_NOT_EXIST;
             return UserDAL.UpdatePassword(user);
         }
+
+        // quyet
+        public bool CheckExistUserName(string username)
+        { return UserDAL.CheckExistUserName(username); }
     }
 }

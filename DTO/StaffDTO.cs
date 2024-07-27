@@ -1,11 +1,17 @@
 ﻿namespace ProjectXML.DTO
 {
+    // Lớp đối tượng
     public class StaffDTO
     {
-        public StaffDTO()
-        {
-        }
+        public string id { get; set; }
+        public string name { get; set; }
+        public bool gender { get; set; }
+        public string birthday { get; set; }
+        public bool isManager { get; set; }
+        public bool isSeller { get; set; }
+        public string username { get; set; }
 
+        public StaffDTO() { }
         public StaffDTO(string id, string name, bool gender, string birthday, bool isManager, bool isSeller, string username)
         {
             this.id = id;
@@ -17,16 +23,6 @@
             this.username = username;
         }
 
-        public string id { get; set; }
-        public string name { get; set; }
-        public bool gender { get; set; }
-        public string birthday { get; set; }
-
-        public bool isManager { get; set; }
-        public bool isSeller { get; set; }
-
-        public string username { get; set; }
-
         public void Update(StaffDTO newStaff)
         {
             id = newStaff.id;
@@ -36,7 +32,6 @@
             isManager = newStaff.isManager;
             isSeller = newStaff.isSeller;
             username = newStaff.username;
-
         }
     }
 }

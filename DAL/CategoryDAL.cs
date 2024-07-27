@@ -80,7 +80,7 @@ namespace ProjectXML.DAL
             if (dt.Rows.Count == 0) return false;
             var deleted = dt.Rows[0]["category_deleted"].ToString();
             return deleted.Equals("");
-            }
+        }
         
 
         public int Insert(CategoryDTO category)

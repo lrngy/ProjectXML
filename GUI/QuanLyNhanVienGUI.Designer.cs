@@ -33,7 +33,6 @@
             this.t_staff_name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.t_staff_sex = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.them = new System.Windows.Forms.Button();
             this.sua = new System.Windows.Forms.Button();
@@ -41,13 +40,6 @@
             this.save_add = new System.Windows.Forms.Button();
             this.Back = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.staff_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_year_of_birth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_is_manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_is_seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.t_timKiem = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.c_staff_is_manager = new System.Windows.Forms.RadioButton();
@@ -56,71 +48,79 @@
             this.tTaiKhoan = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cboGender = new System.Windows.Forms.ComboBox();
+            this.staff_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_year_of_birth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_is_manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_is_seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(168, 82);
+            this.label1.Location = new System.Drawing.Point(126, 67);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 16);
+            this.label1.Size = new System.Drawing.Size(15, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "id";
             // 
             // t_id
             // 
-            this.t_id.Location = new System.Drawing.Point(277, 82);
+            this.t_id.Location = new System.Drawing.Point(208, 67);
+            this.t_id.Margin = new System.Windows.Forms.Padding(2);
             this.t_id.Name = "t_id";
-            this.t_id.Size = new System.Drawing.Size(184, 22);
+            this.t_id.Size = new System.Drawing.Size(139, 20);
             this.t_id.TabIndex = 2;
             // 
             // t_staff_name
             // 
-            this.t_staff_name.Location = new System.Drawing.Point(651, 82);
+            this.t_staff_name.Location = new System.Drawing.Point(488, 67);
+            this.t_staff_name.Margin = new System.Windows.Forms.Padding(2);
             this.t_staff_name.Name = "t_staff_name";
-            this.t_staff_name.Size = new System.Drawing.Size(183, 22);
+            this.t_staff_name.Size = new System.Drawing.Size(138, 20);
             this.t_staff_name.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(542, 82);
+            this.label2.Location = new System.Drawing.Point(406, 67);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 16);
+            this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Tên nhân viên";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(168, 137);
+            this.label4.Location = new System.Drawing.Point(126, 111);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 16);
+            this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Giới tính";
-            // 
-            // t_staff_sex
-            // 
-            this.t_staff_sex.Location = new System.Drawing.Point(277, 137);
-            this.t_staff_sex.Name = "t_staff_sex";
-            this.t_staff_sex.Size = new System.Drawing.Size(184, 22);
-            this.t_staff_sex.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(542, 137);
+            this.label3.Location = new System.Drawing.Point(406, 111);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 16);
+            this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Năm sinh";
+            this.label3.Text = "Ngày sinh";
             // 
             // them
             // 
-            this.them.Location = new System.Drawing.Point(138, 543);
+            this.them.Location = new System.Drawing.Point(104, 441);
+            this.them.Margin = new System.Windows.Forms.Padding(2);
             this.them.Name = "them";
-            this.them.Size = new System.Drawing.Size(81, 39);
+            this.them.Size = new System.Drawing.Size(61, 32);
             this.them.TabIndex = 12;
             this.them.Text = "Thêm";
             this.them.UseVisualStyleBackColor = true;
@@ -128,9 +128,10 @@
             // 
             // sua
             // 
-            this.sua.Location = new System.Drawing.Point(404, 543);
+            this.sua.Location = new System.Drawing.Point(303, 441);
+            this.sua.Margin = new System.Windows.Forms.Padding(2);
             this.sua.Name = "sua";
-            this.sua.Size = new System.Drawing.Size(81, 39);
+            this.sua.Size = new System.Drawing.Size(61, 32);
             this.sua.TabIndex = 13;
             this.sua.Text = "Sửa";
             this.sua.UseVisualStyleBackColor = true;
@@ -138,9 +139,10 @@
             // 
             // xoa
             // 
-            this.xoa.Location = new System.Drawing.Point(661, 543);
+            this.xoa.Location = new System.Drawing.Point(496, 441);
+            this.xoa.Margin = new System.Windows.Forms.Padding(2);
             this.xoa.Name = "xoa";
-            this.xoa.Size = new System.Drawing.Size(81, 39);
+            this.xoa.Size = new System.Drawing.Size(61, 32);
             this.xoa.TabIndex = 13;
             this.xoa.Text = "Xóa";
             this.xoa.UseVisualStyleBackColor = true;
@@ -149,9 +151,10 @@
             // save_add
             // 
             this.save_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.save_add.Location = new System.Drawing.Point(867, 509);
+            this.save_add.Location = new System.Drawing.Point(650, 414);
+            this.save_add.Margin = new System.Windows.Forms.Padding(2);
             this.save_add.Name = "save_add";
-            this.save_add.Size = new System.Drawing.Size(94, 49);
+            this.save_add.Size = new System.Drawing.Size(70, 40);
             this.save_add.TabIndex = 13;
             this.save_add.Text = "Save add";
             this.save_add.UseVisualStyleBackColor = true;
@@ -160,9 +163,10 @@
             // Back
             // 
             this.Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Back.Location = new System.Drawing.Point(867, 573);
+            this.Back.Location = new System.Drawing.Point(650, 466);
+            this.Back.Margin = new System.Windows.Forms.Padding(2);
             this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(94, 49);
+            this.Back.Size = new System.Drawing.Size(70, 40);
             this.Back.TabIndex = 13;
             this.Back.Text = "Back";
             this.Back.UseVisualStyleBackColor = true;
@@ -174,18 +178,110 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.staff_id,
             this.staff_name,
-            this.username,
+            this.staff_username,
             this.staff_sex,
             this.staff_year_of_birth,
             this.staff_is_manager,
             this.staff_is_seller});
-            this.dataGridView1.Location = new System.Drawing.Point(70, 271);
+            this.dataGridView1.Location = new System.Drawing.Point(52, 220);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(914, 198);
+            this.dataGridView1.Size = new System.Drawing.Size(686, 161);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // t_timKiem
+            // 
+            this.t_timKiem.Location = new System.Drawing.Point(354, 20);
+            this.t_timKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.t_timKiem.Name = "t_timKiem";
+            this.t_timKiem.Size = new System.Drawing.Size(139, 20);
+            this.t_timKiem.TabIndex = 16;
+            this.t_timKiem.TextChanged += new System.EventHandler(this.t_timKiem_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(293, 20);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Tìm kiếm";
+            // 
+            // c_staff_is_manager
+            // 
+            this.c_staff_is_manager.AutoSize = true;
+            this.c_staff_is_manager.Location = new System.Drawing.Point(178, 185);
+            this.c_staff_is_manager.Margin = new System.Windows.Forms.Padding(2);
+            this.c_staff_is_manager.Name = "c_staff_is_manager";
+            this.c_staff_is_manager.Size = new System.Drawing.Size(111, 17);
+            this.c_staff_is_manager.TabIndex = 18;
+            this.c_staff_is_manager.TabStop = true;
+            this.c_staff_is_manager.Text = "Nhân viên quản lý";
+            this.c_staff_is_manager.UseVisualStyleBackColor = true;
+            // 
+            // c_staff_is_seller
+            // 
+            this.c_staff_is_seller.AutoSize = true;
+            this.c_staff_is_seller.Location = new System.Drawing.Point(478, 185);
+            this.c_staff_is_seller.Margin = new System.Windows.Forms.Padding(2);
+            this.c_staff_is_seller.Name = "c_staff_is_seller";
+            this.c_staff_is_seller.Size = new System.Drawing.Size(122, 17);
+            this.c_staff_is_seller.TabIndex = 19;
+            this.c_staff_is_seller.TabStop = true;
+            this.c_staff_is_seller.Text = "Nhân viên bán hàng";
+            this.c_staff_is_seller.UseVisualStyleBackColor = true;
+            // 
+            // bResetPass
+            // 
+            this.bResetPass.Location = new System.Drawing.Point(504, 148);
+            this.bResetPass.Margin = new System.Windows.Forms.Padding(2);
+            this.bResetPass.Name = "bResetPass";
+            this.bResetPass.Size = new System.Drawing.Size(102, 25);
+            this.bResetPass.TabIndex = 20;
+            this.bResetPass.Text = "Reset Password";
+            this.bResetPass.UseVisualStyleBackColor = true;
+            this.bResetPass.Click += new System.EventHandler(this.bResetPass_Click);
+            // 
+            // tTaiKhoan
+            // 
+            this.tTaiKhoan.Location = new System.Drawing.Point(208, 151);
+            this.tTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
+            this.tTaiKhoan.Name = "tTaiKhoan";
+            this.tTaiKhoan.Size = new System.Drawing.Size(138, 20);
+            this.tTaiKhoan.TabIndex = 22;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(126, 151);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Tài khoản";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(488, 110);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePicker1.TabIndex = 23;
+            // 
+            // cboGender
+            // 
+            this.cboGender.FormattingEnabled = true;
+            this.cboGender.Location = new System.Drawing.Point(208, 111);
+            this.cboGender.Name = "cboGender";
+            this.cboGender.Size = new System.Drawing.Size(121, 21);
+            this.cboGender.TabIndex = 24;
+            this.cboGender.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // staff_id
             // 
@@ -201,12 +297,12 @@
             this.staff_name.Name = "staff_name";
             this.staff_name.Width = 125;
             // 
-            // username
+            // staff_username
             // 
-            this.username.HeaderText = "Tài Khoản";
-            this.username.MinimumWidth = 6;
-            this.username.Name = "username";
-            this.username.Width = 125;
+            this.staff_username.HeaderText = "Tài Khoản";
+            this.staff_username.MinimumWidth = 6;
+            this.staff_username.Name = "staff_username";
+            this.staff_username.Width = 125;
             // 
             // staff_sex
             // 
@@ -236,85 +332,12 @@
             this.staff_is_seller.Name = "staff_is_seller";
             this.staff_is_seller.Width = 90;
             // 
-            // t_timKiem
+            // QuanLyNhanVienGUI
             // 
-            this.t_timKiem.Location = new System.Drawing.Point(472, 25);
-            this.t_timKiem.Name = "t_timKiem";
-            this.t_timKiem.Size = new System.Drawing.Size(184, 22);
-            this.t_timKiem.TabIndex = 16;
-            this.t_timKiem.TextChanged += new System.EventHandler(this.t_timKiem_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(391, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 16);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Tìm kiếm";
-            // 
-            // c_staff_is_manager
-            // 
-            this.c_staff_is_manager.AutoSize = true;
-            this.c_staff_is_manager.Location = new System.Drawing.Point(237, 228);
-            this.c_staff_is_manager.Name = "c_staff_is_manager";
-            this.c_staff_is_manager.Size = new System.Drawing.Size(134, 20);
-            this.c_staff_is_manager.TabIndex = 18;
-            this.c_staff_is_manager.TabStop = true;
-            this.c_staff_is_manager.Text = "Nhân viên quản lý";
-            this.c_staff_is_manager.UseVisualStyleBackColor = true;
-            // 
-            // c_staff_is_seller
-            // 
-            this.c_staff_is_seller.AutoSize = true;
-            this.c_staff_is_seller.Location = new System.Drawing.Point(638, 228);
-            this.c_staff_is_seller.Name = "c_staff_is_seller";
-            this.c_staff_is_seller.Size = new System.Drawing.Size(147, 20);
-            this.c_staff_is_seller.TabIndex = 19;
-            this.c_staff_is_seller.TabStop = true;
-            this.c_staff_is_seller.Text = "Nhân viên bán hàng";
-            this.c_staff_is_seller.UseVisualStyleBackColor = true;
-            // 
-            // bResetPass
-            // 
-            this.bResetPass.Location = new System.Drawing.Point(672, 182);
-            this.bResetPass.Name = "bResetPass";
-            this.bResetPass.Size = new System.Drawing.Size(136, 31);
-            this.bResetPass.TabIndex = 20;
-            this.bResetPass.Text = "Reset Password";
-            this.bResetPass.UseVisualStyleBackColor = true;
-            this.bResetPass.Click += new System.EventHandler(this.bResetPass_Click);
-            // 
-            // tTaiKhoan
-            // 
-            this.tTaiKhoan.Location = new System.Drawing.Point(277, 186);
-            this.tTaiKhoan.Name = "tTaiKhoan";
-            this.tTaiKhoan.Size = new System.Drawing.Size(183, 22);
-            this.tTaiKhoan.TabIndex = 22;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(168, 186);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 16);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Tài khoản";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(651, 135);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 23;
-            // 
-            // QuanLyNhanVienView
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 647);
+            this.ClientSize = new System.Drawing.Size(786, 526);
+            this.Controls.Add(this.cboGender);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.tTaiKhoan);
             this.Controls.Add(this.label6);
@@ -330,13 +353,13 @@
             this.Controls.Add(this.sua);
             this.Controls.Add(this.them);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.t_staff_sex);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.t_staff_name);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.t_id);
             this.Controls.Add(this.label1);
-            this.Name = "QuanLyNhanVienView";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "QuanLyNhanVienGUI";
             this.Text = "Form Quản Lý Nhân Viên";
             this.Load += new System.EventHandler(this.QuanLyNhanVienForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -352,9 +375,7 @@
         private System.Windows.Forms.TextBox t_staff_name;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox t_staff_sex;
         private System.Windows.Forms.Label label3;
-//<<<<<<< HEAD
         private System.Windows.Forms.Button them;
         private System.Windows.Forms.Button sua;
         private System.Windows.Forms.Button xoa;
@@ -368,30 +389,14 @@
         private System.Windows.Forms.Button bResetPass;
         private System.Windows.Forms.TextBox tTaiKhoan;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cboGender;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn username;
-//=======
-//        private System.Windows.Forms.CheckBox c_staff_is_manager;
-//        private System.Windows.Forms.CheckBox c_staff_is_seller;
-//        private System.Windows.Forms.Button them;
-//        private System.Windows.Forms.Button sua;
-//        private System.Windows.Forms.Button xoa;
-//        private System.Windows.Forms.Button save_update;
-//        private System.Windows.Forms.Button Back;
-//        private System.Windows.Forms.DataGridView dataGridView1;
-//        private System.Windows.Forms.DataGridViewTextBoxColumn staff_id;
-//        private System.Windows.Forms.DataGridViewTextBoxColumn staff_name;
-//>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
+        private System.Windows.Forms.DataGridViewTextBoxColumn staff_username;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_sex;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_year_of_birth;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_is_manager;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_is_seller;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        //<<<<<<< HEAD
-        //=======
-        //        private System.Windows.Forms.TextBox t_timKiem;
-        //        private System.Windows.Forms.Label label5;
-        //>>>>>>> c2d3df597e691b1b3674c746574484aac01f0df7
     }
 }

@@ -53,6 +53,5 @@ namespace QPharma.BUS
             if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
             return supplierDAL.ForceDelete(id);
         }
-
     }
 }

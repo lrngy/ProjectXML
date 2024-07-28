@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Windows.Forms;
 using QPharma.BUS;
-using QPharma.DAL;
 using QPharma.DTO;
 using QPharma.GUI.Dialog;
 using QPharma.Properties;

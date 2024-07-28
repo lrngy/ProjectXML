@@ -13,7 +13,6 @@ namespace QPharma.DAL
     {
         public List<CategoryDTO> GetAll()
         {
-            //ReloadData();
             var list = new List<CategoryDTO>();
             try
             {
@@ -45,7 +44,6 @@ namespace QPharma.DAL
 
         public CategoryDTO GetById(string id)
         {
-            //ReloadData();
             CategoryDTO category = null;
             try
             {
@@ -110,7 +108,7 @@ namespace QPharma.DAL
             try
             {
                 var query =
-                    $"UPDATE categories SET category_name = @name, category_note = @note, category_status = @status, category_updated = @updated WHERE category_id = @id";
+                    "UPDATE categories SET category_name = @name, category_note = @note, category_status = @status, category_updated = @updated WHERE category_id = @id";
                 SqlParameter[] sqlParameters =
                 {
                     new SqlParameter("@name", category.name),
@@ -135,8 +133,9 @@ namespace QPharma.DAL
             try
             {
                 var query =
-                    $"UPDATE categories SET category_deleted = @deleted WHERE category_id = @id";
-                SqlParameter[] sqlParameters = {
+                    "UPDATE categories SET category_deleted = @deleted WHERE category_id = @id";
+                SqlParameter[] sqlParameters =
+                {
                     new SqlParameter("@id", maTheLoai),
                     new SqlParameter("@deleted", CustomDateTime.GetNow())
                 };
@@ -156,7 +155,8 @@ namespace QPharma.DAL
             try
             {
                 var query = "UPDATE categories SET category_deleted = null WHERE category_id = @id";
-                SqlParameter[] sqlParameters = {
+                SqlParameter[] sqlParameters =
+                {
                     new SqlParameter("@id", maTheLoai)
                 };
                 DB.ExecuteNonQuery(query, sqlParameters);
@@ -174,9 +174,10 @@ namespace QPharma.DAL
         {
             try
             {
-                var query = $"DELETE FROM categories WHERE category_id = @id";
-                SqlParameter[] sqlParameters = {
-                        new SqlParameter("@id", maTheLoai)
+                var query = "DELETE FROM categories WHERE category_id = @id";
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@id", maTheLoai)
                 };
                 DB.ExecuteNonQuery(query, sqlParameters);
                 return Predefined.SUCCESS;

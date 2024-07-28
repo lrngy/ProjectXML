@@ -103,6 +103,12 @@
     <Compile Include="GUI\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Dialog\DeletedMedicineLocationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Dialog\DeletedMedicineLocationDialog.Designer.cs">
+      <DependentUpon>DeletedMedicineLocationDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\SplashGUI.cs">
       <SubType>Form</SubType>
     </Compile>

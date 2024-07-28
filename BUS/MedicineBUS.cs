@@ -18,9 +18,9 @@ namespace QPharma.BUS
             medicineDAL = new MedicineDAL(categoryController.categoryDAL, supplierController.supplierDAL);
         }
 
-        private MedicineDAL medicineDAL { get; set; }
-        private CategoryBUS categoryController { get; set; }
-        private SupplierBUS supplierController { get; set; }
+        private MedicineDAL medicineDAL { get; }
+        private CategoryBUS categoryController { get; }
+        private SupplierBUS supplierController { get; }
 
         public List<MedicineDTO> LoadData()
         {

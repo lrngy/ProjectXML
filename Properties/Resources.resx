@@ -136,10 +136,7 @@
   <data name="Please enter complete info" xml:space="preserve">
     <value>Vui lòng nhập đầy đủ thông tin</value>
   </data>
-  <data name="Old password not correct" xml:space="preserve">
-    <value>Mật khẩu cũ không đúng</value>
-  </data>
-  <data name="New password not correct" xml:space="preserve">
+  <data name="New password is not correct" xml:space="preserve">
     <value>Mật khẩu mới không khớp</value>
   </data>
   <data name="Change password success" xml:space="preserve">
@@ -399,9 +396,27 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
     <value>Không kê đơn</value>
   </data>
   <data name="Add" xml:space="preserve">
-	  <value>&lt;&lt; Thêm &gt;&gt;</value>
+    <value>&lt;&lt; Thêm &gt;&gt;</value>
   </data>
   <data name="Medicine location management" xml:space="preserve">
-	  <value>QUẢN LÝ VỊ TRÍ THUỐC</value>
+    <value>QUẢN LÝ VỊ TRÍ THUỐC</value>
+  </data>
+  <data name="Location name already exists" xml:space="preserve">
+    <value>Tên vị tri đã tồn tại</value>
+  </data>
+  <data name="Please input location name" xml:space="preserve">
+    <value>Vui lòng nhập tên vị trí</value>
+  </data>
+  <data name="Old password is not correct" xml:space="preserve">
+    <value>Mật khẩu cũ không chính xác</value>
+  </data>
+  <data name="Please enter confirm password" xml:space="preserve">
+    <value>Vui lòng nhập lại mật khẩu mới</value>
+  </data>
+  <data name="Please enter new password" xml:space="preserve">
+    <value>Vui lòng nhập mật khẩu mới</value>
+  </data>
+  <data name="Please enter old password" xml:space="preserve">
+    <value>Vui lòng nhập mật khẩu cũ</value>
   </data>
 </root>

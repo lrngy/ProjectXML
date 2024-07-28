@@ -447,6 +447,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tên vị tri đã tồn tại.
+        /// </summary>
+        internal static string Location_name_already_exists {
+            get {
+                return ResourceManager.GetString("Location name already exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng nhập thất bại. Vui lòng liên hệ quản lý !.
         /// </summary>
         internal static string Login_fail {
@@ -569,18 +578,18 @@ namespace QPharma.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Mật khẩu mới không khớp.
         /// </summary>
-        internal static string New_password_not_correct {
+        internal static string New_password_is_not_correct {
             get {
-                return ResourceManager.GetString("New password not correct", resourceCulture);
+                return ResourceManager.GetString("New password is not correct", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mật khẩu cũ không đúng.
+        ///   Looks up a localized string similar to Mật khẩu cũ không chính xác.
         /// </summary>
-        internal static string Old_password_not_correct {
+        internal static string Old_password_is_not_correct {
             get {
-                return ResourceManager.GetString("Old password not correct", resourceCulture);
+                return ResourceManager.GetString("Old password is not correct", resourceCulture);
             }
         }
         
@@ -594,11 +603,47 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập lại mật khẩu mới.
+        /// </summary>
+        internal static string Please_enter_confirm_password {
+            get {
+                return ResourceManager.GetString("Please enter confirm password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập mật khẩu mới.
+        /// </summary>
+        internal static string Please_enter_new_password {
+            get {
+                return ResourceManager.GetString("Please enter new password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập mật khẩu cũ.
+        /// </summary>
+        internal static string Please_enter_old_password {
+            get {
+                return ResourceManager.GetString("Please enter old password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng nhập tên thể loại.
         /// </summary>
         internal static string Please_input_category_name {
             get {
                 return ResourceManager.GetString("Please input category name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tên vị trí.
+        /// </summary>
+        internal static string Please_input_location_name {
+            get {
+                return ResourceManager.GetString("Please input location name", resourceCulture);
             }
         }
         

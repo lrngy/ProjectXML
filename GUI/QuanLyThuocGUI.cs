@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,23 +17,18 @@ namespace QPharma.GUI
 {
     public partial class QuanLyThuocGUI : BaseForm
     {
-        private readonly CategoryBUS categoryController = new CategoryBUS();
-        private readonly MedicineBUS medicineController = new MedicineBUS();
+        private readonly CategoryBUS categoryBUS = new CategoryBUS();
+        private readonly MedicineBUS medicineBUS = new MedicineBUS();
         private readonly MedicineLocationBUS medicineLocationBUS = new MedicineLocationBUS();
-
         private readonly XmlDocument nhacungcap = Config.getDoc("suppliers");
         private readonly StaffDTO staff;
         private readonly SupplierBUS supplierBUS = new SupplierBUS();
         private readonly int tabControlIndex;
-
         private readonly UserDTO user;
-
         private int cbIndexLoc;
         private int cbIndexTieuChiThuoc = 1;
         private FilterByRangeDialog filterByRangeDialog;
-
         public int indexTieuChiNCC = 1;
-
         private int rowSelectedTheLoai;
         private int rowSelectedThuoc;
 
@@ -79,17 +75,19 @@ namespace QPharma.GUI
         {
             var listViTriThuoc = medicineLocationBUS.LoadData();
             HienThiViTriThuoc(listViTriThuoc);
+            cbTTViTri.SelectedIndex = 0;
+            cbbTieuChiVT.SelectedIndex = 1;
         }
 
         private void HienThiViTriThuoc(List<MedicineLocationDTO> list)
         {
             dgvViTriThuoc.Rows.Clear();
-            tbTenViTri.Text = "";
-            tbGhiChuViTri.Text = "";
+            ClearViTriThuoc();
+            BeginInvoke(new Action(() => { dgvViTriThuoc.ClearSelection(); }));
 
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
-                if (!list[i].status || !list[i].deleted.Equals("")) continue;
+                if (!list[i].deleted.Equals("")) continue;
                 dgvViTriThuoc.Rows.Add(
                     i + 1,
                     list[i].id,
@@ -99,11 +97,17 @@ namespace QPharma.GUI
                     list[i].created,
                     list[i].updated);
             }
+        }
 
+        private void ClearViTriThuoc()
+        {
+            tbTenViTri.Text = "";
+            tbGhiChuViTri.Text = "";
         }
 
         private void QuanLyThuoc_Load()
         {
+            BeginInvoke(new Action(() => { dgvThuoc.ClearSelection(); }));
             TimThuocTheoDuLieu();
             cbTLThuoc.Items.Clear();
             cbNccThuoc.Items.Clear();
@@ -111,7 +115,7 @@ namespace QPharma.GUI
             cbLoai.Items.Clear();
             cbLoai.Items.Add(Resources.Prescription_drug);
             cbLoai.Items.Add(Resources.Unprescription_drug);
-            var categoryList = categoryController.LoadData();
+            var categoryList = categoryBUS.LoadData();
             foreach (var category in categoryList)
             {
                 if (!category.status || !category.deleted.Equals("")) continue;
@@ -223,7 +227,7 @@ namespace QPharma.GUI
             }
 
             ClearInputSupplier();
-            dgvNhaCungCap.ClearSelection();
+            BeginInvoke(new Action(() => { dgvNhaCungCap.ClearSelection(); }));
         }
 
         private void ClearInputSupplier()
@@ -251,10 +255,7 @@ namespace QPharma.GUI
             var categoryList = list;
             foreach (var category in categoryList)
             {
-                if (!category.deleted.Equals(""))
-                {
-                    continue;
-                }
+                if (!category.deleted.Equals("")) continue;
 
                 dgvTheLoai.Rows.Add(++i, category.id, category.name, category.note,
                     category.status ? Resources.Available : Resources.Unavailable, category.created, category.updated);
@@ -267,6 +268,8 @@ namespace QPharma.GUI
         private void TheLoai_Load()
         {
             TimTheLoai();
+            cbTrangThaiTheLoai.SelectedIndex = 0;
+            cbTieuChiTheLoai.SelectedIndex = 1;
         }
 
         private void QuanLyThuocView_Load(object sender, EventArgs e)
@@ -285,13 +288,12 @@ namespace QPharma.GUI
 
                 if (tenTheLoai.Equals(""))
                 {
-                    //CustomMessageBox.ShowError("Vui lòng nhập tên thể loại");
                     ShowValidateError(tbTenTheLoai, Resources.Please_input_category_name);
                     return;
                 }
 
                 var category = new CategoryDTO(tenTheLoai, ghiChu, trangThai, CustomDateTime.GetNow(), null, null);
-                var state = categoryController.Insert(category);
+                var state = categoryBUS.Insert(category);
 
                 if (state == Predefined.SUCCESS)
                 {
@@ -300,7 +302,6 @@ namespace QPharma.GUI
                 }
 
                 if (state == Predefined.ID_EXIST)
-                    //CustomMessageBox.ShowError("Tên thể loại đã tồn tại");
                     ShowValidateError(tbTenTheLoai, Resources.Category_name_already_exists);
                 else
                     CustomMessageBox.ShowError(Resources.Add_failed);
@@ -342,7 +343,7 @@ namespace QPharma.GUI
 
                 var category = new CategoryDTO(maTheLoai, tenTheLoai, ghiChu, trangThai, created,
                     CustomDateTime.GetNow(), "");
-                var state = categoryController.Update(category);
+                var state = categoryBUS.Update(category);
 
                 if (state == Predefined.SUCCESS)
                 {
@@ -387,7 +388,7 @@ namespace QPharma.GUI
                     return;
                 }
 
-                var state = categoryController.Delete(maTheLoai);
+                var state = categoryBUS.Delete(maTheLoai);
                 if (state == Predefined.SUCCESS)
                 {
                     TheLoai_Load();
@@ -407,7 +408,7 @@ namespace QPharma.GUI
 
         private void btnLuuTruTheLoai_Click(object sender, EventArgs e)
         {
-            var deletedCategory = new DeletedCategoryDialog(categoryController);
+            var deletedCategory = new DeletedCategoryDialog(categoryBUS);
             deletedCategory.refreshDeletedCategory += TheLoai_Load;
             deletedCategory.ShowDialog();
         }
@@ -478,6 +479,7 @@ namespace QPharma.GUI
                     ShowValidateError(tbMaNCC, Resources.Supplier_ID_already_exists);
                     return;
                 }
+
                 if (result == Predefined.ERROR)
                 {
                     CustomMessageBox.ShowError(Resources.This_provider_cannot_be_added);
@@ -609,7 +611,10 @@ namespace QPharma.GUI
                     case 5:
                         return (supplier.status ? Resources.Available : Resources.Unavailable).ToLower()
                             .Contains(noidungtimkiem);
-
+                    case 6:
+                        return supplier.created.ToLower().Contains(noidungtimkiem);
+                    case 7:
+                        return supplier.updated.ToLower().Contains(noidungtimkiem);
                     default:
                         return false;
                 }
@@ -624,14 +629,15 @@ namespace QPharma.GUI
                 if (tbTimTheLoai.Text.Equals(""))
                 {
                     var index = cbTieuChiTheLoai.SelectedIndex;
-                    TheLoai_Show(categoryController.LoadData());
+                    TheLoai_Show(categoryBUS.LoadData());
                     cbTieuChiTheLoai.SelectedIndex = index;
                     return;
                 }
+
                 var noidungtimkiem = tbTimTheLoai.Text.ToLower().Trim();
                 var tieuChiIndex = cbTieuChiTheLoai.SelectedIndex;
                 dgvTheLoai.Rows.Clear();
-                var categoryList = categoryController.LoadData().Where(category =>
+                var categoryList = categoryBUS.LoadData().Where(category =>
                 {
                     switch (tieuChiIndex)
                     {
@@ -696,7 +702,7 @@ namespace QPharma.GUI
                         break;
                     }
 
-                var image = medicineController.LoadData().Where(item => item.id.Equals(tbMaThuoc.Text)).FirstOrDefault()
+                var image = medicineBUS.LoadData().Where(item => item.id.Equals(tbMaThuoc.Text)).FirstOrDefault()
                     .image;
                 pictureBoxThuoc.ImageLocation =
                     image.Equals("") ? "" : Path.Combine(Config.getImagePath(), $"{tbMaThuoc.Text}.jpg");
@@ -789,12 +795,12 @@ namespace QPharma.GUI
             var image = "";
 
             var supplier = supplierBUS.LoadData().Where(s => s.id.Equals(nccArr[0])).FirstOrDefault();
-            var category = categoryController.LoadData().Where(c => c.id.Equals(tlArr[0])).FirstOrDefault();
+            var category = categoryBUS.LoadData().Where(c => c.id.Equals(tlArr[0])).FirstOrDefault();
             var newMedicine = new MedicineDTO(id, name, expireDate, unit, price, quantity, image, description,
                 CustomDateTime.GetNow(), "", "", supplier, category);
 
 
-            var result = medicineController.Insert(newMedicine);
+            var result = medicineBUS.Insert(newMedicine);
 
 
             if (result == Predefined.SUCCESS)
@@ -820,10 +826,10 @@ namespace QPharma.GUI
                 var unit = tbDVT.Text;
                 var quantityText = tbSL.Text;
                 var priceText = tbGia.Text;
-                var image = medicineController.LoadData().Where(item => item.id.Equals(id)).FirstOrDefault().image;
+                var image = medicineBUS.LoadData().Where(item => item.id.Equals(id)).FirstOrDefault().image;
                 var description = tbMoTa.Text;
                 var supplierId = cbNccThuoc.SelectedItem.ToString().Split('-')[0];
-                var created = medicineController.LoadData().Where(item => item.id.Equals(id)).FirstOrDefault().created;
+                var created = medicineBUS.LoadData().Where(item => item.id.Equals(id)).FirstOrDefault().created;
                 var updated = CustomDateTime.GetNow();
                 var categoryId = cbTLThuoc.SelectedItem.ToString().Split('-')[0];
 
@@ -874,12 +880,12 @@ namespace QPharma.GUI
                 }
 
                 var supplier = supplierBUS.LoadData().Where(s => s.id.Equals(supplierId)).FirstOrDefault();
-                var category = categoryController.LoadData().Where(c => c.id.Equals(categoryId)).FirstOrDefault();
+                var category = categoryBUS.LoadData().Where(c => c.id.Equals(categoryId)).FirstOrDefault();
 
                 var medicine = new MedicineDTO(id, name, expireDate, unit, price, quantity, image, description,
                     created, updated, "", supplier, category);
 
-                var result = medicineController.Update(medicine);
+                var result = medicineBUS.Update(medicine);
                 if (result == Predefined.SUCCESS)
                 {
                     QuanLyThuoc_Load();
@@ -906,7 +912,7 @@ namespace QPharma.GUI
                     return;
                 }
 
-                var state = medicineController.Delete(maThuoc);
+                var state = medicineBUS.Delete(maThuoc);
                 if (state == Predefined.SUCCESS)
                 {
                     if (rowSelectedThuoc != 0) rowSelectedThuoc--;
@@ -928,7 +934,7 @@ namespace QPharma.GUI
 
         private void btnLuuThuoc_Click(object sender, EventArgs e)
         {
-            var deletedMedicine = new DeletedMedicineDialog(medicineController);
+            var deletedMedicine = new DeletedMedicineDialog(medicineBUS);
             deletedMedicine.refreshDeletedMedicine += QuanLyThuoc_Load;
             deletedMedicine.ShowDialog();
         }
@@ -943,13 +949,13 @@ namespace QPharma.GUI
             var noidungtimkiem = tbTimThuoc.Text.ToLower().Trim();
             if (noidungtimkiem.Equals(""))
             {
-                QuanLyThuoc_Show(list == null ? medicineController.LoadData() : list);
+                QuanLyThuoc_Show(list == null ? medicineBUS.LoadData() : list);
                 return;
             }
 
             var tieuChiIndex = cbTieuChiThuoc.SelectedIndex;
             dgvThuoc.Rows.Clear();
-            var medicineList = list != null ? list : medicineController.LoadData();
+            var medicineList = list != null ? list : medicineBUS.LoadData();
             var filterdMedicineList = medicineList.Where(medicine =>
             {
                 switch (tieuChiIndex)
@@ -1004,7 +1010,7 @@ namespace QPharma.GUI
                 return;
             }
 
-            var result = medicineController.ChangeImage(medicineId);
+            var result = medicineBUS.ChangeImage(medicineId);
 
             if (result == Predefined.SUCCESS)
             {
@@ -1031,7 +1037,7 @@ namespace QPharma.GUI
             var confirmResult = CustomMessageBox.ShowQuestion(Resources.Do_you_want_to_delete_this_image);
             if (confirmResult == DialogResult.No) return;
 
-            var result = medicineController.RemoveImage(medicineId);
+            var result = medicineBUS.RemoveImage(medicineId);
 
             if (result == Predefined.SUCCESS)
             {
@@ -1076,7 +1082,7 @@ namespace QPharma.GUI
             {
                 if (filterByRangeDialog == null || filterByRangeDialog.IsDisposed)
                 {
-                    filterByRangeDialog = new FilterByRangeDialog(medicineController);
+                    filterByRangeDialog = new FilterByRangeDialog(medicineBUS);
 
                     cbLocDuLieuThuoc.Enabled = false;
                     filterByRangeDialog.onClick += TimThuoc;
@@ -1089,7 +1095,7 @@ namespace QPharma.GUI
                 return;
             }
 
-            var list = medicineController.LoadData().Where(medicine =>
+            var list = medicineBUS.LoadData().Where(medicine =>
             {
                 var expireDate = DateTime.Parse(medicine.expireDate);
                 switch (cbLocDuLieuThuoc.SelectedIndex)
@@ -1127,6 +1133,173 @@ namespace QPharma.GUI
         {
             var comboBox = sender as ComboBox;
             if (comboBox.SelectedIndex == comboBox.Items.Count - 1) comboBox.SelectedIndex = -1;
+        }
+
+        private void dgvViTriThuoc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var index = dgvViTriThuoc.SelectedRows[0].Index;
+                tbTenViTri.Text = dgvViTriThuoc.Rows[index].Cells[2].Value.ToString();
+                tbGhiChuViTri.Text = dgvViTriThuoc.Rows[index].Cells[3].Value.ToString();
+                cbTTViTri.SelectedIndex =
+                    dgvViTriThuoc.Rows[index].Cells[4].Value.ToString().Equals(Resources.Available) ? 0 : 1;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                ClearViTriThuoc();
+            }
+        }
+
+        private void btnThemVT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var tenViTri = tbTenViTri.Text;
+                var ghiChu = tbGhiChuViTri.Text;
+                var trangThai = cbTTViTri.SelectedIndex == 0 ? true : false;
+
+                if (tenViTri.Equals(""))
+                {
+                    ShowValidateError(tbTenViTri, Resources.Please_input_location_name);
+                    return;
+                }
+
+                var medicineLocation =
+                    new MedicineLocationDTO(tenViTri, ghiChu, trangThai, CustomDateTime.GetNow(), null, null);
+                var state = medicineLocationBUS.Insert(medicineLocation);
+
+                if (state == Predefined.SUCCESS)
+                {
+                    HienThiViTriThuoc(medicineLocationBUS.LoadData());
+                    return;
+                }
+
+                if (state == Predefined.ID_EXIST)
+                    ShowValidateError(tbTenViTri, Resources.Location_name_already_exists);
+                else
+                    CustomMessageBox.ShowError(Resources.Add_failed);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+        private void tbTenViTri_TextChanged(object sender, EventArgs e)
+        {
+            ShowValidateError(tbTenViTri, "");
+        }
+
+        private void btnSuaVT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var maViTri = dgvViTriThuoc.SelectedRows[0].Cells[1].Value.ToString();
+                var tenViTri = tbTenViTri.Text;
+                var ghiChu = tbGhiChuViTri.Text;
+                var trangThai = cbTTViTri.SelectedIndex == 0 ? true : false;
+
+                if (tenViTri.Equals(""))
+                {
+                    ShowValidateError(tbTenViTri, Resources.Please_input_location_name);
+                    return;
+                }
+
+                var medicineLocation =
+                    new MedicineLocationDTO(tenViTri, ghiChu, trangThai, null, CustomDateTime.GetNow(), null, maViTri);
+                var state = medicineLocationBUS.Update(medicineLocation);
+
+                if (state == Predefined.SUCCESS)
+                {
+                    HienThiViTriThuoc(medicineLocationBUS.LoadData());
+                    return;
+                }
+
+                if (state == Predefined.ID_EXIST)
+                    ShowValidateError(tbTenViTri, Resources.Location_name_already_exists);
+                else
+                    CustomMessageBox.ShowError(Resources.Add_failed);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+        private void btnXoaVT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var maViTri = dgvViTriThuoc.SelectedRows[0].Cells[1].Value.ToString();
+                var state = medicineLocationBUS.Delete(maViTri);
+
+                if (state == Predefined.SUCCESS) HienThiViTriThuoc(medicineLocationBUS.LoadData());
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+        private void tbTimViTri_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var searchValue = tbTimViTri.Text.ToLower().Trim();
+                var list = medicineLocationBUS.LoadData();
+                if (searchValue.Equals(""))
+                {
+                    HienThiViTriThuoc(list);
+                    return;
+                }
+
+                var criteriaIndex = cbbTieuChiVT.SelectedIndex;
+                switch (criteriaIndex)
+                {
+                    case 0:
+                        list = list.Where(item => item.id.ToLower().Contains(searchValue)).ToList();
+                        break;
+                    case 1:
+                        list = list.Where(item => item.name.ToLower().Contains(searchValue)).ToList();
+                        break;
+                    case 2:
+                        list = list.Where(item => item.note.ToLower().Contains(searchValue)).ToList();
+                        break;
+                    case 3:
+                        list = list.Where(item =>
+                                (item.status ? Resources.Available : Resources.Unavailable).ToLower()
+                                .Contains(searchValue))
+                            .ToList();
+                        break;
+                    case 4:
+                        list = list.Where(item => item.created.ToLower().Contains(searchValue)).ToList();
+                        break;
+                    case 5:
+                        list = list.Where(item => item.updated.ToLower().Contains(searchValue)).ToList();
+                        break;
+                }
+
+                HienThiViTriThuoc(list);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+        private void cbbTieuChiVT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbTimViTri_TextChanged(sender, e);
+        }
+
+        private void StripedTable_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.CellStyle.BackColor = Color.LightGray;
+            else
+                e.CellStyle.BackColor = Color.White;
         }
     }
 }

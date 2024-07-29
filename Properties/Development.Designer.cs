@@ -95,5 +95,14 @@ namespace QPharma.Properties {
                 return ((int)(this["DelayTimerSplash"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("QPharmaImage")]
+        public string LocalResourceImage {
+            get {
+                return ((string)(this["LocalResourceImage"]));
+            }
+        }
     }
 }

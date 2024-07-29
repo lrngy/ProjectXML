@@ -180,7 +180,7 @@ namespace QPharma.GUI
 
         private void tàiChínhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnTaiChinh.PerformClick();
+            //btnTaiChinh.PerformClick();
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)

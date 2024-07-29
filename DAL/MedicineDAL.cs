@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Xml;
+using QPharma.BUS;
 using QPharma.DTO;
 using QPharma.Util;
 
@@ -12,28 +14,19 @@ namespace QPharma.DAL
     {
         private readonly CategoryDAL categoryDAL;
         private readonly SupplierDAL supplierDAL;
+        private readonly MedicineLocationDAL medicineLocationDAL;
         private XmlDocument medicineDoc;
 
         public MedicineDAL()
         {
             supplierDAL = new SupplierDAL();
             categoryDAL = new CategoryDAL();
+            medicineLocationDAL = new MedicineLocationDAL();
         }
 
-        public MedicineDAL(CategoryDAL categoryDAL, SupplierDAL supplierDAL)
-        {
-            this.supplierDAL = supplierDAL;
-            this.categoryDAL = categoryDAL;
-        }
-
-        public void ReloadData()
-        {
-            medicineDoc = Config.getDoc("medicines");
-        }
 
         public List<MedicineDTO> GetAll()
         {
-            ReloadData();
             var medicines = new List<MedicineDTO>();
             try
             {
@@ -43,27 +36,28 @@ namespace QPharma.DAL
                 {
                     var id = dr["medicine_id"].ToString();
                     var name = dr["medicine_name"].ToString();
-                    var expire = dr["medicine_expire_date"].ToString();
-                    var unit = dr["medicine_unit"].ToString();
-                    var price_in = double.Parse(dr["medicine_price_in"].ToString());
-                    var price_out = double.Parse(dr["medicine_price_out"].ToString());
                     var quantity = int.Parse(dr["medicine_quantity"].ToString());
-                    var image = dr["medicine_image"].ToString();
-                    var description = dr["medicine_description"].ToString();
+                    var price_out = double.Parse(dr["medicine_price_out"].ToString());
+                    var categoryId = dr["category_id"].ToString();
+                    var medicine_type = dr["medicine_type"].ToString() == "1";
+                    var unit = dr["medicine_unit"].ToString();
+                    var mfgDate = dr["medicine_mfg"].ToString();
+                    var expireDate = dr["medicine_expire_date"].ToString();
                     var supplierId = dr["supplier_id"].ToString();
+                    var price_in = double.Parse(dr["medicine_price_in"].ToString());
+                    var location = dr["medicine_location_id"].ToString();
+                    var description = dr["medicine_description"].ToString();
                     var created = dr["medicine_created"].ToString();
                     var updated = dr["medicine_updated"].ToString();
                     var deleted = dr["medicine_deleted"].ToString();
-                    var categoryId = dr["category_id"].ToString();
-                    var medicine_location = dr["medicine_location_id"].ToString();
-                    var medicine_type = dr["medicine_type"].ToString() == "1";
-
+                    var image = dr["medicine_image"].ToString();
 
                     var supplier = supplierDAL.GetById(supplierId);
                     var category = categoryDAL.GetById(categoryId);
-                    var medicineLocation = new MedicineLocationDTO();
-                    var medicine = new MedicineDTO(id, name, expire, unit, price_in, price_out, quantity, medicine_type,
-                        image, description, created, updated, deleted, supplier, category, medicineLocation);
+                    var medicineLocation = medicineLocationDAL.GetById(location);
+
+                    var medicine = new MedicineDTO(id, name, quantity, price_out, category, medicine_type, unit, mfgDate, expireDate, supplier, price_in, medicineLocation, description,
+                        created, updated, deleted, image);
                     medicines.Add(medicine);
                 }
             }
@@ -75,36 +69,47 @@ namespace QPharma.DAL
             return medicines;
         }
 
-        internal MedicineDTO GetById(string id)
+        public MedicineDTO GetById(string id)
         {
-            ReloadData();
             MedicineDTO medicine = null;
             try
             {
-                var query = "select * from medicines where medicine_id = " + id;
-                var dt = DB.ExecuteQuery(query);
-                //var medicineNode = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + id + "']");
+                var query = "select * from medicines where medicine_id = @id";
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@id", id)
+                };
+                var dt = DB.ExecuteQuery(query, sqlParameters);
                 if (dt.Rows.Count != 0)
                 {
-                    var name = dt.Rows[0]["medicine_name"].ToString();
-                    var expire = dt.Rows[0]["medicine_expire_date"].ToString();
-                    var unit = dt.Rows[0]["medicine_unit"].ToString();
-                    var price = double.Parse(dt.Rows[0]["medicine_price"].ToString());
-                    var quantity = int.Parse(dt.Rows[0]["medicine_quantity"].ToString());
-                    var image = dt.Rows[0]["medicine_image"].ToString();
-                    var description = dt.Rows[0]["medicine_description"].ToString();
-                    var supplierId = dt.Rows[0]["supplier_id"].ToString();
-                    var created = dt.Rows[0]["medicine_created"].ToString();
-                    var updated = dt.Rows[0]["medicine_updated"].ToString();
-                    var deleted = dt.Rows[0]["medicine_deleted"].ToString();
-                    var categoryId = dt.Rows[0]["category_id"].ToString();
-
+                    var dr = dt.Rows[0];
+                    var name = dr["medicine_name"].ToString();
+                    var quantity = int.Parse(dr["medicine_quantity"].ToString());
+                    var price_out = double.Parse(dr["medicine_price_out"].ToString());
+                    var categoryId = dr["category_id"].ToString();
+                    var medicine_type = dr["medicine_type"].ToString() == "1";
+                    var unit = dr["medicine_unit"].ToString();
+                    var mfgDate = dr["medicine_mfg"].ToString();
+                    var expireDate = dr["medicine_expire_date"].ToString();
+                    var supplierId = dr["supplier_id"].ToString();
+                    var price_in = double.Parse(dr["medicine_price_in"].ToString());
+                    var location = dr["medicine_location_id"].ToString();
+                    var description = dr["medicine_description"].ToString();
+                    var created = dr["medicine_created"].ToString();
+                    var updated = dr["medicine_updated"].ToString();
+                    var deleted = dr["medicine_deleted"].ToString();
+                    var image = dr["medicine_image"].ToString();
 
                     var supplier = supplierDAL.GetById(supplierId);
                     var category = categoryDAL.GetById(categoryId);
+                    var medicineLocation = medicineLocationDAL.GetById(location);
 
-                    medicine = new MedicineDTO(id, name, expire, unit, price, quantity, image, description,
-                        created, updated, deleted, supplier, category);
+                    medicine = new MedicineDTO(id, name, quantity,
+                        price_out, category, medicine_type,
+                        unit, mfgDate, expireDate,
+                        supplier, price_in, medicineLocation,
+                        description, created, updated, deleted, image);
+
                 }
             }
             catch (Exception ex)
@@ -117,102 +122,109 @@ namespace QPharma.DAL
 
         public int Update(MedicineDTO medicine)
         {
-            ReloadData();
             try
             {
-                var medicineNode =
-                    medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + medicine.id + "']");
-                if (medicineNode != null)
+                var query = "UPDATE medicines " +
+                            "SET medicine_name = @name, " +
+                            "medicine_mfg = @mfg, " +
+                            "medicine_expire_date = @expire," +
+                            "medicine_unit = @unit," +
+                            "medicine_price_in = @priceIn, " +
+                            "medicine_price_out = @priceOut," +
+                            "medicine_quantity = @quantity," +
+                            "medicine_type = @type," +
+                            "medicine_image = @image, " +
+                            "medicine_description = @description," +
+                            "medicine_updated = @updated," +
+                            "supplier_id = @supplier," +
+                            "category_id = @category," +
+                            "medicine_location_id = @location WHERE medicine_id = @id";
+                SqlParameter[] sqlParameters =
                 {
-                    medicineNode.SelectSingleNode("medicine_name").InnerText = medicine.name;
-                    medicineNode.SelectSingleNode("medicine_expire_date").InnerText = medicine.expireDate;
-                    medicineNode.SelectSingleNode("medicine_unit").InnerText = medicine.unit;
-                    medicineNode.SelectSingleNode("medicine_price").InnerText = medicine.price_out.ToString();
-                    medicineNode.SelectSingleNode("medicine_quantity").InnerText = medicine.quantity.ToString();
-                    medicineNode.SelectSingleNode("medicine_image").InnerText = medicine.image;
-                    medicineNode.SelectSingleNode("medicine_description").InnerText = medicine.description;
-                    medicineNode.SelectSingleNode("supplier_id").InnerText = medicine.supplier.id;
-                    medicineNode.SelectSingleNode("medicine_updated").InnerText = CustomDateTime.GetNow();
-                    medicineNode.SelectSingleNode("category_id").InnerText = medicine.category.id;
-
-                    medicineDoc.Save(Config.getXMLPath("medicines"));
-                    return Predefined.SUCCESS;
-                }
-
-                return Predefined.ID_NOT_EXIST;
+                    new SqlParameter("@id", medicine.id),
+                    new SqlParameter("@name", medicine.name),
+                    new SqlParameter("@mfg", medicine.mfgDate),
+                    new SqlParameter("@expire", medicine.expireDate),
+                    new SqlParameter("@unit", medicine.unit),
+                    new SqlParameter("@priceIn", medicine.price_in),
+                    new SqlParameter("@priceOut", medicine.price_out),
+                    new SqlParameter("@quantity", medicine.quantity),
+                    new SqlParameter("@type", medicine.type),
+                    new SqlParameter("@image", medicine.image),
+                    new SqlParameter("@description", medicine.description),
+                    new SqlParameter("@updated", medicine.updated),
+                    new SqlParameter("@supplier", medicine.supplier.id),
+                    new SqlParameter("@category", medicine.category.id),
+                    new SqlParameter("@location", medicine.location.id)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
+                return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception e)
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(e.Message);
                 return Predefined.ERROR;
             }
         }
 
 
-        internal int Insert(MedicineDTO newMedicine)
+        public int Insert(MedicineDTO newMedicine)
         {
-            ReloadData();
             try
             {
-                XmlNode medicineNode = medicineDoc.CreateElement("medicine");
-
-                XmlNode idNode = medicineDoc.CreateElement("medicine_id");
-                idNode.InnerText = newMedicine.id;
-                medicineNode.AppendChild(idNode);
-
-                XmlNode nameNode = medicineDoc.CreateElement("medicine_name");
-                nameNode.InnerText = newMedicine.name;
-                medicineNode.AppendChild(nameNode);
-
-                XmlNode expireNode = medicineDoc.CreateElement("medicine_expire_date");
-                expireNode.InnerText = newMedicine.expireDate;
-                medicineNode.AppendChild(expireNode);
-
-                XmlNode unitNode = medicineDoc.CreateElement("medicine_unit");
-                unitNode.InnerText = newMedicine.unit;
-                medicineNode.AppendChild(unitNode);
-
-                XmlNode priceNode = medicineDoc.CreateElement("medicine_price");
-                priceNode.InnerText = newMedicine.price_out.ToString();
-                medicineNode.AppendChild(priceNode);
-
-                XmlNode quantityNode = medicineDoc.CreateElement("medicine_quantity");
-                quantityNode.InnerText = newMedicine.quantity.ToString();
-                medicineNode.AppendChild(quantityNode);
-
-                XmlNode imageNode = medicineDoc.CreateElement("medicine_image");
-                imageNode.InnerText = newMedicine.image;
-                medicineNode.AppendChild(imageNode);
-
-                XmlNode descriptionNode = medicineDoc.CreateElement("medicine_description");
-                descriptionNode.InnerText = newMedicine.description;
-                medicineNode.AppendChild(descriptionNode);
-
-                XmlNode supplierIdNode = medicineDoc.CreateElement("supplier_id");
-                supplierIdNode.InnerText = newMedicine.supplier.id;
-                medicineNode.AppendChild(supplierIdNode);
-
-                XmlNode createdNode = medicineDoc.CreateElement("medicine_created");
-                createdNode.InnerText = newMedicine.created;
-                medicineNode.AppendChild(createdNode);
-
-                XmlNode updatedNode = medicineDoc.CreateElement("medicine_updated");
-                updatedNode.InnerText = newMedicine.updated;
-                medicineNode.AppendChild(updatedNode);
-
-                XmlNode deletedNode = medicineDoc.CreateElement("medicine_deleted");
-                deletedNode.InnerText = newMedicine.deleted;
-                medicineNode.AppendChild(deletedNode);
-
-                XmlNode categoryIdNode = medicineDoc.CreateElement("category_id");
-                categoryIdNode.InnerText = newMedicine.category.id;
-                medicineNode.AppendChild(categoryIdNode);
-
-                medicineDoc.SelectSingleNode("/medicines").AppendChild(medicineNode);
-                medicineDoc.Save(Config.getXMLPath("medicines"));
+                var query = "INSERT INTO medicines (" +
+                            "medicine_id, " +
+                            "medicine_name," +
+                            "medicine_mfg," +
+                            "medicine_expire_date, " +
+                            "medicine_unit, " +
+                            "medicine_price_in, " +
+                            "medicine_price_out, " +
+                            "medicine_quantity," +
+                            "medicine_type, " +
+                            "medicine_description," +
+                            "medicine_created," +
+                            "supplier_id, " +
+                            "category_id," +
+                            "medicine_location_id" +
+                            ")" +
+                            "VALUES(" +
+                            "@id," +
+                            "@name," +
+                            "@mfg," +
+                            "@expire," +
+                            "@unit," +
+                            "@priceIn," +
+                            "@priceOut," +
+                            "@quantity," +
+                            "@type," +
+                            "@description," +
+                            "@created," +
+                            "@supplier," +
+                            "@category," +
+                            "@location" +
+                            ")";
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@id", newMedicine.id),
+                    new SqlParameter("@name", newMedicine.name),
+                    new SqlParameter("@mfg", newMedicine.mfgDate),
+                    new SqlParameter("@expire", newMedicine.expireDate),
+                    new SqlParameter("@unit", newMedicine.unit),
+                    new SqlParameter("@priceIn", newMedicine.price_in),
+                    new SqlParameter("@priceOut", newMedicine.price_out),
+                    new SqlParameter("@quantity", newMedicine.quantity),
+                    new SqlParameter("@type", newMedicine.type),
+                    new SqlParameter("@description", newMedicine.description),
+                    new SqlParameter("@created", newMedicine.created),
+                    new SqlParameter("@supplier", newMedicine.supplier.id),
+                    new SqlParameter("@category", newMedicine.category.id),
+                    new SqlParameter("@location", newMedicine.location.id)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
@@ -221,20 +233,17 @@ namespace QPharma.DAL
 
         public int Restore(string id)
         {
-            ReloadData();
             try
             {
-                var medicineNode = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + id + "']");
-                if (medicineNode != null)
+                var query = "update medicines set medicine_deleted = null where medicine_id = @id";
+                SqlParameter[] sqlParameters = new SqlParameter[]
                 {
-                    medicineNode.SelectSingleNode("medicine_deleted").InnerText = "";
-                    medicineDoc.Save(Config.getXMLPath("medicines"));
-                    return Predefined.SUCCESS;
-                }
-
-                return Predefined.ID_NOT_EXIST;
+                    new SqlParameter("@id", id)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
+                return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
@@ -243,20 +252,18 @@ namespace QPharma.DAL
 
         public int Delete(string id)
         {
-            ReloadData();
             try
             {
-                var medicineNode = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + id + "']");
-                if (medicineNode != null)
+                var query = "update medicines set medicine_deleted = @deleted where medicine_id = @id";
+                SqlParameter[] sqlParameters =
                 {
-                    medicineNode.SelectSingleNode("medicine_deleted").InnerText = CustomDateTime.GetNow();
-                    medicineDoc.Save(Config.getXMLPath("medicines"));
-                    return Predefined.SUCCESS;
-                }
-
-                return Predefined.ID_NOT_EXIST;
+                    new SqlParameter("@id", id),
+                    new SqlParameter("@deleted", CustomDateTime.GetNow())
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
+                return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
@@ -265,74 +272,73 @@ namespace QPharma.DAL
 
         public int ForceDelete(string id)
         {
-            ReloadData();
             try
             {
-                var medicineNode = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + id + "']");
-                if (medicineNode != null)
+                var query = "delete from medicines where medicine_id = @id";
+                SqlParameter[] sqlParameters =
                 {
-                    medicineDoc.SelectSingleNode("/medicines").RemoveChild(medicineNode);
-                    medicineDoc.Save(Config.getXMLPath("medicines"));
-                    return Predefined.SUCCESS;
-                }
-
-                return Predefined.ID_NOT_EXIST;
+                    new SqlParameter("@id", id)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
+                return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
             }
         }
 
-        internal int RestoreAll()
+        public int RestoreAll()
         {
-            ReloadData();
             try
             {
-                var medicineNodes = medicineDoc.SelectNodes("/medicines/medicine");
-                foreach (XmlNode medicineNode in medicineNodes)
-                    medicineNode.SelectSingleNode("medicine_deleted").InnerText = "";
-                medicineDoc.Save(Config.getXMLPath("medicines"));
+                var query = "update medicines set medicine_deleted = null where medicine_deleted is not null";
+                DB.ExecuteNonQuery(query);
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
             }
         }
 
-        internal int ChangeImage(string id, string targetPath)
+        public int ChangeImage(string id, string targetPath)
         {
-            ReloadData();
             try
             {
-                var node = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + id + "']/medicine_image");
-
-                node.InnerText = targetPath;
-                medicineDoc.Save(Config.getXMLPath("medicines"));
+                var query = "update medicines set medicine_image = @path where medicine_id = @id";
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@id", id),
+                    new SqlParameter("@path", targetPath)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
                 return Predefined.SUCCESS;
             }
-            catch (XmlException)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
             }
         }
 
-        internal int RemoveImage(string medicineId)
+        public int RemoveImage(string id)
         {
-            ReloadData();
             try
             {
-                var node = medicineDoc.SelectSingleNode("/medicines/medicine[medicine_id='" + medicineId +
-                                                        "']/medicine_image");
-                node.InnerText = "";
-                medicineDoc.Save(Config.getXMLPath("medicines"));
+                var query = "update medicines set medicine_image = null where medicine_id = @id";
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@id", id)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
                 return Predefined.SUCCESS;
             }
-            catch (XmlException)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
             }
         }

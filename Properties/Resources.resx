@@ -431,4 +431,19 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
   <data name="Are you sure want to delete this supplier?" xml:space="preserve">
 	  <value>Bạn có muốn xoá nhà cung cấp này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
   </data>
+  <data name="Please choose a medicine location" xml:space="preserve">
+	  <value>Vui lòng chọn vị trí thuốc</value>
+  </data>
+  <data name="The archive is empty" xml:space="preserve">
+	  <value>Mục lưu trữ đang trống</value>
+  </data>
+  <data name="Are you sure you want to permanently remove this medication?" xml:space="preserve">
+	  <value>Bạn có chắc chắn muốn xóa vĩnh viễn thuốc này?</value>
+  </data>
+  <data name="Restore all medicines successfully" xml:space="preserve">
+	  <value>Khôi phục tất cả thuốc thành công</value>
+  </data>
+  <data name="Restore medicine id successfully" xml:space="preserve">
+	  <value>Đã khôi phục Mã thuốc {0}</value>
+  </data>
 </root>

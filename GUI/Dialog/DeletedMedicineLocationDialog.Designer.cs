@@ -86,7 +86,8 @@
             this.dgvDeletedViTriThuoc.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDeletedViTriThuoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDeletedViTriThuoc.EnableHeadersVisualStyles = false;
-            this.dgvDeletedViTriThuoc.Location = new System.Drawing.Point(3, 3);
+            this.dgvDeletedViTriThuoc.Location = new System.Drawing.Point(4, 5);
+            this.dgvDeletedViTriThuoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvDeletedViTriThuoc.MultiSelect = false;
             this.dgvDeletedViTriThuoc.Name = "dgvDeletedViTriThuoc";
             this.dgvDeletedViTriThuoc.ReadOnly = true;
@@ -102,7 +103,7 @@
             this.dgvDeletedViTriThuoc.RowHeadersWidth = 62;
             this.dgvDeletedViTriThuoc.RowTemplate.Height = 50;
             this.dgvDeletedViTriThuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeletedViTriThuoc.Size = new System.Drawing.Size(1197, 484);
+            this.dgvDeletedViTriThuoc.Size = new System.Drawing.Size(1796, 744);
             this.dgvDeletedViTriThuoc.TabIndex = 1;
             this.dgvDeletedViTriThuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDeletedViTriThuoc_CellFormatting);
             // 
@@ -111,6 +112,7 @@
             this.Column26.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column26.FillWeight = 124.3655F;
             this.Column26.HeaderText = "STT";
+            this.Column26.MinimumWidth = 8;
             this.Column26.Name = "Column26";
             this.Column26.ReadOnly = true;
             this.Column26.Width = 50;
@@ -119,6 +121,7 @@
             // 
             this.Column27.FillWeight = 95.93909F;
             this.Column27.HeaderText = "Mã vị trí";
+            this.Column27.MinimumWidth = 8;
             this.Column27.Name = "Column27";
             this.Column27.ReadOnly = true;
             // 
@@ -126,6 +129,7 @@
             // 
             this.Column28.FillWeight = 95.93909F;
             this.Column28.HeaderText = "Tên vị trí";
+            this.Column28.MinimumWidth = 8;
             this.Column28.Name = "Column28";
             this.Column28.ReadOnly = true;
             // 
@@ -133,6 +137,7 @@
             // 
             this.Column30.FillWeight = 95.93909F;
             this.Column30.HeaderText = "Ghi chú";
+            this.Column30.MinimumWidth = 8;
             this.Column30.Name = "Column30";
             this.Column30.ReadOnly = true;
             // 
@@ -140,6 +145,7 @@
             // 
             this.Column29.FillWeight = 95.93909F;
             this.Column29.HeaderText = "Trạng thái";
+            this.Column29.MinimumWidth = 8;
             this.Column29.Name = "Column29";
             this.Column29.ReadOnly = true;
             // 
@@ -147,6 +153,7 @@
             // 
             this.Column31.FillWeight = 95.93909F;
             this.Column31.HeaderText = "Ngày tạo";
+            this.Column31.MinimumWidth = 8;
             this.Column31.Name = "Column31";
             this.Column31.ReadOnly = true;
             // 
@@ -154,12 +161,14 @@
             // 
             this.Column32.FillWeight = 95.93909F;
             this.Column32.HeaderText = "Ngày cập nhật";
+            this.Column32.MinimumWidth = 8;
             this.Column32.Name = "Column32";
             this.Column32.ReadOnly = true;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Ngày xoá";
+            this.Column1.MinimumWidth = 8;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
@@ -168,9 +177,10 @@
             this.btnDeleteDeletedLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnDeleteDeletedLocation.BackColor = System.Drawing.SystemColors.Window;
             this.btnDeleteDeletedLocation.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteDeletedLocation.Location = new System.Drawing.Point(768, 8);
+            this.btnDeleteDeletedLocation.Location = new System.Drawing.Point(1152, 12);
+            this.btnDeleteDeletedLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDeleteDeletedLocation.Name = "btnDeleteDeletedLocation";
-            this.btnDeleteDeletedLocation.Size = new System.Drawing.Size(121, 37);
+            this.btnDeleteDeletedLocation.Size = new System.Drawing.Size(182, 57);
             this.btnDeleteDeletedLocation.TabIndex = 6;
             this.btnDeleteDeletedLocation.Text = "Xoá vĩnh viễn";
             this.btnDeleteDeletedLocation.UseVisualStyleBackColor = false;
@@ -180,9 +190,10 @@
             // 
             this.btnRestoreAllDeletedLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRestoreAllDeletedLocation.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestoreAllDeletedLocation.Location = new System.Drawing.Point(280, 8);
+            this.btnRestoreAllDeletedLocation.Location = new System.Drawing.Point(420, 12);
+            this.btnRestoreAllDeletedLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRestoreAllDeletedLocation.Name = "btnRestoreAllDeletedLocation";
-            this.btnRestoreAllDeletedLocation.Size = new System.Drawing.Size(125, 37);
+            this.btnRestoreAllDeletedLocation.Size = new System.Drawing.Size(188, 57);
             this.btnRestoreAllDeletedLocation.TabIndex = 7;
             this.btnRestoreAllDeletedLocation.Text = "Khôi phục tất cả";
             this.btnRestoreAllDeletedLocation.UseVisualStyleBackColor = true;
@@ -192,9 +203,10 @@
             // 
             this.btnRestoreDeletedLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRestoreDeletedLocation.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestoreDeletedLocation.Location = new System.Drawing.Point(514, 8);
+            this.btnRestoreDeletedLocation.Location = new System.Drawing.Point(771, 12);
+            this.btnRestoreDeletedLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRestoreDeletedLocation.Name = "btnRestoreDeletedLocation";
-            this.btnRestoreDeletedLocation.Size = new System.Drawing.Size(124, 37);
+            this.btnRestoreDeletedLocation.Size = new System.Drawing.Size(186, 57);
             this.btnRestoreDeletedLocation.TabIndex = 8;
             this.btnRestoreDeletedLocation.Text = "Khôi phục";
             this.btnRestoreDeletedLocation.UseVisualStyleBackColor = true;
@@ -209,12 +221,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.dgvDeletedViTriThuoc, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(18, 18);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1203, 545);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1804, 838);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // panel1
@@ -223,20 +236,21 @@
             this.panel1.Controls.Add(this.btnRestoreDeletedLocation);
             this.panel1.Controls.Add(this.btnDeleteDeletedLocation);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 493);
+            this.panel1.Location = new System.Drawing.Point(4, 759);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1197, 49);
+            this.panel1.Size = new System.Drawing.Size(1796, 74);
             this.panel1.TabIndex = 10;
             // 
             // DeletedMedicineLocationDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1227, 562);
+            this.ClientSize = new System.Drawing.Size(1840, 865);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(900, 500);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(1339, 739);
             this.Name = "DeletedMedicineLocationDialog";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vị trí thuốc đã xoá";
             this.Load += new System.EventHandler(this.DeletedMedicineLocationDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeletedViTriThuoc)).EndInit();

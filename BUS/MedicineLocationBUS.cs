@@ -34,5 +34,20 @@ namespace QPharma.BUS
         {
             return medicineLocationDAL.Delete(maViTri);
         }
+
+        public int Restore(string maViTri)
+        {
+            return medicineLocationDAL.Restore(maViTri);
+        }
+
+        public int RestoreAll()
+        {
+            return medicineLocationDAL.RestoreAll();
+        }
+
+        public int ForceDelete(string maViTri)
+        {
+            return medicineLocationDAL.ForceDelete(maViTri);
+        }
     }
 }

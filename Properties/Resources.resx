@@ -419,4 +419,16 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
   <data name="Please enter old password" xml:space="preserve">
     <value>Vui lòng nhập mật khẩu cũ</value>
   </data>
+  <data name="Are you sure you want to permanently delete this category?" xml:space="preserve">
+	  <value>Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?</value>
+  </data>
+  <data name="Restore failed" xml:space="preserve">
+	  <value>Khôi phục thất bại</value>
+  </data>
+  <data name="Are you sure want to delete this medicine location?" xml:space="preserve">
+	  <value>Bạn có muốn xoá vị trí thuốc này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
+  </data>
+  <data name="Are you sure want to delete this supplier?" xml:space="preserve">
+	  <value>Bạn có muốn xoá nhà cung cấp này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
+  </data>
 </root>

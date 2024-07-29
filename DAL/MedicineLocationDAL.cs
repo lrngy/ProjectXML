@@ -134,8 +134,6 @@ namespace QPharma.DAL
         {
             try
             {
-                //var query = "UPDATE medicine_locations SET medicine_location_deleted = '" + CustomDateTime.GetNow() +
-                //            "' WHERE medicine_location_id = " + id;
                 var query = "update medicine_locations set medicine_location_deleted = @deleted where medicine_location_id = @id";
                 SqlParameter[] sqlParameters =
                 {
@@ -156,7 +154,7 @@ namespace QPharma.DAL
         {
             try
             {
-                var query = "UPDATE medicine_locations SET medicine_location_deleted = null";
+                var query = "UPDATE medicine_locations SET medicine_location_deleted = null where medicine_location_deleted is not null";
                 DB.ExecuteNonQuery(query);
                 return Predefined.SUCCESS;
             }
@@ -202,6 +200,27 @@ namespace QPharma.DAL
             {
                 Debug.WriteLine(ex.Message);
                 return false;
+
+            }
+        }
+
+        public int Restore(string maViTri)
+        {
+            try
+            {
+                var query =
+                    "update medicine_locations set medicine_location_deleted = null where medicine_location_id = @id";
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@id", maViTri)
+                };
+                DB.ExecuteNonQuery(query, sqlParameters);
+                return Predefined.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Predefined.ERROR;
 
             }
         }

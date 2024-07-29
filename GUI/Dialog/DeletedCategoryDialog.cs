@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using QPharma.BUS;
 using QPharma.Properties;
@@ -9,10 +10,9 @@ namespace QPharma.GUI.Dialog
 {
     public partial class DeletedCategoryDialog : BaseForm
     {
-        public delegate void RefreshDeletedCategory();
 
         private readonly CategoryBUS categoryController;
-        public RefreshDeletedCategory refreshDeletedCategory;
+        public Action<object, EventArgs> refreshDeletedCategory;
 
         public DeletedCategoryDialog(CategoryBUS categoryController)
         {
@@ -32,6 +32,8 @@ namespace QPharma.GUI.Dialog
                 if (category.deleted.Equals("")) continue;
                 dgvDeletedTheLoai.Rows.Add(++i, category.id, category.name, category.deleted);
             }
+
+            BeginInvoke(new Action(() => { dgvDeletedTheLoai.ClearSelection(); }));
         }
 
         private void DeletedCategory_Load(object sender, EventArgs e)
@@ -39,37 +41,28 @@ namespace QPharma.GUI.Dialog
             DeletedCategory_Show();
         }
 
-        private void dgvDeletedTheLoai_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-            }
-            catch (Exception)
-            {
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                var index = dgvDeletedTheLoai.CurrentRow.Index;
+                var index = dgvDeletedTheLoai.SelectedRows[0].Index;
                 var maTheLoai = dgvDeletedTheLoai.Rows[index].Cells[1].Value.ToString();
                 var state = categoryController.Restore(maTheLoai);
                 if (state == Predefined.SUCCESS)
                 {
                     DeletedCategory_Show();
-                    refreshDeletedCategory();
+                    refreshDeletedCategory(sender, e);
                     return;
                 }
 
                 if (state == Predefined.ID_NOT_EXIST)
                     CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
                 else
-                    CustomMessageBox.ShowError("Khôi phục thất bại");
+                    CustomMessageBox.ShowError(Resources.Restore_failed);
             }
-            catch (Exception)
-            {
+            catch (Exception ex)
+            { 
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -78,14 +71,14 @@ namespace QPharma.GUI.Dialog
             try
             {
                 var maTheLoai = dgvDeletedTheLoai.SelectedRows[0].Cells[1].Value.ToString();
-                var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?");
+                var confirmResult = CustomMessageBox.ShowQuestion(Resources.Are_you_sure_you_want_to_permanently_delete_this_category_);
                 if (confirmResult == DialogResult.Yes)
                 {
                     var state = categoryController.ForceDelete(maTheLoai);
                     if (state == Predefined.SUCCESS)
                     {
                         DeletedCategory_Show();
-                        refreshDeletedCategory();
+                        refreshDeletedCategory(sender, e);
                         return;
                     }
 
@@ -109,16 +102,25 @@ namespace QPharma.GUI.Dialog
                 var state = categoryController.RestoreAll();
                 if (state == Predefined.ERROR)
                 {
-                    CustomMessageBox.ShowError("Khôi phục thất bại");
+                    CustomMessageBox.ShowError(Resources.Restore_failed);
                     return;
                 }
 
                 DeletedCategory_Show();
-                refreshDeletedCategory();
+                refreshDeletedCategory(sender ,e);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
             }
+        }
+
+        private void dgvDeletedTheLoai_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.CellStyle.BackColor = Color.LightGray;
+            else
+                e.CellStyle.BackColor = Color.White;
         }
     }
 }

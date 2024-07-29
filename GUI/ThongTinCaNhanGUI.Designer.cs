@@ -29,25 +29,26 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lbMaNV = new System.Windows.Forms.Label();
-            this.lbVaiTro = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tbHoTen = new System.Windows.Forms.TextBox();
+            this.lbVaiTro = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbMaNV = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnChangePass = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
@@ -67,63 +68,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin cá nhân";
             // 
-            // label1
+            // radioButton2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã nhân viên:";
+            this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(366, 237);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(48, 24);
+            this.radioButton2.TabIndex = 3;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Nữ";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // radioButton1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 177);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Họ tên:";
+            this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(255, 237);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(60, 24);
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Nam";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // dateTimePicker1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 235);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Giới tính:";
+            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(255, 290);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(159, 27);
+            this.dateTimePicker1.TabIndex = 2;
             // 
-            // label4
+            // tbHoTen
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 291);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Ngày sinh:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 112);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Vai trò:";
-            // 
-            // lbMaNV
-            // 
-            this.lbMaNV.AutoSize = true;
-            this.lbMaNV.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMaNV.Location = new System.Drawing.Point(263, 54);
-            this.lbMaNV.Name = "lbMaNV";
-            this.lbMaNV.Size = new System.Drawing.Size(117, 23);
-            this.lbMaNV.TabIndex = 0;
-            this.lbMaNV.Text = "Mã nhân viên";
+            this.tbHoTen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tbHoTen.Location = new System.Drawing.Point(255, 176);
+            this.tbHoTen.Name = "tbHoTen";
+            this.tbHoTen.Size = new System.Drawing.Size(189, 27);
+            this.tbHoTen.TabIndex = 0;
             // 
             // lbVaiTro
             // 
+            this.lbVaiTro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbVaiTro.AutoSize = true;
             this.lbVaiTro.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbVaiTro.Location = new System.Drawing.Point(263, 112);
@@ -132,15 +121,70 @@
             this.lbVaiTro.TabIndex = 0;
             this.lbVaiTro.Text = "Vai trò";
             // 
-            // tbHoTen
+            // label5
             // 
-            this.tbHoTen.Location = new System.Drawing.Point(255, 176);
-            this.tbHoTen.Name = "tbHoTen";
-            this.tbHoTen.Size = new System.Drawing.Size(189, 27);
-            this.tbHoTen.TabIndex = 0;
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(43, 112);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Vai trò:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(43, 291);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Ngày sinh:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(43, 235);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Giới tính:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(43, 177);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Họ tên:";
+            // 
+            // lbMaNV
+            // 
+            this.lbMaNV.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbMaNV.AutoSize = true;
+            this.lbMaNV.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaNV.Location = new System.Drawing.Point(263, 54);
+            this.lbMaNV.Name = "lbMaNV";
+            this.lbMaNV.Size = new System.Drawing.Size(117, 23);
+            this.lbMaNV.TabIndex = 0;
+            this.lbMaNV.Text = "Mã nhân viên";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã nhân viên:";
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Location = new System.Drawing.Point(248, 395);
             this.btnUpdate.Name = "btnUpdate";
@@ -152,6 +196,7 @@
             // 
             // btnChangePass
             // 
+            this.btnChangePass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnChangePass.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangePass.Location = new System.Drawing.Point(37, 395);
             this.btnChangePass.Name = "btnChangePass";
@@ -163,6 +208,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(452, 395);
             this.btnCancel.Name = "btnCancel";
@@ -172,38 +218,7 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(255, 290);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(159, 27);
-            this.dateTimePicker1.TabIndex = 2;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(255, 237);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(60, 24);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Nam";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(366, 237);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(48, 24);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Nữ";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // ThongTinCaNhanView
+            // ThongTinCaNhanGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,7 +227,10 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ThongTinCaNhanView";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(585, 491);
+            this.Name = "ThongTinCaNhanGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông tin cá nhân";
             this.Load += new System.EventHandler(this.ThongTinCaNhanView_Load);

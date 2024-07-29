@@ -125,6 +125,33 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bạn có muốn xoá vị trí thuốc này vĩnh viễn? Không thể khôi phục sau khi xoá.
+        /// </summary>
+        internal static string Are_you_sure_want_to_delete_this_medicine_location_ {
+            get {
+                return ResourceManager.GetString("Are you sure want to delete this medicine location?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có muốn xoá nhà cung cấp này vĩnh viễn? Không thể khôi phục sau khi xoá.
+        /// </summary>
+        internal static string Are_you_sure_want_to_delete_this_supplier_ {
+            get {
+                return ResourceManager.GetString("Are you sure want to delete this supplier?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?.
+        /// </summary>
+        internal static string Are_you_sure_you_want_to_permanently_delete_this_category_ {
+            get {
+                return ResourceManager.GetString("Are you sure you want to permanently delete this category?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bạn có chắc chắn muốn xoá nhà cung cấp này không?.
         /// </summary>
         internal static string Are_you_sure_you_want_to_remove_this_supplier_ {
@@ -770,6 +797,15 @@ namespace QPharma.Properties {
         internal static string Quantity_must_be_greater_or_equal_0 {
             get {
                 return ResourceManager.GetString("Quantity must be greater or equal 0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Khôi phục thất bại.
+        /// </summary>
+        internal static string Restore_failed {
+            get {
+                return ResourceManager.GetString("Restore failed", resourceCulture);
             }
         }
         

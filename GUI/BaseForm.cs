@@ -8,6 +8,7 @@ namespace QPharma.GUI
         public BaseForm()
         {
             //InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
             DoubleBuffered = true;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);

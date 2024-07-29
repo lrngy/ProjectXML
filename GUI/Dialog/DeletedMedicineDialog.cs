@@ -3,6 +3,9 @@ using System.Windows.Forms;
 using QPharma.BUS;
 using QPharma.Properties;
 using QPharma.Util;
+using QPharma.GUI;
+using System.Drawing;
+using System.Runtime.Remoting.Channels;
 
 namespace QPharma.GUI.Dialog
 {
@@ -12,7 +15,7 @@ namespace QPharma.GUI.Dialog
 
         private readonly MedicineBUS medicineController;
         public RefreshDeletedMedicine refreshDeletedMedicine;
-
+        
         public DeletedMedicineDialog(MedicineBUS medicineController)
         {
             InitializeComponent();
@@ -63,7 +66,7 @@ namespace QPharma.GUI.Dialog
                 if (state == Predefined.ID_NOT_EXIST)
                     CustomMessageBox.ShowError(Resources.Medicine_ID_is_not_exist);
                 else
-                    CustomMessageBox.ShowError("Khôi phục thất bại");
+                    CustomMessageBox.ShowError(Resources.Restore_failed);
             }
             catch (Exception)
             {
@@ -83,7 +86,7 @@ namespace QPharma.GUI.Dialog
                 var state = medicineController.RestoreAll();
                 if (state == Predefined.ERROR)
                 {
-                    CustomMessageBox.ShowError("Khôi phục thất bại");
+                    CustomMessageBox.ShowError(Resources.Restore_failed);
                     return;
                 }
 
@@ -126,6 +129,14 @@ namespace QPharma.GUI.Dialog
                 catch (Exception)
                 {
                 }
+        }
+
+        private void dgvDeletedMedicine_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.CellStyle.BackColor = Color.LightGray;
+            else
+                e.CellStyle.BackColor = Color.White;
         }
     }
 }

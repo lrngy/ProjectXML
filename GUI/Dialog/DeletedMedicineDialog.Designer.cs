@@ -50,11 +50,11 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.OrangeRed;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(655, 379);
+            this.button2.BackColor = System.Drawing.SystemColors.Window;
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(707, 402);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 39);
+            this.button2.Size = new System.Drawing.Size(109, 36);
             this.button2.TabIndex = 3;
             this.button2.Text = "Xoá vĩnh viễn";
             this.button2.UseVisualStyleBackColor = false;
@@ -62,10 +62,10 @@
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(184, 379);
+            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(236, 402);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(139, 39);
+            this.button3.Size = new System.Drawing.Size(117, 36);
             this.button3.TabIndex = 4;
             this.button3.Text = "Khôi phục tất cả";
             this.button3.UseVisualStyleBackColor = true;
@@ -73,10 +73,10 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(436, 379);
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(488, 402);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 39);
+            this.button1.Size = new System.Drawing.Size(86, 36);
             this.button1.TabIndex = 5;
             this.button1.Text = "Khôi phục";
             this.button1.UseVisualStyleBackColor = true;
@@ -84,16 +84,24 @@
             // 
             // dgvDeletedMedicine
             // 
+            this.dgvDeletedMedicine.AllowUserToAddRows = false;
+            this.dgvDeletedMedicine.AllowUserToDeleteRows = false;
+            this.dgvDeletedMedicine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDeletedMedicine.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDeletedMedicine.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvDeletedMedicine.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDeletedMedicine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvDeletedMedicine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeletedMedicine.ColumnHeadersHeight = 50;
+            this.dgvDeletedMedicine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDeletedMedicine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
@@ -114,13 +122,17 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDeletedMedicine.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDeletedMedicine.Location = new System.Drawing.Point(12, 12);
+            this.dgvDeletedMedicine.EnableHeadersVisualStyles = false;
+            this.dgvDeletedMedicine.Location = new System.Drawing.Point(12, 22);
             this.dgvDeletedMedicine.MultiSelect = false;
             this.dgvDeletedMedicine.Name = "dgvDeletedMedicine";
             this.dgvDeletedMedicine.ReadOnly = true;
+            this.dgvDeletedMedicine.RowHeadersVisible = false;
+            this.dgvDeletedMedicine.RowTemplate.Height = 50;
             this.dgvDeletedMedicine.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeletedMedicine.Size = new System.Drawing.Size(1049, 335);
+            this.dgvDeletedMedicine.Size = new System.Drawing.Size(1067, 362);
             this.dgvDeletedMedicine.TabIndex = 2;
+            this.dgvDeletedMedicine.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDeletedMedicine_CellFormatting);
             // 
             // Column1
             // 
@@ -200,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1091, 436);
+            this.ClientSize = new System.Drawing.Size(1091, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);

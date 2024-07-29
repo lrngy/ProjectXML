@@ -112,7 +112,7 @@ namespace QPharma.GUI
             if (changePasswordDialog == null || changePasswordDialog.IsDisposed)
                 changePasswordDialog = new ChangePasswordDialog(user);
 
-            changePasswordDialog.Show();
+            changePasswordDialog.ShowDialog();
             changePasswordDialog.WindowState = FormWindowState.Normal;
         }
     }

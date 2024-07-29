@@ -109,6 +109,10 @@
     <Compile Include="GUI\Dialog\DeletedMedicineLocationDialog.Designer.cs">
       <DependentUpon>DeletedMedicineLocationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Dialog\DeletedSupplierDialog.cs" />
+    <Compile Include="GUI\Dialog\DeletedSupplierDialog.Designer.cs">
+      <DependentUpon>DeletedSupplierDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\SplashGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +161,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChiTietThu.resx">
       <DependentUpon>ChiTietThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Dialog\DeletedMedicineLocationDialog.resx">
+      <DependentUpon>DeletedMedicineLocationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Dialog\DeletedSupplierDialog.resx">
+      <DependentUpon>DeletedSupplierDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\SplashGUI.resx">
       <DependentUpon>SplashGUI.cs</DependentUpon>

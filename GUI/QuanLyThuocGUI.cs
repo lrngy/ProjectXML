@@ -194,8 +194,7 @@ namespace QPharma.GUI
 
         private void NhaCungCap_Load()
         {
-            var suppliers = supplierBUS.LoadData();
-            HienThiNCC(suppliers);
+            tbTimNCC_TextChanged(this, EventArgs.Empty);
 
             cbTTNCC.SelectedIndex = 0;
             cbTieuChiNCC.SelectedIndex = indexTieuChiNCC;
@@ -297,7 +296,7 @@ namespace QPharma.GUI
 
                 if (state == Predefined.SUCCESS)
                 {
-                    TheLoai_Load();
+                    tbTimTheLoai_TextChanged(sender, e);
                     return;
                 }
 
@@ -347,7 +346,7 @@ namespace QPharma.GUI
 
                 if (state == Predefined.SUCCESS)
                 {
-                    TheLoai_Load();
+                    tbTimTheLoai_TextChanged(sender, e);
                     return;
                 }
 
@@ -391,7 +390,7 @@ namespace QPharma.GUI
                 var state = categoryBUS.Delete(maTheLoai);
                 if (state == Predefined.SUCCESS)
                 {
-                    TheLoai_Load();
+                    tbTimTheLoai_TextChanged(sender, e);
                     return;
                 }
 
@@ -409,7 +408,7 @@ namespace QPharma.GUI
         private void btnLuuTruTheLoai_Click(object sender, EventArgs e)
         {
             var deletedCategory = new DeletedCategoryDialog(categoryBUS);
-            deletedCategory.refreshDeletedCategory += TheLoai_Load;
+            deletedCategory.refreshDeletedCategory = tbTimTheLoai_TextChanged; ;
             deletedCategory.ShowDialog();
         }
 
@@ -486,7 +485,7 @@ namespace QPharma.GUI
                     return;
                 }
 
-                NhaCungCap_Load();
+                tbTimNCC_TextChanged(sender, e);
             }
             catch (Exception ex)
             {
@@ -546,7 +545,7 @@ namespace QPharma.GUI
                     return;
                 }
 
-                NhaCungCap_Load();
+                tbTimNCC_TextChanged(sender, e);
             }
             catch (Exception ex)
             {
@@ -565,16 +564,15 @@ namespace QPharma.GUI
                     return;
                 }
 
-                var choice = CustomMessageBox.ShowQuestion(Resources.Are_you_sure_you_want_to_remove_this_supplier_);
-                if (choice == DialogResult.No) return;
+                //var choice = CustomMessageBox.ShowQuestion(Resources.Are_you_sure_you_want_to_remove_this_supplier_);
+                //if (choice == DialogResult.No) return;
 
-                var result = supplierBUS.ForceDelete(maNCC);
+                var result = supplierBUS.Delete(maNCC);
                 if (result == Predefined.ID_NOT_EXIST)
-                    //CustomMessageBox.ShowError("Mã nhà cung cấp không tồn tại");
-                    //return;
+                {
                     ShowValidateError(tbMaNCC, Resources.Supplier_ID_is_not_exist);
-
-                NhaCungCap_Load();
+                }
+                tbTimNCC_TextChanged(sender, e);
             }
             catch (Exception ex)
             {
@@ -587,7 +585,7 @@ namespace QPharma.GUI
             var noidungtimkiem = tbTimNCC.Text.ToLower().Trim();
             if (noidungtimkiem.Equals(""))
             {
-                NhaCungCap_Load();
+                HienThiNCC(supplierBUS.LoadData());
                 return;
             }
 
@@ -1172,7 +1170,7 @@ namespace QPharma.GUI
 
                 if (state == Predefined.SUCCESS)
                 {
-                    HienThiViTriThuoc(medicineLocationBUS.LoadData());
+                    tbTimViTri_TextChanged(sender, e);
                     return;
                 }
 
@@ -1213,7 +1211,7 @@ namespace QPharma.GUI
 
                 if (state == Predefined.SUCCESS)
                 {
-                    HienThiViTriThuoc(medicineLocationBUS.LoadData());
+                    tbTimViTri_TextChanged(sender, e);
                     return;
                 }
 
@@ -1235,7 +1233,7 @@ namespace QPharma.GUI
                 var maViTri = dgvViTriThuoc.SelectedRows[0].Cells[1].Value.ToString();
                 var state = medicineLocationBUS.Delete(maViTri);
 
-                if (state == Predefined.SUCCESS) HienThiViTriThuoc(medicineLocationBUS.LoadData());
+                if (state == Predefined.SUCCESS) tbTimViTri_TextChanged(sender, e);
             }
             catch (Exception ex)
             {
@@ -1300,6 +1298,18 @@ namespace QPharma.GUI
                 e.CellStyle.BackColor = Color.LightGray;
             else
                 e.CellStyle.BackColor = Color.White;
+        }
+
+        private void btnDeletedLocation_Click(object sender, EventArgs e)
+        {
+            var deletedMedicineLocation = new DeletedMedicineLocationDialog(tbTimViTri_TextChanged);
+            deletedMedicineLocation.ShowDialog();
+        }
+
+        private void btnDeletedSupplier_Click(object sender, EventArgs e)
+        {
+            var deletedSupplier = new DeletedSupplierDialog(tbTimNCC_TextChanged);
+            deletedSupplier.ShowDialog();
         }
     }
 }

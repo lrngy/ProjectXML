@@ -125,6 +125,7 @@ namespace QPharma.GUI
             this.tabNCC = new System.Windows.Forms.TabPage();
             this.cbTieuChiNCC = new System.Windows.Forms.ComboBox();
             this.tbTimNCC = new System.Windows.Forms.TextBox();
+            this.btnDeletedSupplier = new System.Windows.Forms.Button();
             this.btnXoaNCC = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbTTNCC = new System.Windows.Forms.ComboBox();
@@ -257,7 +258,7 @@ namespace QPharma.GUI
             "Đã hết hạn",
             "Còn hạn",
             "Đã hết thuốc"});
-            this.cbLocDuLieuThuoc.Location = new System.Drawing.Point(627, 319);
+            this.cbLocDuLieuThuoc.Location = new System.Drawing.Point(637, 310);
             this.cbLocDuLieuThuoc.Name = "cbLocDuLieuThuoc";
             this.cbLocDuLieuThuoc.Size = new System.Drawing.Size(170, 28);
             this.cbLocDuLieuThuoc.TabIndex = 21;
@@ -268,7 +269,7 @@ namespace QPharma.GUI
             // 
             this.ckbLocDuLieuThuoc.AutoSize = true;
             this.ckbLocDuLieuThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbLocDuLieuThuoc.Location = new System.Drawing.Point(519, 323);
+            this.ckbLocDuLieuThuoc.Location = new System.Drawing.Point(529, 314);
             this.ckbLocDuLieuThuoc.Name = "ckbLocDuLieuThuoc";
             this.ckbLocDuLieuThuoc.Size = new System.Drawing.Size(102, 24);
             this.ckbLocDuLieuThuoc.TabIndex = 20;
@@ -293,7 +294,7 @@ namespace QPharma.GUI
             "Nhà cung cấp",
             "Ngày tạo",
             "Ngày cập nhật"});
-            this.cbTieuChiThuoc.Location = new System.Drawing.Point(1144, 319);
+            this.cbTieuChiThuoc.Location = new System.Drawing.Point(1154, 310);
             this.cbTieuChiThuoc.Name = "cbTieuChiThuoc";
             this.cbTieuChiThuoc.Size = new System.Drawing.Size(182, 28);
             this.cbTieuChiThuoc.TabIndex = 16;
@@ -303,7 +304,7 @@ namespace QPharma.GUI
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(1094, 327);
+            this.label21.Location = new System.Drawing.Point(1104, 318);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(44, 20);
             this.label21.TabIndex = 11;
@@ -312,7 +313,7 @@ namespace QPharma.GUI
             // tbTimThuoc
             // 
             this.tbTimThuoc.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimThuoc.Location = new System.Drawing.Point(903, 320);
+            this.tbTimThuoc.Location = new System.Drawing.Point(913, 311);
             this.tbTimThuoc.Name = "tbTimThuoc";
             this.tbTimThuoc.Size = new System.Drawing.Size(170, 27);
             this.tbTimThuoc.TabIndex = 15;
@@ -322,7 +323,7 @@ namespace QPharma.GUI
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(822, 327);
+            this.label22.Location = new System.Drawing.Point(832, 318);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(75, 20);
             this.label22.TabIndex = 8;
@@ -377,7 +378,7 @@ namespace QPharma.GUI
             // btnLuuThuoc
             // 
             this.btnLuuThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuuThuoc.Location = new System.Drawing.Point(27, 314);
+            this.btnLuuThuoc.Location = new System.Drawing.Point(37, 305);
             this.btnLuuThuoc.Name = "btnLuuThuoc";
             this.btnLuuThuoc.Size = new System.Drawing.Size(166, 37);
             this.btnLuuThuoc.TabIndex = 14;
@@ -387,9 +388,9 @@ namespace QPharma.GUI
             // 
             // btnXoaThuoc
             // 
-            this.btnXoaThuoc.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnXoaThuoc.BackColor = System.Drawing.SystemColors.Window;
             this.btnXoaThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaThuoc.Location = new System.Drawing.Point(224, 314);
+            this.btnXoaThuoc.Location = new System.Drawing.Point(234, 305);
             this.btnXoaThuoc.Name = "btnXoaThuoc";
             this.btnXoaThuoc.Size = new System.Drawing.Size(76, 37);
             this.btnXoaThuoc.TabIndex = 13;
@@ -712,7 +713,7 @@ namespace QPharma.GUI
             this.dgvThuoc.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
@@ -882,7 +883,7 @@ namespace QPharma.GUI
             "Trạng thái",
             "Ngày tạo",
             "Ngày cập nhật"});
-            this.cbTieuChiTheLoai.Location = new System.Drawing.Point(1072, 175);
+            this.cbTieuChiTheLoai.Location = new System.Drawing.Point(1073, 166);
             this.cbTieuChiTheLoai.Name = "cbTieuChiTheLoai";
             this.cbTieuChiTheLoai.Size = new System.Drawing.Size(170, 28);
             this.cbTieuChiTheLoai.TabIndex = 6;
@@ -892,7 +893,7 @@ namespace QPharma.GUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(638, 185);
+            this.label1.Location = new System.Drawing.Point(639, 176);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 20);
             this.label1.TabIndex = 0;
@@ -901,7 +902,7 @@ namespace QPharma.GUI
             // btnSuaTheLoai
             // 
             this.btnSuaTheLoai.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuaTheLoai.Location = new System.Drawing.Point(213, 176);
+            this.btnSuaTheLoai.Location = new System.Drawing.Point(214, 167);
             this.btnSuaTheLoai.Name = "btnSuaTheLoai";
             this.btnSuaTheLoai.Size = new System.Drawing.Size(78, 34);
             this.btnSuaTheLoai.TabIndex = 3;
@@ -913,7 +914,7 @@ namespace QPharma.GUI
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(988, 183);
+            this.label20.Location = new System.Drawing.Point(989, 174);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(66, 20);
             this.label20.TabIndex = 7;
@@ -922,7 +923,7 @@ namespace QPharma.GUI
             // tbTimTheLoai
             // 
             this.tbTimTheLoai.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimTheLoai.Location = new System.Drawing.Point(722, 178);
+            this.tbTimTheLoai.Location = new System.Drawing.Point(723, 169);
             this.tbTimTheLoai.Name = "tbTimTheLoai";
             this.tbTimTheLoai.Size = new System.Drawing.Size(170, 27);
             this.tbTimTheLoai.TabIndex = 1;
@@ -931,7 +932,7 @@ namespace QPharma.GUI
             // btnThemTheLoai
             // 
             this.btnThemTheLoai.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemTheLoai.Location = new System.Drawing.Point(111, 176);
+            this.btnThemTheLoai.Location = new System.Drawing.Point(112, 167);
             this.btnThemTheLoai.Name = "btnThemTheLoai";
             this.btnThemTheLoai.Size = new System.Drawing.Size(78, 34);
             this.btnThemTheLoai.TabIndex = 3;
@@ -942,7 +943,7 @@ namespace QPharma.GUI
             // btnLuuTruTheLoai
             // 
             this.btnLuuTruTheLoai.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuuTruTheLoai.Location = new System.Drawing.Point(421, 174);
+            this.btnLuuTruTheLoai.Location = new System.Drawing.Point(420, 167);
             this.btnLuuTruTheLoai.Name = "btnLuuTruTheLoai";
             this.btnLuuTruTheLoai.Size = new System.Drawing.Size(106, 34);
             this.btnLuuTruTheLoai.TabIndex = 3;
@@ -953,7 +954,7 @@ namespace QPharma.GUI
             // btnXoaTheLoai
             // 
             this.btnXoaTheLoai.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaTheLoai.Location = new System.Drawing.Point(315, 175);
+            this.btnXoaTheLoai.Location = new System.Drawing.Point(316, 166);
             this.btnXoaTheLoai.Name = "btnXoaTheLoai";
             this.btnXoaTheLoai.Size = new System.Drawing.Size(78, 34);
             this.btnXoaTheLoai.TabIndex = 3;
@@ -1050,7 +1051,7 @@ namespace QPharma.GUI
             this.dgvTheLoai.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
@@ -1075,7 +1076,7 @@ namespace QPharma.GUI
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTheLoai.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTheLoai.EnableHeadersVisualStyles = false;
-            this.dgvTheLoai.Location = new System.Drawing.Point(26, 231);
+            this.dgvTheLoai.Location = new System.Drawing.Point(26, 219);
             this.dgvTheLoai.MultiSelect = false;
             this.dgvTheLoai.Name = "dgvTheLoai";
             this.dgvTheLoai.ReadOnly = true;
@@ -1083,7 +1084,7 @@ namespace QPharma.GUI
             this.dgvTheLoai.RowHeadersWidth = 20;
             this.dgvTheLoai.RowTemplate.Height = 50;
             this.dgvTheLoai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTheLoai.Size = new System.Drawing.Size(1346, 355);
+            this.dgvTheLoai.Size = new System.Drawing.Size(1346, 367);
             this.dgvTheLoai.TabIndex = 0;
             this.dgvTheLoai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTheLoai_CellClick);
             this.dgvTheLoai.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.StripedTable_CellFormatting);
@@ -1136,6 +1137,7 @@ namespace QPharma.GUI
             // 
             this.tabNCC.Controls.Add(this.cbTieuChiNCC);
             this.tabNCC.Controls.Add(this.tbTimNCC);
+            this.tabNCC.Controls.Add(this.btnDeletedSupplier);
             this.tabNCC.Controls.Add(this.btnXoaNCC);
             this.tabNCC.Controls.Add(this.groupBox2);
             this.tabNCC.Controls.Add(this.dgvNhaCungCap);
@@ -1163,7 +1165,7 @@ namespace QPharma.GUI
             "Trạng thái",
             "Ngày tạo",
             "Ngày cập nhật"});
-            this.cbTieuChiNCC.Location = new System.Drawing.Point(1138, 230);
+            this.cbTieuChiNCC.Location = new System.Drawing.Point(1121, 212);
             this.cbTieuChiNCC.Name = "cbTieuChiNCC";
             this.cbTieuChiNCC.Size = new System.Drawing.Size(170, 28);
             this.cbTieuChiNCC.TabIndex = 2;
@@ -1172,16 +1174,27 @@ namespace QPharma.GUI
             // tbTimNCC
             // 
             this.tbTimNCC.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimNCC.Location = new System.Drawing.Point(736, 229);
+            this.tbTimNCC.Location = new System.Drawing.Point(719, 211);
             this.tbTimNCC.Name = "tbTimNCC";
             this.tbTimNCC.Size = new System.Drawing.Size(170, 27);
             this.tbTimNCC.TabIndex = 6;
             this.tbTimNCC.TextChanged += new System.EventHandler(this.tbTimNCC_TextChanged);
             // 
+            // btnDeletedSupplier
+            // 
+            this.btnDeletedSupplier.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeletedSupplier.Location = new System.Drawing.Point(213, 212);
+            this.btnDeletedSupplier.Name = "btnDeletedSupplier";
+            this.btnDeletedSupplier.Size = new System.Drawing.Size(106, 34);
+            this.btnDeletedSupplier.TabIndex = 9;
+            this.btnDeletedSupplier.Text = "Mục lưu trữ";
+            this.btnDeletedSupplier.UseVisualStyleBackColor = true;
+            this.btnDeletedSupplier.Click += new System.EventHandler(this.btnDeletedSupplier_Click);
+            // 
             // btnXoaNCC
             // 
             this.btnXoaNCC.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaNCC.Location = new System.Drawing.Point(77, 226);
+            this.btnXoaNCC.Location = new System.Drawing.Point(111, 211);
             this.btnXoaNCC.Name = "btnXoaNCC";
             this.btnXoaNCC.Size = new System.Drawing.Size(78, 34);
             this.btnXoaNCC.TabIndex = 9;
@@ -1207,7 +1220,7 @@ namespace QPharma.GUI
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(74, 32);
+            this.groupBox2.Location = new System.Drawing.Point(77, 21);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1243, 169);
             this.groupBox2.TabIndex = 7;
@@ -1365,7 +1378,7 @@ namespace QPharma.GUI
             this.dgvNhaCungCap.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
@@ -1392,7 +1405,7 @@ namespace QPharma.GUI
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvNhaCungCap.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvNhaCungCap.EnableHeadersVisualStyles = false;
-            this.dgvNhaCungCap.Location = new System.Drawing.Point(25, 286);
+            this.dgvNhaCungCap.Location = new System.Drawing.Point(25, 265);
             this.dgvNhaCungCap.MultiSelect = false;
             this.dgvNhaCungCap.Name = "dgvNhaCungCap";
             this.dgvNhaCungCap.ReadOnly = true;
@@ -1400,7 +1413,7 @@ namespace QPharma.GUI
             this.dgvNhaCungCap.RowHeadersWidth = 62;
             this.dgvNhaCungCap.RowTemplate.Height = 50;
             this.dgvNhaCungCap.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNhaCungCap.Size = new System.Drawing.Size(1351, 299);
+            this.dgvNhaCungCap.Size = new System.Drawing.Size(1351, 320);
             this.dgvNhaCungCap.TabIndex = 4;
             this.dgvNhaCungCap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellClick);
             this.dgvNhaCungCap.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.StripedTable_CellFormatting);
@@ -1465,7 +1478,7 @@ namespace QPharma.GUI
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1040, 236);
+            this.label10.Location = new System.Drawing.Point(1023, 218);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(92, 20);
             this.label10.TabIndex = 5;
@@ -1475,7 +1488,7 @@ namespace QPharma.GUI
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(655, 236);
+            this.label7.Location = new System.Drawing.Point(638, 218);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 20);
             this.label7.TabIndex = 5;
@@ -1505,12 +1518,13 @@ namespace QPharma.GUI
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(409, 184);
+            this.button1.Location = new System.Drawing.Point(395, 156);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 34);
             this.button1.TabIndex = 15;
             this.button1.Text = "Mục lưu trữ";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnDeletedLocation_Click);
             // 
             // cbbTieuChiVT
             // 
@@ -1524,7 +1538,7 @@ namespace QPharma.GUI
             "Trạng thái",
             "Ngày tạo",
             "Ngày cập nhật"});
-            this.cbbTieuChiVT.Location = new System.Drawing.Point(1080, 185);
+            this.cbbTieuChiVT.Location = new System.Drawing.Point(1078, 157);
             this.cbbTieuChiVT.Name = "cbbTieuChiVT";
             this.cbbTieuChiVT.Size = new System.Drawing.Size(170, 28);
             this.cbbTieuChiVT.TabIndex = 11;
@@ -1533,7 +1547,7 @@ namespace QPharma.GUI
             // tbTimViTri
             // 
             this.tbTimViTri.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimViTri.Location = new System.Drawing.Point(739, 188);
+            this.tbTimViTri.Location = new System.Drawing.Point(737, 160);
             this.tbTimViTri.Name = "tbTimViTri";
             this.tbTimViTri.Size = new System.Drawing.Size(177, 27);
             this.tbTimViTri.TabIndex = 14;
@@ -1543,7 +1557,7 @@ namespace QPharma.GUI
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(982, 191);
+            this.label28.Location = new System.Drawing.Point(980, 163);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(92, 20);
             this.label28.TabIndex = 12;
@@ -1553,7 +1567,7 @@ namespace QPharma.GUI
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(665, 195);
+            this.label30.Location = new System.Drawing.Point(663, 167);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(75, 20);
             this.label30.TabIndex = 13;
@@ -1562,7 +1576,7 @@ namespace QPharma.GUI
             // btnXoaVT
             // 
             this.btnXoaVT.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaVT.Location = new System.Drawing.Point(296, 184);
+            this.btnXoaVT.Location = new System.Drawing.Point(294, 156);
             this.btnXoaVT.Name = "btnXoaVT";
             this.btnXoaVT.Size = new System.Drawing.Size(78, 34);
             this.btnXoaVT.TabIndex = 10;
@@ -1580,7 +1594,7 @@ namespace QPharma.GUI
             this.groupBox6.Controls.Add(this.tbTenViTri);
             this.groupBox6.Controls.Add(this.label29);
             this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(89, 46);
+            this.groupBox6.Location = new System.Drawing.Point(85, 21);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(1219, 110);
             this.groupBox6.TabIndex = 8;
@@ -1659,7 +1673,7 @@ namespace QPharma.GUI
             this.dgvViTriThuoc.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
@@ -1684,7 +1698,7 @@ namespace QPharma.GUI
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvViTriThuoc.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvViTriThuoc.EnableHeadersVisualStyles = false;
-            this.dgvViTriThuoc.Location = new System.Drawing.Point(28, 242);
+            this.dgvViTriThuoc.Location = new System.Drawing.Point(28, 213);
             this.dgvViTriThuoc.MultiSelect = false;
             this.dgvViTriThuoc.Name = "dgvViTriThuoc";
             this.dgvViTriThuoc.ReadOnly = true;
@@ -1692,7 +1706,7 @@ namespace QPharma.GUI
             this.dgvViTriThuoc.RowHeadersWidth = 62;
             this.dgvViTriThuoc.RowTemplate.Height = 50;
             this.dgvViTriThuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvViTriThuoc.Size = new System.Drawing.Size(1342, 341);
+            this.dgvViTriThuoc.Size = new System.Drawing.Size(1342, 370);
             this.dgvViTriThuoc.TabIndex = 0;
             this.dgvViTriThuoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvViTriThuoc_CellClick);
             this.dgvViTriThuoc.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.StripedTable_CellFormatting);
@@ -1751,7 +1765,7 @@ namespace QPharma.GUI
             // btnSuaVT
             // 
             this.btnSuaVT.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuaVT.Location = new System.Drawing.Point(199, 183);
+            this.btnSuaVT.Location = new System.Drawing.Point(197, 155);
             this.btnSuaVT.Name = "btnSuaVT";
             this.btnSuaVT.Size = new System.Drawing.Size(78, 34);
             this.btnSuaVT.TabIndex = 3;
@@ -1762,7 +1776,7 @@ namespace QPharma.GUI
             // btnThemVT
             // 
             this.btnThemVT.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemVT.Location = new System.Drawing.Point(100, 184);
+            this.btnThemVT.Location = new System.Drawing.Point(98, 156);
             this.btnThemVT.Name = "btnThemVT";
             this.btnThemVT.Size = new System.Drawing.Size(78, 34);
             this.btnThemVT.TabIndex = 3;
@@ -1961,5 +1975,6 @@ namespace QPharma.GUI
         private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
+        private System.Windows.Forms.Button btnDeletedSupplier;
     }
 }

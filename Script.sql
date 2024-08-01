@@ -76,12 +76,13 @@ medicine_location_id int IDENTITY(1,1) primary key,
 medicine_location_name nvarchar(30),
 medicine_location_note nvarchar(30),
 medicine_location_status bit,
-medicine_created datetime,
-medicine_updated datetime,
-medicine_deleted datetime,
+medicine_location_created datetime,
+medicine_location_updated datetime,
+medicine_location_deleted datetime,
 unique(medicine_location_name)
 )
 go;
+
 
 
 create table medicines(
@@ -155,3 +156,4 @@ GO;
 INSERT INTO staffs
 (staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)
 VALUES('nv1', 'Nguyen Van A', 1, getdate(), 1, 0, getdate(), '', '', 'admin');
+

@@ -11,17 +11,7 @@ using QPharma.Util;
 
 namespace QPharma.GUI
 {
-    // git add .
-    // git commit -m "Quyết - update Quản lý nhân viên - !"
-    // git push origin Quyet
-
-    //git pull origin Quyet
-    //lệnh giải quyết xung đột
-
-    //git reset --hard HEAD~1
-    // xóa commit trước đó, đồng thời xóa các thay đổi trước đó
-
-    public partial class QuanLyNhanVienGUI : Form
+    public partial class QuanLyNhanVienGUI : BaseForm
     {
         private String id;
         private String name;

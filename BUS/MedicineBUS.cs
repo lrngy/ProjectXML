@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using QPharma.DAL;
 using QPharma.DTO;
+using QPharma.Properties;
 using QPharma.Util;
 
 namespace QPharma.BUS
@@ -13,14 +14,13 @@ namespace QPharma.BUS
     {
         public MedicineBUS()
         {
-            categoryController = new CategoryBUS();
-            supplierController = new SupplierBUS();
-            medicineDAL = new MedicineDAL(categoryController.categoryDAL, supplierController.supplierDAL);
+
+            medicineDAL = new MedicineDAL();
         }
 
-        private MedicineDAL medicineDAL { get; set; }
-        private CategoryBUS categoryController { get; set; }
-        private SupplierBUS supplierController { get; set; }
+        private MedicineDAL medicineDAL { get; }
+        private CategoryBUS categoryController { get; }
+        private SupplierBUS supplierController { get; }
 
         public List<MedicineDTO> LoadData()
         {
@@ -72,16 +72,14 @@ namespace QPharma.BUS
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 var sourcePath = openFileDialog.FileName;
-                var targetDirectory = Config.getImagePath();
+                var targetDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Development.Default.LocalResourceImage);
+
+                //var targetDirectory = Config.getImagePath();
                 var targetPath = Path.Combine(targetDirectory, $"{id}.jpg");
 
                 try
                 {
                     if (!Directory.Exists(targetDirectory)) Directory.CreateDirectory(targetDirectory);
-                    //if (File.Exists(targetPath))
-                    //{
-                    //    File.Delete(targetPath);
-                    //}
                     File.Copy(sourcePath, targetPath, true);
 
                     return medicineDAL.ChangeImage(id, targetPath);
@@ -90,8 +88,9 @@ namespace QPharma.BUS
                 {
                     Debug.WriteLine(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.Message);
                 }
             }
 
@@ -102,7 +101,7 @@ namespace QPharma.BUS
         {
             if (medicineDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
 
-            var targetDirectory = Config.getImagePath();
+            var targetDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Development.Default.LocalResourceImage);
             var targetPath = Path.Combine(targetDirectory, $"{id}.jpg");
             if (File.Exists(targetPath)) File.Delete(targetPath);
             return medicineDAL.RemoveImage(id);

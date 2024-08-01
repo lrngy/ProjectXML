@@ -6,8 +6,8 @@
         {
         }
 
-        public MedicineLocationDTO(string id, string name, string note, bool status, string created, string updated,
-            string deleted)
+        public MedicineLocationDTO(string name, string note, bool status, string created, string updated,
+            string deleted, string id = null)
         {
             this.id = id;
             this.name = name;

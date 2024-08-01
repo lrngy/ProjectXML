@@ -28,9 +28,6 @@ namespace QPharma.Util
             return Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
         }
 
-        public static string getImagePath()
-        {
-            return Path.Combine(getCurrentDirectory(), folderMedicineImage);
-        }
+
     }
 }

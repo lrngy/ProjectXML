@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using QPharma.BUS;
 using QPharma.Properties;
 using QPharma.Util;
+using QPharma.GUI;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.Remoting.Channels;
 
 namespace QPharma.GUI.Dialog
 {
@@ -23,14 +28,21 @@ namespace QPharma.GUI.Dialog
         {
             dgvDeletedMedicine.Rows.Clear();
             var i = 0;
-            var medicineList = medicineController.LoadData();
+            var medicineList = medicineController.LoadData().Where(item => !item.deleted.Equals("")).ToList();
             foreach (var medicine in medicineList)
             {
-                if (medicine.deleted.Equals("")) continue;
-                dgvDeletedMedicine.Rows.Add(++i, medicine.id, medicine.name,
-                    $"{medicine.category.name}", medicine.expireDate, medicine.quantity,
-                    medicine.unit, medicine.price_out, medicine.description,
-                    $"{medicine.supplier.name}", medicine.deleted);
+                dgvDeletedMedicine.Rows.Add(
+                    ++i, medicine.id, medicine.name, medicine.quantity, medicine.price_out,
+                    $"{medicine.category.id}-{medicine.category.name}",
+                    medicine.type ? Resources.Prescription_drug : Resources.Unprescription_drug,
+                    medicine.unit, medicine.mfgDate, medicine.expireDate,
+                    $"{medicine.supplier.id}-{medicine.supplier.name}",
+                    medicine.price_in,
+                    $"{medicine.location.id} - {medicine.location.name}",
+                    medicine.description,
+                    medicine.created,
+                    medicine.updated,
+                    medicine.deleted);
             }
         }
 
@@ -41,91 +53,84 @@ namespace QPharma.GUI.Dialog
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dgvDeletedMedicine.Rows.Count == 1)
-            {
-                CustomMessageBox.ShowError("Mục lưu trữ đang trống");
-                return;
-            }
-
             try
             {
-                var index = dgvDeletedMedicine.CurrentRow.Index;
+                var index = dgvDeletedMedicine.SelectedRows[0].Index;
                 var maThuoc = dgvDeletedMedicine.Rows[index].Cells[1].Value.ToString();
                 var state = medicineController.Restore(maThuoc);
                 if (state == Predefined.SUCCESS)
                 {
                     DeletedMedicine_Show();
                     refreshDeletedMedicine();
-                    CustomMessageBox.ShowSuccess("Đã khôi phục Mã thuốc " + maThuoc);
+                    CustomMessageBox.ShowSuccess(string.Format(Resources.Restore_medicine_id_successfully, maThuoc));
                     return;
                 }
 
                 if (state == Predefined.ID_NOT_EXIST)
                     CustomMessageBox.ShowError(Resources.Medicine_ID_is_not_exist);
                 else
-                    CustomMessageBox.ShowError("Khôi phục thất bại");
+                    CustomMessageBox.ShowError(Resources.Restore_failed);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dgvDeletedMedicine.Rows.Count == 1)
-            {
-                CustomMessageBox.ShowError("Mục lưu trữ đang trống");
-                return;
-            }
-
             try
             {
                 var state = medicineController.RestoreAll();
                 if (state == Predefined.ERROR)
                 {
-                    CustomMessageBox.ShowError("Khôi phục thất bại");
+                    CustomMessageBox.ShowError(Resources.Restore_failed);
                     return;
                 }
 
                 DeletedMedicine_Show();
                 refreshDeletedMedicine();
-                CustomMessageBox.ShowSuccess("Khôi phục tất cả thuốc thành công");
+                CustomMessageBox.ShowSuccess(Resources.Restore_all_medicines_successfully);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dgvDeletedMedicine.Rows.Count == 1)
+            try
             {
-                CustomMessageBox.ShowError("Mục lưu trữ đang trống");
-                return;
+                var index = dgvDeletedMedicine.SelectedRows[0].Index;
+                var maTheLoai = dgvDeletedMedicine.Rows[index].Cells[1].Value.ToString();
+                var confirmResult = CustomMessageBox.ShowQuestion(Resources.Are_you_sure_you_want_to_permanently_remove_this_medication_);
+                if (confirmResult == DialogResult.No) return;
+                var state = medicineController.ForceDelete(maTheLoai);
+                if (state == Predefined.SUCCESS)
+                {
+                    DeletedMedicine_Show();
+                    refreshDeletedMedicine();
+                    return;
+                }
+
+                if (state == Predefined.ID_NOT_EXIST)
+                    CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
+                else
+                    CustomMessageBox.ShowError(Resources.Delete_failed);
             }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception);
+            }
+        }
 
-            var confirmResult = CustomMessageBox.ShowQuestion("Bạn có chắc chắn muốn xóa vĩnh viễn thuốc này?");
-            if (confirmResult == DialogResult.Yes)
-                try
-                {
-                    var index = dgvDeletedMedicine.CurrentRow.Index;
-                    var maTheLoai = dgvDeletedMedicine.Rows[index].Cells[1].Value.ToString();
-                    var state = medicineController.ForceDelete(maTheLoai);
-                    if (state == Predefined.SUCCESS)
-                    {
-                        DeletedMedicine_Show();
-                        refreshDeletedMedicine();
-                        return;
-                    }
-
-                    if (state == Predefined.ID_NOT_EXIST)
-                        CustomMessageBox.ShowError(Resources.Category_ID_does_not_exist);
-                    else
-                        CustomMessageBox.ShowError(Resources.Delete_failed);
-                }
-                catch (Exception)
-                {
-                }
+        private void dgvDeletedMedicine_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex % 2 == 0)
+                e.CellStyle.BackColor = Color.LightGray;
+            else
+                e.CellStyle.BackColor = Color.White;
         }
     }
 }

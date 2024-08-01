@@ -58,7 +58,7 @@ namespace QPharma.GUI
             delayTimer.Dispose();
 
             try
-            {       
+            {
                 var log = loginBUS.CheckLoggedIn();
                 if (log is null)
                 {
@@ -78,7 +78,7 @@ namespace QPharma.GUI
             finally
             {
                 Hide();
-            }    
+            }
         }
 
         private void SplashGUI_Load(object sender, EventArgs e)

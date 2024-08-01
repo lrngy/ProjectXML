@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Windows.Forms;
 using QPharma.BUS;
-using QPharma.DAL;
 using QPharma.DTO;
 using QPharma.GUI.Dialog;
 using QPharma.Properties;
@@ -113,7 +112,7 @@ namespace QPharma.GUI
             if (changePasswordDialog == null || changePasswordDialog.IsDisposed)
                 changePasswordDialog = new ChangePasswordDialog(user);
 
-            changePasswordDialog.Show();
+            changePasswordDialog.ShowDialog();
             changePasswordDialog.WindowState = FormWindowState.Normal;
         }
     }

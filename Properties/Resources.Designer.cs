@@ -125,6 +125,42 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bạn có muốn xoá vị trí thuốc này vĩnh viễn? Không thể khôi phục sau khi xoá.
+        /// </summary>
+        internal static string Are_you_sure_want_to_delete_this_medicine_location_ {
+            get {
+                return ResourceManager.GetString("Are you sure want to delete this medicine location?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có muốn xoá nhà cung cấp này vĩnh viễn? Không thể khôi phục sau khi xoá.
+        /// </summary>
+        internal static string Are_you_sure_want_to_delete_this_supplier_ {
+            get {
+                return ResourceManager.GetString("Are you sure want to delete this supplier?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?.
+        /// </summary>
+        internal static string Are_you_sure_you_want_to_permanently_delete_this_category_ {
+            get {
+                return ResourceManager.GetString("Are you sure you want to permanently delete this category?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có chắc chắn muốn xóa vĩnh viễn thuốc này?.
+        /// </summary>
+        internal static string Are_you_sure_you_want_to_permanently_remove_this_medication_ {
+            get {
+                return ResourceManager.GetString("Are you sure you want to permanently remove this medication?", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bạn có chắc chắn muốn xoá nhà cung cấp này không?.
         /// </summary>
         internal static string Are_you_sure_you_want_to_remove_this_supplier_ {
@@ -447,6 +483,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tên vị tri đã tồn tại.
+        /// </summary>
+        internal static string Location_name_already_exists {
+            get {
+                return ResourceManager.GetString("Location name already exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng nhập thất bại. Vui lòng liên hệ quản lý !.
         /// </summary>
         internal static string Login_fail {
@@ -512,6 +557,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to QUẢN LÝ VỊ TRÍ THUỐC.
+        /// </summary>
+        internal static string Medicine_location_management {
+            get {
+                return ResourceManager.GetString("Medicine location management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QUẢN LÝ THUỐC.
         /// </summary>
         internal static string Medicine_management {
@@ -560,18 +614,27 @@ namespace QPharma.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Mật khẩu mới không khớp.
         /// </summary>
-        internal static string New_password_not_correct {
+        internal static string New_password_is_not_correct {
             get {
-                return ResourceManager.GetString("New password not correct", resourceCulture);
+                return ResourceManager.GetString("New password is not correct", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mật khẩu cũ không đúng.
+        ///   Looks up a localized string similar to Mật khẩu cũ không chính xác.
         /// </summary>
-        internal static string Old_password_not_correct {
+        internal static string Old_password_is_not_correct {
             get {
-                return ResourceManager.GetString("Old password not correct", resourceCulture);
+                return ResourceManager.GetString("Old password is not correct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng chọn vị trí thuốc.
+        /// </summary>
+        internal static string Please_choose_a_medicine_location {
+            get {
+                return ResourceManager.GetString("Please choose a medicine location", resourceCulture);
             }
         }
         
@@ -585,11 +648,47 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập lại mật khẩu mới.
+        /// </summary>
+        internal static string Please_enter_confirm_password {
+            get {
+                return ResourceManager.GetString("Please enter confirm password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập mật khẩu mới.
+        /// </summary>
+        internal static string Please_enter_new_password {
+            get {
+                return ResourceManager.GetString("Please enter new password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập mật khẩu cũ.
+        /// </summary>
+        internal static string Please_enter_old_password {
+            get {
+                return ResourceManager.GetString("Please enter old password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng nhập tên thể loại.
         /// </summary>
         internal static string Please_input_category_name {
             get {
                 return ResourceManager.GetString("Please input category name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tên vị trí.
+        /// </summary>
+        internal static string Please_input_location_name {
+            get {
+                return ResourceManager.GetString("Please input location name", resourceCulture);
             }
         }
         
@@ -720,6 +819,33 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Khôi phục tất cả thuốc thành công.
+        /// </summary>
+        internal static string Restore_all_medicines_successfully {
+            get {
+                return ResourceManager.GetString("Restore all medicines successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Khôi phục thất bại.
+        /// </summary>
+        internal static string Restore_failed {
+            get {
+                return ResourceManager.GetString("Restore failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đã khôi phục Mã thuốc {0}.
+        /// </summary>
+        internal static string Restore_medicine_id_successfully {
+            get {
+                return ResourceManager.GetString("Restore medicine id successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thứ bảy.
         /// </summary>
         internal static string Saturday {
@@ -807,6 +933,15 @@ namespace QPharma.Properties {
         internal static string Supplier_management {
             get {
                 return ResourceManager.GetString("Supplier management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mục lưu trữ đang trống.
+        /// </summary>
+        internal static string The_archive_is_empty {
+            get {
+                return ResourceManager.GetString("The archive is empty", resourceCulture);
             }
         }
         

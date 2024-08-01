@@ -83,8 +83,10 @@ namespace QPharma.GUI
 
         private void btnThongTin_Click(object sender, EventArgs e)
         {
-            Show(ref thongTinCaNhanView, () => new ThongTinCaNhanGUI(user, staff));
+            //Show(ref thongTinCaNhanView, () => new ThongTinCaNhanGUI(user, staff));
+            var thongTinCaNhanView = new ThongTinCaNhanGUI(user, staff);
             thongTinCaNhanView.OnUpdate += ChangeTextWelcome;
+            thongTinCaNhanView.ShowDialog();
         }
 
         public void ChangeTextWelcome()
@@ -140,7 +142,7 @@ namespace QPharma.GUI
             if (changePasswordDialog == null || changePasswordDialog.IsDisposed)
                 changePasswordDialog = new ChangePasswordDialog(user);
 
-            changePasswordDialog.Show();
+            changePasswordDialog.ShowDialog();
             changePasswordDialog.WindowState = FormWindowState.Normal;
         }
 
@@ -178,7 +180,7 @@ namespace QPharma.GUI
 
         private void tàiChínhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnTaiChinh.PerformClick();
+            //btnTaiChinh.PerformClick();
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)

@@ -136,10 +136,7 @@
   <data name="Please enter complete info" xml:space="preserve">
     <value>Vui lòng nhập đầy đủ thông tin</value>
   </data>
-  <data name="Old password not correct" xml:space="preserve">
-    <value>Mật khẩu cũ không đúng</value>
-  </data>
-  <data name="New password not correct" xml:space="preserve">
+  <data name="New password is not correct" xml:space="preserve">
     <value>Mật khẩu mới không khớp</value>
   </data>
   <data name="Change password success" xml:space="preserve">
@@ -399,6 +396,54 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
     <value>Không kê đơn</value>
   </data>
   <data name="Add" xml:space="preserve">
-	  <value>&lt;&lt; Thêm &gt;&gt;</value>
+    <value>&lt;&lt; Thêm &gt;&gt;</value>
+  </data>
+  <data name="Medicine location management" xml:space="preserve">
+    <value>QUẢN LÝ VỊ TRÍ THUỐC</value>
+  </data>
+  <data name="Location name already exists" xml:space="preserve">
+    <value>Tên vị tri đã tồn tại</value>
+  </data>
+  <data name="Please input location name" xml:space="preserve">
+    <value>Vui lòng nhập tên vị trí</value>
+  </data>
+  <data name="Old password is not correct" xml:space="preserve">
+    <value>Mật khẩu cũ không chính xác</value>
+  </data>
+  <data name="Please enter confirm password" xml:space="preserve">
+    <value>Vui lòng nhập lại mật khẩu mới</value>
+  </data>
+  <data name="Please enter new password" xml:space="preserve">
+    <value>Vui lòng nhập mật khẩu mới</value>
+  </data>
+  <data name="Please enter old password" xml:space="preserve">
+    <value>Vui lòng nhập mật khẩu cũ</value>
+  </data>
+  <data name="Are you sure you want to permanently delete this category?" xml:space="preserve">
+	  <value>Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?</value>
+  </data>
+  <data name="Restore failed" xml:space="preserve">
+	  <value>Khôi phục thất bại</value>
+  </data>
+  <data name="Are you sure want to delete this medicine location?" xml:space="preserve">
+	  <value>Bạn có muốn xoá vị trí thuốc này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
+  </data>
+  <data name="Are you sure want to delete this supplier?" xml:space="preserve">
+	  <value>Bạn có muốn xoá nhà cung cấp này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
+  </data>
+  <data name="Please choose a medicine location" xml:space="preserve">
+	  <value>Vui lòng chọn vị trí thuốc</value>
+  </data>
+  <data name="The archive is empty" xml:space="preserve">
+	  <value>Mục lưu trữ đang trống</value>
+  </data>
+  <data name="Are you sure you want to permanently remove this medication?" xml:space="preserve">
+	  <value>Bạn có chắc chắn muốn xóa vĩnh viễn thuốc này?</value>
+  </data>
+  <data name="Restore all medicines successfully" xml:space="preserve">
+	  <value>Khôi phục tất cả thuốc thành công</value>
+  </data>
+  <data name="Restore medicine id successfully" xml:space="preserve">
+	  <value>Đã khôi phục Mã thuốc {0}</value>
   </data>
 </root>

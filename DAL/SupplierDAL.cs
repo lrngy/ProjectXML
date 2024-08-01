@@ -193,7 +193,7 @@ namespace QPharma.DAL
         {
             try
             {
-                var query = "UPDATE suppliers SET supplier_deleted = null";
+                var query = "UPDATE suppliers SET supplier_deleted = null where supplier_deleted is not null";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;

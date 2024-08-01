@@ -25,7 +25,8 @@ namespace QPharma.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ADMIN0512;Initial Catalog=QlyHieuThuoc;Integrated Security=True;Encrypt=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LONGPC\\SQLEXPRESS;Initial Catalog=QlyHieuThuoc;Integrated Security=Tr" +
+            "ue")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
@@ -92,6 +93,15 @@ namespace QPharma.Properties {
         public int DelayTimerSplash {
             get {
                 return ((int)(this["DelayTimerSplash"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("QPharmaImage")]
+        public string LocalResourceImage {
+            get {
+                return ((string)(this["LocalResourceImage"]));
             }
         }
     }

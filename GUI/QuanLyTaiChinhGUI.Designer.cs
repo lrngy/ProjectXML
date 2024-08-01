@@ -1,4 +1,6 @@
-﻿namespace ProjectXML.GUI
+﻿using QPharma.Properties;
+
+namespace QPharma.GUI
 {
     partial class QuanLyTaiChinhGUI
     {
@@ -257,7 +259,7 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Nhân viên";
+            this.dataGridViewTextBoxColumn4.HeaderText = Resources.Staff;
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 45;
@@ -324,7 +326,7 @@
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Nhân viên";
+            this.Column5.HeaderText = Resources.Staff;
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.Width = 45;
@@ -492,7 +494,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 25);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Nhân viên";
+            this.label8.Text = Resources.Staff;
             // 
             // tbChiTietThu
             // 

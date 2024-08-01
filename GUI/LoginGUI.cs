@@ -1,27 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.DTO;
+using QPharma.BUS;
+using QPharma.Properties;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
-    public partial class LoginGUI : Form
+    public partial class LoginGUI : BaseForm
     {
         private readonly LoginBUS loginBus = new LoginBUS();
         private readonly StaffBUS staffBus = new StaffBUS();
+        private readonly UserBUS userBUS = new UserBUS();
         private MainGUI mainView;
+
 
         public LoginGUI()
         {
             InitializeComponent();
-        }
-
-        [STAThread]
-        public static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginGUI());
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
@@ -37,42 +31,44 @@ namespace ProjectXML.GUI
             var isEmptyField = username.Equals("") || password.Equals("");
             if (isEmptyField)
             {
-                lbError.Text = "Vui lòng nhập đầy đủ thông tin";
+                lbError.Text = Resources.Please_enter_complete_info;
                 return;
             }
 
             var user = loginBus.CheckExist(username, password);
             if (user is null)
             {
-                lbError.Text = "Tài khoản hoặc mật khẩu không chính xác";
+                lbError.Text = Resources.Wrong_username_or_password;
                 return;
             }
 
             tbUsername.Text = "";
             tbUsername.Focus();
             tbPassword.Text = "";
+            user.guid = Guid.NewGuid().ToString();
 
 
-            var staff = staffBus.GetByUsername(username);
+            var isLoggedIn = loginBus.Login(user);
+            if (!isLoggedIn) lbError.Text = Resources.Login_fail;
+
+            var staff = staffBus.GetByUsername(user.username);
             if (staff is null)
             {
-                lbError.Text = "Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !";
+                lbError.Text = Resources.Account_not_valid;
                 return;
             }
 
-            user.guid = Guid.NewGuid().ToString();
-            bool isLoggedIn = loginBus.Login(user);
-            if (!isLoggedIn)
+            if (mainView == null || mainView.IsDisposed)
             {
-                lbError.Text = "Đăng nhập thất bại. Vui lòng liên hệ quản lý !";
-                return;
-            }
-            if (mainView == null || mainView.IsDisposed) mainView = new MainGUI(user, this, staff);
-            mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
-            mainView.Show();
-            Hide();
+                mainView = new MainGUI(user, this, staff);
 
+                mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
+            }
+
+            Hide();
+            mainView.Show();
         }
+
 
         private void tbUsername_KeyDown(object sender, KeyEventArgs e)
         {
@@ -80,9 +76,9 @@ namespace ProjectXML.GUI
             if (e.KeyCode == Keys.Enter) btnLogin.PerformClick();
         }
 
-        private void LoginGUI_Load(object sender, EventArgs e)
+        private void LoginGUI_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            Application.Exit();
         }
     }
 }

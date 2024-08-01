@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using ProjectXML.DAL;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.Util;
 
-namespace ProjectXML.BUS
+namespace QPharma.BUS
 {
     public class SupplierBUS
     {
@@ -43,16 +43,16 @@ namespace ProjectXML.BUS
             return supplierDAL.Restore(id);
         }
 
+        public int RestoreAll()
+        {
+            return supplierDAL.RestoreAll();
+        }
+
         public int ForceDelete(string id)
         {
             if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
             return supplierDAL.ForceDelete(id);
         }
 
-        public int RestoreAll(string id)
-        {
-            if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
-            return supplierDAL.RestoreAll(id);
-        }
     }
 }

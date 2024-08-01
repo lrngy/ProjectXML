@@ -1,24 +1,36 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
+using QPharma.DTO;
+using QPharma.Util;
 using System.Xml;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using System.Data;
+using System;
 
-namespace ProjectXML.DAL
+namespace QPharma.DAL
 {
     public class LoginDAL
     {
         public bool isExistAccount(string username, string password)
         {
-            string query = $"SELECT * FROM users WHERE username = @username AND password = @password";
+            var query = "SELECT * FROM users WHERE username = @username AND password = @password";
             SqlParameter[] sqlParameters =
             {
                 new SqlParameter("@username", username),
                 new SqlParameter("@password", password)
             };
-            DataTable dt = DB.ExecuteQuery(query, sqlParameters);
+            var dt = DB.ExecuteQuery(query, sqlParameters);
             return dt.Rows.Count != 0;
+        }
+
+        public LoginLog GetLoginLog()
+        {
+            var query = "select top 1 * from login_log order by login_time desc";
+            var dt = DB.ExecuteQuery(query);
+            if (dt.Rows.Count == 0) return null;
+            var id = dt.Rows[0]["login_log_id"].ToString();
+            var username = dt.Rows[0]["username"].ToString();
+            var loginTime = dt.Rows[0]["login_time"].ToString();
+            var logoutTime = dt.Rows[0]["logout_time"].ToString();
+            return new LoginLog(id, username, loginTime, logoutTime);
         }
 
         public bool Login(UserDTO user)

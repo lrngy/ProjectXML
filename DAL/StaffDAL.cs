@@ -1,30 +1,71 @@
-﻿using ProjectXML.DTO;
-using ProjectXML.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using QPharma.DTO;
+using QPharma.Util;
 
-namespace ProjectXML.DAL
+namespace QPharma.DAL
 {
     // Lớp csdl
-    internal class StaffDAL 
+    internal static class StaffDAL 
     {
         // Lấy tất cả
-        public List<StaffDTO> GetAll()
+        public static List<StaffDTO> GetAll()
         {
             var list = new List<StaffDTO>();
             try
             {
-                string query = "SELECT * FROM staffs";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = "SELECT * FROM staffs";
+                var dt = DB.ExecuteQuery(query);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    var id = dr["staff_id"].ToString();
+                    var name = dr["staff_name"].ToString();
+                    var sex = bool.Parse(dr["staff_sex"].ToString());
+                    var yearOfBirth = dr["staff_year_of_birth"].ToString();
+                    var isManager = bool.Parse(dr["staff_is_manager"].ToString());
+                    var isSeller = bool.Parse(dr["staff_is_seller"].ToString());
+                    var username = dr["username"].ToString();
+
+                    var staff_created = dr["staff_created"].ToString();
+                    var staff_updated = dr["staff_updated"].ToString();
+                    var staff_deleted = dr["staff_deleted"].ToString();
+
+                    var staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created, staff_updated, staff_deleted);
+                    list.Add(staff);
+                }
+            }
+            catch (Exception)
+            { MessageBox.Show("Lấy thông tin nhân viên thất bại!");}
+
+            return list;
+        }
+
+        // tìm kiếm
+        public static List<StaffDTO> Search(string searchText)
+        {
+            var list = new List<StaffDTO>();
+            try
+            {
+                string query = @"SELECT *FROM staffs
+                                    WHERE
+                                        staff_deleted IS NULL AND
+                                        (
+                                            LOWER(staff_id) LIKE '%' + LOWER(@searchText) + '%' OR
+                                            LOWER(staff_name) LIKE '%' + LOWER(@searchText) + '%' OR
+                                            LOWER(staff_sex) LIKE '%' + LOWER(@searchText) + '%' OR
+                                            LOWER(staff_year_of_birth) LIKE '%' + LOWER(@searchText) + '%' OR
+                                            LOWER(staff_is_manager) LIKE '%' + LOWER(@searchText) + '%' OR
+                                            LOWER(staff_is_seller) LIKE '%' + LOWER(@searchText) + '%'
+                                        );
+                                ";
+
+                SqlParameter[] sqlParameters = { new SqlParameter("@searchText", searchText) };
+                var dt = DB.ExecuteQuery(query, sqlParameters);
                 foreach (DataRow dr in dt.Rows)
                 {
                     var id = dr["staff_id"].ToString();
@@ -34,32 +75,29 @@ namespace ProjectXML.DAL
                     var isManager = bool.Parse(dr["staff_is_manager"].ToString());
                     var isSeller = bool.Parse(dr["staff_is_seller"].ToString());
                     var username = dr["username"].ToString();
-                    //var created = dr["staff_created"].ToString();
-                    //var updated = dr["staff_updated"].ToString();
-                    //var deleted = dr["staff_deleted"].ToString();
 
+                    var staff_created = dr["staff_created"].ToString();
+                    var staff_updated = dr["staff_updated"].ToString();
+                    var staff_deleted = dr["staff_deleted"].ToString();
 
-                    StaffDTO staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
-
+                    var staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created, staff_updated, staff_deleted);
                     list.Add(staff);
                 }
             }
             catch (Exception)
-            {
-            }
+            { MessageBox.Show("Lấy thông tin nhân viên thất bại!"); }
 
             return list;
         }
 
         // Lấy bởi tên id
-        public StaffDTO GetById(string id)
+        public static StaffDTO GetById(string id)
         {
-
             StaffDTO staffDTO = null;
             try
             {
-                string query = $"SELECT * FROM staffs where staff_id = {id}";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = $"SELECT * FROM staffs where staff_id = '{id}'";
+                var dt = DB.ExecuteQuery(query);
                 if (dt.Rows.Count != 0)
                 {
                     var name = dt.Rows[0]["staff_name"].ToString();
@@ -68,29 +106,28 @@ namespace ProjectXML.DAL
                     var isManager = bool.Parse(dt.Rows[0]["staff_is_manager"].ToString());
                     var isSeller = bool.Parse(dt.Rows[0]["staff_is_seller"].ToString());
                     var username = dt.Rows[0]["username"].ToString();
-                    //var created = dr["staff_created"].ToString();
-                    //var updated = dr["staff_updated"].ToString();
-                    //var deleted = dr["staff_deleted"].ToString();
 
-                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
+                    var staff_created = dt.Rows[0]["staff_created"].ToString();
+                    var staff_updated = dt.Rows[0]["staff_updated"].ToString();
+                    var staff_deleted = dt.Rows[0]["staff_deleted"].ToString();
+
+                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created, staff_updated, staff_deleted);
                 }
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception ex)
+            { MessageBox.Show("Lấy thông tin nhân viên qua id thất bại!" + "\n" + ex.Message); }
 
             return staffDTO;
         }
 
         // Lấy bởi tên người dùng
-        public StaffDTO GetByUsername(string username)
+        public static StaffDTO GetByUsername(string username)
         {
-
             StaffDTO staffDTO = null;
             try
             {
-                string query = $"SELECT * FROM staffs where username = '{username}'";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = $"SELECT * FROM staffs where username = '{username}'";
+                var dt = DB.ExecuteQuery(query);
                 if (dt.Rows.Count != 0)
                 {
                     var id = dt.Rows[0]["staff_id"].ToString();
@@ -99,11 +136,12 @@ namespace ProjectXML.DAL
                     var yearOfBirth = dt.Rows[0]["staff_year_of_birth"].ToString();
                     var isManager = bool.Parse(dt.Rows[0]["staff_is_manager"].ToString());
                     var isSeller = bool.Parse(dt.Rows[0]["staff_is_seller"].ToString());
-                    //var username = dt.Rows[0]["username"].ToString();
-                    //var created = dr["staff_created"].ToString();
-                    //var updated = dr["staff_updated"].ToString();
-                    //var deleted = dr["staff_deleted"].ToString();
-                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username);
+
+                    var staff_created = dt.Rows[0]["staff_created"].ToString();
+                    var staff_updated = dt.Rows[0]["staff_updated"].ToString();
+                    var staff_deleted = dt.Rows[0]["staff_deleted"].ToString();
+
+                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created, staff_updated, staff_deleted);
                 }
             }
             catch (Exception ex)
@@ -115,34 +153,48 @@ namespace ProjectXML.DAL
         }
 
         // Kiểm tra tồn tại
-        public bool CheckExist(string id)
+        public static bool CheckExistUsername(string username)
         {
-
-            string query = $"SELECT * FROM staffs where staff_id = {id}";
-            DataTable dt = DB.ExecuteQuery(query);
+            var query = $"SELECT * FROM users where username = '{username}'";
+            var dt = DB.ExecuteQuery(query);
             if (dt.Rows.Count == 0) return false;
             return true;
         }
 
         // Chèn
-        public int Insert(StaffDTO staffDTO)
+        public static int Insert(StaffDTO staffDTO)
         {
             try
             {
-                // Chuỗi ngày tháng ban đầu
-                string dateString = staffDTO.birthday;
+                var query =
+                     "INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, " +
+                     "staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
+                         "VALUES(@staff_id, @staff_name, @staff_sex, @staff_year_of_birth, @staff_is_manager, @staff_is_seller," +
+                         " @staff_created, @staff_updated, @staff_deleted, @username )";
+                SqlParameter[] parameters = { 
+                    new SqlParameter("@staff_id", staffDTO.id), 
+                    new SqlParameter("@staff_name", staffDTO.name), 
+                    new SqlParameter("@staff_sex", staffDTO.gender), 
+                    new SqlParameter("@staff_year_of_birth", staffDTO.birthday), 
+                    new SqlParameter("@staff_is_manager", staffDTO.isManager),
+                    new SqlParameter("@staff_is_seller", staffDTO.isSeller),
+                    new SqlParameter("@staff_created", CustomDateTime.GetNow()),
+                    new SqlParameter("@staff_updated", DBNull.Value),
+                    new SqlParameter("@staff_deleted", DBNull.Value),
+                    new SqlParameter("@username", staffDTO.username)
+                };
 
-                // Chuyển đổi thành đối tượng DateTime
-                DateTime date = DateTime.ParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                // add user
+                if (CheckExistUsername(staffDTO.username))
+                {
+                    MessageBox.Show("username đã tồn tại!");
+                    return Predefined.ERROR;
+                }
+                string query2 = "INSERT INTO users (username, password) VALUES (@username, '1')";
 
-                // Chuyển đổi thành định dạng "yy MM dd"
-                string formattedDate = date.ToString("yyyy-MM-dd");
-
-                string query = $"INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
-                    $"VALUES('{staffDTO.id}', '{staffDTO.name}', '{staffDTO.gender}', '{formattedDate}', '{staffDTO.isManager}', '{staffDTO.isSeller}', '', '', '', '{staffDTO.username}')";
-
-                MessageBox.Show(query);
-                if (DB.ExecuteQuery(query, null) == null) return Predefined.ERROR;
+                if (DB.ExecuteNonQuery(query2, new SqlParameter[]{ new SqlParameter("@username", staffDTO.username)}) <= 0) 
+                    MessageBox.Show("Thêm người dùng thất bại!");
+                if (DB.ExecuteNonQuery(query, parameters) <= 0) MessageBox.Show("Thêm nhân viên thất bại!");
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -153,18 +205,35 @@ namespace ProjectXML.DAL
         }
 
         // Cập nhật
-        public int Update(StaffDTO staffDTO)
+        public static int Update(StaffDTO staffDTO)
         {
-
             try
             {
-                string query = $"UPDATE QlyHieuThuoc.dbo.staffs" +
-                    $"SET staff_name='{staffDTO.name}', staff_sex={staffDTO.gender}, " +
-                    $"staff_year_of_birth='{staffDTO.birthday}', staff_is_manager={staffDTO.isManager}, " +
-                    $"staff_is_seller={staffDTO.isSeller}, staff_created='', staff_updated='', staff_deleted='', " +
-                    $"username='{staffDTO.username}' WHERE staff_id='{staffDTO.id}'";
+                var query = "UPDATE QlyHieuThuoc.dbo.staffs " +
+                        " SET staff_name=@staff_name, staff_sex=@staff_sex, staff_year_of_birth=@staff_year_of_birth, " +
+                        "staff_is_manager=@staff_is_manager, staff_is_seller=@staff_is_seller, staff_created= @staff_created, " +
+                        "staff_updated=@staff_updated, staff_deleted=@staff_deleted, username=@username WHERE staff_id=@staff_id";
 
-                if (DB.ExecuteQuery(query, null) == null) return Predefined.ERROR;
+                SqlParameter[] parameters = {
+                    new SqlParameter("@staff_id", staffDTO.id),
+                    new SqlParameter("@staff_name", staffDTO.name),
+                    new SqlParameter("@staff_sex", staffDTO.gender),
+                    new SqlParameter("@staff_year_of_birth", staffDTO.birthday),
+                    new SqlParameter("@staff_is_manager", staffDTO.isManager),
+                    new SqlParameter("@staff_is_seller", staffDTO.isSeller),
+                    new SqlParameter("@staff_created", SqlDbType.DateTime)
+                    { 
+                        Value = DateTime.TryParse(GetByUsername(staffDTO.username).staff_created, 
+                            out DateTime parsedDate)
+                                ? (object)parsedDate
+                                : DBNull.Value 
+                    },
+                    new SqlParameter("@staff_updated", CustomDateTime.GetNow()),
+                    new SqlParameter("@staff_deleted", DBNull.Value),
+                    new SqlParameter("@username", staffDTO.username)
+                };
+
+                if (DB.ExecuteNonQuery(query, parameters) <= 0) return Predefined.ERROR;
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -174,15 +243,12 @@ namespace ProjectXML.DAL
             }
         }
 
-        // Xóa bỏ
-        internal int Delete(string id)
+        internal static int Delete(string id)
         {
-
             try
             {
-                string query = $"UPDATE staffs SET staff_deleted = '{CustomDateTime.GetNow()}' WHERE staff_id = '{id}'";
-                DB.ExecuteNonQuery(query);
-
+                var query = $"UPDATE staffs SET staff_deleted = '{CustomDateTime.GetNow()}' WHERE staff_id = '{id}'";
+                if(DB.ExecuteNonQuery(query)<=0) return Predefined.ERROR;
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -193,13 +259,12 @@ namespace ProjectXML.DAL
         }
 
         // Khôi phục
-        internal int Restore(string id)
+        internal static int Restore(string currentUsername)
         {
-
             try
             {
-                string query = $"UPDATE staffs SET staff_deleted = '' WHERE staff_id = '{id}'";
-                DB.ExecuteNonQuery(query);
+                var query = $"UPDATE staffs SET staff_deleted = null WHERE username = @username";
+                if (DB.ExecuteNonQuery(query, new SqlParameter[] {new SqlParameter("@username", currentUsername)}) <= 0) return Predefined.ERROR;
 
                 return Predefined.SUCCESS;
             }
@@ -210,17 +275,22 @@ namespace ProjectXML.DAL
             }
         }
 
-        // Buộc xóa
-        internal int ForceDelete(string id)
+        internal static int ForceDelete(string username)
         {
             try
             {
-                //var supplierNode = supplierDoc.SelectSingleNode("/suppliers/supplier[supplier_id='" + id + "']");
-                //supplierNode.ParentNode.RemoveChild(supplierNode);
-                //supplierDoc.Save(Config.getXMLPath("suppliers"));
+                var query = $"DELETE FROM staffs WHERE username = '{username}'";
 
-                string query = $"DELETE FROM staffs WHERE staff_id = '{id}'";
-                DB.ExecuteNonQuery(query);
+                string query2 = $"DELETE FROM login_log WHERE username = @username";
+                SqlParameter[] parameters2 = { new SqlParameter("@username", username) };
+
+                string query3 = $"DELETE FROM users WHERE username = @username";
+                SqlParameter[] parameters = { new SqlParameter("@username", username) };
+
+                if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
+                if (DB.ExecuteNonQuery(query2, parameters2) < 0) MessageBox.Show("Xóa log thất bại!");
+
+                if (DB.ExecuteNonQuery(query3, parameters) <= 0) MessageBox.Show("Xóa người dùng thất bại!");
 
                 return Predefined.SUCCESS;
             }
@@ -232,18 +302,28 @@ namespace ProjectXML.DAL
         }
 
         // Khôi phục lại tất cả
-        internal int RestoreAll()
+        internal static int RestoreAll()
         {
-          
             try
             {
-                //var categoryNodes = categoryDoc.SelectNodes("/categories/category");
-                //foreach (XmlNode categoryNode in categoryNodes)
-                //    categoryNode.SelectSingleNode("category_deleted").InnerText = "";
-                //categoryDoc.Save(Config.getXMLPath("categories"));
+                var query = "UPDATE staffs SET staff_deleted = null";
+                if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
 
-                string query = $"UPDATE staffs SET staff_deleted = ''";
-                DB.ExecuteNonQuery(query);
+                return Predefined.SUCCESS;
+            }
+            catch (XmlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Predefined.ERROR;
+            }
+        }
+
+        internal static int ForceAllDelete()
+        {
+            try
+            {
+                var query = $"DELETE FROM staffs WHERE staff_deleted IS NOT NULL";
+                if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
 
                 return Predefined.SUCCESS;
             }

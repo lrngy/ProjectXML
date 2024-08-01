@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjectXML.DTO
+﻿namespace QPharma.DTO
 {
-    internal class LoginLog
+    public class LoginLog
     {
         public string id { get; set; }
         public string username { get; set; }

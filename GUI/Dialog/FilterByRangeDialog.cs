@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using QPharma.BUS;
+using QPharma.DTO;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI.Dialog
+namespace QPharma.GUI.Dialog
 {
-    public partial class FilterByRangeDialog : Form
+    public partial class FilterByRangeDialog : BaseForm
     {
         public delegate void OnClickFilter(List<MedicineDTO> list);
 
@@ -38,7 +39,7 @@ namespace ProjectXML.GUI.Dialog
             var to = tbGiaKT.Text;
             if (from.Equals("") || to.Equals(""))
             {
-                CustomMessageBox.ShowWarning("Vui lòng nhập đầy đủ thông tin");
+                CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
                 return null;
             }
 
@@ -61,7 +62,8 @@ namespace ProjectXML.GUI.Dialog
                 return null;
             }
 
-            return medicineList.Where(medicine => medicine.price_out >= priceFrom && medicine.price_out <= priceTo).ToList();
+            return medicineList.Where(medicine => medicine.price_out >= priceFrom && medicine.price_out <= priceTo)
+                .ToList();
         }
 
         public List<MedicineDTO> FilterByImportDate(List<MedicineDTO> medicineList)
@@ -114,7 +116,7 @@ namespace ProjectXML.GUI.Dialog
             var to = tbSLKT.Text;
             if (from.Equals("") || to.Equals(""))
             {
-                CustomMessageBox.ShowWarning("Vui lòng nhập đầy đủ thông tin");
+                CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
                 return null;
             }
 

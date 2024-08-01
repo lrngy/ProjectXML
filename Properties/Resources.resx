@@ -117,5 +117,288 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Database connection error" xml:space="preserve">
+    <value>Không thể kết nối đến cơ sở dữ liệu</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SplashScreen.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Login fail" xml:space="preserve">
+    <value>Đăng nhập thất bại. Vui lòng liên hệ quản lý !</value>
+  </data>
+  <data name="Account not valid" xml:space="preserve">
+    <value>Tài khoản không hợp lệ. Vui lòng liên hệ quản lý !</value>
+  </data>
+  <data name="Wrong username or password" xml:space="preserve">
+    <value>Tài khoản hoặc mật khẩu không chính xác</value>
+  </data>
+  <data name="Please enter complete info" xml:space="preserve">
+    <value>Vui lòng nhập đầy đủ thông tin</value>
+  </data>
+  <data name="Old password not correct" xml:space="preserve">
+    <value>Mật khẩu cũ không đúng</value>
+  </data>
+  <data name="New password not correct" xml:space="preserve">
+    <value>Mật khẩu mới không khớp</value>
+  </data>
+  <data name="Change password success" xml:space="preserve">
+    <value>Đổi mật khẩu thành công</value>
+  </data>
+  <data name="Change password fail" xml:space="preserve">
+    <value>Đổi mật khẩu thất bại</value>
+  </data>
+  <data name="appicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Please input your name" xml:space="preserve">
+    <value>Vui lòng nhập tên của bạn</value>
+  </data>
+  <data name="Name cannot exceed value" xml:space="preserve">
+    <value>Tên không được quá {0} ký tự</value>
+  </data>
+  <data name="Your age must be greater or equal value" xml:space="preserve">
+    <value>Tuổi của bạn phải lớn hơn hoặc bằng {0}</value>
+  </data>
+  <data name="Update information success" xml:space="preserve">
+    <value>Cập nhật thông tin thành công</value>
+  </data>
+  <data name="Account does not exist" xml:space="preserve">
+    <value>Tài khoản không tồn tại</value>
+  </data>
+  <data name="Update information failed" xml:space="preserve">
+    <value>Cập nhật thông tin thất bại</value>
+  </data>
+  <data name="Do not have permission to access" xml:space="preserve">
+    <value>Bạn không có quyền truy cập chức năng này</value>
+  </data>
+  <data name="Hello text" xml:space="preserve">
+    <value>Xin chào, {0}</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Chủ nhật</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Thứ hai</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Thứ ba</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Thứ tư</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thứ năm</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Thứ sáu</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Thứ bảy</value>
+  </data>
+  <data name="Date format" xml:space="preserve">
+    <value>{0}, ngày {1} tháng {2} năm {3}</value>
+  </data>
+  <data name="Logout confirm" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn đăng xuất?</value>
+  </data>
+  <data name="Exit confirm" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn thoát?</value>
+  </data>
+  <data name="Medicine management" xml:space="preserve">
+    <value>QUẢN LÝ THUỐC</value>
+  </data>
+  <data name="Category management" xml:space="preserve">
+    <value>QUẢN LÝ DANH MỤC THUỐC</value>
+  </data>
+  <data name="Supplier management" xml:space="preserve">
+    <value>QUẢN LÝ NHÀ CUNG CẤP</value>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>Khả dụng</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Không khả dụng</value>
+  </data>
+  <data name="Please input category name" xml:space="preserve">
+    <value>Vui lòng nhập tên thể loại</value>
+  </data>
+  <data name="Category name already exists" xml:space="preserve">
+    <value>Tên thể loại đã tồn tại</value>
+  </data>
+  <data name="Add failled" xml:space="preserve">
+    <value>Thêm thất bại</value>
+  </data>
+  <data name="Add failed" xml:space="preserve">
+    <value>Thêm thất bại</value>
+  </data>
+  <data name="Please select the category you want to edit" xml:space="preserve">
+    <value>Vui lòng chọn thể loại muốn sửa</value>
+  </data>
+  <data name="Category ID does not exist" xml:space="preserve">
+    <value>Mã thể loại không tồn tại</value>
+  </data>
+  <data name="Edit failed" xml:space="preserve">
+    <value>Sửa thất bại</value>
+  </data>
+  <data name="Category ID does not valid" xml:space="preserve">
+    <value>Mã thể loại không hợp lệ</value>
+  </data>
+  <data name="Delete failed" xml:space="preserve">
+    <value>Xóa thất bại</value>
+  </data>
+  <data name="Please input supplier ID" xml:space="preserve">
+    <value>Vui lòng nhập mã nhà cung cấp</value>
+  </data>
+  <data name="Please input supplier name" xml:space="preserve">
+    <value>Vui lòng nhập tên nhà cung cấp</value>
+  </data>
+  <data name="Invalid email" xml:space="preserve">
+    <value>Email không hợp lệ</value>
+  </data>
+  <data name="Invalid phone number" xml:space="preserve">
+    <value>Số điện thoại không hợp lệ</value>
+  </data>
+  <data name="Supplier ID already exists" xml:space="preserve">
+    <value>Mã nhà cung cấp đã tồn tại</value>
+  </data>
+  <data name="This provider cannot be added" xml:space="preserve">
+    <value>Không thể thêm nhà cung cấp này</value>
+  </data>
+  <data name="Please select the supplier you want to edit" xml:space="preserve">
+    <value>Vui lòng chọn nhà cung cấp muốn chỉnh sửa</value>
+  </data>
+  <data name="Supplier ID is not exist" xml:space="preserve">
+    <value>Mã nhà cung cấp không tồn tại</value>
+  </data>
+  <data name="Cannot edit this supplier" xml:space="preserve">
+    <value>Không thể sửa nhà cung cấp này</value>
+  </data>
+  <data name="Please select the supplier you want to delete!" xml:space="preserve">
+    <value>Vui lòng chọn nhà cung cấp muốn xoá !</value>
+  </data>
+  <data name="Are you sure you want to remove this supplier?" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xoá nhà cung cấp này không?</value>
+  </data>
+  <data name="Quantity must be a number" xml:space="preserve">
+    <value>Số lượng phải là số</value>
+  </data>
+  <data name="Price must be a number" xml:space="preserve">
+    <value>Giá phải là số</value>
+  </data>
+  <data name="Quantity must be greater or equal 0" xml:space="preserve">
+    <value>Số lượng phải lớn hơn hoặc bằng 0.</value>
+  </data>
+  <data name="Price must be greater or equal 0" xml:space="preserve">
+    <value>Giá phải lớn hơn hoặc bằng 0.</value>
+  </data>
+  <data name="Please select a category" xml:space="preserve">
+    <value>Vui lòng chọn thể loại.</value>
+  </data>
+  <data name="Please select a supplier" xml:space="preserve">
+    <value>Vui lòng chọn nhà cung cấp</value>
+  </data>
+  <data name="Added medicine information successfully" xml:space="preserve">
+    <value>Thêm thông tin thuốc thành công</value>
+  </data>
+  <data name="Medicine ID already exist" xml:space="preserve">
+    <value>Mã thuốc đã tồn tại</value>
+  </data>
+  <data name="Cannot added this medicine" xml:space="preserve">
+    <value>Lỗi thêm thuốc</value>
+  </data>
+  <data name="Successfully edited medicine information" xml:space="preserve">
+    <value>Sửa thông tin thuốc thành công</value>
+  </data>
+  <data name="Invalid Medicine ID" xml:space="preserve">
+    <value>Mã thuốc không hợp lệ</value>
+  </data>
+  <data name="Please select a valid medicine" xml:space="preserve">
+    <value>Vui lòng chọn thuốc hợp lệ</value>
+  </data>
+  <data name="Change image successfully" xml:space="preserve">
+    <value>Đổi ảnh thành công</value>
+  </data>
+  <data name="Medicine ID is not exist" xml:space="preserve">
+    <value>Mã thuốc không tồn tại</value>
+  </data>
+  <data name="Cannot save this image" xml:space="preserve">
+    <value>Sự cố khi lưu ảnh</value>
+  </data>
+  <data name="Do you want to delete this image" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa ảnh này?</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Quản lý</value>
+  </data>
+  <data name="Staff" xml:space="preserve">
+    <value>Nhân viên</value>
+  </data>
+  <data name="btnDanhMuc_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnDanhMuc.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnNcc_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnNcc.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnNhanVien_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnNhanVien.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnQlyThuoc_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnQlyThuoc.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnTaiChinh_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnTaiChinh.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnThongTin_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnThongTin.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBackgroundImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBackgroundImage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MainBackgroundImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MainBackgroundImage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ictuLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ictuLogo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Class" xml:space="preserve">
+    <value>Lớp</value>
+  </data>
+  <data name="ClassValue" xml:space="preserve">
+    <value>CNTT K19P</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>Giảng viên</value>
+  </data>
+  <data name="LecturerValue" xml:space="preserve">
+    <value>cô Nguyễn Lan Oanh</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Thành viên</value>
+  </data>
+  <data name="MembersValue" xml:space="preserve">
+    <value>Nguyễn Mạnh Cường;
+Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="SubjectValue" xml:space="preserve">
+    <value>Ứng dụng công nghệ phát triển phần mềm</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Năm</value>
+  </data>
+  <data name="YearValue" xml:space="preserve">
+    <value>2024</value>
+  </data>
+  <data name="Prescription drug" xml:space="preserve">
+    <value>Kê đơn</value>
+  </data>
+  <data name="Unprescription drug" xml:space="preserve">
+    <value>Không kê đơn</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+	  <value>&lt;&lt; Thêm &gt;&gt;</value>
+  </data>
 </root>

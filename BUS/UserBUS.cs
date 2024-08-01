@@ -1,8 +1,8 @@
-﻿using ProjectXML.DAL;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+﻿using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.Util;
 
-namespace ProjectXML.BUS
+namespace QPharma.BUS
 {
     public class UserBUS
     {
@@ -29,9 +29,5 @@ namespace ProjectXML.BUS
             if (UserDAL.GetUser(user.username) == null) return Predefined.ID_NOT_EXIST;
             return UserDAL.UpdatePassword(user);
         }
-
-        // quyet
-        public bool CheckExistUserName(string username)
-        { return UserDAL.CheckExistUserName(username); }
     }
 }

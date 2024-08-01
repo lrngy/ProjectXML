@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using QPharma.BUS;
+using QPharma.DTO;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI.Dialog
+namespace QPharma.GUI.Dialog
 {
-    public partial class ChangePasswordDialog : Form
+    public partial class ChangePasswordDialog : BaseForm
     {
         private readonly UserDTO user;
         private readonly UserBUS userController = new UserBUS();
@@ -30,20 +31,20 @@ namespace ProjectXML.GUI.Dialog
 
             if (oldPassword.Equals("") || newPassword.Equals("") || confirmPassword.Equals(""))
             {
-                CustomMessageBox.ShowWarning("Vui lòng nhập đầy đủ thông tin");
+                CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
                 return;
             }
 
 
             if (!oldPassword.Equals(user.password))
             {
-                CustomMessageBox.ShowWarning("Mật khẩu cũ không đúng");
+                CustomMessageBox.ShowWarning(Resources.Old_password_not_correct);
                 return;
             }
 
             if (!newPassword.Equals(confirmPassword))
             {
-                CustomMessageBox.ShowWarning("Mật khẩu mới không khớp");
+                CustomMessageBox.ShowWarning(Resources.New_password_not_correct);
                 return;
             }
 
@@ -52,13 +53,14 @@ namespace ProjectXML.GUI.Dialog
             var result = userController.UpdatePassword(newUser);
             if (result == Predefined.SUCCESS)
             {
-                CustomMessageBox.ShowSuccess("Đổi mật khẩu thành công");
+                CustomMessageBox.ShowSuccess(Resources.Change_password_success);
                 user.password = newPassword;
                 Close();
             }
             else
             {
-                CustomMessageBox.ShowError("Đổi mật khẩu thất bại");
+                CustomMessageBox.ShowError(Resources.Change_password_fail
+                );
             }
         }
 

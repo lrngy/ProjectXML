@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.GUI
+﻿namespace QPharma.GUI
 {
     partial class LoginGUI
     {
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginGUI));
             this.lbLogin = new System.Windows.Forms.Label();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.lbUsername = new System.Windows.Forms.Label();
@@ -130,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::QPharma.Properties.Resources.LoginBackgroundImage;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(925, 477);
             this.Controls.Add(this.lbError);
@@ -145,7 +144,7 @@
             this.Name = "LoginGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QUẢN LÝ HIỆU THUỐC";
-            this.Load += new System.EventHandler(this.LoginGUI_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginGUI_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

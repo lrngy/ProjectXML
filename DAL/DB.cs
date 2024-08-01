@@ -4,84 +4,81 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Windows.Forms;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.DAL
+namespace QPharma.DAL
 {
     internal class DB
     {
-        private static string connectString = @"Data Source=ADMIN0512;Initial Catalog=QlyHieuThuoc;Integrated Security=True;Encrypt=False";
+        private static string connectString = "Data Source=ADMIN0512;Initial Catalog=QlyHieuThuoc;Integrated Security=True;Encrypt=False";
+
         private static SqlConnection GetConnection()
         {
             return new SqlConnection(connectString);
         }
+
         public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
             try
             {
-                using (SqlConnection conn = GetConnection())
+                using (var conn = GetConnection())
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (var cmd = new SqlCommand(query, conn))
                     {
-                        if (parameters != null)
-                        {
-                            cmd.Parameters.AddRange(parameters);
-                        }
+                        if (parameters != null) cmd.Parameters.AddRange(parameters);
 
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        using (var adapter = new SqlDataAdapter(cmd))
                         {
-                            DataTable dataTable = new DataTable();
+                            var dataTable = new DataTable();
                             adapter.Fill(dataTable);
                             return dataTable;
                         }
                     }
                 }
-            } catch (Exception ex)
-            {
-                // Ghi log lỗi vào Debug để dễ dàng theo dõi
-                Debug.WriteLine("Error in ExecuteQuery: " + ex.Message);
-
-                // Hiển thị MessageBox thông báo lỗi cho người dùng
-                MessageBox.Show("Đã xảy ra lỗi khi thực thi truy vấn:\n" + ex.Message, "Lỗi");
             }
-
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Lỗi"); }
             return null;
         }
 
         public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
         {
-            using (SqlConnection conn = GetConnection())
+            try
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (var conn = GetConnection())
                 {
-                    if (parameters != null)
+                    using (var cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddRange(parameters);
-                    }
-                    conn.Open();
-                    try
-                    {
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                        if (parameters != null) cmd.Parameters.AddRange(parameters);
+                        conn.Open();
+                        try
+                        {
+                            var rowsAffected = cmd.ExecuteNonQuery();
 
-                    return rowsAffected;
-                    } catch(Exception ex)
-                    {
-                        Debug.Write(ex.ToString());
+                            return rowsAffected;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.Write(ex.ToString());
+                        }
+
+                        conn.Close();
+                        return 0;
                     }
-                    conn.Close();
-                    return 0;
                 }
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Lỗi"); return Predefined.ERROR; }
         }
 
         public static int ExecuteTransaction(Dictionary<string, SqlParameter[]> queryParameters)
         {
-            int result = 0;
+            var result = 0;
 
-            using (SqlConnection connection = GetConnection())
+            using (var connection = GetConnection())
             {
                 connection.Open();
-                SqlTransaction sqlTran = connection.BeginTransaction();
-                SqlCommand command = connection.CreateCommand();
+                var sqlTran = connection.BeginTransaction();
+                var command = connection.CreateCommand();
                 command.Transaction = sqlTran;
 
                 try
@@ -115,6 +112,5 @@ namespace ProjectXML.DAL
                 return result;
             }
         }
-
     }
 }

@@ -144,8 +144,14 @@ username varchar(30) foreign key references users(username),
 login_time datetime,
 logout_time datetime
 )
+GO;
 
 
+INSERT INTO users
+(username, password)
+VALUES('admin', '1');
+GO;
 
-
-
+INSERT INTO staffs
+(staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)
+VALUES('nv1', 'Nguyen Van A', 1, getdate(), 1, 0, getdate(), '', '', 'admin');

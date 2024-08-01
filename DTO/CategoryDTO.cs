@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.DTO
+﻿namespace QPharma.DTO
 {
     public class CategoryDTO
     {
@@ -6,7 +6,8 @@
         {
         }
 
-        public CategoryDTO(string id, string name, string note, bool status, string created, string updated, string deleted)
+        public CategoryDTO(string id, string name, string note, bool status, string created, string updated,
+            string deleted)
         {
             this.id = id;
             this.name = name;
@@ -19,7 +20,7 @@
 
         public CategoryDTO(string name, string note, bool status, string created, string updated, string deleted)
         {
-            this.id = id;
+            id = id;
             this.name = name;
             this.note = note;
             this.status = status;
@@ -35,6 +36,5 @@
         public string created { get; set; }
         public string updated { get; set; }
         public string deleted { get; set; }
-
     }
 }

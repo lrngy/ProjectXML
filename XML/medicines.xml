@@ -1,37 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <medicines>
-  <medicine>
-    <medicine_id>1232</medicine_id>
-    <medicine_name>1</medicine_name>
-    <medicine_expire_date>01/01/2025</medicine_expire_date>
-    <medicine_unit>cái</medicine_unit>
-    <medicine_price>15000</medicine_price>
-    <medicine_quantity>1</medicine_quantity>
-    <medicine_image>E:\Code\ProjectXML\Shared/Medicine/Images\1232.jpg</medicine_image>
-    <medicine_description>thuốc trị viêm họng</medicine_description>
-    <supplier_id>1</supplier_id>
-    <medicine_created>16/07/2024 10:28</medicine_created>
-    <medicine_updated>17/07/2024 08:19</medicine_updated>
-    <medicine_deleted>
-    </medicine_deleted>
-    <category_id>2</category_id>
-  </medicine>
-  <medicine>
-    <medicine_id>1</medicine_id>
-    <medicine_name>1</medicine_name>
-    <medicine_expire_date>01/05/1900</medicine_expire_date>
-    <medicine_unit>1</medicine_unit>
-    <medicine_price>21222</medicine_price>
-    <medicine_quantity>1</medicine_quantity>
-    <medicine_image>
-    </medicine_image>
-    <medicine_description>122112</medicine_description>
-    <supplier_id>1</supplier_id>
-    <medicine_created>17/07/2024 21:38</medicine_created>
-    <medicine_updated>
-    </medicine_updated>
-    <medicine_deleted>
-    </medicine_deleted>
-    <category_id>2</category_id>
-  </medicine>
+	<medicine>
+		<medicine_id>1232</medicine_id>
+		<medicine_name>1</medicine_name>
+		<medicine_expire_date>01/01/2025</medicine_expire_date>
+		<medicine_unit>cái</medicine_unit>
+		<medicine_price>15000</medicine_price>
+		<medicine_quantity>1</medicine_quantity>
+		<medicine_image>E:\Code\ProjectXML\Shared/Medicine/Images\1232.jpg</medicine_image>
+		<medicine_description>thuốc trị viêm họng</medicine_description>
+		<supplier_id>1</supplier_id>
+		<medicine_created>16/07/2024 10:28</medicine_created>
+		<medicine_updated>17/07/2024 08:19</medicine_updated>
+		<medicine_deleted>
+		</medicine_deleted>
+		<category_id>2</category_id>
+	</medicine>
+	<medicine>
+		<medicine_id>1</medicine_id>
+		<medicine_name>1</medicine_name>
+		<medicine_expire_date>01/05/1900</medicine_expire_date>
+		<medicine_unit>1</medicine_unit>
+		<medicine_price>21222</medicine_price>
+		<medicine_quantity>1</medicine_quantity>
+		<medicine_image>
+		</medicine_image>
+		<medicine_description>122112</medicine_description>
+		<supplier_id>1</supplier_id>
+		<medicine_created>17/07/2024 21:38</medicine_created>
+		<medicine_updated>
+		</medicine_updated>
+		<medicine_deleted>
+		</medicine_deleted>
+		<category_id>2</category_id>
+	</medicine>
 </medicines>

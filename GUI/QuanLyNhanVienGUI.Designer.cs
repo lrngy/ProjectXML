@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.GUI
+﻿namespace QPharma.GUI
 {
     partial class QuanLyNhanVienGUI
     {
@@ -40,6 +40,13 @@
             this.save_add = new System.Windows.Forms.Button();
             this.Back = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.staff_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_year_of_birth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_is_manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staff_is_seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.t_timKiem = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.c_staff_is_manager = new System.Windows.Forms.RadioButton();
@@ -49,13 +56,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cboGender = new System.Windows.Forms.ComboBox();
-            this.staff_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_year_of_birth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_is_manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staff_is_seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleted_staffs = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,7 +123,7 @@
             this.them.Name = "them";
             this.them.Size = new System.Drawing.Size(61, 32);
             this.them.TabIndex = 12;
-            this.them.Text = "Thêm";
+            this.them.Text = "Add";
             this.them.UseVisualStyleBackColor = true;
             this.them.Click += new System.EventHandler(this.them_Click);
             // 
@@ -133,7 +134,7 @@
             this.sua.Name = "sua";
             this.sua.Size = new System.Drawing.Size(61, 32);
             this.sua.TabIndex = 13;
-            this.sua.Text = "Sửa";
+            this.sua.Text = "Update";
             this.sua.UseVisualStyleBackColor = true;
             this.sua.Click += new System.EventHandler(this.sua_Click);
             // 
@@ -144,7 +145,7 @@
             this.xoa.Name = "xoa";
             this.xoa.Size = new System.Drawing.Size(61, 32);
             this.xoa.TabIndex = 13;
-            this.xoa.Text = "Xóa";
+            this.xoa.Text = "Delete";
             this.xoa.UseVisualStyleBackColor = true;
             this.xoa.Click += new System.EventHandler(this.xoa_Click);
             // 
@@ -191,6 +192,55 @@
             this.dataGridView1.Size = new System.Drawing.Size(686, 161);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // staff_id
+            // 
+            this.staff_id.HeaderText = "id";
+            this.staff_id.MinimumWidth = 6;
+            this.staff_id.Name = "staff_id";
+            this.staff_id.Width = 40;
+            // 
+            // staff_name
+            // 
+            this.staff_name.HeaderText = "Tên nhân viên";
+            this.staff_name.MinimumWidth = 6;
+            this.staff_name.Name = "staff_name";
+            this.staff_name.Width = 125;
+            // 
+            // staff_username
+            // 
+            this.staff_username.HeaderText = "Tài Khoản";
+            this.staff_username.MinimumWidth = 6;
+            this.staff_username.Name = "staff_username";
+            this.staff_username.Width = 125;
+            // 
+            // staff_sex
+            // 
+            this.staff_sex.HeaderText = "Giới tính";
+            this.staff_sex.MinimumWidth = 6;
+            this.staff_sex.Name = "staff_sex";
+            this.staff_sex.Width = 80;
+            // 
+            // staff_year_of_birth
+            // 
+            this.staff_year_of_birth.HeaderText = "Năm sinh";
+            this.staff_year_of_birth.MinimumWidth = 6;
+            this.staff_year_of_birth.Name = "staff_year_of_birth";
+            this.staff_year_of_birth.Width = 80;
+            // 
+            // staff_is_manager
+            // 
+            this.staff_is_manager.HeaderText = "Quản Lý?";
+            this.staff_is_manager.MinimumWidth = 6;
+            this.staff_is_manager.Name = "staff_is_manager";
+            this.staff_is_manager.Width = 90;
+            // 
+            // staff_is_seller
+            // 
+            this.staff_is_seller.HeaderText = "Bán hàng?";
+            this.staff_is_seller.MinimumWidth = 6;
+            this.staff_is_seller.Name = "staff_is_seller";
+            this.staff_is_seller.Width = 90;
             // 
             // t_timKiem
             // 
@@ -281,56 +331,18 @@
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(121, 21);
             this.cboGender.TabIndex = 24;
-            this.cboGender.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // staff_id
+            // deleted_staffs
             // 
-            this.staff_id.HeaderText = "id";
-            this.staff_id.MinimumWidth = 6;
-            this.staff_id.Name = "staff_id";
-            this.staff_id.Width = 40;
-            // 
-            // staff_name
-            // 
-            this.staff_name.HeaderText = "Tên nhân viên";
-            this.staff_name.MinimumWidth = 6;
-            this.staff_name.Name = "staff_name";
-            this.staff_name.Width = 125;
-            // 
-            // staff_username
-            // 
-            this.staff_username.HeaderText = "Tài Khoản";
-            this.staff_username.MinimumWidth = 6;
-            this.staff_username.Name = "staff_username";
-            this.staff_username.Width = 125;
-            // 
-            // staff_sex
-            // 
-            this.staff_sex.HeaderText = "Giới tính";
-            this.staff_sex.MinimumWidth = 6;
-            this.staff_sex.Name = "staff_sex";
-            this.staff_sex.Width = 80;
-            // 
-            // staff_year_of_birth
-            // 
-            this.staff_year_of_birth.HeaderText = "Năm sinh";
-            this.staff_year_of_birth.MinimumWidth = 6;
-            this.staff_year_of_birth.Name = "staff_year_of_birth";
-            this.staff_year_of_birth.Width = 80;
-            // 
-            // staff_is_manager
-            // 
-            this.staff_is_manager.HeaderText = "Quản Lý?";
-            this.staff_is_manager.MinimumWidth = 6;
-            this.staff_is_manager.Name = "staff_is_manager";
-            this.staff_is_manager.Width = 90;
-            // 
-            // staff_is_seller
-            // 
-            this.staff_is_seller.HeaderText = "Bán hàng?";
-            this.staff_is_seller.MinimumWidth = 6;
-            this.staff_is_seller.Name = "staff_is_seller";
-            this.staff_is_seller.Width = 90;
+            this.deleted_staffs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.deleted_staffs.Location = new System.Drawing.Point(629, 177);
+            this.deleted_staffs.Margin = new System.Windows.Forms.Padding(2);
+            this.deleted_staffs.Name = "deleted_staffs";
+            this.deleted_staffs.Size = new System.Drawing.Size(109, 30);
+            this.deleted_staffs.TabIndex = 13;
+            this.deleted_staffs.Text = "Deleted Staffs";
+            this.deleted_staffs.UseVisualStyleBackColor = true;
+            this.deleted_staffs.Click += new System.EventHandler(this.deleted_staffs_Click);
             // 
             // QuanLyNhanVienGUI
             // 
@@ -348,6 +360,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Back);
+            this.Controls.Add(this.deleted_staffs);
             this.Controls.Add(this.save_add);
             this.Controls.Add(this.xoa);
             this.Controls.Add(this.sua);
@@ -398,5 +411,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_year_of_birth;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_is_manager;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_is_seller;
+        private System.Windows.Forms.Button deleted_staffs;
     }
 }

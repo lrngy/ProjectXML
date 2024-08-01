@@ -2,14 +2,16 @@
 using System.Globalization;
 using System.Windows.Forms;
 using System.Xml;
-using ProjectXML.Util;
+using QPharma.GUI;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML
+namespace QPharma
 {
-    public partial class ChiTietThu : Form
+    public partial class ChiTietThu : BaseForm
     {
-        private XmlElement finance_bills;
         private readonly string path = Config.getXMLPath("finance_bills");
+        private XmlElement finance_bills;
         private XmlDocument xmlDocument;
 
         public ChiTietThu()
@@ -55,7 +57,7 @@ namespace ProjectXML
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             if (tbMaPThu2.Text == "" || tbSoTienThu2.Text == "" || tbChiTietThu2.Text == "" || tbIDnvThu2.Text == "")
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                MessageBox.Show(Resources.Please_enter_complete_info);
 
             xmlDocument.Load(path);
             finance_bills = xmlDocument.DocumentElement;

@@ -1,66 +1,79 @@
-﻿using ProjectXML.DAL;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+﻿using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.Util;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
-namespace ProjectXML.BUS
+namespace QPharma.BUS
 {
     // Lớp điều khiển
     internal class StaffBUS
     {
-        private StaffDAL staffDAL;
         private UserDAL userDAL;
-
-        private UserBUS userBUS;
 
         public StaffBUS()
         {
-            this.staffDAL = new StaffDAL();
             this.userDAL = new UserDAL();
-
-            this.userBUS = new UserBUS();
         }
-        public bool CheckExistUsername(string username)
+        public static bool CheckExistUsername(string username)
         {
-            return userDAL.CheckExistUserName(username);
-        }
-        public bool CheckExistId(string id)
-        {
-            return staffDAL.CheckExist(id);
+            return StaffDAL.CheckExistUsername(username);
         }
         public StaffDTO GetByUsername(string username)
         {
-            return staffDAL.GetByUsername(username);
+            return StaffDAL.GetByUsername(username);
         }
-        public List<StaffDTO> GetAll()
+        public static List<StaffDTO> GetAll()
         {
-            return staffDAL.GetAll();
+            return StaffDAL.GetAll();
         }
         public void addSave(StaffDTO staff)
         {
-            if (userDAL.AddUser(new UserDTO(staff.username, "1")) == Predefined.SUCCESS 
-                && staffDAL.Insert(staff) == Predefined.SUCCESS) 
+            if (staff is null)
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!", "Thất bại");
+                return;
+            }
+
+           if( StaffDAL.Insert(staff)== Predefined.SUCCESS)
                 MessageBox.Show("Thêm nhân viên thành công!");
         }
-        public void updateStaff(StaffDTO staff, string oldUsername)
+        public void updateStaff(StaffDTO staff)
         {
-            if (userDAL.UpdateUser(staff.username, oldUsername) == Predefined.SUCCESS
-               && staffDAL.Update(staff) == Predefined.SUCCESS)
+            if (staff is null)
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!", "Thất bại");
+                return;
+            }
+
+            if (StaffDAL.Update(staff) == Predefined.SUCCESS)
                 MessageBox.Show("Sửa nhân viên thành công!");
+            else
+                MessageBox.Show("Sửa nhân viên thất bại!");
         }
-        public void delete(StaffDTO staff, string oldUsername)
+        public void delete(string id)
         {
-            if (staffDAL.Delete(staff.id) == Predefined.SUCCESS &&
-            userDAL.DeleteUser(oldUsername) == Predefined.SUCCESS) 
-                MessageBox.Show("Xóa nhân viên thành công!");
+            if (id is null || id == "")
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!", "Thất bại");
+                return;
+            }
+            if (StaffDAL.Delete(id) == Predefined.SUCCESS)
+                MessageBox.Show("Đã thêm nhân viên vào nhân viên đã xóa thành công!");
+            else
+                MessageBox.Show("Thêm nhân viên vào nhân viên đã xóa thất bại!");
+        }
+
+        internal void resetUserPassword(string oldUsername)
+        {
+            if (CustomMessageBox.ShowQuestion("Chắc chắn muốn đặt lại mật khẩu nhân viên?") == DialogResult.Yes)
+            {
+                if (UserDAL.UpdatePassword(new UserDTO(oldUsername, "1")) == Predefined.SUCCESS)
+                    MessageBox.Show("Đặt lại mật khẩu nhân viên thành công!");
+                else
+                    MessageBox.Show("Đặt lại mật khẩu nhân viên thất bại!");
+            }
         }
     }
 }

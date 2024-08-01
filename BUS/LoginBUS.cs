@@ -1,7 +1,9 @@
-﻿using ProjectXML.DAL;
-using ProjectXML.DTO;
+﻿using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.BUS
+namespace QPharma.BUS
 {
     public class LoginBUS
     {
@@ -23,9 +25,19 @@ namespace ProjectXML.BUS
             return loginDAL.Logout(user);
         }
 
-        public bool CheckLoggedIn(UserDTO user)
+        public LoginLog CheckLoggedIn()
         {
-            return loginDAL.CheckLoggedIn(user);
+            var loginLog = loginDAL.GetLoginLog();
+            if (loginLog == null)
+                return null;
+
+            var currentTime = CustomDateTime.GetNow();
+            var loginTime = loginLog.loginTime;
+
+            var timeSpan = CustomDateTime.CompareDateTime(currentTime, loginTime);
+            if (timeSpan.TotalMinutes <= Development.Default.SessionDurationMinute &&
+                string.IsNullOrEmpty(loginLog.logoutTime)) return loginLog;
+            return null;
         }
     }
 }

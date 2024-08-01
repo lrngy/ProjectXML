@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using ProjectXML.DAL;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.Util;
 
-namespace ProjectXML.BUS
+namespace QPharma.BUS
 {
     public class CategoryBUS
     {
@@ -37,22 +37,17 @@ namespace ProjectXML.BUS
             return categoryDAL.Delete(maTheLoai);
         }
 
-        internal int Restore(string maTheLoai)
-        {
-            return categoryDAL.Restore(maTheLoai);
-        }
-
-        internal int ForceDelete(string maTheLoai)
+        public int ForceDelete(string maTheLoai)
         {
             return categoryDAL.ForceDelete(maTheLoai);
         }
 
-        //public void ReloadData()
-        //{
-        //    categoryDAL.ReloadData();
-        //}
+        public int Restore(string maTheLoai)
+        {
+            return categoryDAL.Restore(maTheLoai);
+        }
 
-        internal int RestoreAll()
+        public int RestoreAll()
         {
             return categoryDAL.RestoreAll();
         }

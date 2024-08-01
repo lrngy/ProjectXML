@@ -4,11 +4,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Xml;
-using System.Xml.Linq;
-using ProjectXML.DTO;
-using ProjectXML.Util;
+using QPharma.DTO;
+using QPharma.Util;
 
-namespace ProjectXML.DAL
+namespace QPharma.DAL
 {
     public class SupplierDAL
     {
@@ -16,12 +15,11 @@ namespace ProjectXML.DAL
 
         public List<SupplierDTO> GetAll()
         {
-
             var list = new List<SupplierDTO>();
             try
             {
-                string query = "SELECT * FROM suppliers";
-                DataTable dt = DB.ExecuteQuery(query);
+                var query = "SELECT * FROM suppliers";
+                var dt = DB.ExecuteQuery(query);
                 foreach (DataRow dr in dt.Rows)
                 {
                     var id = dr["supplier_id"].ToString();
@@ -52,9 +50,9 @@ namespace ProjectXML.DAL
             SupplierDTO supplier = null;
             try
             {
-                string query = "SELECT * FROM suppliers WHERE supplier_id = @id";
+                var query = "SELECT * FROM suppliers WHERE supplier_id = @id";
                 SqlParameter[] sqlParameters = { new SqlParameter("@id", id) };
-                DataTable dt = DB.ExecuteQuery(query, sqlParameters);
+                var dt = DB.ExecuteQuery(query, sqlParameters);
                 if (dt.Rows.Count != 0)
                 {
                     var name = dt.Rows[0]["supplier_name"].ToString();
@@ -81,11 +79,11 @@ namespace ProjectXML.DAL
         {
             try
             {
-
-                string query = "INSERT INTO suppliers" +
-                    "(supplier_id, supplier_name, supplier_note, supplier_phone, supplier_email, supplier_status, supplier_created)" +
-                    "VALUES (@id, @name, @note, @phone, @email, @status, @created)";
-                SqlParameter[] sqlParameters = {
+                var query = "INSERT INTO suppliers" +
+                            "(supplier_id, supplier_name, supplier_note, supplier_phone, supplier_email, supplier_status, supplier_created)" +
+                            "VALUES (@id, @name, @note, @phone, @email, @status, @created)";
+                SqlParameter[] sqlParameters =
+                {
                     new SqlParameter("@id", supplier.id),
                     new SqlParameter("@name", supplier.name),
                     new SqlParameter("@note", supplier.note),
@@ -93,7 +91,7 @@ namespace ProjectXML.DAL
                     new SqlParameter("@email", supplier.email),
                     new SqlParameter("@status", supplier.status),
                     new SqlParameter("@created", supplier.created)
-                    };
+                };
                 DB.ExecuteNonQuery(query, sqlParameters);
                 return Predefined.SUCCESS;
             }
@@ -108,11 +106,12 @@ namespace ProjectXML.DAL
         {
             try
             {
-                string query = "UPDATE suppliers SET supplier_name = @name, supplier_phone = @phone, supplier_email = @email, " +
+                var query =
+                    "UPDATE suppliers SET supplier_name = @name, supplier_phone = @phone, supplier_email = @email, " +
                     "supplier_note = @note, supplier_status = @status, supplier_updated = @updated WHERE supplier_id = @id";
                 SqlParameter[] sqlParameters =
                 {
-                     new SqlParameter("@id", supplier.id),
+                    new SqlParameter("@id", supplier.id),
                     new SqlParameter("@name", supplier.name),
                     new SqlParameter("@note", supplier.note),
                     new SqlParameter("@phone", supplier.phone),
@@ -134,8 +133,9 @@ namespace ProjectXML.DAL
         {
             try
             {
-                string query = $"UPDATE suppliers SET supplier_deleted = @deleted WHERE supplier_id = @id";
-                SqlParameter[] sqlParameters = {
+                var query = "UPDATE suppliers SET supplier_deleted = @deleted WHERE supplier_id = @id";
+                SqlParameter[] sqlParameters =
+                {
                     new SqlParameter("@id", id),
                     new SqlParameter("@deleted", CustomDateTime.GetNow())
                 };
@@ -151,11 +151,9 @@ namespace ProjectXML.DAL
 
         internal int Restore(string id)
         {
-     
             try
             {
-
-                string query = $"UPDATE suppliers SET supplier_deleted = null WHERE supplier_id = @id";
+                var query = "UPDATE suppliers SET supplier_deleted = null WHERE supplier_id = @id";
                 SqlParameter[] sqlParameter =
                 {
                     new SqlParameter("@id", id)
@@ -175,10 +173,9 @@ namespace ProjectXML.DAL
         {
             try
             {
-
-                string query = $"DELETE FROM suppliers WHERE supplier_id = @id";
+                var query = "DELETE FROM suppliers WHERE supplier_id = @id";
                 SqlParameter[] sqlParameter =
-             {
+                {
                     new SqlParameter("@id", id)
                 };
                 DB.ExecuteNonQuery(query, sqlParameter);
@@ -192,12 +189,11 @@ namespace ProjectXML.DAL
             }
         }
 
-        internal int RestoreAll(string id)
+        internal int RestoreAll()
         {
             try
             {
-
-                string query = "UPDATE suppliers SET supplier_deleted = null";
+                var query = "UPDATE suppliers SET supplier_deleted = null";
                 DB.ExecuteNonQuery(query);
 
                 return Predefined.SUCCESS;

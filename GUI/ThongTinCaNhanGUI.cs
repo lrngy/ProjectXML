@@ -1,29 +1,31 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
-using ProjectXML.BUS;
-using ProjectXML.DAL;
-using ProjectXML.DTO;
-using ProjectXML.GUI.Dialog;
-using ProjectXML.Util;
+using QPharma.BUS;
+using QPharma.DAL;
+using QPharma.DTO;
+using QPharma.GUI.Dialog;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
-    public partial class ThongTinCaNhanGUI : Form
+    public partial class ThongTinCaNhanGUI : BaseForm
     {
         public delegate void OnUpdateHandler();
-        public OnUpdateHandler OnUpdate;
 
-        private ChangePasswordDialog changePasswordDialog;
-        private UserDTO user;
         private readonly StaffDTO staff;
         private readonly UserBUS userController = new UserBUS();
 
-        public ThongTinCaNhanGUI(UserDTO user)
+        private ChangePasswordDialog changePasswordDialog;
+        public OnUpdateHandler OnUpdate;
+        private UserDTO user;
+
+        public ThongTinCaNhanGUI(UserDTO user, StaffDTO staff)
         {
             InitializeComponent();
             this.user = user;
-            staff = new StaffDAL().GetByUsername(user.username);
+            this.staff = staff;
         }
 
         private void ThongTinCaNhanView_Load(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace ProjectXML.GUI
         {
             user = userController.getUser(user.username);
             lbMaNV.Text = staff.id;
-            lbVaiTro.Text = staff.isManager ? "Quản lý" : "Nhân viên";
+            lbVaiTro.Text = staff.isManager ? Resources.Manager : Resources.Staff;
             tbHoTen.Text = staff.name;
             try
             {
@@ -43,7 +45,7 @@ namespace ProjectXML.GUI
             }
             catch (Exception)
             {
-                dateTimePicker1.Text = "2000-01-01";
+                dateTimePicker1.Text = Development.Default.DefaultDate;
             }
 
             radioButton1.Checked = staff.gender;
@@ -58,21 +60,23 @@ namespace ProjectXML.GUI
 
             if (name.Equals(""))
             {
-                CustomMessageBox.ShowWarning("Vui lòng nhập tên của bạn");
+                CustomMessageBox.ShowWarning(Resources.Please_input_your_name);
                 return;
             }
 
-            if (name.Length > 30)
+            var nameMaxLength = Development.Default.MaxNameLength;
+            if (name.Length > nameMaxLength)
             {
-                CustomMessageBox.ShowWarning("Tên không được quá 30 ký tự");
+                CustomMessageBox.ShowWarning(string.Format(Resources.Name_cannot_exceed_value, nameMaxLength));
                 return;
             }
 
             var birth = DateTime.ParseExact(birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            if (DateTime.Now.Year - birth.Year < 18)
+            var minAge = Development.Default.MinAge;
+            if (DateTime.Now.Year - birth.Year < minAge)
             {
-                CustomMessageBox.ShowWarning("Tuổi của bạn phải lớn hơn hoặc bằng 18");
+                CustomMessageBox.ShowWarning(string.Format(Resources.Your_age_must_be_greater_or_equal_value, minAge));
                 return;
             }
 
@@ -82,7 +86,7 @@ namespace ProjectXML.GUI
             var result = userController.Update(newUser, newStaff);
             if (result == Predefined.SUCCESS)
             {
-                CustomMessageBox.ShowSuccess("Cập nhật thông tin thành công");
+                CustomMessageBox.ShowSuccess(Resources.Update_information_success);
                 user.Update(newUser);
                 staff.Update(newStaff);
                 ThongTinCaNhanShow();
@@ -92,11 +96,11 @@ namespace ProjectXML.GUI
 
             if (result == Predefined.ID_NOT_EXIST)
             {
-                CustomMessageBox.ShowError("Tài khoản không tồn tại");
+                CustomMessageBox.ShowError(Resources.Account_does_not_exist);
                 return;
             }
 
-            CustomMessageBox.ShowError("Cập nhật thông tin thất bại");
+            CustomMessageBox.ShowError(Resources.Update_information_failed);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

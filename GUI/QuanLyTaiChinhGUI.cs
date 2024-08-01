@@ -7,26 +7,26 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using System.Xml.Linq;
-using ProjectXML.Util;
+using QPharma.Properties;
+using QPharma.Util;
 
-namespace ProjectXML.GUI
+namespace QPharma.GUI
 {
-    public partial class QuanLyTaiChinhGUI : Form
+    public partial class QuanLyTaiChinhGUI : BaseForm
     {
-        private DataTable dataTableThu, dataTableChi;
-
         private readonly XmlDocument docChi = Config.getDoc("pos_bills");
         private readonly XmlDocument docNhanVien = Config.getDoc("staffs");
         private readonly XmlDocument docThu = Config.getDoc("finance_bills");
+        private readonly Dictionary<string, decimal> monthlyRevenueChi = new Dictionary<string, decimal>();
+        private readonly Dictionary<string, decimal> monthlyRevenueThu = new Dictionary<string, decimal>();
+        private readonly string pathChi = Config.getXMLPath("pos_bills");
+        private readonly string pathThu = Config.getXMLPath("finance_bills");
+        private DataTable dataTableThu, dataTableChi;
 
         private XmlElement finance_bills;
         private string maPhieuChiClick;
 
         private string maPhieuThuClick;
-        private readonly Dictionary<string, decimal> monthlyRevenueChi = new Dictionary<string, decimal>();
-        private readonly Dictionary<string, decimal> monthlyRevenueThu = new Dictionary<string, decimal>();
-        private readonly string pathChi = Config.getXMLPath("pos_bills");
-        private readonly string pathThu = Config.getXMLPath("finance_bills");
         private XmlElement pos_bills;
 
 
@@ -236,7 +236,7 @@ namespace ProjectXML.GUI
         {
             if (tbMaPThu.Text == "" || tbSoTienThu.Text == "" || tbChiTietThu.Text == "" || tbIDnvThu.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                MessageBox.Show(Resources.Please_enter_complete_info);
                 return;
             }
 
@@ -467,7 +467,7 @@ namespace ProjectXML.GUI
             if (tbMaPChi.Text == "" || tbSoTienChi.Text == "" || tbIDnvChi.Text == "" || tbIDKho.Text == "" ||
                 tbMaPhieuThu.Text == "" || tbIDKh.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                MessageBox.Show(Resources.Please_enter_complete_info);
                 return;
             }
 

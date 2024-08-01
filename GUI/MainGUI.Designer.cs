@@ -1,4 +1,6 @@
-﻿namespace ProjectXML.GUI
+﻿using QPharma.Properties;
+
+namespace QPharma.GUI
 {
     partial class MainGUI
     {
@@ -130,7 +132,7 @@
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Size = new System.Drawing.Size(194, 72);
             this.btnNhanVien.TabIndex = 1;
-            this.btnNhanVien.Text = "Nhân viên";
+            this.btnNhanVien.Text = global::QPharma.Properties.Resources.Staff;
             this.btnNhanVien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNhanVien.UseVisualStyleBackColor = true;
             this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
@@ -202,7 +204,7 @@
             this.thoátToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(67, 21);
-            this.quảnLýToolStripMenuItem.Text = "Quản lý";
+            this.quảnLýToolStripMenuItem.Text = global::QPharma.Properties.Resources.Manager;
             // 
             // thuốcToolStripMenuItem
             // 
@@ -229,7 +231,7 @@
             // 
             this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
             this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.nhânViênToolStripMenuItem.Text = "Nhân viên";
+            this.nhânViênToolStripMenuItem.Text = global::QPharma.Properties.Resources.Staff;
             this.nhânViênToolStripMenuItem.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
             // 
             // tàiChínhToolStripMenuItem
@@ -391,7 +393,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::QPharma.Properties.Resources.MainBackgroundImage;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1031, 589);
             this.Controls.Add(this.groupBox2);
@@ -405,8 +407,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QUẢN LÝ HIỆU THUỐC - TỔNG QUAN";
+            this.Text = "Q-Pharma - TỔNG QUAN";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainGUI_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainGUI_FormClosed);
             this.Load += new System.EventHandler(this.MainView_Load);
             this.groupBox1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);

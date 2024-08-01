@@ -1,4 +1,4 @@
-﻿namespace ProjectXML.GUI.Dialog
+﻿namespace QPharma.GUI.Dialog
 {
     partial class AboutDialog
     {
@@ -28,83 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutDialog));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbSubject = new System.Windows.Forms.Label();
+            this.lbTitle = new System.Windows.Forms.Label();
+            this.lbLecturer = new System.Windows.Forms.Label();
+            this.lbYear = new System.Windows.Forms.Label();
+            this.lbMembers = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.lbClass = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lbSubject
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(94, 187);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Môn học: XML và ứng dụng";
+            this.lbSubject.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSubject.Location = new System.Drawing.Point(1, 187);
+            this.lbSubject.Name = "lbSubject";
+            this.lbSubject.Size = new System.Drawing.Size(360, 20);
+            this.lbSubject.TabIndex = 0;
+            this.lbSubject.Text = "|";
+            this.lbSubject.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lbTitle
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(42, 148);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(285, 30);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "QUẢN LÝ HIỆU THUỐC v1.0";
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(2, 148);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(359, 30);
+            this.lbTitle.TabIndex = 0;
+            this.lbTitle.Text = "|";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // lbLecturer
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(94, 221);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(221, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Giảng viên: cô Nguyễn Thị Dung";
+            this.lbLecturer.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLecturer.Location = new System.Drawing.Point(1, 222);
+            this.lbLecturer.Name = "lbLecturer";
+            this.lbLecturer.Size = new System.Drawing.Size(356, 20);
+            this.lbLecturer.TabIndex = 1;
+            this.lbLecturer.Text = "|";
+            this.lbLecturer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // lbYear
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(142, 441);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 20);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Năm 2024";
+            this.lbYear.AutoSize = true;
+            this.lbYear.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbYear.Location = new System.Drawing.Point(142, 450);
+            this.lbYear.Name = "lbYear";
+            this.lbYear.Size = new System.Drawing.Size(13, 20);
+            this.lbYear.TabIndex = 2;
+            this.lbYear.Text = "|";
             // 
-            // label5
+            // lbMembers
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(94, 291);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 20);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Thành viên thực hiện:";
+            this.lbMembers.AutoSize = true;
+            this.lbMembers.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMembers.Location = new System.Drawing.Point(24, 309);
+            this.lbMembers.Name = "lbMembers";
+            this.lbMembers.Size = new System.Drawing.Size(13, 20);
+            this.lbMembers.TabIndex = 3;
+            this.lbMembers.Text = "|";
             // 
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(82, 314);
+            this.richTextBox1.Location = new System.Drawing.Point(28, 332);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(202, 115);
+            this.richTextBox1.Size = new System.Drawing.Size(306, 115);
             this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "1. Nguyễn Mạnh Cường\n2. Dương Hữu Hoàng\n3. Nguyễn Hoàng Long\n4. Vũ Thế Lực\n5. Phạ" +
-    "m Văn Quyết";
+            this.richTextBox1.Text = "";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::QPharma.Properties.Resources.ictuLogo;
             this.pictureBox1.Location = new System.Drawing.Point(121, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(121, 115);
@@ -112,46 +110,47 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnOK
             // 
-            this.button1.Location = new System.Drawing.Point(146, 473);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnOK.Location = new System.Drawing.Point(146, 473);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 6;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label6
+            // lbClass
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(94, 258);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Lớp: CNTT K19P";
+            this.lbClass.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbClass.Location = new System.Drawing.Point(1, 258);
+            this.lbClass.Name = "lbClass";
+            this.lbClass.Size = new System.Drawing.Size(360, 20);
+            this.lbClass.TabIndex = 1;
+            this.lbClass.Text = "|";
+            this.lbClass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AboutDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 508);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbMembers);
+            this.Controls.Add(this.lbYear);
+            this.Controls.Add(this.lbClass);
+            this.Controls.Add(this.lbLecturer);
+            this.Controls.Add(this.lbTitle);
+            this.Controls.Add(this.lbSubject);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông tin";
+            this.Load += new System.EventHandler(this.AboutDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -160,14 +159,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbSubject;
+        private System.Windows.Forms.Label lbTitle;
+        private System.Windows.Forms.Label lbLecturer;
+        private System.Windows.Forms.Label lbYear;
+        private System.Windows.Forms.Label lbMembers;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Label lbClass;
     }
 }

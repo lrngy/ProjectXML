@@ -1,6 +1,9 @@
 ﻿using System.Data.SqlClient;
 using QPharma.DTO;
 using QPharma.Util;
+using System.Xml;
+using System.Data;
+using System;
 
 namespace QPharma.DAL
 {
@@ -18,29 +21,6 @@ namespace QPharma.DAL
             return dt.Rows.Count != 0;
         }
 
-        public bool Login(UserDTO user)
-        {
-            var query = "INSERT INTO login_log(login_log_id, username, login_time) VALUES(@id, @username, @loginTime)";
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("@id", user.guid),
-                new SqlParameter("@username", user.username),
-                new SqlParameter("@loginTime", CustomDateTime.GetNow())
-            };
-            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
-        }
-
-        public bool Logout(UserDTO user)
-        {
-            var query = "UPDATE login_log SET logout_time = @logoutTime WHERE login_log_id = @id";
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("@id", user.guid),
-                new SqlParameter("@logoutTime", CustomDateTime.GetNow())
-            };
-            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
-        }
-
         public LoginLog GetLoginLog()
         {
             var query = "select top 1 * from login_log order by login_time desc";
@@ -51,6 +31,37 @@ namespace QPharma.DAL
             var loginTime = dt.Rows[0]["login_time"].ToString();
             var logoutTime = dt.Rows[0]["logout_time"].ToString();
             return new LoginLog(id, username, loginTime, logoutTime);
+        }
+
+        public bool Login(UserDTO user)
+        {
+            string query = "INSERT INTO login_log(login_log_id, username, login_time) VALUES(@id, @username, @loginTime)";
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@id", user.guid),
+                new SqlParameter("@username", user.username),
+                new SqlParameter("@loginTime", CustomDateTime.GetNow()),
+            };
+            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
+        }
+
+        public bool Logout(UserDTO user)
+        {
+           
+            string query = "UPDATE login_log SET logout_time = @logoutTime WHERE login_log_id = @id";
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@id", user.guid),
+                new SqlParameter("@logoutTime", CustomDateTime.GetNow()),
+            };
+            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
+        }
+
+        public bool CheckLoggedIn(UserDTO user)
+        {
+            string query = "select top 1 * from login_log order by login_time desc";
+            DataTable dt = DB.ExecuteQuery(query);
+            return dt.Rows.Count != 0;
         }
     }
 }

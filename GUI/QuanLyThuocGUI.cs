@@ -37,7 +37,7 @@ namespace QPharma.GUI
             InitializeComponent();
             this.user = user;
             this.tabControlIndex = tabControlIndex;
-            staff = new StaffDAL().GetByUsername(user.username);
+            staff = StaffDAL.GetByUsername(user.username);
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)

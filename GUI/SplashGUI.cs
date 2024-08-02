@@ -20,6 +20,7 @@ namespace QPharma.GUI
         public SplashGUI()
         {
             InitializeComponent();
+            // this.TopMost = false;
         }
 
         private void StartMainGUI(UserDTO user)

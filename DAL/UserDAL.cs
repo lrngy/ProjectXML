@@ -4,6 +4,9 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using QPharma.DTO;
 using QPharma.Util;
+using System.Windows.Forms;
+using System.Data;
+using System.Security.Cryptography;
 
 namespace QPharma.DAL
 {
@@ -32,7 +35,6 @@ namespace QPharma.DAL
 
             return user;
         }
-
         public int Update(UserDTO user, StaffDTO staff)
         {
             try
@@ -66,8 +68,7 @@ namespace QPharma.DAL
                 return Predefined.ERROR;
             }
         }
-
-        internal int UpdatePassword(UserDTO user)
+        public static int UpdatePassword(UserDTO user)
         {
             try
             {

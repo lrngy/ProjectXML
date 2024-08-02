@@ -2,6 +2,11 @@
 {
     public class LoginLog
     {
+        public string id { get; set; }
+        public string username { get; set; }
+        public string loginTime { get; set; }
+        public string logoutTime { get; set; }
+
         public LoginLog(string id, string username, string loginTime, string logoutTime)
         {
             this.id = id;
@@ -9,10 +14,5 @@
             this.loginTime = loginTime;
             this.logoutTime = logoutTime;
         }
-
-        public string id { get; set; }
-        public string username { get; set; }
-        public string loginTime { get; set; }
-        public string logoutTime { get; set; }
     }
 }

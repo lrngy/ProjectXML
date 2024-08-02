@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows.Forms;
 using QPharma.Properties;
+using QPharma.Util;
 
 namespace QPharma.DAL
 {
     internal class DB
     {
-        private static readonly string connectString = Development.Default.ConnectionString;
+        private static string connectString = "Data Source=ADMIN0512;Initial Catalog=QlyHieuThuoc;Integrated Security=True;Encrypt=False";
 
         private static SqlConnection GetConnection()
         {
@@ -18,45 +20,54 @@ namespace QPharma.DAL
 
         public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
-            using (var conn = GetConnection())
+            try
             {
-                using (var cmd = new SqlCommand(query, conn))
+                using (var conn = GetConnection())
                 {
-                    if (parameters != null) cmd.Parameters.AddRange(parameters);
-
-                    using (var adapter = new SqlDataAdapter(cmd))
+                    using (var cmd = new SqlCommand(query, conn))
                     {
-                        var dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        return dataTable;
+                        if (parameters != null) cmd.Parameters.AddRange(parameters);
+
+                        using (var adapter = new SqlDataAdapter(cmd))
+                        {
+                            var dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+                            return dataTable;
+                        }
                     }
                 }
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Lỗi"); }
+            return null;
         }
 
         public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
         {
-            using (var conn = GetConnection())
+            try
             {
-                using (var cmd = new SqlCommand(query, conn))
+                using (var conn = GetConnection())
                 {
-                    if (parameters != null) cmd.Parameters.AddRange(parameters);
-                    conn.Open();
-                    try
+                    using (var cmd = new SqlCommand(query, conn))
                     {
-                        var rowsAffected = cmd.ExecuteNonQuery();
+                        if (parameters != null) cmd.Parameters.AddRange(parameters);
+                        conn.Open();
+                        try
+                        {
+                            var rowsAffected = cmd.ExecuteNonQuery();
 
-                        return rowsAffected;
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.Write(ex.ToString());
-                    }
+                            return rowsAffected;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.Write(ex.ToString());
+                        }
 
-                    conn.Close();
-                    return 0;
+                        conn.Close();
+                        return 0;
+                    }
                 }
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Lỗi"); return Predefined.ERROR; }
         }
 
         public static int ExecuteTransaction(Dictionary<string, SqlParameter[]> queryParameters)

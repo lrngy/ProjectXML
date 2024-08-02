@@ -749,7 +749,7 @@ namespace QPharma.GUI
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(681, 55);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(115, 20);
+            this.label14.Size = new System.Drawing.Size(109, 20);
             this.label14.TabIndex = 0;
             this.label14.Text = "Nhà cung cấp*:";
             // 
@@ -760,7 +760,7 @@ namespace QPharma.GUI
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(367, 56);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 20);
+            this.label13.Size = new System.Drawing.Size(85, 20);
             this.label13.TabIndex = 0;
             this.label13.Text = "Danh mục*:";
             // 
@@ -771,7 +771,7 @@ namespace QPharma.GUI
             this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(996, 92);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 20);
+            this.label19.Size = new System.Drawing.Size(51, 20);
             this.label19.TabIndex = 0;
             this.label19.Text = "Mô tả:";
             // 
@@ -782,7 +782,7 @@ namespace QPharma.GUI
             this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(700, 176);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(96, 20);
+            this.label25.Size = new System.Drawing.Size(90, 20);
             this.label25.TabIndex = 0;
             this.label25.Text = "Vị trí thuốc*:";
             // 
@@ -793,7 +793,7 @@ namespace QPharma.GUI
             this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(395, 118);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(48, 20);
+            this.label24.Size = new System.Drawing.Size(46, 20);
             this.label24.TabIndex = 0;
             this.label24.Text = "Loại*:";
             // 
@@ -804,7 +804,7 @@ namespace QPharma.GUI
             this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(715, 113);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(81, 20);
+            this.label23.Size = new System.Drawing.Size(77, 20);
             this.label23.TabIndex = 0;
             this.label23.Text = "Giá nhập*:";
             // 
@@ -815,7 +815,7 @@ namespace QPharma.GUI
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(43, 244);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(72, 20);
+            this.label18.Size = new System.Drawing.Size(69, 20);
             this.label18.TabIndex = 0;
             this.label18.Text = "Giá bán*:";
             // 
@@ -826,7 +826,7 @@ namespace QPharma.GUI
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(364, 180);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(96, 20);
+            this.label17.Size = new System.Drawing.Size(90, 20);
             this.label17.TabIndex = 0;
             this.label17.Text = "Đơn vị tính*:";
             // 
@@ -837,7 +837,7 @@ namespace QPharma.GUI
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(34, 175);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(81, 20);
+            this.label16.Size = new System.Drawing.Size(78, 20);
             this.label16.TabIndex = 0;
             this.label16.Text = "Số lượng*:";
             // 
@@ -848,7 +848,7 @@ namespace QPharma.GUI
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(34, 113);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 20);
+            this.label12.Size = new System.Drawing.Size(82, 20);
             this.label12.TabIndex = 0;
             this.label12.Text = "Tên thuốc*:";
             // 
@@ -870,7 +870,7 @@ namespace QPharma.GUI
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(683, 241);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(113, 20);
+            this.label15.Size = new System.Drawing.Size(106, 20);
             this.label15.TabIndex = 0;
             this.label15.Text = "Ngày hết hạn*:";
             // 
@@ -881,7 +881,7 @@ namespace QPharma.GUI
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(34, 46);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 20);
+            this.label11.Size = new System.Drawing.Size(84, 20);
             this.label11.TabIndex = 0;
             this.label11.Text = "Mã thuốc* :";
             // 

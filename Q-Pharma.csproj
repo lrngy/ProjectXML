@@ -103,6 +103,26 @@
     <Compile Include="GUI\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Dialog\DeletedStaffsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Dialog\DeletedStaffsDialog.Designer.cs">
+      <DependentUpon>DeletedStaffsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SplashGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SplashGUI.Designer.cs">
+      <DependentUpon>SplashGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\ApplicationInfo.cs" />
+    <Compile Include="DTO\LoginLog.cs" />
+    <Compile Include="GUI\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Dialog\DeletedMedicineLocationDialog.cs">
       <SubType>Form</SubType>
     </Compile>

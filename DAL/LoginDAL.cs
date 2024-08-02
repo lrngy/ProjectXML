@@ -1,9 +1,4 @@
-﻿using System.Data.SqlClient;
-using QPharma.DTO;
-using QPharma.Util;
-using System.Xml;
-using System.Data;
-using System;
+namespace QPharma.DAL;
 
 namespace QPharma.DAL
 {
@@ -23,17 +18,17 @@ namespace QPharma.DAL
 
     
 
-        public bool Login(UserDTO user)
+    public bool Login(UserDTO user)
+    {
+        var query = "INSERT INTO login_log(login_log_id, username, login_time) VALUES(@id, @username, @loginTime)";
+        SqlParameter[] sqlParameters =
         {
-            var query = "INSERT INTO login_log(login_log_id, username, login_time) VALUES(@id, @username, @loginTime)";
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("@id", user.guid),
-                new SqlParameter("@username", user.username),
-                new SqlParameter("@loginTime", CustomDateTime.GetNow())
-            };
-            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
-        }
+            new SqlParameter("@id", user.guid),
+            new SqlParameter("@username", user.username),
+            new SqlParameter("@loginTime", CustomDateTime.GetNow())
+        };
+        return DB.ExecuteNonQuery(query, sqlParameters) == 1;
+    }
 
         public bool Logout(UserDTO user)
         {

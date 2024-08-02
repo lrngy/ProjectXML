@@ -1,116 +1,105 @@
-﻿using System;
-using System.Windows.Forms;
-using QPharma.BUS;
-using QPharma.DTO;
-using QPharma.Properties;
-using QPharma.Util;
+﻿namespace QPharma.GUI.Dialog;
 
-namespace QPharma.GUI.Dialog
+public partial class ChangePasswordDialog : BaseForm
 {
-    public partial class ChangePasswordDialog : BaseForm
+    private readonly UserDTO user;
+    private readonly UserBUS userController = new();
+
+    public ChangePasswordDialog(UserDTO user)
     {
-        private readonly UserDTO user;
-        private readonly UserBUS userController = new UserBUS();
+        InitializeComponent();
+        this.user = user;
+    }
 
-        public ChangePasswordDialog(UserDTO user)
-        {
-            InitializeComponent();
-            this.user = user;
-        }
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
+        Close();
+    }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+    private void btnSave_Click(object sender, EventArgs e)
+    {
+        var oldPassword = tbOldPass.Text.Trim();
+        var newPassword = tbNewPass.Text.Trim();
+        var confirmPassword = tbConfirmPass.Text.Trim();
+
+        var isValid = CheckEmptyInput(oldPassword, newPassword, confirmPassword)
+                      && CheckNewPassword(oldPassword, newPassword, confirmPassword);
+
+
+        if (!isValid) return;
+
+        var newUser = new UserDTO(user.username, newPassword);
+
+        var result = userController.UpdatePassword(newUser);
+        if (result == Predefined.SUCCESS)
         {
+            CustomMessageBox.ShowSuccess(Resources.Change_password_success);
+            user.password = newPassword;
             Close();
         }
-
-        private void btnSave_Click(object sender, EventArgs e)
+        else
         {
-            var oldPassword = tbOldPass.Text.Trim();
-            var newPassword = tbNewPass.Text.Trim();
-            var confirmPassword = tbConfirmPass.Text.Trim();
+            CustomMessageBox.ShowError(Resources.Change_password_fail
+            );
+        }
+    }
 
-            var isValid = CheckEmptyInput(oldPassword, newPassword, confirmPassword)
-                          && CheckNewPassword(oldPassword, newPassword, confirmPassword);
-
-
-            if (!isValid)
-            {
-                return;
-            }
-
-            var newUser = new UserDTO(user.username, newPassword);
-
-            var result = userController.UpdatePassword(newUser);
-            if (result == Predefined.SUCCESS)
-            {
-                CustomMessageBox.ShowSuccess(Resources.Change_password_success);
-                user.password = newPassword;
-                Close();
-            }
-            else
-            {
-                CustomMessageBox.ShowError(Resources.Change_password_fail
-                );
-            }
+    private bool CheckNewPassword(string oldPassword, string newPassword, string confirmPassword)
+    {
+        var isValid = true;
+        if (!oldPassword.Equals(user.password))
+        {
+            ShowValidateError(tbOldPass, Resources.Old_password_is_not_correct);
+            isValid = false;
         }
 
-        private bool CheckNewPassword(string oldPassword, string newPassword, string confirmPassword)
+        if (!newPassword.Equals(confirmPassword))
         {
-            bool isValid = true;
-            if (!oldPassword.Equals(user.password))
-            {
-                ShowValidateError(tbOldPass, Resources.Old_password_is_not_correct);
-                isValid = false;
-            }
-
-            if (!newPassword.Equals(confirmPassword))
-            {
-                ShowValidateError(tbConfirmPass, Resources.New_password_is_not_correct);
-                isValid = false;
-            }
-
-            return isValid;
+            ShowValidateError(tbConfirmPass, Resources.New_password_is_not_correct);
+            isValid = false;
         }
 
-        private bool CheckEmptyInput(string oldPassword, string newPassword, string confirmPassword)
+        return isValid;
+    }
+
+    private bool CheckEmptyInput(string oldPassword, string newPassword, string confirmPassword)
+    {
+        var isValid = true;
+        if (oldPassword.Equals(""))
         {
-            bool isValid = true;
-            if (oldPassword.Equals(""))
-            {
-                ShowValidateError(tbOldPass, Resources.Please_enter_old_password);
-                isValid = false;
-            }
-
-            if (newPassword.Equals(""))
-            {
-                ShowValidateError(tbNewPass, Resources.Please_enter_new_password);
-                isValid = false;
-            }
-
-            if (confirmPassword.Equals(""))
-            {
-                ShowValidateError(tbConfirmPass, Resources.Please_enter_confirm_password);
-                isValid = false;
-            }
-
-            return isValid;
+            ShowValidateError(tbOldPass, Resources.Please_enter_old_password);
+            isValid = false;
         }
 
-        private void tbOldPass_KeyDown(object sender, KeyEventArgs e)
+        if (newPassword.Equals(""))
         {
-            if (e.KeyCode == Keys.Enter) btnSave.PerformClick();
+            ShowValidateError(tbNewPass, Resources.Please_enter_new_password);
+            isValid = false;
         }
 
-        private void ShowValidateError(Control control, string message)
+        if (confirmPassword.Equals(""))
         {
-            errorProvider1.SetError(control, message);
-            toolTip1.SetToolTip(control, message);
-            toolTip1.Show(message, control, 0, control.Height, 2000);
+            ShowValidateError(tbConfirmPass, Resources.Please_enter_confirm_password);
+            isValid = false;
         }
 
-        private void tbOldPass_TextChanged(object sender, EventArgs e)
-        {
-            ShowValidateError(sender as Control, "");
-        }
+        return isValid;
+    }
+
+    private void tbOldPass_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter) btnSave.PerformClick();
+    }
+
+    private void ShowValidateError(Control control, string message)
+    {
+        errorProvider1.SetError(control, message);
+        toolTip1.SetToolTip(control, message);
+        toolTip1.Show(message, control, 0, control.Height, 2000);
+    }
+
+    private void tbOldPass_TextChanged(object sender, EventArgs e)
+    {
+        ShowValidateError(sender as Control, "");
     }
 }

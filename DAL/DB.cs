@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Windows.Forms;
-using QPharma.Properties;
-using QPharma.Util;
+namespace QPharma.DAL;
 
-namespace QPharma.DAL
+internal class DB
 {
-    internal class DB
-    {
-        private static string connectString = Development.Default.ConnectionString;
+    private static readonly string connectString = Development.Default.ConnectionString;
 
-        private static SqlConnection GetConnection()
-        {
-            return new SqlConnection(connectString);
-        }
+    private static SqlConnection GetConnection()
+    {
+        return new SqlConnection(connectString);
+    }
 
         public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
@@ -63,33 +54,33 @@ namespace QPharma.DAL
             return 0;
         }
 
-        public static int ExecuteTransaction(Dictionary<string, SqlParameter[]> queryParameters)
+    public static int ExecuteTransaction(Dictionary<string, SqlParameter[]> queryParameters)
+    {
+        var result = 0;
+
+        using (var connection = GetConnection())
         {
-            var result = 0;
+            connection.Open();
+            var sqlTran = connection.BeginTransaction();
+            var command = connection.CreateCommand();
+            command.Transaction = sqlTran;
 
-            using (var connection = GetConnection())
+            try
             {
-                connection.Open();
-                var sqlTran = connection.BeginTransaction();
-                var command = connection.CreateCommand();
-                command.Transaction = sqlTran;
-
-                try
+                foreach (var entry in queryParameters)
                 {
-                    foreach (var entry in queryParameters)
-                    {
-                        command.CommandText = entry.Key;
-                        command.Parameters.Clear();
-                        command.Parameters.AddRange(entry.Value);
+                    command.CommandText = entry.Key;
+                    command.Parameters.Clear();
+                    command.Parameters.AddRange(entry.Value);
 
-                        result += command.ExecuteNonQuery();
-                    }
-
-                    sqlTran.Commit();
+                    result += command.ExecuteNonQuery();
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
+
+                sqlTran.Commit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
 
                     try
                     {

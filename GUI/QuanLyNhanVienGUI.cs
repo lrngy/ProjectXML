@@ -1,13 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Xml;
-using QPharma.BUS;
-using QPharma.DAL;
-using QPharma.DTO;
-using QPharma.GUI.Dialog;
-using QPharma.Util;
 
 namespace QPharma.GUI
 {

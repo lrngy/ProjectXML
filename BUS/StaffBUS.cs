@@ -1,16 +1,9 @@
-﻿using QPharma.DAL;
-using QPharma.DTO;
-using QPharma.Util;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+namespace QPharma.BUS;
 
-namespace QPharma.BUS
-{
     // Lớp điều khiển
-    internal class StaffBUS
-    {
-        private UserDAL userDAL;
+internal class StaffBUS
+{
+    private UserDAL userDAL;
 
         public StaffBUS()
         {
@@ -18,11 +11,11 @@ namespace QPharma.BUS
         }
         public static bool CheckExistUsername(string username)
         {
-            return StaffDAL.CheckExistUsername(username);
+            return.CheckExistUsername(username);
         }
-        public StaffDTO GetByUsername(string username)
-        {
-            return StaffDAL.GetByUsername(username);
+    public StaffDTO GetByUsername(string username)
+    {
+        return StaffDAL.GetByUsername(username);
         }
         public static List<StaffDTO> GetAll()
         {
@@ -74,6 +67,5 @@ namespace QPharma.BUS
                 else
                     MessageBox.Show("Đặt lại mật khẩu nhân viên thất bại!");
             }
-        }
     }
 }

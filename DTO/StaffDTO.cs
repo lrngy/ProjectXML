@@ -1,4 +1,4 @@
-﻿namespace QPharma.DTO
+namespace QPharma.DTO
 {
     // Lớp đối tượng
     public class StaffDTO
@@ -15,17 +15,17 @@
         public string staff_updated { get; set; }
         public string staff_deleted { get; set; }
 
-        public StaffDTO(string id, string name, bool gender, string birthday, bool isManager, bool isSeller,
-            string username)
-        {
-            this.id = id;
-            this.name = name;
-            this.gender = gender;
-            this.birthday = birthday;
-            this.isManager = isManager;
-            this.isSeller = isSeller;
-            this.username = username;
-        }
+    public StaffDTO(string id, string name, bool gender, string birthday, bool isManager, bool isSeller,
+        string username)
+    {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.isManager = isManager;
+        this.isSeller = isSeller;
+        this.username = username;
+    }
 
         public StaffDTO(string id, string name, bool gender, string birthday, bool isManager, bool isSeller,
             string username, string staff_created, string staff_updated, string staff_deleted)

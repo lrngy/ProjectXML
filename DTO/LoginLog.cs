@@ -1,4 +1,4 @@
-﻿namespace QPharma.DTO
+namespace QPharma.DTO
 {
     public class LoginLog
     {

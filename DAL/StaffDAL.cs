@@ -1,12 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Windows.Forms;
-using System.Xml;
-using QPharma.DTO;
-using QPharma.Util;
 
 namespace QPharma.DAL
 {
@@ -87,8 +78,8 @@ namespace QPharma.DAL
             catch (Exception)
             { MessageBox.Show("Lấy thông tin nhân viên thất bại!"); }
 
-            return list;
-        }
+        return list;
+    }
 
         // Lấy bởi tên id
         public static StaffDTO GetById(string id)
@@ -117,8 +108,8 @@ namespace QPharma.DAL
             catch (Exception ex)
             { MessageBox.Show("Lấy thông tin nhân viên qua id thất bại!" + "\n" + ex.Message); }
 
-            return staffDTO;
-        }
+        return staffDTO;
+    }
 
         // Lấy bởi tên người dùng
         public static StaffDTO GetByUsername(string username)
@@ -149,8 +140,8 @@ namespace QPharma.DAL
                 Debug.WriteLine("Error getting staff by username:" + ex);
             }
 
-            return staffDTO;
-        }
+        return staffDTO;
+    }
 
         // Kiểm tra tồn tại
         public static bool CheckExistUsername(string username)
@@ -266,14 +257,14 @@ namespace QPharma.DAL
                 var query = $"UPDATE staffs SET staff_deleted = null WHERE username = @username";
                 if (DB.ExecuteNonQuery(query, new SqlParameter[] {new SqlParameter("@username", currentUsername)}) <= 0) return Predefined.ERROR;
 
-                return Predefined.SUCCESS;
-            }
-            catch (XmlException ex)
-            {
-                Debug.WriteLine(ex.Message);
-                return Predefined.ERROR;
-            }
+            return Predefined.SUCCESS;
         }
+        catch (XmlException ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return Predefined.ERROR;
+        }
+    }
 
         internal static int ForceDelete(string username)
         {
@@ -292,14 +283,14 @@ namespace QPharma.DAL
 
                 if (DB.ExecuteNonQuery(query3, parameters) <= 0) MessageBox.Show("Xóa người dùng thất bại!");
 
-                return Predefined.SUCCESS;
-            }
-            catch (XmlException ex)
-            {
-                Debug.WriteLine(ex.Message);
-                return Predefined.ERROR;
-            }
+            return Predefined.SUCCESS;
         }
+        catch (XmlException ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return Predefined.ERROR;
+        }
+    }
 
         // Khôi phục lại tất cả
         internal static int RestoreAll()
@@ -309,14 +300,14 @@ namespace QPharma.DAL
                 var query = "UPDATE staffs SET staff_deleted = null";
                 if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
 
-                return Predefined.SUCCESS;
-            }
-            catch (XmlException ex)
-            {
-                Debug.WriteLine(ex.Message);
-                return Predefined.ERROR;
-            }
+            return Predefined.SUCCESS;
         }
+        catch (XmlException ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return Predefined.ERROR;
+        }
+    }
 
         internal static int ForceAllDelete()
         {
@@ -325,13 +316,12 @@ namespace QPharma.DAL
                 var query = $"DELETE FROM staffs WHERE staff_deleted IS NOT NULL";
                 if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
 
-                return Predefined.SUCCESS;
-            }
-            catch (XmlException ex)
-            {
-                Debug.WriteLine(ex.Message);
-                return Predefined.ERROR;
-            }
+            return Predefined.SUCCESS;
+        }
+        catch (XmlException ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return Predefined.ERROR;
         }
     }
 }

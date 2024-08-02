@@ -1,12 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using QPharma.DTO;
-using QPharma.Util;
-using System.Windows.Forms;
-using System.Data;
-using System.Security.Cryptography;
 
 namespace QPharma.DAL
 {
@@ -21,17 +12,17 @@ namespace QPharma.DAL
                 SqlParameter[] parameters = { new SqlParameter("@username", username) };
                 var dt = DB.ExecuteQuery(query, parameters);
 
-                if (dt.Rows.Count > 0)
-                    user = new UserDTO
-                    {
-                        username = dt.Rows[0]["username"].ToString(),
-                        password = dt.Rows[0]["password"].ToString()
-                    };
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error getting user: {ex.Message}");
-            }
+            if (dt.Rows.Count > 0)
+                user = new UserDTO
+                {
+                    username = dt.Rows[0]["username"].ToString(),
+                    password = dt.Rows[0]["password"].ToString()
+                };
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error getting user: {ex.Message}");
+        }
 
             return user;
         }

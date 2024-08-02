@@ -1,84 +1,78 @@
-﻿using System;
-using System.Windows.Forms;
-using QPharma.BUS;
-using QPharma.Properties;
+﻿namespace QPharma.GUI;
 
-namespace QPharma.GUI
+public partial class LoginGUI : BaseForm
 {
-    public partial class LoginGUI : BaseForm
+    private readonly LoginBUS loginBus = new();
+    private readonly StaffBUS staffBus = new();
+    private readonly UserBUS userBUS = new();
+    private MainGUI mainView;
+
+
+    public LoginGUI()
     {
-        private readonly LoginBUS loginBus = new LoginBUS();
-        private readonly StaffBUS staffBus = new StaffBUS();
-        private readonly UserBUS userBUS = new UserBUS();
-        private MainGUI mainView;
+        InitializeComponent();
+    }
 
+    private void btnShowPassword_Click(object sender, EventArgs e)
+    {
+        tbPassword.PasswordChar = tbPassword.PasswordChar == '*' ? '\0' : '*';
+    }
 
-        public LoginGUI()
+    private void btnLogin_Click(object sender, EventArgs e)
+    {
+        lbError.Text = "";
+        var username = tbUsername.Text.Trim();
+        var password = tbPassword.Text.Trim();
+        var isEmptyField = username.Equals("") || password.Equals("");
+        if (isEmptyField)
         {
-            InitializeComponent();
+            lbError.Text = Resources.Please_enter_complete_info;
+            return;
         }
 
-        private void btnShowPassword_Click(object sender, EventArgs e)
+        var user = loginBus.CheckExist(username, password);
+        if (user is null)
         {
-            tbPassword.PasswordChar = tbPassword.PasswordChar == '*' ? '\0' : '*';
+            lbError.Text = Resources.Wrong_username_or_password;
+            return;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        tbUsername.Text = "";
+        tbUsername.Focus();
+        tbPassword.Text = "";
+        user.guid = Guid.NewGuid().ToString();
+
+
+        var isLoggedIn = loginBus.Login(user);
+        if (!isLoggedIn) lbError.Text = Resources.Login_fail;
+
+        var staff = staffBus.GetByUsername(user.username);
+        if (staff is null)
         {
-            lbError.Text = "";
-            var username = tbUsername.Text.Trim();
-            var password = tbPassword.Text.Trim();
-            var isEmptyField = username.Equals("") || password.Equals("");
-            if (isEmptyField)
-            {
-                lbError.Text = Resources.Please_enter_complete_info;
-                return;
-            }
-
-            var user = loginBus.CheckExist(username, password);
-            if (user is null)
-            {
-                lbError.Text = Resources.Wrong_username_or_password;
-                return;
-            }
-
-            tbUsername.Text = "";
-            tbUsername.Focus();
-            tbPassword.Text = "";
-            user.guid = Guid.NewGuid().ToString();
-
-
-            var isLoggedIn = loginBus.Login(user);
-            if (!isLoggedIn) lbError.Text = Resources.Login_fail;
-
-            var staff = staffBus.GetByUsername(user.username);
-            if (staff is null)
-            {
-                lbError.Text = Resources.Account_not_valid;
-                return;
-            }
-
-            if (mainView == null || mainView.IsDisposed)
-            {
-                mainView = new MainGUI(user, this, staff);
-
-                mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
-            }
-
-            Hide();
-            mainView.Show();
+            lbError.Text = Resources.Account_not_valid;
+            return;
         }
 
-
-        private void tbUsername_KeyDown(object sender, KeyEventArgs e)
+        if (mainView == null || mainView.IsDisposed)
         {
-            lbError.Text = "";
-            if (e.KeyCode == Keys.Enter) btnLogin.PerformClick();
+            mainView = new MainGUI(user, this, staff);
+
+            mainView.FormClosed += (_sender, _formClosed) => { Application.Exit(); };
         }
 
-        private void LoginGUI_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
+        Hide();
+        mainView.Show();
+    }
+
+
+    private void tbUsername_KeyDown(object sender, KeyEventArgs e)
+    {
+        lbError.Text = "";
+        if (e.KeyCode == Keys.Enter) btnLogin.PerformClick();
+    }
+
+    private void LoginGUI_FormClosed(object sender, FormClosedEventArgs e)
+    {
+        Application.Exit();
     }
 }

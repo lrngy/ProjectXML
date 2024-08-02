@@ -23,13 +23,16 @@ namespace QPharma.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LONGPC\\SQLEXPRESS;Initial Catalog=QlyHieuThuoc;Integrated Security=Tr" +
-            "ue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True;" +
+            "Connect Timeout=30")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
+            }
+            set {
+                this["ConnectionString"] = value;
             }
         }
         
@@ -98,10 +101,19 @@ namespace QPharma.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("QPharmaImage")]
-        public string LocalResourceImage {
+        [global::System.Configuration.DefaultSettingValueAttribute("QPharma")]
+        public string LocalResource {
             get {
-                return ((string)(this["LocalResourceImage"]));
+                return ((string)(this["LocalResource"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Images")]
+        public string ImageFolderName {
+            get {
+                return ((string)(this["ImageFolderName"]));
             }
         }
     }

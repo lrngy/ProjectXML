@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="QPharma.Properties" GeneratedClassName="Development">
   <Profiles />
   <Settings>
-    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=LONGPC\SQLEXPRESS;Initial Catalog=QlyHieuThuoc;Integrated Security=True</Value>
+    <Setting Name="ConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True;Connect Timeout=30</Value>
     </Setting>
     <Setting Name="SessionDurationMinute" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">60</Value>
@@ -26,8 +26,11 @@
     <Setting Name="DelayTimerSplash" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="LocalResourceImage" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">QPharmaImage</Value>
+    <Setting Name="LocalResource" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">QPharma</Value>
+    </Setting>
+    <Setting Name="ImageFolderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Images</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,4 +1,4 @@
-﻿namespace QPharma.GUI;
+namespace QPharma.GUI;
 
 public partial class SplashGUI : BaseForm
 {
@@ -10,10 +10,11 @@ public partial class SplashGUI : BaseForm
     private Timer delayTimer;
     private MainGUI mainGUI;
 
-    public SplashGUI()
-    {
-        InitializeComponent();
-    }
+        public SplashGUI()
+        {
+            InitializeComponent();
+            // this.TopMost = false;
+        }
 
     private void StartMainGUI(UserDTO user)
     {

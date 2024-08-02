@@ -1,4 +1,4 @@
-﻿namespace QPharma.DAL;
+namespace QPharma.DAL;
 
 internal class DB
 {
@@ -9,56 +9,50 @@ internal class DB
         return new SqlConnection(connectString);
     }
 
-    public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
-    {
-        var dataTable = new DataTable();
-        try
+        public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
-            using (var conn = GetConnection())
+            var dataTable = new DataTable();
+            try
             {
-                using (var cmd = new SqlCommand(query, conn))
+                using (var conn = GetConnection())
                 {
-                    if (parameters != null) cmd.Parameters.AddRange(parameters);
-
-                    using (var adapter = new SqlDataAdapter(cmd))
+                    using (var cmd = new SqlCommand(query, conn))
                     {
-                        adapter.Fill(dataTable);
+                        if (parameters != null) cmd.Parameters.AddRange(parameters);
+
+                        using (var adapter = new SqlDataAdapter(cmd))
+                        {
+                            dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                        }
                     }
                 }
             }
-        }
-        catch (Exception ex)
-        {
-            Debug.Write(ex.ToString());
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return dataTable;
         }
 
-        return dataTable;
-    }
-
-    public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
-    {
-        using (var conn = GetConnection())
+        public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
         {
-            using (var cmd = new SqlCommand(query, conn))
+            try
             {
-                if (parameters != null) cmd.Parameters.AddRange(parameters);
-                conn.Open();
-                try
+                using (var conn = GetConnection())
                 {
-                    var rowsAffected = cmd.ExecuteNonQuery();
-
-                    return rowsAffected;
+                    using (var cmd = new SqlCommand(query, conn))
+                    {
+                        if (parameters != null) cmd.Parameters.AddRange(parameters);
+                        conn.Open();
+                        var rowsAffected = cmd.ExecuteNonQuery();
+                        conn.Close();
+                        return rowsAffected;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Debug.Write(ex.ToString());
-                }
-
-                conn.Close();
-                return 0;
             }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+
+            return 0;
         }
-    }
 
     public static int ExecuteTransaction(Dictionary<string, SqlParameter[]> queryParameters)
     {
@@ -88,18 +82,18 @@ internal class DB
             {
                 Console.WriteLine("Error: " + ex.Message);
 
-                try
-                {
-                    sqlTran.Rollback();
-                    Debug.WriteLine("Transaction rolled back.");
+                    try
+                    {
+                        sqlTran.Rollback();
+                        Debug.WriteLine("Transaction rolled back.");
+                    }
+                    catch (Exception exRollback)
+                    {
+                        Debug.WriteLine("Rollback Error: " + exRollback.Message);
+                    }
                 }
-                catch (Exception exRollback)
-                {
-                    Debug.WriteLine("Rollback Error: " + exRollback.Message);
-                }
+                return result;
             }
-
-            return result;
         }
     }
 }

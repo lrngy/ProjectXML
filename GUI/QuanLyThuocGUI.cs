@@ -1,4 +1,4 @@
-﻿namespace QPharma.GUI;
+namespace QPharma.GUI;
 
 public partial class QuanLyThuocGUI : BaseForm
 {
@@ -16,13 +16,13 @@ public partial class QuanLyThuocGUI : BaseForm
     private int rowSelectedTheLoai;
     private int rowSelectedThuoc;
 
-    public QuanLyThuocGUI(UserDTO user, int tabControlIndex)
-    {
-        InitializeComponent();
-        this.user = user;
-        this.tabControlIndex = tabControlIndex;
-        staff = new StaffDAL().GetByUsername(user.username);
-    }
+        public QuanLyThuocGUI(UserDTO user, int tabControlIndex)
+        {
+            InitializeComponent();
+            this.user = user;
+            this.tabControlIndex = tabControlIndex;
+            staff = StaffDAL.GetByUsername(user.username);
+        }
 
     private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
     {

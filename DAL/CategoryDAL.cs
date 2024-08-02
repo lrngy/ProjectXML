@@ -1,4 +1,4 @@
-﻿namespace QPharma.DAL;
+namespace QPharma.DAL;
 
 public class CategoryDAL
 {
@@ -33,28 +33,30 @@ public class CategoryDAL
         return list;
     }
 
-    public CategoryDTO GetById(string id)
-    {
-        CategoryDTO category = null;
-        try
+        public CategoryDTO GetById(string id)
         {
-            var query = $"SELECT * FROM categories WHERE category_id = ${id}";
-            var dt = DB.ExecuteQuery(query);
-            if (dt.Rows.Count != 0)
+            CategoryDTO category = null;
+            try
             {
-                var deleted = dt.Rows[0]["category_deleted"].ToString();
-                if (!deleted.Equals("")) return category;
-                var name = dt.Rows[0]["category_name"].ToString();
-                var note = dt.Rows[0]["category_note"].ToString();
-                var status = bool.Parse(dt.Rows[0]["category_status"].ToString());
-                var created = dt.Rows[0]["category_created"].ToString();
-                var updated = dt.Rows[0]["category_updated"].ToString();
-                category = new CategoryDTO(id, name, note, status, created, updated, deleted);
+                var query = $"SELECT * FROM categories WHERE category_id = @id";
+                SqlParameter[] sqlParameter = { new SqlParameter("@id", id) };
+
+                var dt = DB.ExecuteQuery(query, sqlParameter);
+                if (dt.Rows.Count != 0)
+                {
+                    var deleted = dt.Rows[0]["category_deleted"].ToString();
+                    if (!deleted.Equals("")) return category;
+                    var name = dt.Rows[0]["category_name"].ToString();
+                    var note = dt.Rows[0]["category_note"].ToString();
+                    var status = bool.Parse(dt.Rows[0]["category_status"].ToString());
+                    var created = dt.Rows[0]["category_created"].ToString();
+                    var updated = dt.Rows[0]["category_updated"].ToString();
+                    category = new CategoryDTO(id, name, note, status, created, updated, deleted);
+                }
             }
-        }
-        catch (Exception)
-        {
-        }
+            catch (Exception)
+            {
+            }
 
         return category;
     }

@@ -1,18 +1,22 @@
-﻿namespace QPharma.DAL;
+namespace QPharma.DAL;
 
-public class LoginDAL
+namespace QPharma.DAL
 {
-    public bool isExistAccount(string username, string password)
+    public class LoginDAL
     {
-        var query = "SELECT * FROM users WHERE username = @username AND password = @password";
-        SqlParameter[] sqlParameters =
+        public bool isExistAccount(string username, string password)
         {
-            new SqlParameter("@username", username),
-            new SqlParameter("@password", password)
-        };
-        var dt = DB.ExecuteQuery(query, sqlParameters);
-        return dt.Rows.Count != 0;
-    }
+            var query = "SELECT * FROM users WHERE username = @username AND password = @password";
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@username", username),
+                new SqlParameter("@password", password)
+            };
+            var dt = DB.ExecuteQuery(query, sqlParameters);
+            return dt.Rows.Count != 0;
+        }
+
+    
 
     public bool Login(UserDTO user)
     {
@@ -26,26 +30,28 @@ public class LoginDAL
         return DB.ExecuteNonQuery(query, sqlParameters) == 1;
     }
 
-    public bool Logout(UserDTO user)
-    {
-        var query = "UPDATE login_log SET logout_time = @logoutTime WHERE login_log_id = @id";
-        SqlParameter[] sqlParameters =
+        public bool Logout(UserDTO user)
         {
-            new SqlParameter("@id", user.guid),
-            new SqlParameter("@logoutTime", CustomDateTime.GetNow())
-        };
-        return DB.ExecuteNonQuery(query, sqlParameters) == 1;
-    }
+           
+            var query = "UPDATE login_log SET logout_time = @logoutTime WHERE login_log_id = @id";
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@id", user.guid),
+                new SqlParameter("@logoutTime", CustomDateTime.GetNow())
+            };
+            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
+        }
 
-    public LoginLog GetLoginLog()
-    {
-        var query = "select top 1 * from login_log order by login_time desc";
-        var dt = DB.ExecuteQuery(query);
-        if (dt.Rows.Count == 0) return null;
-        var id = dt.Rows[0]["login_log_id"].ToString();
-        var username = dt.Rows[0]["username"].ToString();
-        var loginTime = dt.Rows[0]["login_time"].ToString();
-        var logoutTime = dt.Rows[0]["logout_time"].ToString();
-        return new LoginLog(id, username, loginTime, logoutTime);
+        public LoginLog GetLoginLog()
+        {
+            var query = "select top 1 * from login_log order by login_time desc";
+            var dt = DB.ExecuteQuery(query);
+            if (dt.Rows.Count == 0) return null;
+            var id = dt.Rows[0]["login_log_id"].ToString();
+            var username = dt.Rows[0]["username"].ToString();
+            var loginTime = dt.Rows[0]["login_time"].ToString();
+            var logoutTime = dt.Rows[0]["logout_time"].ToString();
+            return new LoginLog(id, username, loginTime, logoutTime);
+        }
     }
 }

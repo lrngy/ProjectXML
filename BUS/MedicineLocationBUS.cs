@@ -1,4 +1,4 @@
-﻿namespace QPharma.BUS;
+namespace QPharma.BUS;
 
 public class MedicineLocationBUS
 {

@@ -1,4 +1,4 @@
-﻿namespace QPharma.BUS;
+namespace QPharma.BUS;
 
 public class SupplierBUS
 {
@@ -47,5 +47,6 @@ public class SupplierBUS
     {
         if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
         return supplierDAL.ForceDelete(id);
+
     }
 }

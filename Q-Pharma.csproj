@@ -1,17 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3CE5C465-FB80-48DE-A507-440BFD78FF15}</ProjectGuid>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <RootNamespace>QPharma</RootNamespace>
-    <AssemblyName>Q-Pharma</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -23,30 +14,24 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Development|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;Development</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Production|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE;Production</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>0C2ED39F98128177E593AAD1E7DBA080080E4D6F</ManifestCertificateThumbprint>
@@ -65,248 +50,21 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>QPharma.Program</StartupObject>
+    <FileVersion>1.0.0.1</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms.DataVisualization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BUS\MedicineLocationBUS.cs" />
-    <Compile Include="BUS\StaffBUS.cs" />
-    <Compile Include="ChiTietChi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChiTietChi.Designer.cs">
-      <DependentUpon>ChiTietChi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ChiTietThu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChiTietThu.Designer.cs">
-      <DependentUpon>ChiTietThu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\DB.cs" />
-    <Compile Include="DAL\MedicineLocationDAL.cs" />
-    <Compile Include="DAL\StaffDAL.cs" />
-    <Compile Include="DTO\ApplicationInfo.cs" />
-    <Compile Include="DTO\LoginLog.cs" />
-    <Compile Include="GUI\BaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Dialog\DeletedMedicineLocationDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Dialog\DeletedMedicineLocationDialog.Designer.cs">
-      <DependentUpon>DeletedMedicineLocationDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Dialog\DeletedSupplierDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Dialog\DeletedSupplierDialog.Designer.cs">
-      <DependentUpon>DeletedSupplierDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\SplashGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\SplashGUI.Designer.cs">
-      <DependentUpon>SplashGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BUS\LoginBUS.cs" />
-    <Compile Include="BUS\CategoryBUS.cs" />
-    <Compile Include="BUS\MedicineBUS.cs" />
-    <Compile Include="BUS\SupplierBUS.cs" />
-    <Compile Include="BUS\UserBUS.cs" />
-    <Compile Include="DAL\CategoryDAL.cs" />
-    <Compile Include="DAL\LoginDAL.cs" />
-    <Compile Include="DAL\MedicineDAL.cs" />
-    <Compile Include="DAL\SupplierDAL.cs" />
-    <Compile Include="DAL\UserDAL.cs" />
-    <Compile Include="DTO\CategoryDTO.cs" />
-    <Compile Include="DTO\MedicineDTO.cs" />
-    <Compile Include="DTO\MedicineLocationDTO.cs" />
-    <Compile Include="DTO\StaffDTO.cs" />
-    <Compile Include="DTO\SupplierDTO.cs" />
-    <Compile Include="DTO\UserDTO.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="GUI\QuanLyNhanVienGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyNhanVienGUI.Designer.cs">
-      <DependentUpon>QuanLyNhanVienGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Development.cs" />
-    <Compile Include="Properties\Production.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\QuanLyTaiChinhGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyTaiChinhGUI.Designer.cs">
-      <DependentUpon>QuanLyTaiChinhGUI.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="ChiTietChi.resx">
-      <DependentUpon>ChiTietChi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChiTietThu.resx">
-      <DependentUpon>ChiTietThu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Dialog\DeletedMedicineLocationDialog.resx">
-      <DependentUpon>DeletedMedicineLocationDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Dialog\DeletedSupplierDialog.resx">
-      <DependentUpon>DeletedSupplierDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\SplashGUI.resx">
-      <DependentUpon>SplashGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyTaiChinhGUI.resx">
-      <DependentUpon>QuanLyTaiChinhGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="Properties\Production.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Production.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Util\Config.cs" />
-    <Compile Include="Util\CustomDateTime.cs" />
-    <Compile Include="Util\CustomMessageBox.cs" />
-    <Compile Include="Util\Predefined.cs" />
-    <Compile Include="Util\Validation.cs" />
-    <Compile Include="GUI\Dialog\AboutDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Dialog\AboutDialog.Designer.cs">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Dialog\ChangePasswordDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Dialog\ChangePasswordDialog.Designer.cs">
-      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Dialog\DeletedCategoryDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Dialog\DeletedCategoryDialog.Designer.cs">
-      <DependentUpon>DeletedCategoryDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Dialog\DeletedMedicineDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Dialog\DeletedMedicineDialog.Designer.cs">
-      <DependentUpon>DeletedMedicineDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Dialog\FilterByRangeDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Dialog\FilterByRangeDialog.Designer.cs">
-      <DependentUpon>FilterByRangeDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\LoginGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\LoginGUI.Designer.cs">
-      <DependentUpon>LoginGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\MainGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\MainGUI.Designer.cs">
-      <DependentUpon>MainGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\QuanLyThuocGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyThuocGUI.Designer.cs">
-      <DependentUpon>QuanLyThuocGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ThongTinCaNhanGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\ThongTinCaNhanGUI.Designer.cs">
-      <DependentUpon>ThongTinCaNhanGUI.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="GUI\QuanLyNhanVienGUI.resx">
-      <DependentUpon>QuanLyNhanVienGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Dialog\AboutDialog.resx">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Dialog\ChangePasswordDialog.resx">
-      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Dialog\DeletedCategoryDialog.resx">
-      <DependentUpon>DeletedCategoryDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Dialog\DeletedMedicineDialog.resx">
-      <DependentUpon>DeletedMedicineDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Dialog\FilterByRangeDialog.resx">
-      <DependentUpon>FilterByRangeDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\LoginGUI.resx">
-      <DependentUpon>LoginGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\MainGUI.resx">
-      <DependentUpon>MainGUI.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyThuocGUI.resx">
-      <DependentUpon>QuanLyThuocGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ThongTinCaNhanGUI.resx">
-      <DependentUpon>ThongTinCaNhanGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Properties\Development.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Development.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Development.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Development.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Production.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Production.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Resources\72834941.jpg" />
-    <None Include="Resources\SplashScreen.jpeg" />
-    <None Include="Resources\appicon.ico" />
-    <None Include="Resources\btnThongTin.Image.png" />
-    <None Include="Resources\btnTaiChinh.Image.png" />
-    <None Include="Resources\btnQlyThuoc.Image.png" />
-    <None Include="Resources\btnNhanVien.Image.png" />
-    <None Include="Resources\btnNcc.Image.png" />
-    <None Include="Resources\btnDanhMuc.Image.png" />
-    <None Include="Resources\MainBackgroundImage.jpg" />
-    <None Include="Resources\LoginBackgroundImage.jpg" />
-    <None Include="Resources\ictuLogo.jpg" />
+    <Content Include="QlyHieuThuoc.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="QlyHieuThuoc_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="XML\customers.xml" />
     <Content Include="XML\finance_bills.xml" />
     <Content Include="XML\medicines.xml" />
@@ -327,7 +85,35 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.15.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2019 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Development.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Development.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Production.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Production.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Development.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Development.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Properties\Production.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Production.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
 </Project>

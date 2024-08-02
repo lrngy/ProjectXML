@@ -1,56 +1,51 @@
-﻿using System.Data.SqlClient;
-using QPharma.DTO;
-using QPharma.Util;
+﻿namespace QPharma.DAL;
 
-namespace QPharma.DAL
+public class LoginDAL
 {
-    public class LoginDAL
+    public bool isExistAccount(string username, string password)
     {
-        public bool isExistAccount(string username, string password)
+        var query = "SELECT * FROM users WHERE username = @username AND password = @password";
+        SqlParameter[] sqlParameters =
         {
-            var query = "SELECT * FROM users WHERE username = @username AND password = @password";
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("@username", username),
-                new SqlParameter("@password", password)
-            };
-            var dt = DB.ExecuteQuery(query, sqlParameters);
-            return dt.Rows.Count != 0;
-        }
+            new SqlParameter("@username", username),
+            new SqlParameter("@password", password)
+        };
+        var dt = DB.ExecuteQuery(query, sqlParameters);
+        return dt.Rows.Count != 0;
+    }
 
-        public bool Login(UserDTO user)
+    public bool Login(UserDTO user)
+    {
+        var query = "INSERT INTO login_log(login_log_id, username, login_time) VALUES(@id, @username, @loginTime)";
+        SqlParameter[] sqlParameters =
         {
-            var query = "INSERT INTO login_log(login_log_id, username, login_time) VALUES(@id, @username, @loginTime)";
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("@id", user.guid),
-                new SqlParameter("@username", user.username),
-                new SqlParameter("@loginTime", CustomDateTime.GetNow())
-            };
-            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
-        }
+            new SqlParameter("@id", user.guid),
+            new SqlParameter("@username", user.username),
+            new SqlParameter("@loginTime", CustomDateTime.GetNow())
+        };
+        return DB.ExecuteNonQuery(query, sqlParameters) == 1;
+    }
 
-        public bool Logout(UserDTO user)
+    public bool Logout(UserDTO user)
+    {
+        var query = "UPDATE login_log SET logout_time = @logoutTime WHERE login_log_id = @id";
+        SqlParameter[] sqlParameters =
         {
-            var query = "UPDATE login_log SET logout_time = @logoutTime WHERE login_log_id = @id";
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("@id", user.guid),
-                new SqlParameter("@logoutTime", CustomDateTime.GetNow())
-            };
-            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
-        }
+            new SqlParameter("@id", user.guid),
+            new SqlParameter("@logoutTime", CustomDateTime.GetNow())
+        };
+        return DB.ExecuteNonQuery(query, sqlParameters) == 1;
+    }
 
-        public LoginLog GetLoginLog()
-        {
-            var query = "select top 1 * from login_log order by login_time desc";
-            var dt = DB.ExecuteQuery(query);
-            if (dt.Rows.Count == 0) return null;
-            var id = dt.Rows[0]["login_log_id"].ToString();
-            var username = dt.Rows[0]["username"].ToString();
-            var loginTime = dt.Rows[0]["login_time"].ToString();
-            var logoutTime = dt.Rows[0]["logout_time"].ToString();
-            return new LoginLog(id, username, loginTime, logoutTime);
-        }
+    public LoginLog GetLoginLog()
+    {
+        var query = "select top 1 * from login_log order by login_time desc";
+        var dt = DB.ExecuteQuery(query);
+        if (dt.Rows.Count == 0) return null;
+        var id = dt.Rows[0]["login_log_id"].ToString();
+        var username = dt.Rows[0]["username"].ToString();
+        var loginTime = dt.Rows[0]["login_time"].ToString();
+        var logoutTime = dt.Rows[0]["logout_time"].ToString();
+        return new LoginLog(id, username, loginTime, logoutTime);
     }
 }

@@ -47,8 +47,10 @@ namespace QPharma.DAL
             CategoryDTO category = null;
             try
             {
-                var query = $"SELECT * FROM categories WHERE category_id = ${id}";
-                var dt = DB.ExecuteQuery(query);
+                var query = $"SELECT * FROM categories WHERE category_id = @id";
+                SqlParameter[] sqlParameter = { new SqlParameter("@id", id) };
+
+                var dt = DB.ExecuteQuery(query, sqlParameter);
                 if (dt.Rows.Count != 0)
                 {
                     var deleted = dt.Rows[0]["category_deleted"].ToString();

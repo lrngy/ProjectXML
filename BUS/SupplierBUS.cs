@@ -50,7 +50,8 @@ namespace QPharma.BUS
 
         public int ForceDelete(string id)
         {
-            return supplierDAL.RestoreAll();
+            if (supplierDAL.GetById(id) == null) return Predefined.ID_NOT_EXIST;
+            return supplierDAL.ForceDelete(id);
         }
 
     }

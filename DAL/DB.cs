@@ -11,7 +11,7 @@ namespace QPharma.DAL
 {
     internal class DB
     {
-        private static string connectString = "Data Source=ADMIN0512;Initial Catalog=QlyHieuThuoc;Integrated Security=True;Encrypt=False";
+        private static string connectString = Development.Default.ConnectionString;
 
         private static SqlConnection GetConnection()
         {
@@ -20,6 +20,7 @@ namespace QPharma.DAL
 
         public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
+            var dataTable = new DataTable();
             try
             {
                 using (var conn = GetConnection())
@@ -30,15 +31,15 @@ namespace QPharma.DAL
 
                         using (var adapter = new SqlDataAdapter(cmd))
                         {
-                            var dataTable = new DataTable();
+                            dataTable = new DataTable();
                             adapter.Fill(dataTable);
-                            return dataTable;
+
                         }
                     }
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message, "Lỗi"); }
-            return null;
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return dataTable;
         }
 
         public static int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
@@ -51,23 +52,15 @@ namespace QPharma.DAL
                     {
                         if (parameters != null) cmd.Parameters.AddRange(parameters);
                         conn.Open();
-                        try
-                        {
-                            var rowsAffected = cmd.ExecuteNonQuery();
-
-                            return rowsAffected;
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.Write(ex.ToString());
-                        }
-
+                        var rowsAffected = cmd.ExecuteNonQuery();
                         conn.Close();
-                        return 0;
+                        return rowsAffected;
                     }
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message, "Lỗi"); return Predefined.ERROR; }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+
+            return 0;
         }
 
         public static int ExecuteTransaction(Dictionary<string, SqlParameter[]> queryParameters)
@@ -108,7 +101,6 @@ namespace QPharma.DAL
                         Debug.WriteLine("Rollback Error: " + exRollback.Message);
                     }
                 }
-
                 return result;
             }
         }

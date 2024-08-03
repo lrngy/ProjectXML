@@ -1,6 +1,4 @@
-﻿using QPharma.GUI;
-
-namespace QPharma;
+﻿namespace QPharma;
 
 internal static class Program
 {
@@ -25,10 +23,11 @@ internal static class Program
     private static void InitDB()
     {
         string installPath = Application.StartupPath;
-        string sourcePath = Path.Combine(installPath, "QlyHieuThuoc.mdf");
 
-        string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Development.Default.LocalResource);
-        string targetPath = Path.Combine(appDataPath, "QlyHieuThuoc.mdf");
+        string sourcePath = Path.Combine(installPath, Config.Instance.ConfigureFile.DBFile);
+
+        string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Config.Instance.ConfigureFile.LocalResource);
+        string targetPath = Path.Combine(appDataPath, Config.Instance.ConfigureFile.DBFile);
 
         if (!Directory.Exists(appDataPath))
         {
@@ -39,9 +38,9 @@ internal static class Program
         {
             File.Copy(sourcePath, targetPath, true);
         }
-
-        string connectionString = string.Format(Development.Default.ConnectionString, targetPath);
-        Development.Default.ConnectionString = connectionString;
-        Development.Default.Save();
+        Config.Instance.ConfigureFile.Reload();
+        string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={targetPath};Integrated Security=True;Connect Timeout=30";
+        Config.Instance.ConfigureFile.ConnectionString = connectionString;
+        Config.Instance.ConfigureFile.Save();
     }
 }

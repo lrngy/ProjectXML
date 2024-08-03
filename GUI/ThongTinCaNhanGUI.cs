@@ -35,7 +35,7 @@ public partial class ThongTinCaNhanGUI : BaseForm
         }
         catch (Exception)
         {
-            dateTimePicker1.Text = Development.Default.DefaultDate;
+            dateTimePicker1.Text =  Config.Instance.ConfigureFile.DefaultDate;
         }
 
         radioButton1.Checked = staff.gender;
@@ -54,7 +54,7 @@ public partial class ThongTinCaNhanGUI : BaseForm
             return;
         }
 
-        var nameMaxLength = Development.Default.MaxNameLength;
+        var nameMaxLength =  Config.Instance.ConfigureFile.MaxNameLength;
         if (name.Length > nameMaxLength)
         {
             CustomMessageBox.ShowWarning(string.Format(Resources.Name_cannot_exceed_value, nameMaxLength));
@@ -63,7 +63,7 @@ public partial class ThongTinCaNhanGUI : BaseForm
 
         var birth = DateTime.ParseExact(birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-        var minAge = Development.Default.MinAge;
+        var minAge =  Config.Instance.ConfigureFile.MinAge;
         if (DateTime.Now.Year - birth.Year < minAge)
         {
             CustomMessageBox.ShowWarning(string.Format(Resources.Your_age_must_be_greater_or_equal_value, minAge));

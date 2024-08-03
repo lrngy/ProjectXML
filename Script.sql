@@ -1,22 +1,21 @@
 IF NOT EXISTS (
     SELECT name
     FROM sys.databases
-    WHERE name = N'QlyHieuThuoc'
+    WHERE name = N'QPharma'
 )
 BEGIN
-    CREATE DATABASE QlyHieuThuoc;
+    CREATE DATABASE QPharma;
 END
-go;
 
-use QlyHieuThuoc
-go;
+
+use QPharma
+
+
 
 create table users(
 username varchar(30) primary key,
 password varchar(30)
 )
-go;
-
 create table staffs(
 staff_id varchar(30) primary key,
 staff_name nvarchar(30),
@@ -29,8 +28,6 @@ staff_updated datetime,
 staff_deleted datetime,
 username varchar(30) foreign key references users(username)
 )
-go;
-
 create table suppliers(
 supplier_id varchar(30) primary key,
 supplier_name nvarchar(50),
@@ -42,9 +39,6 @@ supplier_created datetime,
 supplier_updated datetime,
 supplier_deleted datetime
 )
-go;
-
-
 create table categories(
 category_id int IDENTITY(1,1) primary key,
 category_name nvarchar(30),
@@ -55,9 +49,6 @@ category_updated datetime,
 category_deleted datetime,
 unique(category_name)
 )
-go;
-
-
 create table customers (
 customer_id int IDENTITY(1,1) primary key,
 customer_name nvarchar(30),
@@ -69,8 +60,6 @@ customer_created datetime,
 customer_updated datetime,
 customer_deleted datetime
 )
-go;
-
 create table medicine_locations(
 medicine_location_id int IDENTITY(1,1) primary key,
 medicine_location_name nvarchar(30),
@@ -81,10 +70,6 @@ medicine_location_updated datetime,
 medicine_location_deleted datetime,
 unique(medicine_location_name)
 )
-go;
-
-
-
 create table medicines(
 medicine_id varchar(30) primary key,
 medicine_name nvarchar(100),
@@ -104,8 +89,6 @@ supplier_id varchar(30) foreign key references suppliers(supplier_id),
 category_id int foreign key references categories(category_id),
 medicine_location_id int foreign key references medicine_locations(medicine_location_id),
 )
-go;
-
 create table bills(
 bill_id int IDENTITY(1,1) primary key,
 bill_total int,
@@ -117,8 +100,6 @@ staff_id varchar(30) foreign key references staffs(staff_id),
 bill_created datetime,
 bill_deleted datetime
 )
-go;
-
 create table bill_details(
 bill_id int foreign key references bills(bill_id),
 medicine_id varchar(30) foreign key references medicines(medicine_id),
@@ -126,8 +107,6 @@ bill_detail_quantity int,
 bill_detail_price int,
 primary key (bill_id, medicine_id)
 )
-go;
-
 create table suppliers_history(
 supplier_id varchar(30) foreign key references suppliers(supplier_id),
 medicine_id varchar(30) foreign key references medicines(medicine_id),
@@ -137,21 +116,18 @@ supplier_history_created datetime,
 supplier_history_deleted datetime,
 primary key (supplier_id, medicine_id, supplier_history_created)
 )
-go;
-
 create table login_log(
 login_log_id varchar(100) primary key,
 username varchar(30) foreign key references users(username),
 login_time datetime,
 logout_time datetime
 )
-GO;
+
 
 
 INSERT INTO users
 (username, password)
 VALUES('admin', '1');
-GO;
 
 INSERT INTO staffs
 (staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)

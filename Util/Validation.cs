@@ -1,6 +1,4 @@
-﻿using System.Net.Mail;
-
-namespace QPharma.Util;
+﻿namespace QPharma.Util;
 
 public class Validation
 {

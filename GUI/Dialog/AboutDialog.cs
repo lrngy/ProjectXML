@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace QPharma.GUI.Dialog;
+﻿namespace QPharma.GUI.Dialog;
 
 public partial class AboutDialog : BaseForm
 {

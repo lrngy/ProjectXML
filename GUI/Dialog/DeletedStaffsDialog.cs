@@ -1,19 +1,4 @@
-﻿using QPharma.BUS;
-using QPharma.DAL;
-using QPharma.DTO;
-using QPharma.Properties;
-using QPharma.Util;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace QPharma.GUI.Dialog
+﻿namespace QPharma.GUI.Dialog
 {
     public partial class DeletedStaffsDialog : Form
     {

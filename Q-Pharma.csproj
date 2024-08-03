@@ -23,6 +23,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <Configurations>Production;Development</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Development|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,27 +53,16 @@
     <StartupObject>QPharma.Program</StartupObject>
     <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|AnyCPU'">
     <Optimize>False</Optimize>
+    <DefineConstants>$(DefineConstants);Development</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Production|AnyCPU'">
     <Optimize>False</Optimize>
+    <DefineConstants>$(DefineConstants);Production</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="QlyHieuThuoc.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="QlyHieuThuoc_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="XML\customers.xml" />
-    <Content Include="XML\finance_bills.xml" />
-    <Content Include="XML\medicines.xml" />
-    <Content Include="XML\pos_bills.xml" />
-    <Content Include="XML\staffs.xml" />
-    <Content Include="XML\suppliers.xml" />
-    <Content Include="XML\users.xml" />
-    <Content Include="XML\categories.xml" />
+    <None Remove="README.md" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -114,6 +104,9 @@
     <None Update="Properties\Production.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Production.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="QPharma.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>

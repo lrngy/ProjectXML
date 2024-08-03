@@ -11,7 +11,7 @@ internal class StaffBUS
         }
         public static bool CheckExistUsername(string username)
         {
-            return.CheckExistUsername(username);
+            return StaffDAL.CheckExistUsername(username);
         }
     public StaffDTO GetByUsername(string username)
     {

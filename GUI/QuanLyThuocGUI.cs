@@ -16,13 +16,13 @@ public partial class QuanLyThuocGUI : BaseForm
     private int rowSelectedTheLoai;
     private int rowSelectedThuoc;
 
-        public QuanLyThuocGUI(UserDTO user, int tabControlIndex)
-        {
-            InitializeComponent();
-            this.user = user;
-            this.tabControlIndex = tabControlIndex;
-            staff = StaffDAL.GetByUsername(user.username);
-        }
+    public QuanLyThuocGUI(UserDTO user, int tabControlIndex)
+    {
+        InitializeComponent();
+        this.user = user;
+        this.tabControlIndex = tabControlIndex;
+        staff = StaffDAL.GetByUsername(user.username);
+    }
 
     private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
     {
@@ -95,12 +95,12 @@ public partial class QuanLyThuocGUI : BaseForm
         {
             BeginInvoke(() => { dgvThuoc.ClearSelection(); });
             TimThuocTheoDuLieu();
-            cbTLThuoc.Items.Clear();
-            cbNccThuoc.Items.Clear();
-            cbTieuChiThuoc.SelectedIndex = cbIndexTieuChiThuoc;
             cbLoai.Items.Clear();
             cbLoai.Items.Add(Resources.Prescription_drug);
             cbLoai.Items.Add(Resources.Unprescription_drug);
+            cbTieuChiThuoc.SelectedIndex = cbIndexTieuChiThuoc;
+
+            cbTLThuoc.Items.Clear();
             var categoryList = categoryBUS.LoadData();
             foreach (var category in categoryList)
             {
@@ -110,6 +110,7 @@ public partial class QuanLyThuocGUI : BaseForm
 
             cbTLThuoc.Items.Add(Resources.Add);
 
+            cbNccThuoc.Items.Clear();
             var supplierList = supplierBUS.LoadData();
             foreach (var supplier in supplierList)
             {
@@ -119,6 +120,7 @@ public partial class QuanLyThuocGUI : BaseForm
 
             cbNccThuoc.Items.Add(Resources.Add);
 
+            cbVitri.Items.Clear();
             var medicineLocationList = medicineLocationBUS.LoadData();
             foreach (var medicineLocation in medicineLocationList)
             {
@@ -1162,7 +1164,11 @@ public partial class QuanLyThuocGUI : BaseForm
     private void cbTLThuoc_SelectedIndexChanged(object sender, EventArgs e)
     {
         var comboBox = sender as ComboBox;
-        if (comboBox.SelectedIndex == comboBox.Items.Count - 1) comboBox.SelectedIndex = -1;
+        if (comboBox.SelectedIndex == comboBox.Items.Count - 1)
+        {
+            tabControl1.SelectTab(1);
+            comboBox.SelectedIndex = -1;
+        }
     }
 
     private void dgvViTriThuoc_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1344,7 +1350,24 @@ public partial class QuanLyThuocGUI : BaseForm
         deletedSupplier.ShowDialog();
     }
 
-    private void btnTh(object sender, EventArgs e)
+
+    private void cbNccThuoc_SelectedIndexChanged(object sender, EventArgs e)
     {
+        var comboBox = sender as ComboBox;
+        if (comboBox.SelectedIndex == comboBox.Items.Count - 1)
+        {
+            tabControl1.SelectTab(2);
+            comboBox.SelectedIndex = -1;
+        }
+    }
+
+    private void cbVitri_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+        if (comboBox.SelectedIndex == comboBox.Items.Count - 1)
+        {
+            tabControl1.SelectTab(3);
+            comboBox.SelectedIndex = -1;
+        }
     }
 }

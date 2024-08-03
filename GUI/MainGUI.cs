@@ -117,10 +117,10 @@ public partial class MainGUI : BaseForm
         lbDate.Text = formattedDate;
 
 
-        lbTime.Text = DateTime.Now.ToString(Development.Default.TimeFormat);
+        lbTime.Text = DateTime.Now.ToString( Config.Instance.ConfigureFile.TimeFormat);
         var timer = new Timer();
         timer.Interval = 1000;
-        timer.Tick += (s, args) => { lbTime.Text = DateTime.Now.ToString(Development.Default.TimeFormat); };
+        timer.Tick += (s, args) => { lbTime.Text = DateTime.Now.ToString( Config.Instance.ConfigureFile.TimeFormat); };
         timer.Start();
     }
 

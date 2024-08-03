@@ -13,7 +13,7 @@ namespace QPharma.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.10.0.0")]
-    internal sealed partial class Development : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Development : global::System.Configuration.ApplicationSettingsBase {
         
         private static Development defaultInstance = ((Development)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Development())));
         
@@ -114,6 +114,15 @@ namespace QPharma.Properties {
         public string ImageFolderName {
             get {
                 return ((string)(this["ImageFolderName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("QPharma.mdf")]
+        public string DBFile {
+            get {
+                return ((string)(this["DBFile"]));
             }
         }
     }

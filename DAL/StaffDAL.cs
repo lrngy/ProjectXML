@@ -2,7 +2,7 @@
 namespace QPharma.DAL
 {
     // Lớp csdl
-    internal static class StaffDAL 
+    internal static class StaffDAL
     {
         // Lấy tất cả
         public static List<StaffDTO> GetAll()
@@ -26,12 +26,15 @@ namespace QPharma.DAL
                     var staff_updated = dr["staff_updated"].ToString();
                     var staff_deleted = dr["staff_deleted"].ToString();
 
-                    var staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created, staff_updated, staff_deleted);
+                    var staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created,
+                        staff_updated, staff_deleted);
                     list.Add(staff);
                 }
             }
             catch (Exception)
-            { MessageBox.Show("Lấy thông tin nhân viên thất bại!");}
+            {
+                MessageBox.Show("Lấy thông tin nhân viên thất bại!");
+            }
 
             return list;
         }
@@ -71,15 +74,18 @@ namespace QPharma.DAL
                     var staff_updated = dr["staff_updated"].ToString();
                     var staff_deleted = dr["staff_deleted"].ToString();
 
-                    var staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created, staff_updated, staff_deleted);
+                    var staff = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created,
+                        staff_updated, staff_deleted);
                     list.Add(staff);
                 }
             }
             catch (Exception)
-            { MessageBox.Show("Lấy thông tin nhân viên thất bại!"); }
+            {
+                MessageBox.Show("Lấy thông tin nhân viên thất bại!");
+            }
 
-        return list;
-    }
+            return list;
+        }
 
         // Lấy bởi tên id
         public static StaffDTO GetById(string id)
@@ -102,14 +108,17 @@ namespace QPharma.DAL
                     var staff_updated = dt.Rows[0]["staff_updated"].ToString();
                     var staff_deleted = dt.Rows[0]["staff_deleted"].ToString();
 
-                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created, staff_updated, staff_deleted);
+                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created,
+                        staff_updated, staff_deleted);
                 }
             }
             catch (Exception ex)
-            { MessageBox.Show("Lấy thông tin nhân viên qua id thất bại!" + "\n" + ex.Message); }
+            {
+                MessageBox.Show("Lấy thông tin nhân viên qua id thất bại!" + "\n" + ex.Message);
+            }
 
-        return staffDTO;
-    }
+            return staffDTO;
+        }
 
         // Lấy bởi tên người dùng
         public static StaffDTO GetByUsername(string username)
@@ -132,7 +141,8 @@ namespace QPharma.DAL
                     var staff_updated = dt.Rows[0]["staff_updated"].ToString();
                     var staff_deleted = dt.Rows[0]["staff_deleted"].ToString();
 
-                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created, staff_updated, staff_deleted);
+                    staffDTO = new StaffDTO(id, name, sex, yearOfBirth, isManager, isSeller, username, staff_created,
+                        staff_updated, staff_deleted);
                 }
             }
             catch (Exception ex)
@@ -140,8 +150,8 @@ namespace QPharma.DAL
                 Debug.WriteLine("Error getting staff by username:" + ex);
             }
 
-        return staffDTO;
-    }
+            return staffDTO;
+        }
 
         // Kiểm tra tồn tại
         public static bool CheckExistUsername(string username)
@@ -158,15 +168,16 @@ namespace QPharma.DAL
             try
             {
                 var query =
-                     "INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, " +
-                     "staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
-                         "VALUES(@staff_id, @staff_name, @staff_sex, @staff_year_of_birth, @staff_is_manager, @staff_is_seller," +
-                         " @staff_created, @staff_updated, @staff_deleted, @username )";
-                SqlParameter[] parameters = { 
-                    new SqlParameter("@staff_id", staffDTO.id), 
-                    new SqlParameter("@staff_name", staffDTO.name), 
-                    new SqlParameter("@staff_sex", staffDTO.gender), 
-                    new SqlParameter("@staff_year_of_birth", staffDTO.birthday), 
+                    "INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, " +
+                    "staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
+                    "VALUES(@staff_id, @staff_name, @staff_sex, @staff_year_of_birth, @staff_is_manager, @staff_is_seller," +
+                    " @staff_created, @staff_updated, @staff_deleted, @username )";
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@staff_id", staffDTO.id),
+                    new SqlParameter("@staff_name", staffDTO.name),
+                    new SqlParameter("@staff_sex", staffDTO.gender),
+                    new SqlParameter("@staff_year_of_birth", staffDTO.birthday),
                     new SqlParameter("@staff_is_manager", staffDTO.isManager),
                     new SqlParameter("@staff_is_seller", staffDTO.isSeller),
                     new SqlParameter("@staff_created", CustomDateTime.GetNow()),
@@ -181,9 +192,11 @@ namespace QPharma.DAL
                     MessageBox.Show("username đã tồn tại!");
                     return Predefined.ERROR;
                 }
+
                 string query2 = "INSERT INTO users (username, password) VALUES (@username, '1')";
 
-                if (DB.ExecuteNonQuery(query2, new SqlParameter[]{ new SqlParameter("@username", staffDTO.username)}) <= 0) 
+                if (DB.ExecuteNonQuery(query2,
+                        new SqlParameter[] { new SqlParameter("@username", staffDTO.username) }) <= 0)
                     MessageBox.Show("Thêm người dùng thất bại!");
                 if (DB.ExecuteNonQuery(query, parameters) <= 0) MessageBox.Show("Thêm nhân viên thất bại!");
                 return Predefined.SUCCESS;
@@ -201,11 +214,12 @@ namespace QPharma.DAL
             try
             {
                 var query = "UPDATE QlyHieuThuoc.dbo.staffs " +
-                        " SET staff_name=@staff_name, staff_sex=@staff_sex, staff_year_of_birth=@staff_year_of_birth, " +
-                        "staff_is_manager=@staff_is_manager, staff_is_seller=@staff_is_seller, staff_created= @staff_created, " +
-                        "staff_updated=@staff_updated, staff_deleted=@staff_deleted, username=@username WHERE staff_id=@staff_id";
+                            " SET staff_name=@staff_name, staff_sex=@staff_sex, staff_year_of_birth=@staff_year_of_birth, " +
+                            "staff_is_manager=@staff_is_manager, staff_is_seller=@staff_is_seller, staff_created= @staff_created, " +
+                            "staff_updated=@staff_updated, staff_deleted=@staff_deleted, username=@username WHERE staff_id=@staff_id";
 
-                SqlParameter[] parameters = {
+                SqlParameter[] parameters =
+                {
                     new SqlParameter("@staff_id", staffDTO.id),
                     new SqlParameter("@staff_name", staffDTO.name),
                     new SqlParameter("@staff_sex", staffDTO.gender),
@@ -213,11 +227,11 @@ namespace QPharma.DAL
                     new SqlParameter("@staff_is_manager", staffDTO.isManager),
                     new SqlParameter("@staff_is_seller", staffDTO.isSeller),
                     new SqlParameter("@staff_created", SqlDbType.DateTime)
-                    { 
-                        Value = DateTime.TryParse(GetByUsername(staffDTO.username).staff_created, 
+                    {
+                        Value = DateTime.TryParse(GetByUsername(staffDTO.username).staff_created,
                             out DateTime parsedDate)
-                                ? (object)parsedDate
-                                : DBNull.Value 
+                            ? (object)parsedDate
+                            : DBNull.Value
                     },
                     new SqlParameter("@staff_updated", CustomDateTime.GetNow()),
                     new SqlParameter("@staff_deleted", DBNull.Value),
@@ -239,7 +253,7 @@ namespace QPharma.DAL
             try
             {
                 var query = $"UPDATE staffs SET staff_deleted = '{CustomDateTime.GetNow()}' WHERE staff_id = '{id}'";
-                if(DB.ExecuteNonQuery(query)<=0) return Predefined.ERROR;
+                if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
                 return Predefined.SUCCESS;
             }
             catch (XmlException ex)
@@ -255,16 +269,17 @@ namespace QPharma.DAL
             try
             {
                 var query = $"UPDATE staffs SET staff_deleted = null WHERE username = @username";
-                if (DB.ExecuteNonQuery(query, new SqlParameter[] {new SqlParameter("@username", currentUsername)}) <= 0) return Predefined.ERROR;
+                if (DB.ExecuteNonQuery(query, new SqlParameter[] { new SqlParameter("@username", currentUsername) }) <=
+                    0) return Predefined.ERROR;
 
-            return Predefined.SUCCESS;
+                return Predefined.SUCCESS;
+            }
+            catch (XmlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Predefined.ERROR;
+            }
         }
-        catch (XmlException ex)
-        {
-            Debug.WriteLine(ex.Message);
-            return Predefined.ERROR;
-        }
-    }
 
         internal static int ForceDelete(string username)
         {
@@ -283,14 +298,14 @@ namespace QPharma.DAL
 
                 if (DB.ExecuteNonQuery(query3, parameters) <= 0) MessageBox.Show("Xóa người dùng thất bại!");
 
-            return Predefined.SUCCESS;
+                return Predefined.SUCCESS;
+            }
+            catch (XmlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Predefined.ERROR;
+            }
         }
-        catch (XmlException ex)
-        {
-            Debug.WriteLine(ex.Message);
-            return Predefined.ERROR;
-        }
-    }
 
         // Khôi phục lại tất cả
         internal static int RestoreAll()
@@ -300,14 +315,14 @@ namespace QPharma.DAL
                 var query = "UPDATE staffs SET staff_deleted = null";
                 if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
 
-            return Predefined.SUCCESS;
+                return Predefined.SUCCESS;
+            }
+            catch (XmlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Predefined.ERROR;
+            }
         }
-        catch (XmlException ex)
-        {
-            Debug.WriteLine(ex.Message);
-            return Predefined.ERROR;
-        }
-    }
 
         internal static int ForceAllDelete()
         {
@@ -316,12 +331,13 @@ namespace QPharma.DAL
                 var query = $"DELETE FROM staffs WHERE staff_deleted IS NOT NULL";
                 if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
 
-            return Predefined.SUCCESS;
-        }
-        catch (XmlException ex)
-        {
-            Debug.WriteLine(ex.Message);
-            return Predefined.ERROR;
+                return Predefined.SUCCESS;
+            }
+            catch (XmlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return Predefined.ERROR;
+            }
         }
     }
 }

@@ -63,8 +63,8 @@ public class MedicineBUS
             var sourcePath = openFileDialog.FileName;
             var targetDirectory = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                Development.Default.LocalResource,
-                Development.Default.ImageFolderName);
+                 Config.Instance.ConfigureFile.LocalResource,
+                 Config.Instance.ConfigureFile.ImageFolderName);
 
             //var targetDirectory = Config.getImagePath();
             var targetPath = Path.Combine(targetDirectory, $"{id}.jpg");
@@ -95,8 +95,8 @@ public class MedicineBUS
 
         var targetDirectory = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            Development.Default.LocalResource,
-            Development.Default.ImageFolderName);
+             Config.Instance.ConfigureFile.LocalResource,
+             Config.Instance.ConfigureFile.ImageFolderName);
         var targetPath = Path.Combine(targetDirectory, $"{id}.jpg");
         if (File.Exists(targetPath)) File.Delete(targetPath);
         return medicineDAL.RemoveImage(id);

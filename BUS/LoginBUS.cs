@@ -30,7 +30,7 @@ public class LoginBUS
         var loginTime = loginLog.loginTime;
 
         var timeSpan = CustomDateTime.CompareDateTime(currentTime, loginTime);
-        if (timeSpan.TotalMinutes <= Development.Default.SessionDurationMinute &&
+        if (timeSpan.TotalMinutes <=  Config.Instance.ConfigureFile.SessionDurationMinute &&
             string.IsNullOrEmpty(loginLog.logoutTime)) return loginLog;
         return null;
     }

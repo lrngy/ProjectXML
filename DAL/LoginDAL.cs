@@ -1,4 +1,3 @@
-namespace QPharma.DAL;
 
 namespace QPharma.DAL
 {

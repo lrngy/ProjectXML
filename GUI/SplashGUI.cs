@@ -4,7 +4,7 @@ public partial class SplashGUI : BaseForm
 {
     private readonly LoginBUS loginBUS = new();
     private readonly LoginGUI loginGUI = new();
-    private readonly double opacityIncrement = Development.Default.OpacityIncrement;
+    private readonly double opacityIncrement =  Config.Instance.ConfigureFile.OpacityIncrement;
     private readonly StaffBUS staffBUS = new();
     private readonly UserBUS userBUS = new();
     private Timer delayTimer;
@@ -13,7 +13,6 @@ public partial class SplashGUI : BaseForm
         public SplashGUI()
         {
             InitializeComponent();
-            // this.TopMost = false;
         }
 
     private void StartMainGUI(UserDTO user)
@@ -40,7 +39,7 @@ public partial class SplashGUI : BaseForm
         timer1.Stop();
 
         delayTimer = new Timer();
-        delayTimer.Interval = Development.Default.DelayTimerSplash;
+        delayTimer.Interval =  Config.Instance.ConfigureFile.DelayTimerSplash;
         delayTimer.Tick += DelayTimer_Tick;
         delayTimer.Start();
     }

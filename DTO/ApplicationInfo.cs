@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace QPharma.DTO;
+﻿namespace QPharma.DTO;
 
 public class ApplicationInfo
 {

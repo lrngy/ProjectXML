@@ -420,30 +420,33 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
     <value>Vui lòng nhập mật khẩu cũ</value>
   </data>
   <data name="Are you sure you want to permanently delete this category?" xml:space="preserve">
-	  <value>Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?</value>
+    <value>Bạn có chắc chắn muốn xóa vĩnh viễn thể loại này?</value>
   </data>
   <data name="Restore failed" xml:space="preserve">
-	  <value>Khôi phục thất bại</value>
+    <value>Khôi phục thất bại</value>
   </data>
   <data name="Are you sure want to delete this medicine location?" xml:space="preserve">
-	  <value>Bạn có muốn xoá vị trí thuốc này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
+    <value>Bạn có muốn xoá vị trí thuốc này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
   </data>
   <data name="Are you sure want to delete this supplier?" xml:space="preserve">
-	  <value>Bạn có muốn xoá nhà cung cấp này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
+    <value>Bạn có muốn xoá nhà cung cấp này vĩnh viễn? Không thể khôi phục sau khi xoá</value>
   </data>
   <data name="Please choose a medicine location" xml:space="preserve">
-	  <value>Vui lòng chọn vị trí thuốc</value>
+    <value>Vui lòng chọn vị trí thuốc</value>
   </data>
   <data name="The archive is empty" xml:space="preserve">
-	  <value>Mục lưu trữ đang trống</value>
+    <value>Mục lưu trữ đang trống</value>
   </data>
   <data name="Are you sure you want to permanently remove this medication?" xml:space="preserve">
-	  <value>Bạn có chắc chắn muốn xóa vĩnh viễn thuốc này?</value>
+    <value>Bạn có chắc chắn muốn xóa vĩnh viễn thuốc này?</value>
   </data>
   <data name="Restore all medicines successfully" xml:space="preserve">
-	  <value>Khôi phục tất cả thuốc thành công</value>
+    <value>Khôi phục tất cả thuốc thành công</value>
   </data>
   <data name="Restore medicine id successfully" xml:space="preserve">
-	  <value>Đã khôi phục Mã thuốc {0}</value>
+    <value>Đã khôi phục Mã thuốc {0}</value>
+  </data>
+  <data name="ConnectString" xml:space="preserve">
+    <value>Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True;Connect Timeout=30</value>
   </data>
 </root>

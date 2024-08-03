@@ -6,7 +6,7 @@
       <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True;Connect Timeout=30</Value>
     </Setting>
     <Setting Name="SessionDurationMinute" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">60</Value>
+      <Value Profile="(Default)">120</Value>
     </Setting>
     <Setting Name="TimeFormat" Type="System.String" Scope="Application">
       <Value Profile="(Default)">HH:mm:ss</Value>
@@ -24,13 +24,16 @@
       <Value Profile="(Default)">0.05</Value>
     </Setting>
     <Setting Name="DelayTimerSplash" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">500</Value>
+      <Value Profile="(Default)">300</Value>
     </Setting>
     <Setting Name="LocalResource" Type="System.String" Scope="Application">
       <Value Profile="(Default)">QPharma</Value>
     </Setting>
     <Setting Name="ImageFolderName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Images</Value>
+    </Setting>
+    <Setting Name="DBFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">QPharma.mdf</Value>
     </Setting>
   </Settings>
 </SettingsFile>

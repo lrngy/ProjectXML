@@ -38,7 +38,7 @@ namespace QPharma.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.DefaultSettingValueAttribute("120")]
         public int SessionDurationMinute {
             get {
                 return ((int)(this["SessionDurationMinute"]));
@@ -92,7 +92,7 @@ namespace QPharma.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
         public int DelayTimerSplash {
             get {
                 return ((int)(this["DelayTimerSplash"]));
@@ -114,6 +114,15 @@ namespace QPharma.Properties {
         public string ImageFolderName {
             get {
                 return ((string)(this["ImageFolderName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("QPharma.mdf")]
+        public string DBFile {
+            get {
+                return ((string)(this["DBFile"]));
             }
         }
     }

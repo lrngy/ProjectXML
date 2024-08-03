@@ -1,27 +1,16 @@
 ﻿namespace QPharma.Util;
 
-public class Config
+public sealed class Config
 {
-    private static readonly string folderXML = "XML";
-    private static readonly string folderMedicineImage = "Shared/Medicine/Images";
+    private static readonly Lazy<Config> lazy = new(() => new Config());
+    public static Config Instance => lazy.Value;
 
-    public static XmlDocument getDoc(string fileName)
-    {
-        var xmlDoc = new XmlDocument();
-        xmlDoc.Load(getXMLPath(fileName));
-        return xmlDoc;
-    }
+#if Development
+    public Development ConfigureFile { get; } = Development.Default;
+#elif Production
+    internal Production ConfigureFile { get; } = Production.Default;
+#endif
 
-    public static string getXMLPath(string fileName)
-    {
-        var xmlDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName,
-            folderXML);
-        var relativePath = Path.Combine(xmlDirectory, fileName + ".xml");
-        return relativePath;
-    }
 
-    public static string getCurrentDirectory()
-    {
-        return Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-    }
+    public string CurrentDirectory => Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
 }

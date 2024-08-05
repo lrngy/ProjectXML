@@ -22,7 +22,7 @@ public partial class LoginGUI : BaseForm
     {
         lbError.Text = "";
         var username = tbUsername.Text.Trim();
-        var password = tbPassword.Text.Trim();
+        var password = tbPassword.Text;
         var isEmptyField = username.Equals("") || password.Equals("");
         if (isEmptyField)
         {
@@ -30,7 +30,7 @@ public partial class LoginGUI : BaseForm
             return;
         }
 
-        var user = loginBus.CheckExist(username, password);
+        var user = loginBus.CheckAccount(username, password);
         if (user is null)
         {
             lbError.Text = Resources.Wrong_username_or_password;

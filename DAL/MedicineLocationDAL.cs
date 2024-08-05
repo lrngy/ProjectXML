@@ -1,4 +1,6 @@
-﻿namespace QPharma.DAL;
+﻿using QPharma.DTO;
+
+namespace QPharma.DAL;
 
 internal class MedicineLocationDAL
 {
@@ -162,12 +164,22 @@ internal class MedicineLocationDAL
     {
         try
         {
-            var query = "DELETE FROM medicine_locations WHERE medicine_location_id = @id";
-            SqlParameter[] sqlParameters =
+            var query = new Dictionary<string, SqlParameter[]>
             {
-                new("@id", id)
+                {
+                    "Update medicines set medicine_location_id = @dbnull",
+                    [
+                        new SqlParameter("@dbnull", DBNull.Value)
+                    ]
+                },
+                {
+                    "DELETE FROM medicine_locations WHERE medicine_location_id = @id",
+                    [
+                        new SqlParameter("@id", id)
+                    ]
+                },
             };
-            DB.ExecuteNonQuery(query, sqlParameters);
+            DB.ExecuteTransaction(query);
             return Predefined.SUCCESS;
         }
         catch (Exception ex)
@@ -177,8 +189,9 @@ internal class MedicineLocationDAL
         }
     }
 
-    public bool CheckExistName(string medicineLocationName)
+    public MedicineLocationDTO GetByName(string medicineLocationName)
     {
+        MedicineLocationDTO medicineLocationDTO = null;
         try
         {
             var query = "SELECT * FROM medicine_locations WHERE medicine_location_name = @name";
@@ -187,13 +200,23 @@ internal class MedicineLocationDAL
                 new("@name", medicineLocationName)
             };
             var dt = DB.ExecuteQuery(query, sqlParameters);
-            return dt.Rows.Count != 0;
+            if (dt.Rows.Count != 0)
+            {
+                var id = dt.Rows[0]["medicine_location_id"].ToString();
+                var note = dt.Rows[0]["medicine_location_note"].ToString();
+                var status = bool.Parse(dt.Rows[0]["medicine_location_status"].ToString());
+                var created = dt.Rows[0]["medicine_location_created"].ToString();
+                var updated = dt.Rows[0]["medicine_location_updated"].ToString();
+                var deleted = dt.Rows[0]["medicine_location_deleted"].ToString();
+                medicineLocationDTO = new MedicineLocationDTO(medicineLocationName, note, status, created, updated, deleted, id);
+            }
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
-            return false;
         }
+
+        return medicineLocationDTO;
     }
 
     public int Restore(string maViTri)

@@ -88,6 +88,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thêm danh mục thành công.
+        /// </summary>
+        internal static string Add_category_successfully {
+            get {
+                return ResourceManager.GetString("Add category successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thêm thất bại.
         /// </summary>
         internal static string Add_failed {
@@ -102,6 +111,24 @@ namespace QPharma.Properties {
         internal static string Add_failled {
             get {
                 return ResourceManager.GetString("Add failled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thêm vị trí thuốc thành công.
+        /// </summary>
+        internal static string Add_medicine_location_successfully {
+            get {
+                return ResourceManager.GetString("Add medicine location successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thêm nhà cung cấp thành công.
+        /// </summary>
+        internal static string Add_supplier_successfully {
+            get {
+                return ResourceManager.GetString("Add supplier successfully", resourceCulture);
             }
         }
         
@@ -302,6 +329,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tên thể loại đã tồn tại trong mục lưu trữ.
+        /// </summary>
+        internal static string Category_name_already_exists_in_archive {
+            get {
+                return ResourceManager.GetString("Category name already exists in archive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đổi ảnh thành công.
         /// </summary>
         internal static string Change_image_successfully {
@@ -343,6 +379,15 @@ namespace QPharma.Properties {
         internal static string ClassValue {
             get {
                 return ResourceManager.GetString("ClassValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True;Connect Timeout=30.
+        /// </summary>
+        internal static string ConnectString {
+            get {
+                return ResourceManager.GetString("ConnectString", resourceCulture);
             }
         }
         
@@ -392,11 +437,38 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sửa danh mục thành công.
+        /// </summary>
+        internal static string Edit_Category_Successfully {
+            get {
+                return ResourceManager.GetString("Edit Category Successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sửa thất bại.
         /// </summary>
         internal static string Edit_failed {
             get {
                 return ResourceManager.GetString("Edit failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sửa vị trí thuốc thành công.
+        /// </summary>
+        internal static string Edit_medicine_location_successfully {
+            get {
+                return ResourceManager.GetString("Edit medicine location successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sửa thông tin nhà cung cấp thành công.
+        /// </summary>
+        internal static string Edit_supplier_sucessfully {
+            get {
+                return ResourceManager.GetString("Edit supplier sucessfully", resourceCulture);
             }
         }
         
@@ -492,6 +564,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tên vị tri đã tồn tại trong mục lưu trữ.
+        /// </summary>
+        internal static string Location_name_already_exists_in_archive {
+            get {
+                return ResourceManager.GetString("Location name already exists in archive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng nhập thất bại. Vui lòng liên hệ quản lý !.
         /// </summary>
         internal static string Login_fail {
@@ -544,6 +625,15 @@ namespace QPharma.Properties {
         internal static string Medicine_ID_already_exist {
             get {
                 return ResourceManager.GetString("Medicine ID already exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mã thuốc đã tồn tại trong mục lưu trữ.
+        /// </summary>
+        internal static string Medicine_ID_already_exist_in_archive {
+            get {
+                return ResourceManager.GetString("Medicine ID already exist in archive", resourceCulture);
             }
         }
         
@@ -919,6 +1009,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mã nhà cung cấp đã tồn tại trong mục lưu trữ.
+        /// </summary>
+        internal static string Supplier_ID_already_exists_in_archive {
+            get {
+                return ResourceManager.GetString("Supplier ID already exists in archive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mã nhà cung cấp không tồn tại.
         /// </summary>
         internal static string Supplier_ID_is_not_exist {
@@ -978,6 +1077,15 @@ namespace QPharma.Properties {
         internal static string Unavailable {
             get {
                 return ResourceManager.GetString("Unavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- Chưa xác định --.
+        /// </summary>
+        internal static string Unknown {
+            get {
+                return ResourceManager.GetString("Unknown", resourceCulture);
             }
         }
         

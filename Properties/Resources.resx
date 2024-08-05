@@ -223,6 +223,9 @@
   <data name="Category name already exists" xml:space="preserve">
     <value>Tên thể loại đã tồn tại</value>
   </data>
+  <data name="Category name already exists in archive" xml:space="preserve">
+    <value>Tên thể loại đã tồn tại trong mục lưu trữ</value>
+  </data>
   <data name="Add failled" xml:space="preserve">
     <value>Thêm thất bại</value>
   </data>
@@ -258,6 +261,9 @@
   </data>
   <data name="Supplier ID already exists" xml:space="preserve">
     <value>Mã nhà cung cấp đã tồn tại</value>
+  </data>
+  <data name="Supplier ID already exists in archive" xml:space="preserve">
+    <value>Mã nhà cung cấp đã tồn tại trong mục lưu trữ</value>
   </data>
   <data name="This provider cannot be added" xml:space="preserve">
     <value>Không thể thêm nhà cung cấp này</value>
@@ -300,6 +306,9 @@
   </data>
   <data name="Medicine ID already exist" xml:space="preserve">
     <value>Mã thuốc đã tồn tại</value>
+  </data>
+  <data name="Medicine ID already exist in archive" xml:space="preserve">
+    <value>Mã thuốc đã tồn tại trong mục lưu trữ</value>
   </data>
   <data name="Cannot added this medicine" xml:space="preserve">
     <value>Lỗi thêm thuốc</value>
@@ -404,6 +413,9 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
   <data name="Location name already exists" xml:space="preserve">
     <value>Tên vị tri đã tồn tại</value>
   </data>
+  <data name="Location name already exists in archive" xml:space="preserve">
+    <value>Tên vị tri đã tồn tại trong mục lưu trữ</value>
+  </data>
   <data name="Please input location name" xml:space="preserve">
     <value>Vui lòng nhập tên vị trí</value>
   </data>
@@ -448,5 +460,26 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
   </data>
   <data name="ConnectString" xml:space="preserve">
     <value>Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True;Connect Timeout=30</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>-- Chưa xác định --</value>
+  </data>
+  <data name="Add category successfully" xml:space="preserve">
+	  <value>Thêm danh mục thành công</value>
+  </data>
+  <data name="Edit Category Successfully" xml:space="preserve">
+	  <value>Sửa danh mục thành công</value>
+  </data>
+  <data name="Add supplier successfully" xml:space="preserve">
+	  <value>Thêm nhà cung cấp thành công</value>
+  </data>
+  <data name="Edit supplier sucessfully" xml:space="preserve">
+	  <value>Sửa thông tin nhà cung cấp thành công</value>
+  </data>
+  <data name="Add medicine location successfully" xml:space="preserve">
+	  <value>Thêm vị trí thuốc thành công</value>
+  </data>
+  <data name="Edit medicine location successfully" xml:space="preserve">
+	  <value>Sửa vị trí thuốc thành công</value>
   </data>
 </root>

@@ -11,8 +11,9 @@ internal static class Program
 
         if (runningProcess != null) runningProcess.Kill();
 
+#if Development
         InitDB();
-
+#endif
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         Application.Run(new SplashGUI());

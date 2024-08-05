@@ -16,8 +16,10 @@ public class CategoryBUS
 
     public int Insert(CategoryDTO category)
     {
-        if (categoryDAL.CheckExistName(category.name)) return Predefined.ID_EXIST;
-        return categoryDAL.Insert(category);
+        var cate = categoryDAL.GetByName(category.name);
+        if (cate == null) return categoryDAL.Insert(category);
+        if (!string.IsNullOrEmpty(cate.deleted)) return Predefined.ID_EXIST_IN_ARCHIVE;
+        return Predefined.ID_EXIST;
     }
 
     public int Update(CategoryDTO category)

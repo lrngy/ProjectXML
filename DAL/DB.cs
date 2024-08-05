@@ -80,7 +80,7 @@ internal class DB
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Debug.WriteLine("Error: " + ex.Message);
 
                 try
                 {

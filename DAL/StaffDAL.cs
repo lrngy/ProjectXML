@@ -45,7 +45,7 @@ namespace QPharma.DAL
             var list = new List<StaffDTO>();
             try
             {
-                string query = @"SELECT *FROM staffs
+                string query = @"SELECT * FROM staffs
                                     WHERE
                                         staff_deleted IS NULL AND
                                         (
@@ -168,7 +168,7 @@ namespace QPharma.DAL
             try
             {
                 var query =
-                    "INSERT INTO QlyHieuThuoc.dbo.staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, " +
+                    "INSERT INTO staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, " +
                     "staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
                     "VALUES(@staff_id, @staff_name, @staff_sex, @staff_year_of_birth, @staff_is_manager, @staff_is_seller," +
                     " @staff_created, @staff_updated, @staff_deleted, @username )";
@@ -193,15 +193,28 @@ namespace QPharma.DAL
                     return Predefined.ERROR;
                 }
 
-                string query2 = "INSERT INTO users (username, password) VALUES (@username, '1')";
+                string hashPassword = BCrypt.Net.BCrypt.HashPassword("1");
+                string query2 = "INSERT INTO users (username, hash_pw) VALUES (@username, @password)";
 
                 if (DB.ExecuteNonQuery(query2,
-                        new SqlParameter[] { new SqlParameter("@username", staffDTO.username) }) <= 0)
+                        new SqlParameter[]
+                        {
+                            new SqlParameter("@username", staffDTO.username),
+                            new SqlParameter("@password", hashPassword)
+                        }) <= 0)
+                {
                     MessageBox.Show("Thêm người dùng thất bại!");
-                if (DB.ExecuteNonQuery(query, parameters) <= 0) MessageBox.Show("Thêm nhân viên thất bại!");
+                    return Predefined.ERROR;
+                }
+
+                if (DB.ExecuteNonQuery(query, parameters) <= 0)
+                {
+                    MessageBox.Show("Thêm nhân viên thất bại!");
+                    return Predefined.ERROR;
+                }
                 return Predefined.SUCCESS;
             }
-            catch (XmlException ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return Predefined.ERROR;
@@ -213,7 +226,7 @@ namespace QPharma.DAL
         {
             try
             {
-                var query = "UPDATE QlyHieuThuoc.dbo.staffs " +
+                var query = "UPDATE staffs " +
                             " SET staff_name=@staff_name, staff_sex=@staff_sex, staff_year_of_birth=@staff_year_of_birth, " +
                             "staff_is_manager=@staff_is_manager, staff_is_seller=@staff_is_seller, staff_created= @staff_created, " +
                             "staff_updated=@staff_updated, staff_deleted=@staff_deleted, username=@username WHERE staff_id=@staff_id";

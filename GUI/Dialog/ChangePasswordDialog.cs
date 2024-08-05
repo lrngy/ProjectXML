@@ -28,13 +28,14 @@ public partial class ChangePasswordDialog : BaseForm
 
         if (!isValid) return;
 
-        var newUser = new UserDTO(user.username, newPassword);
+        var hashPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
+        var newUser = new UserDTO(user.username, hashPassword);
 
         var result = userController.UpdatePassword(newUser);
         if (result == Predefined.SUCCESS)
         {
             CustomMessageBox.ShowSuccess(Resources.Change_password_success);
-            user.password = newPassword;
+            user.hashPassword = newPassword;
             Close();
         }
         else
@@ -47,7 +48,7 @@ public partial class ChangePasswordDialog : BaseForm
     private bool CheckNewPassword(string oldPassword, string newPassword, string confirmPassword)
     {
         var isValid = true;
-        if (!oldPassword.Equals(user.password))
+        if (!BCrypt.Net.BCrypt.Verify(oldPassword, user.hashPassword))
         {
             ShowValidateError(tbOldPass, Resources.Old_password_is_not_correct);
             isValid = false;

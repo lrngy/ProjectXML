@@ -33,7 +33,7 @@ public class MedicineDTO
     public string id { get; set; }
     public string name { get; set; }
     public int quantity { get; set; }
-    public double price_out { get; set; }
+    public double price_out { get ; set; }
     public CategoryDTO category { get; set; }
     public bool type { get; set; }
     public string unit { get; set; }
@@ -50,4 +50,5 @@ public class MedicineDTO
     public string updated { get; set; }
     public string deleted { get; set; }
     public string image { get; set; }
+
 }

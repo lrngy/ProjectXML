@@ -207,9 +207,9 @@ public class MedicineDAL
                 new("@type", newMedicine.type),
                 new("@description", newMedicine.description),
                 new("@created", newMedicine.created),
-                new("@supplier", newMedicine.supplier.id),
-                new("@category", newMedicine.category.id),
-                new("@location", newMedicine.location.id)
+                new("@supplier", (object)newMedicine.supplier?.id ?? DBNull.Value),
+                new("@category", (object)newMedicine.category?.id ?? DBNull.Value),
+                new("@location", (object)newMedicine.location?.id ?? DBNull.Value)
             };
             DB.ExecuteNonQuery(query, sqlParameters);
             return Predefined.SUCCESS;

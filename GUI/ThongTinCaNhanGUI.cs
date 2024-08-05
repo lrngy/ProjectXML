@@ -72,7 +72,7 @@ public partial class ThongTinCaNhanGUI : BaseForm
 
         var newStaff = new StaffDTO(staff.id, name, gender, birth.ToString("yyyy-MM-dd"), staff.isManager,
             staff.isSeller, user.username);
-        var newUser = new UserDTO(user.username, user.password);
+        var newUser = new UserDTO(user.username, user.hashPassword);
         var result = userController.Update(newUser, newStaff);
         if (result == Predefined.SUCCESS)
         {

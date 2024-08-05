@@ -16,8 +16,10 @@ public class MedicineLocationBUS
 
     public int Insert(MedicineLocationDTO medicineLocation)
     {
-        if (medicineLocationDAL.CheckExistName(medicineLocation.name)) return Predefined.ID_EXIST;
-        return medicineLocationDAL.Insert(medicineLocation);
+        var getMedicineLocationByName = medicineLocationDAL.GetByName(medicineLocation.name);
+        if (getMedicineLocationByName == null) return medicineLocationDAL.Insert(medicineLocation);
+        if (!string.IsNullOrEmpty(getMedicineLocationByName.deleted)) return Predefined.ID_EXIST_IN_ARCHIVE;
+        return Predefined.ID_EXIST;
     }
 
     public int Update(MedicineLocationDTO medicineLocation)

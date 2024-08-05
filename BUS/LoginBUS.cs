@@ -5,9 +5,12 @@ public class LoginBUS
     private readonly LoginDAL loginDAL = new();
     private readonly UserDAL userDAL = new();
 
-    public UserDTO CheckExist(string username, string password)
+    public UserDTO CheckAccount(string username, string password)
     {
-        return loginDAL.isExistAccount(username, password) ? userDAL.GetUser(username) : null;
+        UserDTO user = userDAL.GetByUsername(username);
+        var verify = user != null && BCrypt.Net.BCrypt.Verify(password, user.hashPassword);
+        if (verify) return user;
+        return null;
     }
 
     public bool Login(UserDTO user)

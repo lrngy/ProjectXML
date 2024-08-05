@@ -8,14 +8,18 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BuildApp", "BuildApp\BuildA
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DevDatabase|Any CPU = DevDatabase|Any CPU
 		Development|Any CPU = Development|Any CPU
 		Production|Any CPU = Production|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CE5C465-FB80-48DE-A507-440BFD78FF15}.DevDatabase|Any CPU.ActiveCfg = DevDatabase|Any CPU
+		{3CE5C465-FB80-48DE-A507-440BFD78FF15}.DevDatabase|Any CPU.Build.0 = DevDatabase|Any CPU
 		{3CE5C465-FB80-48DE-A507-440BFD78FF15}.Development|Any CPU.ActiveCfg = Development|Any CPU
 		{3CE5C465-FB80-48DE-A507-440BFD78FF15}.Development|Any CPU.Build.0 = Development|Any CPU
 		{3CE5C465-FB80-48DE-A507-440BFD78FF15}.Production|Any CPU.ActiveCfg = Production|Any CPU
 		{3CE5C465-FB80-48DE-A507-440BFD78FF15}.Production|Any CPU.Build.0 = Production|Any CPU
+		{BFE96168-23BA-448F-8B8F-B59A518BD83A}.DevDatabase|Any CPU.ActiveCfg = DevDatabase
 		{BFE96168-23BA-448F-8B8F-B59A518BD83A}.Development|Any CPU.ActiveCfg = Development
 		{BFE96168-23BA-448F-8B8F-B59A518BD83A}.Production|Any CPU.ActiveCfg = Production
 	EndGlobalSection

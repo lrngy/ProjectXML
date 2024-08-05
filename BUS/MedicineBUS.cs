@@ -18,8 +18,19 @@ public class MedicineBUS
 
     public int Insert(MedicineDTO newMedicine)
     {
-        if (medicineDAL.GetById(newMedicine.id) != null) return Predefined.ID_EXIST;
-        return medicineDAL.Insert(newMedicine);
+        MedicineDTO existingMedicine = medicineDAL.GetById(newMedicine.id);
+
+        if (existingMedicine == null)
+        {
+            return medicineDAL.Insert(newMedicine);
+        }
+
+        if (!string.IsNullOrEmpty(existingMedicine.deleted))
+        {
+            return Predefined.ID_EXIST_IN_ARCHIVE;
+        }
+
+        return Predefined.ID_EXIST;
     }
 
     public int Update(MedicineDTO medicine)

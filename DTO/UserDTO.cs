@@ -6,21 +6,21 @@ public class UserDTO
     {
     }
 
-    public UserDTO(string username, string password, string guid = "")
+    public UserDTO(string username, string hashPassword, string guid = "")
     {
         this.username = username;
-        this.password = password;
+        this.hashPassword = hashPassword;
         this.guid = guid;
     }
 
     public string username { get; set; }
-    public string password { get; set; }
+    public string hashPassword { get; set; }
     public string guid { get; set; }
 
 
     public void Update(UserDTO newUser)
     {
         username = newUser.username;
-        password = newUser.password;
+        hashPassword = newUser.hashPassword;
     }
 }

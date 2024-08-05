@@ -8,7 +8,9 @@ public sealed class Config
 #if Development
     public Development ConfigureFile { get; } = Development.Default;
 #elif Production
-    internal Production ConfigureFile { get; } = Production.Default;
+    public Production ConfigureFile { get; } = Production.Default;
+#elif DevDatabase
+    public DevDatabase ConfigureFile { get; } = DevDatabase.Default;
 #endif
 
 

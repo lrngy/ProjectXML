@@ -16,8 +16,10 @@ public class SupplierBUS
 
     public int Insert(SupplierDTO supplier)
     {
-        if (supplierDAL.GetById(supplier.id) != null) return Predefined.ID_EXIST;
-        return supplierDAL.Insert(supplier);
+        var supp = supplierDAL.GetById(supplier.id);
+        if (supp == null) return supplierDAL.Insert(supplier);
+        if(!string.IsNullOrEmpty(supp.deleted)) return Predefined.ID_EXIST_IN_ARCHIVE;
+        return Predefined.ID_EXIST;
     }
 
     public int Update(SupplierDTO supplier)

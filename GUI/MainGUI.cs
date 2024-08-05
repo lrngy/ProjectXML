@@ -199,8 +199,10 @@ public partial class MainGUI : BaseForm
 
     private void MainGUI_FormClosing(object sender, FormClosingEventArgs e)
     {
+#if Production
         var result = CustomMessageBox.ShowQuestion(Resources.Exit_confirm);
         if (result == DialogResult.No) e.Cancel = true;
+#endif
     }
 
     private void MainGUI_FormClosed(object sender, FormClosedEventArgs e)

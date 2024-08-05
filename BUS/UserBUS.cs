@@ -11,18 +11,18 @@ public class UserBUS
 
     public UserDTO getUser(string username)
     {
-        return UserDAL.GetUser(username);
+        return UserDAL.GetByUsername(username);
     }
 
     public int Update(UserDTO user, StaffDTO staff)
     {
-        if (UserDAL.GetUser(user.username) == null) return Predefined.ID_NOT_EXIST;
+        if (UserDAL.GetByUsername(user.username) == null) return Predefined.ID_NOT_EXIST;
         return UserDAL.Update(user, staff);
     }
 
     public int UpdatePassword(UserDTO user)
     {
-        if (UserDAL.GetUser(user.username) == null) return Predefined.ID_NOT_EXIST;
+        if (UserDAL.GetByUsername(user.username) == null) return Predefined.ID_NOT_EXIST;
         return UserDAL.UpdatePassword(user);
     }
 }

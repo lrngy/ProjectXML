@@ -164,12 +164,22 @@ public class SupplierDAL
     {
         try
         {
-            var query = "DELETE FROM suppliers WHERE supplier_id = @id";
-            SqlParameter[] sqlParameter =
+            var query = new Dictionary<string, SqlParameter[]>
             {
-                new SqlParameter("@id", id)
+                {
+                    "Update medicines set supplier_id = @dbnull",
+                    [
+                        new SqlParameter("@dbnull", DBNull.Value)
+                    ]
+                },
+                {
+                    "DELETE FROM suppliers WHERE supplier_id = @id",
+                    [
+                        new SqlParameter("@id", id)
+                    ]
+                },
             };
-            DB.ExecuteNonQuery(query, sqlParameter);
+            DB.ExecuteTransaction(query);
 
             return Predefined.SUCCESS;
         }

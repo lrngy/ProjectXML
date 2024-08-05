@@ -101,6 +101,9 @@ public partial class QuanLyThuocGUI : BaseForm
             cbTieuChiThuoc.SelectedIndex = cbIndexTieuChiThuoc;
 
             cbTLThuoc.Items.Clear();
+            cbTLThuoc.Items.Add(Resources.Unknown);
+
+
             var categoryList = categoryBUS.LoadData();
             foreach (var category in categoryList)
             {
@@ -111,6 +114,8 @@ public partial class QuanLyThuocGUI : BaseForm
             cbTLThuoc.Items.Add(Resources.Add);
 
             cbNccThuoc.Items.Clear();
+            cbNccThuoc.Items.Add(Resources.Unknown);
+
             var supplierList = supplierBUS.LoadData();
             foreach (var supplier in supplierList)
             {
@@ -121,6 +126,8 @@ public partial class QuanLyThuocGUI : BaseForm
             cbNccThuoc.Items.Add(Resources.Add);
 
             cbVitri.Items.Clear();
+            cbVitri.Items.Add(Resources.Unknown);
+
             var medicineLocationList = medicineLocationBUS.LoadData();
             foreach (var medicineLocation in medicineLocationList)
             {
@@ -129,7 +136,14 @@ public partial class QuanLyThuocGUI : BaseForm
             }
 
             cbVitri.Items.Add(Resources.Add);
+
+
+            cbTLThuoc.SelectedIndex = 0;
+            cbNccThuoc.SelectedIndex = 0;
+            cbVitri.SelectedIndex = 0;
         }
+
+
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
@@ -279,11 +293,14 @@ public partial class QuanLyThuocGUI : BaseForm
             if (state == Predefined.SUCCESS)
             {
                 tbTimTheLoai_TextChanged(sender, e);
+                CustomMessageBox.ShowSuccess(Resources.Add_category_successfully);
                 return;
             }
 
             if (state == Predefined.ID_EXIST)
                 ShowValidateError(tbTenTheLoai, Resources.Category_name_already_exists);
+            else if (state == Predefined.ID_EXIST_IN_ARCHIVE)
+                ShowValidateError(tbTenTheLoai, Resources.Category_name_already_exists_in_archive);
             else
                 CustomMessageBox.ShowError(Resources.Add_failed);
         }
@@ -329,6 +346,7 @@ public partial class QuanLyThuocGUI : BaseForm
             if (state == Predefined.SUCCESS)
             {
                 tbTimTheLoai_TextChanged(sender, e);
+                CustomMessageBox.ShowSuccess(Resources.Edit_Category_Successfully);
                 return;
             }
 
@@ -462,12 +480,19 @@ public partial class QuanLyThuocGUI : BaseForm
                 return;
             }
 
+            if (result == Predefined.ID_EXIST_IN_ARCHIVE)
+            {
+                ShowValidateError(tbMaNCC, Resources.Supplier_ID_already_exists_in_archive);
+                return;
+            }
+
             if (result == Predefined.ERROR)
             {
                 CustomMessageBox.ShowError(Resources.This_provider_cannot_be_added);
                 return;
             }
 
+            CustomMessageBox.ShowSuccess(Resources.Add_supplier_successfully);
             tbTimNCC_TextChanged(sender, e);
         }
         catch (Exception ex)
@@ -529,6 +554,7 @@ public partial class QuanLyThuocGUI : BaseForm
             }
 
             tbTimNCC_TextChanged(sender, e);
+            CustomMessageBox.ShowSuccess(Resources.Edit_supplier_sucessfully);
         }
         catch (Exception ex)
         {
@@ -812,10 +838,7 @@ public partial class QuanLyThuocGUI : BaseForm
             var newMedicine = new MedicineDTO(id, name, quantity, priceOut, category, type, unit, mfgDate, expireDate,
                 supplier, priceIn, location, description,
                 CustomDateTime.GetNow(), "", "", image);
-
-
             var result = medicineBUS.Insert(newMedicine);
-
 
             if (result == Predefined.SUCCESS)
             {
@@ -824,10 +847,18 @@ public partial class QuanLyThuocGUI : BaseForm
                 return;
             }
 
-            if (result == Predefined.ID_EXIST)
+            if (result == Predefined.ID_EXIST_IN_ARCHIVE)
+            {
+                CustomMessageBox.ShowError(Resources.Medicine_ID_already_exist_in_archive);
+            }
+            else if (result == Predefined.ID_EXIST)
+            {
                 CustomMessageBox.ShowError(Resources.Medicine_ID_already_exist);
+            }
             else
+            {
                 CustomMessageBox.ShowError(Resources.Cannot_added_this_medicine);
+            }
         }
         catch (Exception ex)
         {
@@ -1156,7 +1187,7 @@ public partial class QuanLyThuocGUI : BaseForm
         ShowValidateError(tbTenTheLoai, "");
     }
 
-    private void tbMaNCC_TextChanged(object sender, EventArgs e)
+    private void ClearTextBox_TextChanged(object sender, EventArgs e)
     {
         ShowValidateError((Control)sender, "");
     }
@@ -1209,11 +1240,14 @@ public partial class QuanLyThuocGUI : BaseForm
             if (state == Predefined.SUCCESS)
             {
                 tbTimViTri_TextChanged(sender, e);
+                CustomMessageBox.ShowSuccess(Resources.Add_medicine_location_successfully);
                 return;
             }
 
             if (state == Predefined.ID_EXIST)
                 ShowValidateError(tbTenViTri, Resources.Location_name_already_exists);
+            else if (state == Predefined.ID_EXIST_IN_ARCHIVE)
+                ShowValidateError(tbTenViTri, Resources.Location_name_already_exists_in_archive);
             else
                 CustomMessageBox.ShowError(Resources.Add_failed);
         }
@@ -1250,6 +1284,7 @@ public partial class QuanLyThuocGUI : BaseForm
             if (state == Predefined.SUCCESS)
             {
                 tbTimViTri_TextChanged(sender, e);
+                CustomMessageBox.ShowSuccess(Resources.Edit_medicine_location_successfully);
                 return;
             }
 

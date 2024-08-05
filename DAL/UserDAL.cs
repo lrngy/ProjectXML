@@ -3,7 +3,7 @@ namespace QPharma.DAL
 {
     public class UserDAL
     {
-        public UserDTO GetUser(string username)
+        public UserDTO GetByUsername(string username)
         {
             UserDTO user = null;
             try
@@ -12,17 +12,17 @@ namespace QPharma.DAL
                 SqlParameter[] parameters = { new SqlParameter("@username", username) };
                 var dt = DB.ExecuteQuery(query, parameters);
 
-            if (dt.Rows.Count > 0)
-                user = new UserDTO
-                {
-                    username = dt.Rows[0]["username"].ToString(),
-                    password = dt.Rows[0]["password"].ToString()
-                };
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error getting user: {ex.Message}");
-        }
+                if (dt.Rows.Count > 0)
+                    user = new UserDTO
+                    {
+                        username = dt.Rows[0]["username"].ToString(),
+                        hashPassword = dt.Rows[0]["hash_pw"].ToString()
+                    };
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error getting user: {ex.Message}");
+            }
 
             return user;
         }
@@ -33,10 +33,10 @@ namespace QPharma.DAL
                 var query = new Dictionary<string, SqlParameter[]>
                 {
                     {
-                        "UPDATE users SET password = @password WHERE username = @username",
+                        "UPDATE users SET hash_pw = @password WHERE username = @username",
                         new[]
                         {
-                            new SqlParameter("@password", user.password), new SqlParameter("@username", user.username)
+                            new SqlParameter("@password", user.hashPassword), new SqlParameter("@username", user.username)
                         }
                     },
                     {
@@ -63,9 +63,9 @@ namespace QPharma.DAL
         {
             try
             {
-                var query = "UPDATE users SET password = @password WHERE username = @username";
+                var query = "UPDATE users SET hash_pw = @password WHERE username = @username";
                 SqlParameter[] parameters =
-                    { new SqlParameter("@password", user.password), new SqlParameter("@username", user.username) };
+                    { new SqlParameter("@password", user.hashPassword), new SqlParameter("@username", user.username) };
                 DB.ExecuteNonQuery(query, parameters);
                 return Predefined.SUCCESS;
             }

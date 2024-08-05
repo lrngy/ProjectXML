@@ -3,35 +3,22 @@ namespace QPharma.DAL
 {
     public class LoginDAL
     {
-        public bool isExistAccount(string username, string password)
+
+        public bool Login(UserDTO user)
         {
-            var query = "SELECT * FROM users WHERE username = @username AND password = @password";
+            var query = "INSERT INTO login_log(login_log_id, username, login_time) VALUES(@id, @username, @loginTime)";
             SqlParameter[] sqlParameters =
             {
-                new SqlParameter("@username", username),
-                new SqlParameter("@password", password)
-            };
-            var dt = DB.ExecuteQuery(query, sqlParameters);
-            return dt.Rows.Count != 0;
-        }
-
-    
-
-    public bool Login(UserDTO user)
-    {
-        var query = "INSERT INTO login_log(login_log_id, username, login_time) VALUES(@id, @username, @loginTime)";
-        SqlParameter[] sqlParameters =
-        {
             new SqlParameter("@id", user.guid),
             new SqlParameter("@username", user.username),
             new SqlParameter("@loginTime", CustomDateTime.GetNow())
         };
-        return DB.ExecuteNonQuery(query, sqlParameters) == 1;
-    }
+            return DB.ExecuteNonQuery(query, sqlParameters) == 1;
+        }
 
         public bool Logout(UserDTO user)
         {
-           
+
             var query = "UPDATE login_log SET logout_time = @logoutTime WHERE login_log_id = @id";
             SqlParameter[] sqlParameters =
             {

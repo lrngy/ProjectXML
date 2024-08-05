@@ -23,12 +23,16 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-    <Configurations>Production;Development</Configurations>
+    <Configurations>Production;Development;Dev - Database;DevDatabase</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Development|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
     <DefineConstants>TRACE;DEBUG;Development</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dev - Database|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Production|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -57,9 +61,15 @@
     <Optimize>False</Optimize>
     <DefineConstants>$(DefineConstants);Development</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dev - Database|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Production|AnyCPU'">
     <Optimize>False</Optimize>
     <DefineConstants>$(DefineConstants);Production</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DevDatabase|AnyCPU'">
+    <DefineConstants>$(DefineConstants);DevDatabase</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="README.md" />
@@ -82,9 +92,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Properties\DevDatabase.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>DevDatabase.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Properties\Development.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -95,8 +111,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Production.settings</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\DevDatabase.settings">
+      <LastGenOutput>DevDatabase.Designer.cs</LastGenOutput>
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
     <None Update="Properties\Development.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Development.Designer.cs</LastGenOutput>

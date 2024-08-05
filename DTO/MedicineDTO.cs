@@ -7,8 +7,8 @@ public class MedicineDTO
     }
 
     public MedicineDTO(string id, string name, int quantity, double priceOut, CategoryDTO category, bool type,
-        string unit, string mfgDate, string expireDate, SupplierDTO supplier, double priceIn,
-        MedicineLocationDTO location, string description, string created, string updated, string deleted, string image)
+        string unit, string mfgDate, string expDate, SupplierDTO supplier, double priceIn,
+        MedicineLocationDTO location, string description, string created, string updated, string deleted, string imagePath)
     {
         this.id = id;
         this.name = name;
@@ -18,7 +18,7 @@ public class MedicineDTO
         this.type = type;
         this.unit = unit;
         this.mfgDate = mfgDate;
-        this.expireDate = expireDate;
+        this.expDate = expDate;
         this.supplier = supplier;
         price_in = priceIn;
         this.location = location;
@@ -26,7 +26,7 @@ public class MedicineDTO
         this.created = created;
         this.updated = updated;
         this.deleted = deleted;
-        this.image = image;
+        this.imagePath = imagePath;
     }
 
 
@@ -38,7 +38,7 @@ public class MedicineDTO
     public bool type { get; set; }
     public string unit { get; set; }
     public string mfgDate { get; set; }
-    public string expireDate { get; set; }
+    public string expDate { get; set; }
 
     public SupplierDTO supplier { get; set; }
 
@@ -49,6 +49,6 @@ public class MedicineDTO
 
     public string updated { get; set; }
     public string deleted { get; set; }
-    public string image { get; set; }
+    public string imagePath { get; set; }
 
 }

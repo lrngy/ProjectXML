@@ -72,6 +72,8 @@
     <DefineConstants>$(DefineConstants);DevDatabase</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="QPharma.mdf" />
+    <None Remove="QPharma4.mdf" />
     <None Remove="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +92,14 @@
       <ProductName>SQL Server 2019 Express LocalDB</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="QPharma.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="QPharma4.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
@@ -135,9 +145,6 @@
     <None Update="Properties\Production.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Production.Designer.cs</LastGenOutput>
-    </None>
-    <None Update="QPharma.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>

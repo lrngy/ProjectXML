@@ -30,11 +30,6 @@ public partial class QuanLyThuocGUI : BaseForm
         switch (tabIndex)
         {
             case 0:
-                if (!staff.isManager)
-                {
-                    CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
-                    e.Cancel = true;
-                }
 
                 QuanLyThuoc_Load();
                 lbHeader.Text = Resources.Medicine_management;
@@ -107,7 +102,7 @@ public partial class QuanLyThuocGUI : BaseForm
             var categoryList = categoryBUS.LoadData();
             foreach (var category in categoryList)
             {
-                if (!category.status || !category.deleted.Equals("")) continue;
+                if (!category.deleted.Equals("")) continue;
                 cbTLThuoc.Items.Add(category.id + "-" + category.name);
             }
 
@@ -119,7 +114,7 @@ public partial class QuanLyThuocGUI : BaseForm
             var supplierList = supplierBUS.LoadData();
             foreach (var supplier in supplierList)
             {
-                if (!supplier.status || !supplier.deleted.Equals("")) continue;
+                if (!supplier.deleted.Equals("")) continue;
                 cbNccThuoc.Items.Add(supplier.id + "-" + supplier.name);
             }
 
@@ -131,7 +126,7 @@ public partial class QuanLyThuocGUI : BaseForm
             var medicineLocationList = medicineLocationBUS.LoadData();
             foreach (var medicineLocation in medicineLocationList)
             {
-                if (!medicineLocation.status || !medicineLocation.deleted.Equals("")) continue;
+                if (!medicineLocation.deleted.Equals("")) continue;
                 cbVitri.Items.Add(medicineLocation.id + "-" + medicineLocation.name);
             }
 
@@ -141,9 +136,10 @@ public partial class QuanLyThuocGUI : BaseForm
             cbTLThuoc.SelectedIndex = 0;
             cbNccThuoc.SelectedIndex = 0;
             cbVitri.SelectedIndex = 0;
+            cbLoai.SelectedIndex = 0;
+            dtpkMFG.Value = DateTime.Now;
+            dtpkEXP.Value = DateTime.Now;
         }
-
-
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
@@ -157,17 +153,16 @@ public partial class QuanLyThuocGUI : BaseForm
 
         foreach (var medicine in medicines)
         {
-            if (!medicine.deleted.Equals("") || medicine.category == null || medicine.supplier == null ||
-                !medicine.supplier.status || !medicine.category.status) continue;
+            if (!medicine.deleted.Equals("")) continue;
 
             dgvThuoc.Rows.Add(
                 ++i, medicine.id, medicine.name, medicine.quantity, medicine.price_out,
-                $"{medicine.category.id}-{medicine.category.name}",
+               medicine.category == null ? Resources.Unknown : $"{medicine.category.id}-{medicine.category.name}",
                 medicine.type ? Resources.Prescription_drug : Resources.Unprescription_drug,
-                medicine.unit, medicine.mfgDate, medicine.expireDate,
-                $"{medicine.supplier.id}-{medicine.supplier.name}",
+                medicine.unit, medicine.mfgDate, medicine.expDate,
+                medicine.supplier == null ? Resources.Unknown : $"{medicine.supplier.id}-{medicine.supplier.name}",
                 medicine.price_in,
-                $"{medicine.location.id}-{medicine.location.name}",
+                medicine.location == null ? Resources.Unknown : $"{medicine.location.id}-{medicine.location.name}",
                 medicine.description,
                 medicine.created,
                 medicine.updated);
@@ -185,6 +180,7 @@ public partial class QuanLyThuocGUI : BaseForm
         tbSL.Text = "";
         tbDVT.Text = "";
         tbGiaBan.Text = "";
+        tbGiaNhap.Text = "";
         rtbMota.Text = "";
     }
 
@@ -275,6 +271,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnThemTheLoai_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var tenTheLoai = tbTenTheLoai.Text;
@@ -319,6 +320,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnSuaTheLoai_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var maTheLoai = dgvTheLoai.SelectedRows[0].Cells[1].Value.ToString();
@@ -378,6 +384,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnXoaTheLoai_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var maTheLoai = dgvTheLoai.SelectedRows[0].Cells[1].Value.ToString();
@@ -407,6 +418,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnLuuTruTheLoai_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         var deletedCategory = new DeletedCategoryDialog(categoryBUS);
         deletedCategory.refreshDeletedCategory = tbTimTheLoai_TextChanged;
         ;
@@ -435,6 +451,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnThemNCC_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var maNCC = tbMaNCC.Text;
@@ -503,6 +524,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnSuaNCC_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var maNCC = dgvNhaCungCap.SelectedRows[0].Cells[1].Value.ToString().Trim();
@@ -564,6 +590,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnXoaNCC_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var maNCC = dgvNhaCungCap.SelectedRows[0].Cells[1].Value.ToString();
@@ -726,14 +757,14 @@ public partial class QuanLyThuocGUI : BaseForm
                 }
 
             var image = medicineBUS.LoadData().FirstOrDefault(item => item.id.Equals(tbMaThuoc.Text))
-                ?.image;
+                ?.imagePath;
             //pictureBoxThuoc.ImageLocation =
             //    image.Equals("") ? "" : Path.Combine(Config.getImagePath(), $"{tbMaThuoc.Text}.jpg");
 
             pictureBoxThuoc.ImageLocation =
                 image.Equals("") ? "" : image;
-            dtpkMFG.Value = DateTime.Parse(dgvThuoc.Rows[index].Cells[8].Value.ToString());
-            dtpkEXP.Value = DateTime.Parse(dgvThuoc.Rows[index].Cells[9].Value.ToString());
+            dtpkMFG.Value = DateTime.ParseExact(dgvThuoc.Rows[index].Cells[8].Value.ToString(), "dd/MM/yyyy HH:mm", null);
+            dtpkEXP.Value = DateTime.ParseExact(dgvThuoc.Rows[index].Cells[9].Value.ToString(), "dd/MM/yyyy HH:mm", null);
 
 
             rtbMota.Text = dgvThuoc.Rows[index].Cells[13].Value.ToString();
@@ -755,68 +786,159 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnThemThuoc_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var id = tbMaThuoc.Text;
             var name = tbTenThuoc.Text;
             var quantityText = tbSL.Text;
             var priceOutText = tbGiaBan.Text;
+            var priceInText = tbGiaNhap.Text;
             var unit = tbDVT.Text;
-            var mfgDate = dtpkMFG.Value.ToString("dd/MM/yyyy");
-            var expireDate = dtpkEXP.Value.ToString("dd/MM/yyyy");
+            var mfgDate = dtpkMFG.Value.ToString();
+            var expireDate = dtpkEXP.Value.ToString();
 
-            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(unit) ||
-                string.IsNullOrEmpty(quantityText) || string.IsNullOrEmpty(priceOutText))
+            bool isValid = true;
+            bool CheckEmpty()
             {
-                CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
-                return;
+                if (string.IsNullOrEmpty(id))
+                {
+                    ShowValidateError(tbMaThuoc, Resources.Please_input_medicine_id);
+                    isValid = false;
+
+                }
+                if (string.IsNullOrEmpty(name))
+                {
+                    ShowValidateError(tbTenThuoc, Resources.Please_input_medicine_name);
+                    isValid = false;
+                }
+                if (string.IsNullOrEmpty(unit))
+                {
+                    ShowValidateError(tbDVT, Resources.Please_input_medicine_unit);
+                    isValid = false;
+                }
+                if (string.IsNullOrEmpty(quantityText))
+                {
+                    ShowValidateError(tbSL, Resources.Please_input_medicine_quantity);
+                    isValid = false;
+                }
+                if (string.IsNullOrEmpty(priceInText))
+                {
+                    ShowValidateError(tbGiaNhap, Resources.Please_input_medicine_price_out);
+                    isValid = false;
+                }
+                if (string.IsNullOrEmpty(priceOutText))
+                {
+                    ShowValidateError(tbGiaBan, Resources.Please_input_medicine_price_out);
+                    isValid = false;
+                }
+
+                return isValid;
             }
 
+            int quantity = -1;
+            double priceIn = -1, priceOut = -1;
 
-            if (!int.TryParse(quantityText, out var quantity))
+
+            bool CheckValidNumber()
             {
-                CustomMessageBox.ShowWarning(Resources.Quantity_must_be_a_number);
-                return;
+                if (!int.TryParse(quantityText, out quantity))
+                {
+
+                    ShowValidateError(tbSL, Resources.Quantity_must_be_a_number);
+                    isValid = false;
+                }
+                if (!double.TryParse(priceInText, out priceIn))
+                {
+
+                    ShowValidateError(tbGiaNhap, Resources.Price_must_be_a_number);
+                    isValid = false;
+                }
+
+                if (!double.TryParse(priceOutText, out priceOut))
+                {
+
+                    ShowValidateError(tbGiaBan, Resources.Price_must_be_a_number);
+                    isValid = false;
+                }
+                return isValid;
+            };
+
+            bool CheckNumberValue()
+            {
+                if (quantity < 0)
+                {
+                    ShowValidateError(tbSL, Resources.Quantity_must_be_greater_or_equal_0);
+                    isValid = false;
+                }
+
+                if (priceOut < 0)
+                {
+                    ShowValidateError(tbGiaBan, Resources.Price_must_be_greater_or_equal_0);
+                    isValid = false;
+                }
+
+                if (priceIn < 0)
+                {
+                    ShowValidateError(tbGiaNhap, Resources.Price_must_be_greater_or_equal_0);
+                    isValid = false;
+                }
+
+                //if (priceOut < priceIn)
+                //{
+                //    ShowValidateError(tbGiaBan, Resources.Price_must_be_greater_or_equal_0);
+                //    isValid = false;
+                //}
+                return isValid;
             }
 
-            if (!double.TryParse(priceOutText, out var priceOut))
-            {
-                CustomMessageBox.ShowWarning(Resources.Price_must_be_a_number);
-                return;
-            }
-
-            if (quantity < 0)
-            {
-                CustomMessageBox.ShowWarning(Resources.Quantity_must_be_greater_or_equal_0);
-                return;
-            }
-
-            if (priceOut < 0)
-            {
-                CustomMessageBox.ShowWarning(Resources.Price_must_be_greater_or_equal_0);
-                return;
-            }
 
             var tlIndex = cbTLThuoc.SelectedIndex;
             var nccIndex = cbNccThuoc.SelectedIndex;
             var vttIndex = cbVitri.SelectedIndex;
-            if (tlIndex == -1)
+
+            bool CheckComboBox()
             {
-                CustomMessageBox.ShowWarning(Resources.Please_select_a_category);
-                return;
+                if (tlIndex == -1)
+                {
+                    ShowValidateError(cbTLThuoc, Resources.Please_select_a_category);
+                    isValid = false;
+                }
+
+                if (nccIndex == -1)
+                {
+                    ShowValidateError(cbNccThuoc, Resources.Please_select_a_supplier);
+                    isValid = false;
+                }
+
+                if (vttIndex == -1)
+                {
+                    ShowValidateError(cbVitri, Resources.Please_choose_a_medicine_location);
+                    isValid = false;
+                }
+
+                return isValid;
             }
 
-            if (nccIndex == -1)
+            bool CheckDate()
             {
-                CustomMessageBox.ShowWarning(Resources.Please_select_a_supplier);
-                return;
+                if (dtpkEXP.Value < dtpkMFG.Value)
+                {
+                    ShowValidateError(dtpkEXP, Resources.Expiry_date_must_be_greater_than_or_equal_to_Production_date);
+                    isValid = false;
+                }
+                return isValid;
             }
 
-            if (vttIndex == -1)
-            {
-                CustomMessageBox.ShowWarning(Resources.Please_choose_a_medicine_location);
-                return;
-            }
+
+            bool isValidate = CheckEmpty() && CheckValidNumber() && CheckNumberValue() && CheckComboBox() && CheckDate();
+
+            if (!isValidate) return;
+
 
             var tl = cbTLThuoc.Items[tlIndex].ToString();
             var ncc = cbNccThuoc.Items[nccIndex].ToString();
@@ -825,7 +947,6 @@ public partial class QuanLyThuocGUI : BaseForm
             var tlArr = tl.Split('-');
             var nccArr = ncc.Split('-');
             var vttArr = vtt.Split('-');
-            var priceIn = double.Parse(tbGiaNhap.Text);
             var description = rtbMota.Text;
 
             var type = cbLoai.SelectedIndex == 0;
@@ -853,7 +974,8 @@ public partial class QuanLyThuocGUI : BaseForm
             }
             else if (result == Predefined.ID_EXIST)
             {
-                CustomMessageBox.ShowError(Resources.Medicine_ID_already_exist);
+                //CustomMessageBox.ShowError(Resources.Medicine_ID_already_exist);
+                ShowValidateError(tbMaThuoc, Resources.Medicine_ID_already_exist);
             }
             else
             {
@@ -868,77 +990,161 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnSuaThuoc_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var id = tbMaThuoc.Text;
             var name = tbTenThuoc.Text;
             var quantityText = tbSL.Text;
             var priceOutText = tbGiaBan.Text;
+            var priceInText = tbGiaNhap.Text;
             var categoryId = cbTLThuoc.SelectedItem.ToString().Split('-')[0];
             var type = cbLoai.SelectedIndex == 0;
             var unit = tbDVT.Text;
-            var mfgDate = dtpkMFG.Value.ToString("dd/MM/yyyy");
-            var expireDate = dtpkEXP.Value.ToString("dd/MM/yyyy");
+            var mfgDate = dtpkMFG.Value.ToString();
+            var expireDate = dtpkEXP.Value.ToString();
             var supplierId = cbNccThuoc.SelectedItem.ToString().Split('-')[0];
-            var priceIn = double.Parse(tbGiaNhap.Text);
             var locationId = cbVitri.SelectedItem.ToString().Split('-')[0];
             var description = rtbMota.Text;
             var created = medicineBUS.LoadData().FirstOrDefault(item => item.id.Equals(id))?.created;
             var updated = CustomDateTime.GetNow();
-            var image = medicineBUS.LoadData().FirstOrDefault(item => item.id.Equals(id))?.image;
+            var image = medicineBUS.LoadData().FirstOrDefault(item => item.id.Equals(id))?.imagePath;
 
-            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(unit) ||
-                string.IsNullOrEmpty(quantityText) || string.IsNullOrEmpty(priceOutText))
+            bool isValid = true;
+            bool CheckEmpty()
             {
-                CustomMessageBox.ShowWarning(Resources.Please_enter_complete_info);
-                return;
+                if (string.IsNullOrEmpty(id))
+                {
+                    ShowValidateError(tbMaThuoc, Resources.Please_input_medicine_id);
+                    isValid = false;
+
+                }
+                if (string.IsNullOrEmpty(name))
+                {
+                    ShowValidateError(tbTenThuoc, Resources.Please_input_medicine_name);
+                    isValid = false;
+                }
+                if (string.IsNullOrEmpty(unit))
+                {
+                    ShowValidateError(tbDVT, Resources.Please_input_medicine_unit);
+                    isValid = false;
+                }
+                if (string.IsNullOrEmpty(quantityText))
+                {
+                    ShowValidateError(tbSL, Resources.Please_input_medicine_quantity);
+                    isValid = false;
+                }
+                if (string.IsNullOrEmpty(priceInText))
+                {
+                    ShowValidateError(tbGiaNhap, Resources.Please_input_medicine_price_out);
+                    isValid = false;
+                }
+                if (string.IsNullOrEmpty(priceOutText))
+                {
+                    ShowValidateError(tbGiaBan, Resources.Please_input_medicine_price_out);
+                    isValid = false;
+                }
+
+                return isValid;
             }
 
+            int quantity = -1;
+            double priceIn = -1, priceOut = -1;
 
-            if (!int.TryParse(quantityText, out var quantity))
+
+            bool CheckValidNumber()
             {
-                CustomMessageBox.ShowWarning(Resources.Quantity_must_be_a_number);
-                return;
+                if (!int.TryParse(quantityText, out quantity))
+                {
+
+                    ShowValidateError(tbSL, Resources.Quantity_must_be_a_number);
+                    isValid = false;
+                }
+                if (!double.TryParse(priceInText, out priceIn))
+                {
+
+                    ShowValidateError(tbGiaNhap, Resources.Price_must_be_a_number);
+                    isValid = false;
+                }
+
+                if (!double.TryParse(priceOutText, out priceOut))
+                {
+
+                    ShowValidateError(tbGiaBan, Resources.Price_must_be_a_number);
+                    isValid = false;
+                }
+                return isValid;
+            };
+
+            bool CheckNumberValue()
+            {
+                if (quantity < 0)
+                {
+                    ShowValidateError(tbSL, Resources.Quantity_must_be_greater_or_equal_0);
+                    isValid = false;
+                }
+
+                if (priceOut < 0)
+                {
+                    ShowValidateError(tbGiaBan, Resources.Price_must_be_greater_or_equal_0);
+                    isValid = false;
+                }
+
+                if (priceIn < 0)
+                {
+                    ShowValidateError(tbGiaNhap, Resources.Price_must_be_greater_or_equal_0);
+                    isValid = false;
+                }
+
+                return isValid;
             }
 
-            if (!double.TryParse(priceOutText, out var priceOut))
-            {
-                CustomMessageBox.ShowWarning(Resources.Price_must_be_a_number);
-                return;
-            }
-
-            if (quantity < 0)
-            {
-                CustomMessageBox.ShowWarning(Resources.Quantity_must_be_greater_or_equal_0);
-                return;
-            }
-
-            if (priceOut < 0)
-            {
-                CustomMessageBox.ShowWarning(Resources.Price_must_be_greater_or_equal_0);
-                return;
-            }
 
             var tlIndex = cbTLThuoc.SelectedIndex;
             var nccIndex = cbNccThuoc.SelectedIndex;
             var vttIndex = cbVitri.SelectedIndex;
-            if (tlIndex == -1)
+
+            bool CheckComboBox()
             {
-                CustomMessageBox.ShowWarning(Resources.Please_select_a_category);
-                return;
+                if (tlIndex == -1)
+                {
+                    ShowValidateError(cbTLThuoc, Resources.Please_select_a_category);
+                    isValid = false;
+                }
+
+                if (nccIndex == -1)
+                {
+                    ShowValidateError(cbNccThuoc, Resources.Please_select_a_supplier);
+                    isValid = false;
+                }
+
+                if (vttIndex == -1)
+                {
+                    ShowValidateError(cbVitri, Resources.Please_choose_a_medicine_location);
+                    isValid = false;
+                }
+
+                return isValid;
             }
 
-            if (nccIndex == -1)
+            bool CheckDate()
             {
-                CustomMessageBox.ShowWarning(Resources.Please_select_a_supplier);
-                return;
+                if (dtpkEXP.Value < dtpkMFG.Value)
+                {
+                    ShowValidateError(dtpkEXP, Resources.Expiry_date_must_be_greater_than_or_equal_to_Production_date);
+                    isValid = false;
+                }
+                return isValid;
             }
 
-            if (vttIndex == -1)
-            {
-                CustomMessageBox.ShowWarning(Resources.Please_choose_a_medicine_location);
-                return;
-            }
+
+            bool isValidate = CheckEmpty() && CheckValidNumber() && CheckNumberValue() && CheckComboBox() && CheckDate();
+
+            if (!isValidate) return;
 
             var supplier = supplierBUS.LoadData().FirstOrDefault(s => s.id.Equals(supplierId));
             var category = categoryBUS.LoadData().FirstOrDefault(c => c.id.Equals(categoryId));
@@ -966,6 +1172,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnXoaThuoc_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var maThuoc = dgvThuoc.SelectedRows[0].Cells[1].Value.ToString();
@@ -997,6 +1208,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnLuuThuoc_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         var deletedMedicine = new DeletedMedicineDialog(medicineBUS);
         deletedMedicine.refreshDeletedMedicine += QuanLyThuoc_Load;
         deletedMedicine.ShowDialog();
@@ -1030,7 +1246,7 @@ public partial class QuanLyThuocGUI : BaseForm
                 case 2:
                     return medicine.category.name.ToLower().Contains(noidungtimkiem);
                 case 3:
-                    return medicine.expireDate.ToLower().Contains(noidungtimkiem);
+                    return medicine.expDate.ToLower().Contains(noidungtimkiem);
                 case 4:
                     return medicine.quantity.ToString().ToLower().Contains(noidungtimkiem);
                 case 5:
@@ -1160,7 +1376,7 @@ public partial class QuanLyThuocGUI : BaseForm
 
         var list = medicineBUS.LoadData().Where(medicine =>
         {
-            var expireDate = DateTime.Parse(medicine.expireDate);
+            var expireDate = DateTime.Parse(medicine.expDate);
             switch (cbLocDuLieuThuoc.SelectedIndex)
             {
                 case 2:
@@ -1221,6 +1437,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnThemVT_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var tenViTri = tbTenViTri.Text;
@@ -1264,6 +1485,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnSuaVT_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var maViTri = dgvViTriThuoc.SelectedRows[0].Cells[1].Value.ToString();
@@ -1301,6 +1527,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnXoaVT_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         try
         {
             var maViTri = dgvViTriThuoc.SelectedRows[0].Cells[1].Value.ToString();
@@ -1375,12 +1606,22 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnDeletedLocation_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         var deletedMedicineLocation = new DeletedMedicineLocationDialog(tbTimViTri_TextChanged);
         deletedMedicineLocation.ShowDialog();
     }
 
     private void btnDeletedSupplier_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
+            return;
+        }
         var deletedSupplier = new DeletedSupplierDialog(tbTimNCC_TextChanged);
         deletedSupplier.ShowDialog();
     }

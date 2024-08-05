@@ -23,7 +23,7 @@ public class LoginBUS
         return loginDAL.Logout(user);
     }
 
-    public LoginLog CheckLoggedIn()
+    public LoginLogDTO CheckLoggedIn()
     {
         var loginLog = loginDAL.GetLoginLog();
         if (loginLog == null)

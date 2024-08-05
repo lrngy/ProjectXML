@@ -14,8 +14,10 @@ use QPharma
 
 create table users(
 username varchar(30) primary key,
-password varchar(30)
+hash_pw varchar(100)
 )
+
+
 create table staffs(
 staff_id varchar(30) primary key,
 staff_name nvarchar(30),

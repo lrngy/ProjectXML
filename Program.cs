@@ -11,7 +11,8 @@ internal static class Program
 
         if (runningProcess != null) runningProcess.Kill();
 
-#if Development
+#if DevDatabase
+#else
         InitDB();
 #endif
         Application.EnableVisualStyles();
@@ -39,8 +40,9 @@ internal static class Program
         {
             File.Copy(sourcePath, targetPath, true);
         }
+
         Config.Instance.ConfigureFile.Reload();
-        string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={targetPath};Integrated Security=True;Connect Timeout=30";
+        string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={targetPath};Integrated Security=True;Connect Timeout=10";
         Config.Instance.ConfigureFile.ConnectionString = connectionString;
         Config.Instance.ConfigureFile.Save();
     }

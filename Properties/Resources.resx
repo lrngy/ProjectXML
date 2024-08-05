@@ -290,13 +290,13 @@
     <value>Giá phải là số</value>
   </data>
   <data name="Quantity must be greater or equal 0" xml:space="preserve">
-    <value>Số lượng phải lớn hơn hoặc bằng 0.</value>
+    <value>Số lượng phải lớn hơn hoặc bằng 0</value>
   </data>
   <data name="Price must be greater or equal 0" xml:space="preserve">
-    <value>Giá phải lớn hơn hoặc bằng 0.</value>
+    <value>Giá phải lớn hơn hoặc bằng 0</value>
   </data>
   <data name="Please select a category" xml:space="preserve">
-    <value>Vui lòng chọn thể loại.</value>
+    <value>Vui lòng chọn thể loại</value>
   </data>
   <data name="Please select a supplier" xml:space="preserve">
     <value>Vui lòng chọn nhà cung cấp</value>
@@ -458,11 +458,14 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
   <data name="Restore medicine id successfully" xml:space="preserve">
     <value>Đã khôi phục Mã thuốc {0}</value>
   </data>
+  <data name="Delete medicine id successfully" xml:space="preserve">
+    <value>Xoá thành công Mã thuốc {0}</value>
+  </data>
   <data name="ConnectString" xml:space="preserve">
     <value>Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True;Connect Timeout=30</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>-- Chưa xác định --</value>
+    <value>Chưa xác định</value>
   </data>
   <data name="Add category successfully" xml:space="preserve">
 	  <value>Thêm danh mục thành công</value>
@@ -481,5 +484,23 @@ Dương Hữu Hoàng;Nguyễn Hoàng Long;Phạm Văn Quyết</value>
   </data>
   <data name="Edit medicine location successfully" xml:space="preserve">
 	  <value>Sửa vị trí thuốc thành công</value>
+  </data>
+  <data name="Please input medicine id" xml:space="preserve">
+	  <value>Vui lòng nhập mã thuốc</value>
+  </data>
+  <data name="Please input medicine name" xml:space="preserve">
+	  <value>Vui lòng nhập tên thuốc</value>
+  </data>
+  <data name="Please input medicine unit" xml:space="preserve">
+	  <value>Vui lòng nhập đơn vị thuốc</value>
+  </data>
+  <data name="Please input medicine quantity" xml:space="preserve">
+	  <value>Vui lòng nhập số lượng</value>
+  </data>
+  <data name="Please input medicine price_out" xml:space="preserve">
+	  <value>Vui lòng nhập giá bán</value>
+  </data>
+  <data name="Expiry date must be greater than or equal to Production date" xml:space="preserve">
+	  <value>Hạn sử dụng phải lớn hơn hoặc bằng Ngày sản xuất</value>
   </data>
 </root>

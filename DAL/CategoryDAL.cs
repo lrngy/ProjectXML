@@ -15,12 +15,9 @@ public class CategoryDAL
                 var name = dr["category_name"].ToString();
                 var note = dr["category_note"].ToString();
                 var status = bool.Parse(dr["category_status"].ToString());
-
-
                 var created = dr["category_created"].ToString();
                 var updated = dr["category_updated"].ToString();
                 var deleted = dr["category_deleted"].ToString();
-
 
                 var category = new CategoryDTO(id, name, note, status, created, updated, deleted);
                 list.Add(category);

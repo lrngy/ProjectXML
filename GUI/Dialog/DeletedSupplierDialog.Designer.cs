@@ -28,214 +28,221 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvDeletedSupplier = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRestoreAll = new System.Windows.Forms.Button();
-            this.btnRestore = new System.Windows.Forms.Button();
-            this.btnForceDel = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeletedSupplier)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            dgvDeletedSupplier = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            Column9 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            Column21 = new DataGridViewTextBoxColumn();
+            Column22 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            panel1 = new Panel();
+            btnForceDel = new Button();
+            btnRestore = new Button();
+            btnRestoreAll = new Button();
+            tableLayoutPanel1.SuspendLayout();
+            ((ISupportInitialize)dgvDeletedSupplier).BeginInit();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvDeletedSupplier, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.47059F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.52941F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1227, 550);
-            this.tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(dgvDeletedSupplier, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel1, 0, 1);
+            tableLayoutPanel1.Location = new Point(20, 23);
+            tableLayoutPanel1.Margin = new Padding(5, 6, 5, 6);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 88.47059F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 11.52941F));
+            tableLayoutPanel1.Size = new Size(2045, 1058);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // dgvDeletedSupplier
             // 
-            this.dgvDeletedSupplier.AllowUserToAddRows = false;
-            this.dgvDeletedSupplier.AllowUserToDeleteRows = false;
-            this.dgvDeletedSupplier.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDeletedSupplier.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvDeletedSupplier.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDeletedSupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvDeletedSupplier.ColumnHeadersHeight = 50;
-            this.dgvDeletedSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvDeletedSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.Column9,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.Column21,
-            this.Column22,
-            this.Column1});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDeletedSupplier.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvDeletedSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDeletedSupplier.EnableHeadersVisualStyles = false;
-            this.dgvDeletedSupplier.Location = new System.Drawing.Point(3, 3);
-            this.dgvDeletedSupplier.MultiSelect = false;
-            this.dgvDeletedSupplier.Name = "dgvDeletedSupplier";
-            this.dgvDeletedSupplier.ReadOnly = true;
-            this.dgvDeletedSupplier.RowHeadersVisible = false;
-            this.dgvDeletedSupplier.RowHeadersWidth = 62;
-            this.dgvDeletedSupplier.RowTemplate.Height = 50;
-            this.dgvDeletedSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeletedSupplier.Size = new System.Drawing.Size(1221, 480);
-            this.dgvDeletedSupplier.TabIndex = 5;
-            this.dgvDeletedSupplier.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDeletedSupplier_CellFormatting);
+            dgvDeletedSupplier.AllowUserToAddRows = false;
+            dgvDeletedSupplier.AllowUserToDeleteRows = false;
+            dgvDeletedSupplier.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDeletedSupplier.BackgroundColor = SystemColors.Control;
+            dgvDeletedSupplier.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDeletedSupplier.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvDeletedSupplier.ColumnHeadersHeight = 50;
+            dgvDeletedSupplier.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvDeletedSupplier.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column9, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, Column21, Column22, Column1 });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvDeletedSupplier.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvDeletedSupplier.Dock = DockStyle.Fill;
+            dgvDeletedSupplier.EnableHeadersVisualStyles = false;
+            dgvDeletedSupplier.Location = new Point(5, 6);
+            dgvDeletedSupplier.Margin = new Padding(5, 6, 5, 6);
+            dgvDeletedSupplier.MultiSelect = false;
+            dgvDeletedSupplier.Name = "dgvDeletedSupplier";
+            dgvDeletedSupplier.ReadOnly = true;
+            dgvDeletedSupplier.RowHeadersVisible = false;
+            dgvDeletedSupplier.RowHeadersWidth = 62;
+            dgvDeletedSupplier.RowTemplate.Height = 50;
+            dgvDeletedSupplier.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDeletedSupplier.Size = new Size(2035, 924);
+            dgvDeletedSupplier.TabIndex = 5;
+            dgvDeletedSupplier.CellFormatting += dgvDeletedSupplier_CellFormatting;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn1.HeaderText = "STT";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
+            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewTextBoxColumn1.HeaderText = "STT";
+            dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Width = 50;
             // 
             // Column9
             // 
-            this.Column9.HeaderText = "Mã nhà cung cấp";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
+            Column9.HeaderText = "Mã nhà cung cấp";
+            Column9.MinimumWidth = 8;
+            Column9.Name = "Column9";
+            Column9.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Tên nhà cung cấp";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.HeaderText = "Tên nhà cung cấp";
+            dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Điện thoại";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.HeaderText = "Điện thoại";
+            dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Email";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            dataGridViewTextBoxColumn4.HeaderText = "Email";
+            dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Ghi chú";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            dataGridViewTextBoxColumn5.HeaderText = "Ghi chú";
+            dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Trạng thái";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            dataGridViewTextBoxColumn6.HeaderText = "Trạng thái";
+            dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // Column21
             // 
-            this.Column21.HeaderText = "Ngày tạo";
-            this.Column21.Name = "Column21";
-            this.Column21.ReadOnly = true;
+            Column21.HeaderText = "Ngày tạo";
+            Column21.MinimumWidth = 8;
+            Column21.Name = "Column21";
+            Column21.ReadOnly = true;
             // 
             // Column22
             // 
-            this.Column22.HeaderText = "Ngày cập nhật";
-            this.Column22.Name = "Column22";
-            this.Column22.ReadOnly = true;
+            Column22.HeaderText = "Ngày cập nhật";
+            Column22.MinimumWidth = 8;
+            Column22.Name = "Column22";
+            Column22.ReadOnly = true;
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Ngày xoá";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            Column1.HeaderText = "Ngày xoá";
+            Column1.MinimumWidth = 8;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnForceDel);
-            this.panel1.Controls.Add(this.btnRestore);
-            this.panel1.Controls.Add(this.btnRestoreAll);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 489);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1221, 58);
-            this.panel1.TabIndex = 6;
-            // 
-            // btnRestoreAll
-            // 
-            this.btnRestoreAll.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestoreAll.Location = new System.Drawing.Point(271, 12);
-            this.btnRestoreAll.Name = "btnRestoreAll";
-            this.btnRestoreAll.Size = new System.Drawing.Size(117, 33);
-            this.btnRestoreAll.TabIndex = 0;
-            this.btnRestoreAll.Text = "Khôi phục tất cả";
-            this.btnRestoreAll.UseVisualStyleBackColor = true;
-            this.btnRestoreAll.Click += new System.EventHandler(this.btnRestoreAll_Click);
-            // 
-            // btnRestore
-            // 
-            this.btnRestore.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestore.Location = new System.Drawing.Point(522, 12);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(87, 33);
-            this.btnRestore.TabIndex = 0;
-            this.btnRestore.Text = "Khôi phục";
-            this.btnRestore.UseVisualStyleBackColor = true;
-            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
+            panel1.Controls.Add(btnForceDel);
+            panel1.Controls.Add(btnRestore);
+            panel1.Controls.Add(btnRestoreAll);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(5, 942);
+            panel1.Margin = new Padding(5, 6, 5, 6);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(2035, 110);
+            panel1.TabIndex = 6;
             // 
             // btnForceDel
             // 
-            this.btnForceDel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnForceDel.Location = new System.Drawing.Point(752, 12);
-            this.btnForceDel.Name = "btnForceDel";
-            this.btnForceDel.Size = new System.Drawing.Size(123, 33);
-            this.btnForceDel.TabIndex = 0;
-            this.btnForceDel.Text = "Xoá vĩnh viễn";
-            this.btnForceDel.UseVisualStyleBackColor = true;
-            this.btnForceDel.Click += new System.EventHandler(this.btnForceDel_Click);
+            btnForceDel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnForceDel.Location = new Point(1253, 23);
+            btnForceDel.Margin = new Padding(5, 6, 5, 6);
+            btnForceDel.Name = "btnForceDel";
+            btnForceDel.Size = new Size(205, 63);
+            btnForceDel.TabIndex = 0;
+            btnForceDel.Text = "Xoá vĩnh viễn";
+            btnForceDel.UseVisualStyleBackColor = true;
+            btnForceDel.Click += btnForceDel_Click;
+            // 
+            // btnRestore
+            // 
+            btnRestore.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRestore.Location = new Point(870, 23);
+            btnRestore.Margin = new Padding(5, 6, 5, 6);
+            btnRestore.Name = "btnRestore";
+            btnRestore.Size = new Size(145, 63);
+            btnRestore.TabIndex = 0;
+            btnRestore.Text = "Khôi phục";
+            btnRestore.UseVisualStyleBackColor = true;
+            btnRestore.Click += btnRestore_Click;
+            // 
+            // btnRestoreAll
+            // 
+            btnRestoreAll.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRestoreAll.Location = new Point(452, 23);
+            btnRestoreAll.Margin = new Padding(5, 6, 5, 6);
+            btnRestoreAll.Name = "btnRestoreAll";
+            btnRestoreAll.Size = new Size(195, 63);
+            btnRestoreAll.TabIndex = 0;
+            btnRestoreAll.Text = "Khôi phục tất cả";
+            btnRestoreAll.UseVisualStyleBackColor = true;
+            btnRestoreAll.Click += btnRestoreAll_Click;
             // 
             // DeletedSupplierDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 574);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(1267, 559);
-            this.Name = "DeletedSupplierDialog";
-            this.Text = "Nhà cung cấp đã xoá";
-            this.Load += new System.EventHandler(this.DeletedSupplierDialog_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeletedSupplier)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(2085, 1104);
+            Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(5, 6, 5, 6);
+            MinimumSize = new Size(2097, 1023);
+            Name = "DeletedSupplierDialog";
+            Text = "Nhà cung cấp đã xoá";
+            Load += DeletedSupplierDialog_Load;
+            tableLayoutPanel1.ResumeLayout(false);
+            ((ISupportInitialize)dgvDeletedSupplier).EndInit();
+            panel1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

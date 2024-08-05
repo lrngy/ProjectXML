@@ -21,11 +21,7 @@ public partial class MainGUI : BaseForm
 
     private void btnQlyThuoc_Click(object sender, EventArgs e)
     {
-        if (staff.isSeller)
-        {
-            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
-            return;
-        }
+
 
         Show(ref quanLyThuocView, () => new QuanLyThuocGUI(user, 0));
         quanLyThuocView.tabControl1.SelectTab(0);
@@ -58,11 +54,7 @@ public partial class MainGUI : BaseForm
 
     private void btnNhanVien_Click(object sender, EventArgs e)
     {
-        if (staff.isSeller)
-        {
-            CustomMessageBox.ShowError(Resources.Do_not_have_permission_to_access);
-            return;
-        }
+
 
         Show(ref quanLyNhanVienView, () => new QuanLyNhanVienGUI());
     }

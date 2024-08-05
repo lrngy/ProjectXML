@@ -28,7 +28,7 @@ namespace QPharma.DAL
             return DB.ExecuteNonQuery(query, sqlParameters) == 1;
         }
 
-        public LoginLog GetLoginLog()
+        public LoginLogDTO GetLoginLog()
         {
             var query = "select top 1 * from login_log order by login_time desc";
             var dt = DB.ExecuteQuery(query);
@@ -37,7 +37,7 @@ namespace QPharma.DAL
             var username = dt.Rows[0]["username"].ToString();
             var loginTime = dt.Rows[0]["login_time"].ToString();
             var logoutTime = dt.Rows[0]["logout_time"].ToString();
-            return new LoginLog(id, username, loginTime, logoutTime);
+            return new LoginLogDTO(id, username, loginTime, logoutTime);
         }
     }
 }

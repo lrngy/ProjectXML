@@ -92,7 +92,7 @@ public partial class FilterByRangeDialog : BaseForm
         return medicineList.Where(medicine =>
             {
                 DateTime expireDate;
-                if (!DateTime.TryParseExact(medicine.expireDate, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+                if (!DateTime.TryParseExact(medicine.expDate, "dd/MM/yyyy", CultureInfo.InvariantCulture,
                         DateTimeStyles.None, out expireDate))
                     return false;
                 return expireDate.Date.CompareTo(from.Date) >= 0 && expireDate.Date.CompareTo(to.Date) <= 0;

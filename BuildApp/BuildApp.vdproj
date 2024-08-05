@@ -43,6 +43,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Development"
         {
@@ -214,15 +230,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Q-Pharma"
-        "ProductCode" = "8:{C9CD56C4-80AB-4AC3-9FBD-63EE2E03BBFE}"
-        "PackageCode" = "8:{4546D5B0-85A6-45B0-AC2E-49ED01D19180}"
+        "ProductCode" = "8:{2403E6C7-6574-47CC-BA6B-C6868CF1C308}"
+        "PackageCode" = "8:{BCC01417-B482-4A76-B47B-858395C98657}"
         "UpgradeCode" = "8:{09262B6E-F87C-40D8-8941-FE9BAB417E79}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.0.4"
         "Manufacturer" = "8:Group Four"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

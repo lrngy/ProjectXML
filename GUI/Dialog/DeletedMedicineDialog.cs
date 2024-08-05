@@ -21,12 +21,12 @@ public partial class DeletedMedicineDialog : BaseForm
         foreach (var medicine in medicineList)
             dgvDeletedMedicine.Rows.Add(
                 ++i, medicine.id, medicine.name, medicine.quantity, medicine.price_out,
-                $"{medicine.category.id}-{medicine.category.name}",
+                medicine.category == null ? Resources.Unknown : $"{medicine.category.id}-{medicine.category.name}",
                 medicine.type ? Resources.Prescription_drug : Resources.Unprescription_drug,
-                medicine.unit, medicine.mfgDate, medicine.expireDate,
-                $"{medicine.supplier.id}-{medicine.supplier.name}",
+                medicine.unit, medicine.mfgDate, medicine.expDate,
+                medicine.supplier == null ? Resources.Unknown : $"{medicine.supplier.id}-{medicine.supplier.name}",
                 medicine.price_in,
-                $"{medicine.location.id} - {medicine.location.name}",
+                medicine.location == null ? Resources.Unknown : $"{medicine.location.id} - {medicine.location.name}",
                 medicine.description,
                 medicine.created,
                 medicine.updated,
@@ -90,15 +90,16 @@ public partial class DeletedMedicineDialog : BaseForm
         try
         {
             var index = dgvDeletedMedicine.SelectedRows[0].Index;
-            var maTheLoai = dgvDeletedMedicine.Rows[index].Cells[1].Value.ToString();
+            var maThuoc = dgvDeletedMedicine.Rows[index].Cells[1].Value.ToString();
             var confirmResult =
                 CustomMessageBox.ShowQuestion(Resources.Are_you_sure_you_want_to_permanently_remove_this_medication_);
             if (confirmResult == DialogResult.No) return;
-            var state = medicineController.ForceDelete(maTheLoai);
+            var state = medicineController.ForceDelete(maThuoc);
             if (state == Predefined.SUCCESS)
             {
                 DeletedMedicine_Show();
                 refreshDeletedMedicine();
+                CustomMessageBox.ShowSuccess(string.Format(Resources.Delete_medicine_id_successfully, maThuoc));
                 return;
             }
 

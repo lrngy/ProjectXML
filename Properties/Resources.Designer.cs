@@ -419,6 +419,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xoá thành công Mã thuốc {0}.
+        /// </summary>
+        internal static string Delete_medicine_id_successfully {
+            get {
+                return ResourceManager.GetString("Delete medicine id successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bạn không có quyền truy cập chức năng này.
         /// </summary>
         internal static string Do_not_have_permission_to_access {
@@ -478,6 +487,15 @@ namespace QPharma.Properties {
         internal static string Exit_confirm {
             get {
                 return ResourceManager.GetString("Exit confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hạn sử dụng phải lớn hơn hoặc bằng Ngày sản xuất.
+        /// </summary>
+        internal static string Expiry_date_must_be_greater_than_or_equal_to_Production_date {
+            get {
+                return ResourceManager.GetString("Expiry date must be greater than or equal to Production date", resourceCulture);
             }
         }
         
@@ -783,6 +801,51 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập mã thuốc.
+        /// </summary>
+        internal static string Please_input_medicine_id {
+            get {
+                return ResourceManager.GetString("Please input medicine id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tên thuốc.
+        /// </summary>
+        internal static string Please_input_medicine_name {
+            get {
+                return ResourceManager.GetString("Please input medicine name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập giá bán.
+        /// </summary>
+        internal static string Please_input_medicine_price_out {
+            get {
+                return ResourceManager.GetString("Please input medicine price_out", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập số lượng.
+        /// </summary>
+        internal static string Please_input_medicine_quantity {
+            get {
+                return ResourceManager.GetString("Please input medicine quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập đơn vị thuốc.
+        /// </summary>
+        internal static string Please_input_medicine_unit {
+            get {
+                return ResourceManager.GetString("Please input medicine unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng nhập mã nhà cung cấp.
         /// </summary>
         internal static string Please_input_supplier_ID {
@@ -810,7 +873,7 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vui lòng chọn thể loại..
+        ///   Looks up a localized string similar to Vui lòng chọn thể loại.
         /// </summary>
         internal static string Please_select_a_category {
             get {
@@ -882,7 +945,7 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Giá phải lớn hơn hoặc bằng 0..
+        ///   Looks up a localized string similar to Giá phải lớn hơn hoặc bằng 0.
         /// </summary>
         internal static string Price_must_be_greater_or_equal_0 {
             get {
@@ -900,7 +963,7 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Số lượng phải lớn hơn hoặc bằng 0..
+        ///   Looks up a localized string similar to Số lượng phải lớn hơn hoặc bằng 0.
         /// </summary>
         internal static string Quantity_must_be_greater_or_equal_0 {
             get {
@@ -1081,7 +1144,7 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -- Chưa xác định --.
+        ///   Looks up a localized string similar to Chưa xác định.
         /// </summary>
         internal static string Unknown {
             get {

@@ -31,20 +31,26 @@ public class MedicineDAL
                 var categoryId = dr["category_id"].ToString();
                 var medicine_type = dr["medicine_type"].ToString() == "1";
                 var unit = dr["medicine_unit"].ToString();
-                var mfgDate = dr["medicine_mfg"].ToString();
-                var expireDate = dr["medicine_expire_date"].ToString();
+                var mfgDate = DateTime.Parse(dr["medicine_mfg"].ToString()).ToString("dd/MM/yyyy HH:mm");
+                var expireDate = DateTime.Parse(dr["medicine_expire_date"].ToString()).ToString("dd/MM/yyyy HH:mm");
                 var supplierId = dr["supplier_id"].ToString();
                 var price_in = double.Parse(dr["medicine_price_in"].ToString());
                 var location = dr["medicine_location_id"].ToString();
                 var description = dr["medicine_description"].ToString();
-                var created = dr["medicine_created"].ToString();
-                var updated = dr["medicine_updated"].ToString();
-                var deleted = dr["medicine_deleted"].ToString();
+                var created = !string.IsNullOrEmpty(dr["medicine_created"].ToString()) ? DateTime.Parse(dr["medicine_created"].ToString()).ToString("dd/MM/yyyy HH:mm") : "";
+                var updated = !string.IsNullOrEmpty(dr["medicine_updated"].ToString()) ? DateTime.Parse(dr["medicine_updated"].ToString()).ToString("dd/MM/yyyy HH:mm") : "";
+                var deleted = !string.IsNullOrEmpty(dr["medicine_deleted"].ToString()) ? DateTime.Parse(dr["medicine_deleted"].ToString()).ToString("dd/MM/yyyy HH:mm") : "";
                 var image = dr["medicine_image"].ToString();
 
                 var supplier = supplierDAL.GetById(supplierId);
                 var category = categoryDAL.GetById(categoryId);
                 var medicineLocation = medicineLocationDAL.GetById(location);
+
+                if (supplier != null && !string.IsNullOrEmpty(supplier.deleted)) supplier = null;
+                if (category != null && !string.IsNullOrEmpty(category.deleted)) category = null;
+                if (medicineLocation != null && !string.IsNullOrEmpty(medicineLocation.deleted))
+                    medicineLocation = null;
+
 
                 var medicine = new MedicineDTO(id, name, quantity, price_out, category, medicine_type, unit, mfgDate,
                     expireDate, supplier, price_in, medicineLocation, description,
@@ -86,9 +92,9 @@ public class MedicineDAL
                 var price_in = double.Parse(dr["medicine_price_in"].ToString());
                 var location = dr["medicine_location_id"].ToString();
                 var description = dr["medicine_description"].ToString();
-                var created = dr["medicine_created"].ToString();
-                var updated = dr["medicine_updated"].ToString();
-                var deleted = dr["medicine_deleted"].ToString();
+                var created = !string.IsNullOrEmpty(dr["medicine_created"].ToString()) ? DateTime.Parse(dr["medicine_created"].ToString()).ToString("dd/MM/yyyy HH:mm") : "";
+                var updated = !string.IsNullOrEmpty(dr["medicine_updated"].ToString()) ? DateTime.Parse(dr["medicine_updated"].ToString()).ToString("dd/MM/yyyy HH:mm") : "";
+                var deleted = !string.IsNullOrEmpty(dr["medicine_deleted"].ToString()) ? DateTime.Parse(dr["medicine_deleted"].ToString()).ToString("dd/MM/yyyy HH:mm") : "";
                 var image = dr["medicine_image"].ToString();
 
                 var supplier = supplierDAL.GetById(supplierId);
@@ -134,18 +140,18 @@ public class MedicineDAL
                 new("@id", medicine.id),
                 new("@name", medicine.name),
                 new("@mfg", medicine.mfgDate),
-                new("@expire", medicine.expireDate),
+                new("@expire", medicine.expDate),
                 new("@unit", medicine.unit),
                 new("@priceIn", medicine.price_in),
                 new("@priceOut", medicine.price_out),
                 new("@quantity", medicine.quantity),
                 new("@type", medicine.type),
-                new("@image", medicine.image),
+                new("@image", medicine.imagePath),
                 new("@description", medicine.description),
                 new("@updated", medicine.updated),
-                new("@supplier", medicine.supplier.id),
-                new("@category", medicine.category.id),
-                new("@location", medicine.location.id)
+                new("@supplier", medicine.supplier == null ? DBNull.Value : medicine.supplier.id),
+                new("@category", medicine.category == null ? DBNull.Value : medicine.category.id),
+                new("@location", medicine.location == null ? DBNull.Value : medicine.location.id)
             };
             DB.ExecuteNonQuery(query, sqlParameters);
             return Predefined.SUCCESS;
@@ -158,7 +164,7 @@ public class MedicineDAL
     }
 
 
-    public int Insert(MedicineDTO newMedicine)
+    public int Insert(MedicineDTO medicine)
     {
         try
         {
@@ -196,20 +202,20 @@ public class MedicineDAL
                         ")";
             SqlParameter[] sqlParameters =
             {
-                new("@id", newMedicine.id),
-                new("@name", newMedicine.name),
-                new("@mfg", newMedicine.mfgDate),
-                new("@expire", newMedicine.expireDate),
-                new("@unit", newMedicine.unit),
-                new("@priceIn", newMedicine.price_in),
-                new("@priceOut", newMedicine.price_out),
-                new("@quantity", newMedicine.quantity),
-                new("@type", newMedicine.type),
-                new("@description", newMedicine.description),
-                new("@created", newMedicine.created),
-                new("@supplier", (object)newMedicine.supplier?.id ?? DBNull.Value),
-                new("@category", (object)newMedicine.category?.id ?? DBNull.Value),
-                new("@location", (object)newMedicine.location?.id ?? DBNull.Value)
+                new("@id", medicine.id),
+                new("@name", medicine.name),
+                new("@mfg", medicine.mfgDate),
+                new("@expire", medicine.expDate),
+                new("@unit", medicine.unit),
+                new("@priceIn", medicine.price_in),
+                new("@priceOut", medicine.price_out),
+                new("@quantity", medicine.quantity),
+                new("@type", medicine.type),
+                new("@description", medicine.description),
+                new("@created", medicine.created),
+                new("@supplier", medicine.supplier == null ? DBNull.Value : medicine.supplier.id),
+                new("@category", medicine.category == null ? DBNull.Value : medicine.category.id),
+                new("@location", medicine.location == null ? DBNull.Value : medicine.location.id)
             };
             DB.ExecuteNonQuery(query, sqlParameters);
             return Predefined.SUCCESS;

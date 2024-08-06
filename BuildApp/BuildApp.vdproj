@@ -33,7 +33,7 @@
         "DisplayName" = "8:DevDatabase"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:DevDatabase\\BuildApp.msi"
+        "OutputFilename" = "8:DevDatabase\\datafile.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -52,10 +52,20 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x64"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.15.0"
+                    {
+                    "Name" = "8:SQL Server 2019 Express LocalDB"
+                    "ProductCode" = "8:Microsoft.SqlServer.SqlLocalDB.15.0"
                     }
                 }
             }
@@ -65,7 +75,7 @@
         "DisplayName" = "8:Development"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Development\\Q-Pharma.msi"
+        "OutputFilename" = "8:Development\\datafile.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -84,10 +94,20 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x64"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.15.0"
+                    {
+                    "Name" = "8:SQL Server 2019 Express LocalDB"
+                    "ProductCode" = "8:Microsoft.SqlServer.SqlLocalDB.15.0"
                     }
                 }
             }
@@ -97,9 +117,9 @@
         "DisplayName" = "8:Production"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Production\\Q-Pharma.msi"
+        "OutputFilename" = "8:Production\\datafile.msi"
         "PackageFilesAs" = "3:2"
-        "PackageFileSize" = "3:-2147483648"
+        "PackageFileSize" = "3:0"
         "CabType" = "3:1"
         "Compression" = "3:2"
         "SignOutput" = "11:FALSE"
@@ -116,10 +136,20 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x64"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.15.0"
+                    {
+                    "Name" = "8:SQL Server 2019 Express LocalDB"
+                    "ProductCode" = "8:Microsoft.SqlServer.SqlLocalDB.15.0"
                     }
                 }
             }
@@ -230,15 +260,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Q-Pharma"
-        "ProductCode" = "8:{2403E6C7-6574-47CC-BA6B-C6868CF1C308}"
-        "PackageCode" = "8:{BCC01417-B482-4A76-B47B-858395C98657}"
+        "ProductCode" = "8:{70C7505C-FE63-48AE-B1BF-C0087A8A583D}"
+        "PackageCode" = "8:{04503724-57BF-41CC-8C39-36272CD29475}"
         "UpgradeCode" = "8:{09262B6E-F87C-40D8-8941-FE9BAB417E79}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.4"
+        "ProductVersion" = "8:1.0.5"
         "Manufacturer" = "8:Group Four"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -246,7 +276,7 @@
         "Subject" = "8:"
         "ARPCONTACT" = "8:Q-Pharma"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Quản lý hiệu thuốc"
+        "ARPCOMMENTS" = "8:QUan ly hieu thuoc"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:_335C41A55B024573AF0F1CB925717DA2"
         "ARPIconIndex" = "3:0"
@@ -780,7 +810,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_108B09F4B3904626927A56A9F4C7C498"
             {
-            "SourcePath" = "8:..\\obj\\DevDatabase\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\obj\\Production\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_690EB668A4A04B278C5AA78BA39C9F96"

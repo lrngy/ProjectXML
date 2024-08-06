@@ -1,14 +1,14 @@
 IF NOT EXISTS (
     SELECT name
     FROM sys.databases
-    WHERE name = N'QPharma'
+    WHERE name = N'QPharma1'
 )
 BEGIN
-    CREATE DATABASE QPharma;
+    CREATE DATABASE QPharma1;
 END
 
 
-use QPharma
+use QPharma1
 
 
 
@@ -128,8 +128,8 @@ logout_time datetime
 
 
 INSERT INTO users
-(username, password)
-VALUES('admin', '1');
+(username, hash_pw)
+VALUES('admin', '$2a$12$o32w9utWr65ZcNmk3bDQtOuzvJ4uai4KHpqMVJVhPgXQILJ63xjZO');
 
 INSERT INTO staffs
 (staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)

@@ -26,7 +26,7 @@ namespace QPharma.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LONGPC\\SQLEXPRESS;Initial Catalog=QPharma;Integrated Security=True;En" +
-            "crypt=False")]
+            "crypt=False;Connect Timeout=10")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

@@ -26,7 +26,7 @@ namespace QPharma.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={0};Integrated Security=True;" +
-            "Connect Timeout=30")]
+            "Connect Timeout=10")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

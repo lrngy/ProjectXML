@@ -177,10 +177,10 @@ public partial class QuanLyThuocGUI : BaseForm
     {
         tbMaThuoc.Text = "";
         tbTenThuoc.Text = "";
-        tbSL.Text = "";
+        numSL.Text = "";
         tbDVT.Text = "";
-        tbGiaBan.Text = "";
-        tbGiaNhap.Text = "";
+        numGiaBan.Text = "";
+        numGiaNhap.Text = "";
         rtbMota.Text = "";
     }
 
@@ -729,9 +729,9 @@ public partial class QuanLyThuocGUI : BaseForm
             tbMaThuoc.Text = dgvThuoc.Rows[index].Cells[1].Value.ToString();
             tbTenThuoc.Text = dgvThuoc.Rows[index].Cells[2].Value.ToString();
 
-            tbSL.Text = dgvThuoc.Rows[index].Cells[3].Value.ToString();
-            tbGiaBan.Text = dgvThuoc.Rows[index].Cells[4].Value.ToString();
-            tbGiaNhap.Text = dgvThuoc.Rows[index].Cells[11].Value.ToString();
+            numSL.Text = dgvThuoc.Rows[index].Cells[3].Value.ToString();
+            numGiaBan.Text = dgvThuoc.Rows[index].Cells[4].Value.ToString();
+            numGiaNhap.Text = dgvThuoc.Rows[index].Cells[11].Value.ToString();
             var theLoai = dgvThuoc.Rows[index].Cells[5].Value.ToString();
             for (var i = 0; i < cbTLThuoc.Items.Count; i++)
                 if (cbTLThuoc.Items[i].ToString().Equals(theLoai))
@@ -795,9 +795,9 @@ public partial class QuanLyThuocGUI : BaseForm
         {
             var id = tbMaThuoc.Text;
             var name = tbTenThuoc.Text;
-            var quantityText = tbSL.Text;
-            var priceOutText = tbGiaBan.Text;
-            var priceInText = tbGiaNhap.Text;
+            var quantityText = numSL.Text;
+            var priceOutText = numGiaBan.Text;
+            var priceInText = numGiaNhap.Text;
             var unit = tbDVT.Text;
             var mfgDate = dtpkMFG.Value.ToString();
             var expireDate = dtpkEXP.Value.ToString();
@@ -823,22 +823,23 @@ public partial class QuanLyThuocGUI : BaseForm
                 }
                 if (string.IsNullOrEmpty(quantityText))
                 {
-                    ShowValidateError(tbSL, Resources.Please_input_medicine_quantity);
+                    ShowValidateError(numSL, Resources.Please_input_medicine_quantity);
                     isValid = false;
                 }
                 if (string.IsNullOrEmpty(priceInText))
                 {
-                    ShowValidateError(tbGiaNhap, Resources.Please_input_medicine_price_out);
+                    ShowValidateError(numGiaNhap, Resources.Please_input_medicine_price_out);
                     isValid = false;
                 }
                 if (string.IsNullOrEmpty(priceOutText))
                 {
-                    ShowValidateError(tbGiaBan, Resources.Please_input_medicine_price_out);
+                    ShowValidateError(numGiaBan, Resources.Please_input_medicine_price_out);
                     isValid = false;
                 }
 
                 return isValid;
             }
+
 
             int quantity = -1;
             double priceIn = -1, priceOut = -1;
@@ -849,20 +850,20 @@ public partial class QuanLyThuocGUI : BaseForm
                 if (!int.TryParse(quantityText, out quantity))
                 {
 
-                    ShowValidateError(tbSL, Resources.Quantity_must_be_a_number);
+                    ShowValidateError(numSL, Resources.Quantity_must_be_a_number);
                     isValid = false;
                 }
                 if (!double.TryParse(priceInText, out priceIn))
                 {
 
-                    ShowValidateError(tbGiaNhap, Resources.Price_must_be_a_number);
+                    ShowValidateError(numGiaNhap, Resources.Price_must_be_a_number);
                     isValid = false;
                 }
 
                 if (!double.TryParse(priceOutText, out priceOut))
                 {
 
-                    ShowValidateError(tbGiaBan, Resources.Price_must_be_a_number);
+                    ShowValidateError(numGiaBan, Resources.Price_must_be_a_number);
                     isValid = false;
                 }
                 return isValid;
@@ -872,27 +873,61 @@ public partial class QuanLyThuocGUI : BaseForm
             {
                 if (quantity < 0)
                 {
-                    ShowValidateError(tbSL, Resources.Quantity_must_be_greater_or_equal_0);
+                    ShowValidateError(numSL, Resources.Quantity_must_be_greater_or_equal_0);
                     isValid = false;
                 }
 
                 if (priceOut < 0)
                 {
-                    ShowValidateError(tbGiaBan, Resources.Price_must_be_greater_or_equal_0);
+                    ShowValidateError(numGiaBan, Resources.Price_must_be_greater_or_equal_0);
                     isValid = false;
                 }
 
                 if (priceIn < 0)
                 {
-                    ShowValidateError(tbGiaNhap, Resources.Price_must_be_greater_or_equal_0);
+                    ShowValidateError(numGiaNhap, Resources.Price_must_be_greater_or_equal_0);
                     isValid = false;
                 }
 
                 //if (priceOut < priceIn)
                 //{
-                //    ShowValidateError(tbGiaBan, Resources.Price_must_be_greater_or_equal_0);
+                //    ShowValidateError(numGiaBan, Resources.Price_must_be_greater_or_equal_0);
                 //    isValid = false;
                 //}
+                return isValid;
+            }
+
+            bool CheckLength()
+            {
+                if (tbMaThuoc.Text.Length > 30)
+                {
+                    ShowValidateError(tbMaThuoc, "Mã thuốc không vượt quá 30 kí tự");
+                    isValid = false;
+                }
+
+                if (numSL.Text.Length > 9)
+                {
+                    ShowValidateError(numSL, "Số lượng không thể vượt quá 999999999");
+                    isValid = false;
+                }
+
+                if (numGiaBan.Text.Length > 9)
+                {
+                    ShowValidateError(numGiaBan, "Giá bán không thể vượt quá 999999999");
+                    isValid = false;
+                }
+
+                if (numGiaNhap.Text.Length > 9)
+                {
+                    ShowValidateError(numGiaNhap, "Giá nhập không thể vượt quá 999999999");
+                    isValid = false;
+                }
+
+                if (tbDVT.Text.Length > 30)
+                {
+                    ShowValidateError(tbDVT, "Đơn vị tính không quá 30 kí tự");
+                    isValid = false;
+                }
                 return isValid;
             }
 
@@ -935,7 +970,7 @@ public partial class QuanLyThuocGUI : BaseForm
             }
 
 
-            bool isValidate = CheckEmpty() && CheckValidNumber() && CheckNumberValue() && CheckComboBox() && CheckDate();
+            bool isValidate = CheckEmpty() && CheckValidNumber() && CheckLength() && CheckNumberValue() && CheckComboBox() && CheckDate();
 
             if (!isValidate) return;
 
@@ -999,9 +1034,9 @@ public partial class QuanLyThuocGUI : BaseForm
         {
             var id = tbMaThuoc.Text;
             var name = tbTenThuoc.Text;
-            var quantityText = tbSL.Text;
-            var priceOutText = tbGiaBan.Text;
-            var priceInText = tbGiaNhap.Text;
+            var quantityText = numSL.Text;
+            var priceOutText = numGiaBan.Text;
+            var priceInText = numGiaNhap.Text;
             var categoryId = cbTLThuoc.SelectedItem.ToString().Split('-')[0];
             var type = cbLoai.SelectedIndex == 0;
             var unit = tbDVT.Text;
@@ -1035,17 +1070,17 @@ public partial class QuanLyThuocGUI : BaseForm
                 }
                 if (string.IsNullOrEmpty(quantityText))
                 {
-                    ShowValidateError(tbSL, Resources.Please_input_medicine_quantity);
+                    ShowValidateError(numSL, Resources.Please_input_medicine_quantity);
                     isValid = false;
                 }
                 if (string.IsNullOrEmpty(priceInText))
                 {
-                    ShowValidateError(tbGiaNhap, Resources.Please_input_medicine_price_out);
+                    ShowValidateError(numGiaNhap, Resources.Please_input_medicine_price_out);
                     isValid = false;
                 }
                 if (string.IsNullOrEmpty(priceOutText))
                 {
-                    ShowValidateError(tbGiaBan, Resources.Please_input_medicine_price_out);
+                    ShowValidateError(numGiaBan, Resources.Please_input_medicine_price_out);
                     isValid = false;
                 }
 
@@ -1061,20 +1096,20 @@ public partial class QuanLyThuocGUI : BaseForm
                 if (!int.TryParse(quantityText, out quantity))
                 {
 
-                    ShowValidateError(tbSL, Resources.Quantity_must_be_a_number);
+                    ShowValidateError(numSL, Resources.Quantity_must_be_a_number);
                     isValid = false;
                 }
                 if (!double.TryParse(priceInText, out priceIn))
                 {
 
-                    ShowValidateError(tbGiaNhap, Resources.Price_must_be_a_number);
+                    ShowValidateError(numGiaNhap, Resources.Price_must_be_a_number);
                     isValid = false;
                 }
 
                 if (!double.TryParse(priceOutText, out priceOut))
                 {
 
-                    ShowValidateError(tbGiaBan, Resources.Price_must_be_a_number);
+                    ShowValidateError(numGiaBan, Resources.Price_must_be_a_number);
                     isValid = false;
                 }
                 return isValid;
@@ -1084,22 +1119,55 @@ public partial class QuanLyThuocGUI : BaseForm
             {
                 if (quantity < 0)
                 {
-                    ShowValidateError(tbSL, Resources.Quantity_must_be_greater_or_equal_0);
+                    ShowValidateError(numSL, Resources.Quantity_must_be_greater_or_equal_0);
                     isValid = false;
                 }
 
                 if (priceOut < 0)
                 {
-                    ShowValidateError(tbGiaBan, Resources.Price_must_be_greater_or_equal_0);
+                    ShowValidateError(numGiaBan, Resources.Price_must_be_greater_or_equal_0);
                     isValid = false;
                 }
 
                 if (priceIn < 0)
                 {
-                    ShowValidateError(tbGiaNhap, Resources.Price_must_be_greater_or_equal_0);
+                    ShowValidateError(numGiaNhap, Resources.Price_must_be_greater_or_equal_0);
                     isValid = false;
                 }
 
+                return isValid;
+            }
+            bool CheckLength()
+            {
+                if (tbMaThuoc.Text.Length > 30)
+                {
+                    ShowValidateError(tbMaThuoc, "Mã thuốc không vượt quá 30 kí tự");
+                    isValid = false;
+                }
+
+                if (numSL.Text.Length > 9)
+                {
+                    ShowValidateError(numSL, "Số lượng không thể vượt quá 999999999");
+                    isValid = false;
+                }
+
+                if (numGiaBan.Text.Length > 9)
+                {
+                    ShowValidateError(numGiaBan, "Giá bán không thể vượt quá 999999999");
+                    isValid = false;
+                }
+
+                if (numGiaNhap.Text.Length > 9)
+                {
+                    ShowValidateError(numGiaNhap, "Giá nhập không thể vượt quá 999999999");
+                    isValid = false;
+                }
+
+                if (tbDVT.Text.Length > 30)
+                {
+                    ShowValidateError(tbDVT, "Đơn vị tính không quá 30 kí tự");
+                    isValid = false;
+                }
                 return isValid;
             }
 
@@ -1142,7 +1210,7 @@ public partial class QuanLyThuocGUI : BaseForm
             }
 
 
-            bool isValidate = CheckEmpty() && CheckValidNumber() && CheckNumberValue() && CheckComboBox() && CheckDate();
+            bool isValidate = CheckEmpty() && CheckValidNumber() && CheckLength() && CheckNumberValue() && CheckComboBox() && CheckDate();
 
             if (!isValidate) return;
 
@@ -1644,6 +1712,14 @@ public partial class QuanLyThuocGUI : BaseForm
         {
             tabControl1.SelectTab(3);
             comboBox.SelectedIndex = -1;
+        }
+    }
+
+    private void tb_NonSpace_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (char.IsWhiteSpace(e.KeyChar))
+        {
+            e.Handled = true;
         }
     }
 }

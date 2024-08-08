@@ -73,7 +73,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="QPharma.mdf" />
-    <None Remove="QPharma4.mdf" />
+    <None Remove="QPharma_empty.mdf" />
     <None Remove="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -97,8 +97,8 @@
     <Content Include="QPharma.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="QPharma4.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="QPharma_empty.mdf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

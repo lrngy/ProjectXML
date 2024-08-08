@@ -31,14 +31,14 @@ namespace QPharma.GUI
         private void InitializeComponent()
         {
             components = new Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
             lbHeader = new Label();
             tabControl1 = new TabControl();
             tabThuoc = new TabPage();
@@ -77,6 +77,9 @@ namespace QPharma.GUI
             btnXoaAnh = new Button();
             btnDoiAnh = new Button();
             groupBox3 = new GroupBox();
+            numGiaNhap = new NumericUpDown();
+            numGiaBan = new NumericUpDown();
+            numSL = new NumericUpDown();
             rtbMota = new RichTextBox();
             btnNhapLaiThuoc = new Button();
             dtpkMFG = new DateTimePicker();
@@ -85,10 +88,7 @@ namespace QPharma.GUI
             cbVitri = new ComboBox();
             cbLoai = new ComboBox();
             cbTLThuoc = new ComboBox();
-            tbGiaNhap = new TextBox();
-            tbGiaBan = new TextBox();
             tbDVT = new TextBox();
-            tbSL = new TextBox();
             tbTenThuoc = new TextBox();
             tbMaThuoc = new TextBox();
             label14 = new Label();
@@ -205,6 +205,9 @@ namespace QPharma.GUI
             groupBox4.SuspendLayout();
             ((ISupportInitialize)pictureBoxThuoc).BeginInit();
             groupBox3.SuspendLayout();
+            ((ISupportInitialize)numGiaNhap).BeginInit();
+            ((ISupportInitialize)numGiaBan).BeginInit();
+            ((ISupportInitialize)numSL).BeginInit();
             tabTheLoai.SuspendLayout();
             tableLayoutPanelCategory.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -444,25 +447,25 @@ namespace QPharma.GUI
             dgvThuoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvThuoc.BackgroundColor = SystemColors.Control;
             dgvThuoc.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvThuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = Color.White;
+            dataGridViewCellStyle17.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle17.ForeColor = Color.Black;
+            dataGridViewCellStyle17.SelectionBackColor = Color.White;
+            dataGridViewCellStyle17.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
+            dgvThuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             dgvThuoc.ColumnHeadersHeight = 50;
             dgvThuoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvThuoc.Columns.AddRange(new DataGridViewColumn[] { Column8, Column10, Column11, Column13, Column15, Column19, Column23, Column14, Column33, Column12, Column20, Column24, Column25, Column16, Column17, Column18 });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvThuoc.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = SystemColors.Window;
+            dataGridViewCellStyle18.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle18.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
+            dgvThuoc.DefaultCellStyle = dataGridViewCellStyle18;
             dgvThuoc.Dock = DockStyle.Fill;
             dgvThuoc.EnableHeadersVisualStyles = false;
             dgvThuoc.Location = new Point(6, 689);
@@ -636,24 +639,24 @@ namespace QPharma.GUI
             // 
             btnXoaAnh.Anchor = AnchorStyles.None;
             btnXoaAnh.BackColor = SystemColors.Control;
-            btnXoaAnh.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnXoaAnh.Location = new Point(87, 523);
+            btnXoaAnh.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnXoaAnh.Location = new Point(90, 523);
             btnXoaAnh.Margin = new Padding(6, 5, 6, 5);
             btnXoaAnh.Name = "btnXoaAnh";
-            btnXoaAnh.Size = new Size(73, 50);
+            btnXoaAnh.Size = new Size(111, 50);
             btnXoaAnh.TabIndex = 17;
-            btnXoaAnh.Text = "X";
+            btnXoaAnh.Text = "Xoá ảnh";
             btnXoaAnh.UseVisualStyleBackColor = false;
             btnXoaAnh.Click += btnXoaAnh_Click;
             // 
             // btnDoiAnh
             // 
             btnDoiAnh.Anchor = AnchorStyles.None;
-            btnDoiAnh.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDoiAnh.Location = new Point(191, 523);
+            btnDoiAnh.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            btnDoiAnh.Location = new Point(225, 523);
             btnDoiAnh.Margin = new Padding(6, 5, 6, 5);
             btnDoiAnh.Name = "btnDoiAnh";
-            btnDoiAnh.Size = new Size(160, 50);
+            btnDoiAnh.Size = new Size(113, 50);
             btnDoiAnh.TabIndex = 17;
             btnDoiAnh.Text = "Đổi ảnh";
             btnDoiAnh.UseVisualStyleBackColor = true;
@@ -662,6 +665,9 @@ namespace QPharma.GUI
             // groupBox3
             // 
             groupBox3.Anchor = AnchorStyles.Left;
+            groupBox3.Controls.Add(numGiaNhap);
+            groupBox3.Controls.Add(numGiaBan);
+            groupBox3.Controls.Add(numSL);
             groupBox3.Controls.Add(rtbMota);
             groupBox3.Controls.Add(btnNhapLaiThuoc);
             groupBox3.Controls.Add(dtpkMFG);
@@ -670,10 +676,7 @@ namespace QPharma.GUI
             groupBox3.Controls.Add(cbVitri);
             groupBox3.Controls.Add(cbLoai);
             groupBox3.Controls.Add(cbTLThuoc);
-            groupBox3.Controls.Add(tbGiaNhap);
-            groupBox3.Controls.Add(tbGiaBan);
             groupBox3.Controls.Add(tbDVT);
-            groupBox3.Controls.Add(tbSL);
             groupBox3.Controls.Add(tbTenThuoc);
             groupBox3.Controls.Add(tbMaThuoc);
             groupBox3.Controls.Add(label14);
@@ -698,6 +701,37 @@ namespace QPharma.GUI
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Thông tin thuốc";
+            // 
+            // numGiaNhap
+            // 
+            numGiaNhap.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numGiaNhap.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
+            numGiaNhap.Location = new Point(1340, 214);
+            numGiaNhap.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numGiaNhap.Name = "numGiaNhap";
+            numGiaNhap.Size = new Size(250, 39);
+            numGiaNhap.TabIndex = 16;
+            numGiaNhap.ThousandsSeparator = true;
+            // 
+            // numGiaBan
+            // 
+            numGiaBan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numGiaBan.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
+            numGiaBan.Location = new Point(214, 468);
+            numGiaBan.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numGiaBan.Name = "numGiaBan";
+            numGiaBan.Size = new Size(247, 39);
+            numGiaBan.TabIndex = 15;
+            numGiaBan.ThousandsSeparator = true;
+            // 
+            // numSL
+            // 
+            numSL.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numSL.Location = new Point(214, 331);
+            numSL.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numSL.Name = "numSL";
+            numSL.Size = new Size(247, 39);
+            numSL.TabIndex = 14;
             // 
             // rtbMota
             // 
@@ -802,28 +836,6 @@ namespace QPharma.GUI
             cbTLThuoc.TabIndex = 7;
             cbTLThuoc.SelectedIndexChanged += cbTLThuoc_SelectedIndexChanged;
             // 
-            // tbGiaNhap
-            // 
-            tbGiaNhap.Anchor = AnchorStyles.None;
-            tbGiaNhap.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbGiaNhap.Location = new Point(1347, 212);
-            tbGiaNhap.Margin = new Padding(6, 5, 6, 5);
-            tbGiaNhap.Name = "tbGiaNhap";
-            tbGiaNhap.Size = new Size(243, 37);
-            tbGiaNhap.TabIndex = 3;
-            tbGiaNhap.TextChanged += ClearTextBox_TextChanged;
-            // 
-            // tbGiaBan
-            // 
-            tbGiaBan.Anchor = AnchorStyles.None;
-            tbGiaBan.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbGiaBan.Location = new Point(214, 460);
-            tbGiaBan.Margin = new Padding(6, 5, 6, 5);
-            tbGiaBan.Name = "tbGiaBan";
-            tbGiaBan.Size = new Size(247, 37);
-            tbGiaBan.TabIndex = 3;
-            tbGiaBan.TextChanged += ClearTextBox_TextChanged;
-            // 
             // tbDVT
             // 
             tbDVT.Anchor = AnchorStyles.None;
@@ -834,17 +846,6 @@ namespace QPharma.GUI
             tbDVT.Size = new Size(254, 37);
             tbDVT.TabIndex = 5;
             tbDVT.TextChanged += ClearTextBox_TextChanged;
-            // 
-            // tbSL
-            // 
-            tbSL.Anchor = AnchorStyles.None;
-            tbSL.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbSL.Location = new Point(214, 330);
-            tbSL.Margin = new Padding(6, 5, 6, 5);
-            tbSL.Name = "tbSL";
-            tbSL.Size = new Size(247, 37);
-            tbSL.TabIndex = 2;
-            tbSL.TextChanged += ClearTextBox_TextChanged;
             // 
             // tbTenThuoc
             // 
@@ -867,6 +868,7 @@ namespace QPharma.GUI
             tbMaThuoc.Size = new Size(247, 37);
             tbMaThuoc.TabIndex = 1;
             tbMaThuoc.TextChanged += ClearTextBox_TextChanged;
+            tbMaThuoc.KeyPress += tb_NonSpace_KeyPress;
             // 
             // label14
             // 
@@ -1160,25 +1162,25 @@ namespace QPharma.GUI
             dgvTheLoai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTheLoai.BackgroundColor = SystemColors.Control;
             dgvTheLoai.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvTheLoai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = Color.White;
+            dataGridViewCellStyle19.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle19.ForeColor = Color.Black;
+            dataGridViewCellStyle19.SelectionBackColor = Color.White;
+            dataGridViewCellStyle19.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
+            dgvTheLoai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             dgvTheLoai.ColumnHeadersHeight = 50;
             dgvTheLoai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvTheLoai.Columns.AddRange(new DataGridViewColumn[] { Column7, Column1, Column2, Column4, Column3, Column5, Column6 });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.LightGray;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvTheLoai.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = Color.LightGray;
+            dataGridViewCellStyle20.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle20.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.False;
+            dgvTheLoai.DefaultCellStyle = dataGridViewCellStyle20;
             dgvTheLoai.Dock = DockStyle.Fill;
             dgvTheLoai.EnableHeadersVisualStyles = false;
             dgvTheLoai.Location = new Point(6, 258);
@@ -1371,7 +1373,7 @@ namespace QPharma.GUI
             tabNCC.Margin = new Padding(6, 5, 6, 5);
             tabNCC.Name = "tabNCC";
             tabNCC.Padding = new Padding(6, 5, 6, 5);
-            tabNCC.Size = new Size(2491, 1046);
+            tabNCC.Size = new Size(2490, 1046);
             tabNCC.TabIndex = 2;
             tabNCC.Text = "Nhà cung cấp";
             // 
@@ -1390,7 +1392,7 @@ namespace QPharma.GUI
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 65F));
-            tableLayoutPanel1.Size = new Size(2479, 1036);
+            tableLayoutPanel1.Size = new Size(2478, 1036);
             tableLayoutPanel1.TabIndex = 10;
             // 
             // dgvNhaCungCap
@@ -1400,25 +1402,25 @@ namespace QPharma.GUI
             dgvNhaCungCap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNhaCungCap.BackgroundColor = SystemColors.Control;
             dgvNhaCungCap.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvNhaCungCap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = Color.White;
+            dataGridViewCellStyle21.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle21.ForeColor = Color.Black;
+            dataGridViewCellStyle21.SelectionBackColor = Color.White;
+            dataGridViewCellStyle21.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
+            dgvNhaCungCap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             dgvNhaCungCap.ColumnHeadersHeight = 50;
             dgvNhaCungCap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvNhaCungCap.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column9, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, Column21, Column22 });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvNhaCungCap.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = SystemColors.Window;
+            dataGridViewCellStyle22.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle22.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.False;
+            dgvNhaCungCap.DefaultCellStyle = dataGridViewCellStyle22;
             dgvNhaCungCap.Dock = DockStyle.Fill;
             dgvNhaCungCap.EnableHeadersVisualStyles = false;
             dgvNhaCungCap.Location = new Point(6, 367);
@@ -1430,7 +1432,7 @@ namespace QPharma.GUI
             dgvNhaCungCap.RowHeadersWidth = 62;
             dgvNhaCungCap.RowTemplate.Height = 50;
             dgvNhaCungCap.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvNhaCungCap.Size = new Size(2467, 664);
+            dgvNhaCungCap.Size = new Size(2466, 664);
             dgvNhaCungCap.TabIndex = 4;
             dgvNhaCungCap.CellClick += dgvNhaCungCap_CellClick;
             dgvNhaCungCap.CellFormatting += StripedTable_CellFormatting;
@@ -1507,7 +1509,7 @@ namespace QPharma.GUI
             panel3.Location = new Point(6, 264);
             panel3.Margin = new Padding(6, 5, 6, 5);
             panel3.Name = "panel3";
-            panel3.Size = new Size(2467, 93);
+            panel3.Size = new Size(2466, 93);
             panel3.TabIndex = 8;
             // 
             // panel5
@@ -1522,7 +1524,7 @@ namespace QPharma.GUI
             panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(6, 5, 6, 5);
             panel5.Name = "panel5";
-            panel5.Size = new Size(2467, 93);
+            panel5.Size = new Size(2466, 93);
             panel5.TabIndex = 10;
             // 
             // btnXoaNCC
@@ -1610,7 +1612,7 @@ namespace QPharma.GUI
             groupBox2.Margin = new Padding(6, 5, 6, 5);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(6, 5, 6, 5);
-            groupBox2.Size = new Size(2467, 249);
+            groupBox2.Size = new Size(2466, 249);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Nhà cung cấp";
@@ -1635,7 +1637,7 @@ namespace QPharma.GUI
             panel4.Location = new Point(6, 35);
             panel4.Margin = new Padding(6, 5, 6, 5);
             panel4.Name = "panel4";
-            panel4.Size = new Size(2455, 209);
+            panel4.Size = new Size(2454, 209);
             panel4.TabIndex = 0;
             // 
             // cbTTNCC
@@ -1776,6 +1778,7 @@ namespace QPharma.GUI
             tbMaNCC.Size = new Size(263, 37);
             tbMaNCC.TabIndex = 14;
             tbMaNCC.TextChanged += ClearTextBox_TextChanged;
+            tbMaNCC.KeyPress += tb_NonSpace_KeyPress;
             // 
             // label9
             // 
@@ -1810,7 +1813,7 @@ namespace QPharma.GUI
             tabViTriThuoc.Margin = new Padding(6, 5, 6, 5);
             tabViTriThuoc.Name = "tabViTriThuoc";
             tabViTriThuoc.Padding = new Padding(6, 5, 6, 5);
-            tabViTriThuoc.Size = new Size(2491, 1046);
+            tabViTriThuoc.Size = new Size(2490, 1046);
             tabViTriThuoc.TabIndex = 3;
             tabViTriThuoc.Text = "Vị trí thuốc";
             // 
@@ -1829,7 +1832,7 @@ namespace QPharma.GUI
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 75F));
-            tableLayoutPanel2.Size = new Size(2479, 1036);
+            tableLayoutPanel2.Size = new Size(2478, 1036);
             tableLayoutPanel2.TabIndex = 16;
             // 
             // dgvViTriThuoc
@@ -1839,25 +1842,25 @@ namespace QPharma.GUI
             dgvViTriThuoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvViTriThuoc.BackgroundColor = SystemColors.Control;
             dgvViTriThuoc.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvViTriThuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = Color.White;
+            dataGridViewCellStyle23.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle23.ForeColor = Color.Black;
+            dataGridViewCellStyle23.SelectionBackColor = Color.White;
+            dataGridViewCellStyle23.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.True;
+            dgvViTriThuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             dgvViTriThuoc.ColumnHeadersHeight = 50;
             dgvViTriThuoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvViTriThuoc.Columns.AddRange(new DataGridViewColumn[] { Column26, Column27, Column28, Column30, Column29, Column31, Column32 });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvViTriThuoc.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = SystemColors.Window;
+            dataGridViewCellStyle24.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle24.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle24.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.False;
+            dgvViTriThuoc.DefaultCellStyle = dataGridViewCellStyle24;
             dgvViTriThuoc.Dock = DockStyle.Fill;
             dgvViTriThuoc.EnableHeadersVisualStyles = false;
             dgvViTriThuoc.Location = new Point(6, 263);
@@ -1869,7 +1872,7 @@ namespace QPharma.GUI
             dgvViTriThuoc.RowHeadersWidth = 62;
             dgvViTriThuoc.RowTemplate.Height = 50;
             dgvViTriThuoc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvViTriThuoc.Size = new Size(2467, 768);
+            dgvViTriThuoc.Size = new Size(2466, 768);
             dgvViTriThuoc.TabIndex = 0;
             dgvViTriThuoc.CellClick += dgvViTriThuoc_CellClick;
             dgvViTriThuoc.CellFormatting += StripedTable_CellFormatting;
@@ -1946,7 +1949,7 @@ namespace QPharma.GUI
             panel7.Location = new Point(6, 160);
             panel7.Margin = new Padding(6, 5, 6, 5);
             panel7.Name = "panel7";
-            panel7.Size = new Size(2467, 93);
+            panel7.Size = new Size(2466, 93);
             panel7.TabIndex = 16;
             // 
             // btnThemVT
@@ -2065,7 +2068,7 @@ namespace QPharma.GUI
             groupBox6.Margin = new Padding(6, 5, 6, 5);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(6, 5, 6, 5);
-            groupBox6.Size = new Size(2467, 145);
+            groupBox6.Size = new Size(2466, 145);
             groupBox6.TabIndex = 8;
             groupBox6.TabStop = false;
             groupBox6.Text = "Vị trí thuốc";
@@ -2172,7 +2175,7 @@ namespace QPharma.GUI
             ClientSize = new Size(2510, 1212);
             Controls.Add(tableLayoutPanel4);
             Margin = new Padding(6, 5, 6, 5);
-            MinimumSize = new Size(1891, 1239);
+            MinimumSize = new Size(1715, 1239);
             Name = "QuanLyThuocGUI";
             Text = "QUẢN LÝ THUỐC";
             Load += QuanLyThuocView_Load;
@@ -2187,6 +2190,9 @@ namespace QPharma.GUI
             ((ISupportInitialize)pictureBoxThuoc).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            ((ISupportInitialize)numGiaNhap).EndInit();
+            ((ISupportInitialize)numGiaBan).EndInit();
+            ((ISupportInitialize)numSL).EndInit();
             tabTheLoai.ResumeLayout(false);
             tableLayoutPanelCategory.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
@@ -2251,9 +2257,7 @@ namespace QPharma.GUI
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker dtpkEXP;
-        private System.Windows.Forms.TextBox tbSL;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox tbGiaBan;
         private System.Windows.Forms.TextBox tbDVT;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
@@ -2276,7 +2280,6 @@ namespace QPharma.GUI
         private System.Windows.Forms.ComboBox cbLocDuLieuThuoc;
         public System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ComboBox cbLoai;
-        private System.Windows.Forms.TextBox tbGiaNhap;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cbVitri;
@@ -2376,5 +2379,8 @@ namespace QPharma.GUI
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private NumericUpDown numSL;
+        private NumericUpDown numGiaBan;
+        private NumericUpDown numGiaNhap;
     }
 }

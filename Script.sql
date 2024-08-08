@@ -1,14 +1,14 @@
 IF NOT EXISTS (
     SELECT name
     FROM sys.databases
-    WHERE name = N'QPharma1'
+    WHERE name = N'QPharma'
 )
 BEGIN
-    CREATE DATABASE QPharma1;
+    CREATE DATABASE QPharma;
 END
 
 
-use QPharma1
+use QPharma
 
 
 

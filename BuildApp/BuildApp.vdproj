@@ -57,11 +57,6 @@
                     "Name" = "8:.NET Desktop Runtime 8.0.7 (x64)"
                     "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x64"
                     }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x86"
-                    {
-                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x86)"
-                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x86"
-                    }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.15.0"
                     {
                     "Name" = "8:SQL Server 2019 Express LocalDB"
@@ -99,11 +94,6 @@
                     "Name" = "8:.NET Desktop Runtime 8.0.7 (x64)"
                     "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x64"
                     }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x86"
-                    {
-                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x86)"
-                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x86"
-                    }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.15.0"
                     {
                     "Name" = "8:SQL Server 2019 Express LocalDB"
@@ -140,11 +130,6 @@
                     {
                     "Name" = "8:.NET Desktop Runtime 8.0.7 (x64)"
                     "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x64"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x86"
-                    {
-                    "Name" = "8:.NET Desktop Runtime 8.0.7 (x86)"
-                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x86"
                     }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.15.0"
                     {
@@ -260,15 +245,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Q-Pharma"
-        "ProductCode" = "8:{70C7505C-FE63-48AE-B1BF-C0087A8A583D}"
-        "PackageCode" = "8:{04503724-57BF-41CC-8C39-36272CD29475}"
+        "ProductCode" = "8:{BD5C102E-7E58-4B31-84D2-AB5B9771A85B}"
+        "PackageCode" = "8:{BCD5BB4B-9BD5-4509-9504-496CB52A6346}"
         "UpgradeCode" = "8:{09262B6E-F87C-40D8-8941-FE9BAB417E79}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.5"
+        "ProductVersion" = "8:1.0.7"
         "Manufacturer" = "8:Group Four"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

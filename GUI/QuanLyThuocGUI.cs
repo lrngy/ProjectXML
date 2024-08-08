@@ -182,6 +182,10 @@ public partial class QuanLyThuocGUI : BaseForm
         numGiaBan.Text = "";
         numGiaNhap.Text = "";
         rtbMota.Text = "";
+        ShowValidateError(numSL, "");
+        ShowValidateError(numGiaBan, "");
+        ShowValidateError(numGiaNhap, "");
+
     }
 
     private void NhaCungCap_Load()
@@ -889,11 +893,11 @@ public partial class QuanLyThuocGUI : BaseForm
                     isValid = false;
                 }
 
-                //if (priceOut < priceIn)
-                //{
-                //    ShowValidateError(numGiaBan, Resources.Price_must_be_greater_or_equal_0);
-                //    isValid = false;
-                //}
+                if (priceOut < priceIn)
+                {
+                    ShowValidateError(numGiaBan, "Giá bán phải lớn hơn hoặc bằng giá nhập");
+                    isValid = false;
+                }
                 return isValid;
             }
 
@@ -1135,6 +1139,12 @@ public partial class QuanLyThuocGUI : BaseForm
                     isValid = false;
                 }
 
+                if (priceOut < priceIn)
+                {
+                    ShowValidateError(numGiaBan, "Giá bán phải lớn hơn hoặc bằng giá nhập");
+                    isValid = false;
+                }
+
                 return isValid;
             }
             bool CheckLength()
@@ -1350,6 +1360,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnChangeImage_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowWarning("Bạn không có quyền truy cập chức năng này");
+            return;
+        }
         var medicineId = tbMaThuoc.Text;
         if (medicineId.Equals(""))
         {
@@ -1374,6 +1389,11 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnXoaAnh_Click(object sender, EventArgs e)
     {
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowWarning("Bạn không có quyền truy cập chức năng này");
+            return;
+        }
         var medicineId = tbMaThuoc.Text;
         if (medicineId.Equals(""))
         {

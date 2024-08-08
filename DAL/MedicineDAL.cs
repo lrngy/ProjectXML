@@ -31,8 +31,8 @@ public class MedicineDAL
                 var categoryId = dr["category_id"].ToString();
                 var medicine_type = dr["medicine_type"].ToString() == "1";
                 var unit = dr["medicine_unit"].ToString();
-                var mfgDate = DateTime.Parse(dr["medicine_mfg"].ToString()).ToString("dd/MM/yyyy HH:mm");
-                var expireDate = DateTime.Parse(dr["medicine_expire_date"].ToString()).ToString("dd/MM/yyyy HH:mm");
+                var mfgDate = DateTime.Parse(dr["medicine_mfg"].ToString()).ToString("dd/MM/yyyy");
+                var expireDate = DateTime.Parse(dr["medicine_expire_date"].ToString()).ToString("dd/MM/yyyy");
                 var supplierId = dr["supplier_id"].ToString();
                 var price_in = double.Parse(dr["medicine_price_in"].ToString());
                 var location = dr["medicine_location_id"].ToString();
@@ -86,8 +86,8 @@ public class MedicineDAL
                 var categoryId = dr["category_id"].ToString();
                 var medicine_type = dr["medicine_type"].ToString() == "1";
                 var unit = dr["medicine_unit"].ToString();
-                var mfgDate = dr["medicine_mfg"].ToString();
-                var expireDate = dr["medicine_expire_date"].ToString();
+                var mfgDate = DateTime.Parse(dr["medicine_mfg"].ToString()).ToString("dd/MM/yyyy");
+                var expireDate = DateTime.Parse(dr["medicine_expire_date"].ToString()).ToString("dd/MM/yyyy");
                 var supplierId = dr["supplier_id"].ToString();
                 var price_in = double.Parse(dr["medicine_price_in"].ToString());
                 var location = dr["medicine_location_id"].ToString();

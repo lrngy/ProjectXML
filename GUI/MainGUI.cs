@@ -55,7 +55,11 @@ public partial class MainGUI : BaseForm
     private void btnNhanVien_Click(object sender, EventArgs e)
     {
 
-
+        if (staff.isSeller)
+        {
+            CustomMessageBox.ShowWarning("Bạn không có quyền truy cập chức năng này");
+            return;
+        }
         Show(ref quanLyNhanVienView, () => new QuanLyNhanVienGUI());
     }
 

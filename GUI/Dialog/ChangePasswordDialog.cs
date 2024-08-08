@@ -11,37 +11,53 @@ public partial class ChangePasswordDialog : BaseForm
         this.user = user;
     }
 
+    public void ClearInput()
+    {
+        tbOldPass.Text = "";
+        tbNewPass.Text = "";
+        tbConfirmPass.Text = "";
+
+    }
     private void btnCancel_Click(object sender, EventArgs e)
     {
-        Close();
+        ClearInput();
+        Dispose();
     }
-
     private void btnSave_Click(object sender, EventArgs e)
     {
-        var oldPassword = tbOldPass.Text.Trim();
-        var newPassword = tbNewPass.Text.Trim();
-        var confirmPassword = tbConfirmPass.Text.Trim();
-
-        var isValid = CheckEmptyInput(oldPassword, newPassword, confirmPassword)
-                      && CheckNewPassword(oldPassword, newPassword, confirmPassword);
-
-
-        if (!isValid) return;
-
-        var hashPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
-        var newUser = new UserDTO(user.username, hashPassword);
-
-        var result = userController.UpdatePassword(newUser);
-        if (result == Predefined.SUCCESS)
+        try
         {
-            CustomMessageBox.ShowSuccess(Resources.Change_password_success);
-            user.hashPassword = newPassword;
-            Close();
+
+            var oldPassword = tbOldPass.Text.Trim();
+            var newPassword = tbNewPass.Text.Trim();
+            var confirmPassword = tbConfirmPass.Text.Trim();
+
+            var isValid = CheckEmptyInput(oldPassword, newPassword, confirmPassword)
+                          && CheckNewPassword(oldPassword, newPassword, confirmPassword);
+
+
+            if (!isValid) return;
+
+            var hashPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
+            var newUser = new UserDTO(user.username, hashPassword);
+
+            var result = userController.UpdatePassword(newUser);
+            if (result == Predefined.SUCCESS)
+            {
+                CustomMessageBox.ShowSuccess(Resources.Change_password_success);
+                user.hashPassword = newPassword;
+                ClearInput();
+                Dispose();
+            }
+            else
+            {
+                CustomMessageBox.ShowError(Resources.Change_password_fail
+                );
+            }
         }
-        else
+        catch (Exception ex)
         {
-            CustomMessageBox.ShowError(Resources.Change_password_fail
-            );
+            Debug.WriteLine(ex.StackTrace);
         }
     }
 
@@ -54,7 +70,14 @@ public partial class ChangePasswordDialog : BaseForm
             isValid = false;
         }
 
-        if (!newPassword.Equals(confirmPassword))
+        if (newPassword.Length < 8)
+        {
+            ShowValidateError(tbNewPass, "Mật khẩu tối thiểu 8 kí tự");
+            isValid = false;
+        }
+
+
+        if (!confirmPassword.Equals(newPassword))
         {
             ShowValidateError(tbConfirmPass, Resources.New_password_is_not_correct);
             isValid = false;

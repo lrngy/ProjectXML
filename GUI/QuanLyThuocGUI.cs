@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace QPharma.GUI;
 
 public partial class QuanLyThuocGUI : BaseForm
@@ -9,6 +12,7 @@ public partial class QuanLyThuocGUI : BaseForm
     private readonly SupplierBUS supplierBUS = new();
     private readonly int tabControlIndex;
     private readonly UserDTO user;
+    private readonly BillBUS billBUS = new();
     private int cbIndexLoc;
     private int cbIndexTieuChiThuoc = 1;
     private FilterByRangeDialog filterByRangeDialog;
@@ -47,9 +51,111 @@ public partial class QuanLyThuocGUI : BaseForm
                 ViTriThuoc_Load();
                 lbHeader.Text = Resources.Medicine_location_management;
                 break;
+            case 4:
+                if (isSearching)
+                {
+                    btnTimKiemHoaDon_Click(sender, e);
+                }
+                else
+                {
+                    HoaDon_Load();
+                }
+                break;
         }
     }
 
+    private int cbbPageSizeIndex = 0;
+    private bool isOldDataHoaDon = false;
+    private int totalPage = 0;
+    private int numRecord = 0;
+    private int oldNumRecord = 0;
+    private void HoaDon_Load()
+    {
+        flowLayoutTimKiem.Visible = false;
+
+
+        cbbPageSize.SelectedIndex = cbbPageSizeIndex;
+        var dateList = billBUS.GetDateList().ToArray();
+        var priceList = billBUS.GetPriceList().ToArray();
+        var staffList = billBUS.GetStaffList().ToArray();
+        cbbTuNgay.Items.Clear();
+        cbbDenNgay.Items.Clear();
+        cbbGiaTriTu.Items.Clear();
+        cbbGiaTriDen.Items.Clear();
+        cbbNhanVien.Items.Clear();
+
+
+
+
+        cbbTuNgay.Items.AddRange(dateList);
+        cbbDenNgay.Items.AddRange(dateList);
+        cbbGiaTriTu.Items.AddRange(priceList);
+        cbbGiaTriDen.Items.AddRange(priceList);
+        cbbNhanVien.Items.AddRange(staffList);
+
+        var pageSize = int.Parse(cbbPageSize.Text);
+        var currentPage = int.Parse(numCurrentPage.Text);
+        var result = billBUS.LoadData(pageSize, currentPage);
+        totalPage = result.totalPage;
+        numRecord = result.numRecord;
+        lbTotalPage.Text = "/" + totalPage;
+        var numCurrentPageInt = int.Parse(numCurrentPage.Text);
+        if (numCurrentPageInt > totalPage || numCurrentPage.Minimum == 0)
+        {
+            currentPage = 1;
+        }
+
+        if (totalPage > 0)
+        {
+            numCurrentPage.Minimum = 1;
+        }
+        numCurrentPage.Maximum = totalPage;
+        if (oldNumRecord != numRecord)
+        {
+            isOldDataHoaDon = false;
+        }
+        if (isOldDataHoaDon)
+        {
+            return;
+        }
+        oldNumRecord = numRecord;
+        isOldDataHoaDon = true;
+        HienThiHoaDon(result.listBills);
+
+
+    }
+
+    private void HienThiHoaDon(List<BillDTO> list)
+    {
+        dgvHoaDon.Rows.Clear();
+        ckbSelectAll.Checked = false;
+        BeginInvoke(() => { dgvHoaDon.ClearSelection(); });
+
+        lbSoDong.Text = $"dòng (tổng cộng {numRecord} dòng)";
+        for (var i = 0; i < list.Count; i++)
+        {
+            if (!list[i].Deleted.Equals("")) continue;
+
+            dgvHoaDon.Rows.Add(
+                false,
+                list[i].Id,
+                list[i].Status ? Resources.Paid : Resources.Awaiting_payment,
+                list[i].Created,
+                list[i].Customer?.Name,
+                Currency.FormatCurrency(list[i].Total.ToString()),
+                list[i].Staff?.name
+            );
+
+            if (list[i].Status)
+            {
+                dgvHoaDon.Rows[dgvHoaDon.RowCount - 1].Cells[2].Style.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                dgvHoaDon.Rows[dgvHoaDon.RowCount - 1].Cells[2].Style.BackColor = Color.BurlyWood;
+            }
+        }
+    }
     private void ViTriThuoc_Load()
     {
         var listViTriThuoc = medicineLocationBUS.LoadData();
@@ -767,8 +873,8 @@ public partial class QuanLyThuocGUI : BaseForm
 
             pictureBoxThuoc.ImageLocation =
                 image.Equals("") ? "" : image;
-            dtpkMFG.Value = DateTime.ParseExact(dgvThuoc.Rows[index].Cells[8].Value.ToString(), "dd/MM/yyyy HH:mm", null);
-            dtpkEXP.Value = DateTime.ParseExact(dgvThuoc.Rows[index].Cells[9].Value.ToString(), "dd/MM/yyyy HH:mm", null);
+            dtpkMFG.Value = DateTime.ParseExact(dgvThuoc.Rows[index].Cells[8].Value.ToString(), "dd/MM/yyyy", null);
+            dtpkEXP.Value = DateTime.ParseExact(dgvThuoc.Rows[index].Cells[9].Value.ToString(), "dd/MM/yyyy", null);
 
 
             rtbMota.Text = dgvThuoc.Rows[index].Cells[13].Value.ToString();
@@ -1741,5 +1847,214 @@ public partial class QuanLyThuocGUI : BaseForm
         {
             e.Handled = true;
         }
+    }
+
+
+    private void ckbSelectAll_CheckedChanged(object sender, EventArgs e)
+    {
+        foreach (DataGridViewRow row in dgvHoaDon.Rows)
+        {
+            row.Cells[0].Value = ckbSelectAll.Checked;
+        }
+    }
+
+    private void cbbPageSize_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        cbbPageSizeIndex = cbbPageSize.SelectedIndex;
+        isOldDataHoaDon = false;
+        numCurrentPage.Value = numCurrentPage.Minimum;
+        if (isSearching)
+        {
+            btnTimKiemHoaDon_Click(sender, e);
+        }
+        else
+        {
+            HoaDon_Load();
+        }
+    }
+
+
+    private void numCurrentPage_Click(object sender, EventArgs e)
+    {
+        isOldDataHoaDon = false;
+        if (isSearching)
+        {
+            btnTimKiemHoaDon_Click(sender, e);
+        }
+        else
+        {
+            HoaDon_Load();
+        }
+    }
+
+    private void numCurrentPage_KeyUp(object sender, KeyEventArgs e)
+    {
+        if (numCurrentPage.Text.Length == 0)
+            return;
+        numCurrentPage_Click(sender, e);
+    }
+
+    private void btnBillDelete_Click(object sender, EventArgs e)
+    {
+        var isDeleted = false;
+        foreach (DataGridViewRow row in dgvHoaDon.Rows)
+        {
+            if (row.Cells[0].Value != null && (bool)row.Cells[0].Value)
+            {
+                var id = row.Cells[1].Value.ToString();
+                var state = billBUS.Delete(id);
+                if (state != Predefined.SUCCESS)
+                {
+                    CustomMessageBox.ShowError(Resources.Delete_failed);
+                    return;
+                }
+                isDeleted = true;
+            }
+        }
+
+        if (isDeleted)
+        {
+            isOldDataHoaDon = false;
+            if (isSearching)
+            {
+                btnTimKiemHoaDon_Click(sender, e);
+            }
+            else
+            {
+                HoaDon_Load();
+            }
+            return;
+        }
+        CustomMessageBox.ShowError(Resources.Please_check_bill_to_delete);
+    }
+
+    private bool isSearching = false;
+    private void btnTimKiemHoaDon_Click(object sender, EventArgs e)
+    {
+        string maHoaDon = tbMaHoaDon.Text.Trim();
+        string maHoacTenThuoc = tbMaTenThuoc.Text.Trim();
+        string tenKhachHang = tbTenKhach.Text.Trim();
+        int trangThai = cbbTrangThai.SelectedIndex;
+        string tuNgay = cbbTuNgay.Text;
+        string denNgay = cbbDenNgay.Text;
+        string giaTriTu = cbbGiaTriTu.Text;
+        string giaTriDen = cbbGiaTriDen.Text;
+        string maNhanVien = cbbNhanVien.Text.Split("-")[0];
+
+        bool isValidate = true;
+        if (!string.IsNullOrEmpty(tuNgay) && !string.IsNullOrEmpty(denNgay))
+        {
+            if (!DateTime.TryParseExact(tuNgay, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var a))
+            {
+                ShowValidateError(cbbTuNgay, "Ngày phải ở định dạng dd/MM/yyyy (ngày/tháng/năm)");
+                isValidate = false;
+            }
+
+
+            if (!DateTime.TryParseExact(denNgay, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var b))
+            {
+                ShowValidateError(cbbDenNgay, "Ngày phải ở định dạng dd/MM/yyyy (ngày/tháng/năm)");
+                isValidate = false;
+            }
+
+            var one = DateTime.ParseExact(tuNgay, "dd/MM/yyyy", null);
+            var two = DateTime.ParseExact(denNgay, "dd/MM/yyyy", null);
+            var timespan = one - two;
+            if (isValidate && timespan.TotalDays > 0)
+            {
+                ShowValidateError(cbbDenNgay, "Giá trị ngày phải lớn hơn hoặc bằng ngày bắt đầu");
+                isValidate = false;
+            }
+        }
+
+
+
+        if (!isValidate)
+        {
+            return;
+        }
+
+
+
+        cbbPageSize.SelectedIndex = cbbPageSizeIndex;
+        var pageSize = int.Parse(cbbPageSize.Text);
+        var currentPage = int.Parse(numCurrentPage.Text);
+        var result = billBUS.Search(pageSize, currentPage, maHoaDon, maHoacTenThuoc, tenKhachHang, trangThai, tuNgay, denNgay, giaTriTu, giaTriDen, maNhanVien);
+        totalPage = result.totalPage;
+        numRecord = result.numRecord;
+        lbTotalPage.Text = "/" + totalPage;
+        var numCurrentPageInt = int.Parse(numCurrentPage.Text);
+        if (numCurrentPageInt > totalPage || numCurrentPage.Minimum == 0)
+        {
+            currentPage = 1;
+        }
+        if (totalPage > 0)
+        {
+            numCurrentPage.Minimum = 1;
+        }
+        numCurrentPage.Maximum = totalPage;
+        if (oldNumRecord != numRecord)
+        {
+            isOldDataHoaDon = false;
+        }
+
+        if (isOldDataHoaDon)
+        {
+            return;
+        }
+        isOldDataHoaDon = true;
+        oldNumRecord = numRecord;
+        HienThiHoaDon(result.listBills);
+        flowLayoutTimKiem.Visible = true;
+        isSearching = true;
+    }
+
+    private void cbbGiaTriTu_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+        {
+            e.Handled = true;
+        }
+    }
+
+    private void btnResetSearchBill_Click(object sender, EventArgs e)
+    {
+        tbMaHoaDon.Text = "";
+        tbMaTenThuoc.Text = "";
+        tbTenKhach.Text = "";
+        cbbTrangThai.Text = "";
+        cbbTuNgay.Text = "";
+        cbbDenNgay.Text = "";
+        cbbGiaTriTu.Text = "";
+        cbbGiaTriDen.Text = "";
+        cbbNhanVien.Text = "";
+        //isOldDataHoaDon = false;
+    }
+
+    private void btnExitSearch_Click(object sender, EventArgs e)
+    {
+        isOldDataHoaDon = false;
+        isSearching = false;
+        HoaDon_Load();
+
+    }
+
+    private void button5_Click(object sender, EventArgs e)
+    {
+
+        DeletedBillDialog deletedBillDialog = new DeletedBillDialog();
+        deletedBillDialog.refreshBillForm += () =>
+        {
+            isOldDataHoaDon = false;
+            if (isSearching)
+            {
+                btnTimKiemHoaDon_Click(sender, e);
+            }
+            else
+            {
+                HoaDon_Load();
+            }
+        };
+        deletedBillDialog.ShowDialog();
     }
 }

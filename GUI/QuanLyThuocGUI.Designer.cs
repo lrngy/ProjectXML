@@ -31,14 +31,15 @@ namespace QPharma.GUI
         private void InitializeComponent()
         {
             components = new Container();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             lbHeader = new Label();
             tabControl1 = new TabControl();
             tabThuoc = new TabPage();
@@ -193,6 +194,55 @@ namespace QPharma.GUI
             label27 = new Label();
             tbTenViTri = new TextBox();
             label29 = new Label();
+            tabHoaDon = new TabPage();
+            flowLayoutTimKiem = new FlowLayoutPanel();
+            btnExitSearch = new Button();
+            label33 = new Label();
+            button5 = new Button();
+            ckbSelectAll = new CheckBox();
+            button2 = new Button();
+            button3 = new Button();
+            tableLayoutPanel7 = new TableLayoutPanel();
+            tableLayoutPanel8 = new TableLayoutPanel();
+            groupBox5 = new GroupBox();
+            btnResetSearchBill = new Button();
+            label35 = new Label();
+            cbbTrangThai = new ComboBox();
+            cbbNhanVien = new ComboBox();
+            label41 = new Label();
+            label36 = new Label();
+            label42 = new Label();
+            label37 = new Label();
+            label38 = new Label();
+            label39 = new Label();
+            cbbGiaTriDen = new ComboBox();
+            label40 = new Label();
+            cbbGiaTriTu = new ComboBox();
+            cbbDenNgay = new ComboBox();
+            cbbTuNgay = new ComboBox();
+            btnTimKiemHoaDon = new Button();
+            tbTenKhach = new TextBox();
+            tbMaTenThuoc = new TextBox();
+            tbMaHoaDon = new TextBox();
+            tableLayoutPanel9 = new TableLayoutPanel();
+            dgvHoaDon = new DataGridView();
+            Column35 = new DataGridViewCheckBoxColumn();
+            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
+            Column34 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            tableLayoutPanel10 = new TableLayoutPanel();
+            label32 = new Label();
+            cbbPageSize = new ComboBox();
+            lbSoDong = new Label();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            label34 = new Label();
+            lbTotalPage = new Label();
+            numCurrentPage = new NumericUpDown();
+            btnBillDelete = new Button();
             errorProvider1 = new ErrorProvider(components);
             toolTip1 = new ToolTip(components);
             tableLayoutPanel4 = new TableLayoutPanel();
@@ -226,6 +276,17 @@ namespace QPharma.GUI
             ((ISupportInitialize)dgvViTriThuoc).BeginInit();
             panel7.SuspendLayout();
             groupBox6.SuspendLayout();
+            tabHoaDon.SuspendLayout();
+            flowLayoutTimKiem.SuspendLayout();
+            tableLayoutPanel7.SuspendLayout();
+            tableLayoutPanel8.SuspendLayout();
+            groupBox5.SuspendLayout();
+            tableLayoutPanel9.SuspendLayout();
+            ((ISupportInitialize)dgvHoaDon).BeginInit();
+            tableLayoutPanel5.SuspendLayout();
+            tableLayoutPanel10.SuspendLayout();
+            tableLayoutPanel6.SuspendLayout();
+            ((ISupportInitialize)numCurrentPage).BeginInit();
             ((ISupportInitialize)errorProvider1).BeginInit();
             tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
@@ -235,10 +296,10 @@ namespace QPharma.GUI
             lbHeader.AutoSize = true;
             lbHeader.Dock = DockStyle.Fill;
             lbHeader.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbHeader.Location = new Point(6, 0);
-            lbHeader.Margin = new Padding(6, 0, 6, 0);
+            lbHeader.Location = new Point(4, 0);
+            lbHeader.Margin = new Padding(4, 0, 4, 0);
             lbHeader.Name = "lbHeader";
-            lbHeader.Size = new Size(2498, 115);
+            lbHeader.Size = new Size(1279, 55);
             lbHeader.TabIndex = 0;
             lbHeader.Text = "QUẢN LÝ THUỐC";
             lbHeader.TextAlign = ContentAlignment.MiddleCenter;
@@ -249,14 +310,15 @@ namespace QPharma.GUI
             tabControl1.Controls.Add(tabTheLoai);
             tabControl1.Controls.Add(tabNCC);
             tabControl1.Controls.Add(tabViTriThuoc);
+            tabControl1.Controls.Add(tabHoaDon);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 163);
             tabControl1.HotTrack = true;
-            tabControl1.Location = new Point(6, 120);
-            tabControl1.Margin = new Padding(6, 5, 6, 5);
+            tabControl1.Location = new Point(4, 58);
+            tabControl1.Margin = new Padding(4, 3, 4, 3);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(2498, 1087);
+            tabControl1.Size = new Size(1279, 584);
             tabControl1.TabIndex = 1;
             tabControl1.Selecting += tabControl1_Selecting;
             // 
@@ -264,11 +326,11 @@ namespace QPharma.GUI
             // 
             tabThuoc.Controls.Add(tableLayoutPanel3);
             tabThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabThuoc.Location = new Point(4, 37);
-            tabThuoc.Margin = new Padding(6, 5, 6, 5);
+            tabThuoc.Location = new Point(4, 26);
+            tabThuoc.Margin = new Padding(4, 3, 4, 3);
             tabThuoc.Name = "tabThuoc";
-            tabThuoc.Padding = new Padding(6, 5, 6, 5);
-            tabThuoc.Size = new Size(2490, 1046);
+            tabThuoc.Padding = new Padding(4, 3, 4, 3);
+            tabThuoc.Size = new Size(1271, 554);
             tabThuoc.TabIndex = 0;
             tabThuoc.Text = "Thuốc";
             // 
@@ -280,14 +342,14 @@ namespace QPharma.GUI
             tableLayoutPanel3.Controls.Add(dgvThuoc, 0, 2);
             tableLayoutPanel3.Controls.Add(panel6, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(6, 5);
-            tableLayoutPanel3.Margin = new Padding(6, 5, 6, 5);
+            tableLayoutPanel3.Location = new Point(4, 3);
+            tableLayoutPanel3.Margin = new Padding(4, 3, 4, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 3;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 597F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 358F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
-            tableLayoutPanel3.Size = new Size(2478, 1036);
+            tableLayoutPanel3.Size = new Size(1263, 548);
             tableLayoutPanel3.TabIndex = 14;
             // 
             // panel8
@@ -303,10 +365,10 @@ namespace QPharma.GUI
             panel8.Controls.Add(label22);
             panel8.Controls.Add(tbTimThuoc);
             panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(6, 602);
-            panel8.Margin = new Padding(6, 5, 6, 5);
+            panel8.Location = new Point(4, 361);
+            panel8.Margin = new Padding(4, 3, 4, 3);
             panel8.Name = "panel8";
-            panel8.Size = new Size(2466, 77);
+            panel8.Size = new Size(1255, 32);
             panel8.TabIndex = 1;
             // 
             // cbLocDuLieuThuoc
@@ -316,10 +378,10 @@ namespace QPharma.GUI
             cbLocDuLieuThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbLocDuLieuThuoc.FormattingEnabled = true;
             cbLocDuLieuThuoc.Items.AddRange(new object[] { "-- Chọn tiêu chí lọc --", "Theo khoảng", "Đã hết hạn", "Còn hạn", "Đã hết thuốc" });
-            cbLocDuLieuThuoc.Location = new Point(1158, 13);
-            cbLocDuLieuThuoc.Margin = new Padding(6, 5, 6, 5);
+            cbLocDuLieuThuoc.Location = new Point(575, 1);
+            cbLocDuLieuThuoc.Margin = new Padding(4, 3, 4, 3);
             cbLocDuLieuThuoc.Name = "cbLocDuLieuThuoc";
-            cbLocDuLieuThuoc.Size = new Size(274, 39);
+            cbLocDuLieuThuoc.Size = new Size(193, 28);
             cbLocDuLieuThuoc.TabIndex = 21;
             cbLocDuLieuThuoc.Visible = false;
             cbLocDuLieuThuoc.SelectedIndexChanged += cbLocDuLieuThuoc_SelectedIndexChanged;
@@ -328,10 +390,10 @@ namespace QPharma.GUI
             // 
             btnSuaThuoc.Anchor = AnchorStyles.None;
             btnSuaThuoc.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSuaThuoc.Location = new Point(272, 6);
-            btnSuaThuoc.Margin = new Padding(6, 5, 6, 5);
+            btnSuaThuoc.Location = new Point(17, -4);
+            btnSuaThuoc.Margin = new Padding(4, 3, 4, 3);
             btnSuaThuoc.Name = "btnSuaThuoc";
-            btnSuaThuoc.Size = new Size(129, 63);
+            btnSuaThuoc.Size = new Size(73, 33);
             btnSuaThuoc.TabIndex = 11;
             btnSuaThuoc.Text = "Sửa";
             btnSuaThuoc.UseVisualStyleBackColor = true;
@@ -342,10 +404,10 @@ namespace QPharma.GUI
             btnXoaThuoc.Anchor = AnchorStyles.None;
             btnXoaThuoc.BackColor = SystemColors.Window;
             btnXoaThuoc.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnXoaThuoc.Location = new Point(440, 8);
-            btnXoaThuoc.Margin = new Padding(6, 5, 6, 5);
+            btnXoaThuoc.Location = new Point(135, -3);
+            btnXoaThuoc.Margin = new Padding(4, 3, 4, 3);
             btnXoaThuoc.Name = "btnXoaThuoc";
-            btnXoaThuoc.Size = new Size(119, 62);
+            btnXoaThuoc.Size = new Size(66, 32);
             btnXoaThuoc.TabIndex = 13;
             btnXoaThuoc.Text = "Xoá";
             btnXoaThuoc.UseVisualStyleBackColor = false;
@@ -356,10 +418,10 @@ namespace QPharma.GUI
             ckbLocDuLieuThuoc.Anchor = AnchorStyles.None;
             ckbLocDuLieuThuoc.AutoSize = true;
             ckbLocDuLieuThuoc.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ckbLocDuLieuThuoc.Location = new Point(978, 19);
-            ckbLocDuLieuThuoc.Margin = new Padding(6, 5, 6, 5);
+            ckbLocDuLieuThuoc.Location = new Point(449, 4);
+            ckbLocDuLieuThuoc.Margin = new Padding(4, 3, 4, 3);
             ckbLocDuLieuThuoc.Name = "ckbLocDuLieuThuoc";
-            ckbLocDuLieuThuoc.Size = new Size(153, 35);
+            ckbLocDuLieuThuoc.Size = new Size(102, 24);
             ckbLocDuLieuThuoc.TabIndex = 20;
             ckbLocDuLieuThuoc.Text = "Lọc dữ liệu";
             ckbLocDuLieuThuoc.UseVisualStyleBackColor = true;
@@ -369,10 +431,10 @@ namespace QPharma.GUI
             // 
             btnThemThuoc.Anchor = AnchorStyles.None;
             btnThemThuoc.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThemThuoc.Location = new Point(110, 6);
-            btnThemThuoc.Margin = new Padding(6, 5, 6, 5);
+            btnThemThuoc.Location = new Point(-159, -3);
+            btnThemThuoc.Margin = new Padding(4, 3, 4, 3);
             btnThemThuoc.Name = "btnThemThuoc";
-            btnThemThuoc.Size = new Size(129, 63);
+            btnThemThuoc.Size = new Size(90, 38);
             btnThemThuoc.TabIndex = 10;
             btnThemThuoc.Text = "Thêm";
             btnThemThuoc.UseVisualStyleBackColor = true;
@@ -385,10 +447,10 @@ namespace QPharma.GUI
             cbTieuChiThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTieuChiThuoc.FormattingEnabled = true;
             cbTieuChiThuoc.Items.AddRange(new object[] { "Mã thuốc", "Tên thuốc", "Thể loại", "Ngày hết hạn", "Số lượng", "Đơn vị", "Giá", "Mô tả", "Nhà cung cấp", "Ngày tạo", "Ngày cập nhật" });
-            cbTieuChiThuoc.Location = new Point(2082, 11);
-            cbTieuChiThuoc.Margin = new Padding(6, 5, 6, 5);
+            cbTieuChiThuoc.Location = new Point(1221, 0);
+            cbTieuChiThuoc.Margin = new Padding(4, 3, 4, 3);
             cbTieuChiThuoc.Name = "cbTieuChiThuoc";
-            cbTieuChiThuoc.Size = new Size(265, 39);
+            cbTieuChiThuoc.Size = new Size(187, 28);
             cbTieuChiThuoc.TabIndex = 16;
             cbTieuChiThuoc.SelectedIndexChanged += cbTieuChiThuoc_SelectedIndexChanged;
             // 
@@ -396,10 +458,10 @@ namespace QPharma.GUI
             // 
             btnLuuThuoc.Anchor = AnchorStyles.None;
             btnLuuThuoc.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLuuThuoc.Location = new Point(600, 11);
-            btnLuuThuoc.Margin = new Padding(6, 5, 6, 5);
+            btnLuuThuoc.Location = new Point(247, -1);
+            btnLuuThuoc.Margin = new Padding(4, 3, 4, 3);
             btnLuuThuoc.Name = "btnLuuThuoc";
-            btnLuuThuoc.Size = new Size(217, 60);
+            btnLuuThuoc.Size = new Size(135, 31);
             btnLuuThuoc.TabIndex = 14;
             btnLuuThuoc.Text = "Mục lưu trữ";
             btnLuuThuoc.UseVisualStyleBackColor = true;
@@ -410,10 +472,10 @@ namespace QPharma.GUI
             label21.Anchor = AnchorStyles.None;
             label21.AutoSize = true;
             label21.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.Location = new Point(2000, 26);
-            label21.Margin = new Padding(6, 0, 6, 0);
+            label21.Location = new Point(1164, 9);
+            label21.Margin = new Padding(4, 0, 4, 0);
             label21.Name = "label21";
-            label21.Size = new Size(67, 31);
+            label21.Size = new Size(44, 20);
             label21.TabIndex = 11;
             label21.Text = "theo:";
             // 
@@ -422,10 +484,10 @@ namespace QPharma.GUI
             label22.Anchor = AnchorStyles.None;
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.Location = new Point(1565, 24);
-            label22.Margin = new Padding(6, 0, 6, 0);
+            label22.Location = new Point(860, 7);
+            label22.Margin = new Padding(4, 0, 4, 0);
             label22.Name = "label22";
-            label22.Size = new Size(115, 31);
+            label22.Size = new Size(75, 20);
             label22.TabIndex = 8;
             label22.Text = "Tìm kiếm:";
             // 
@@ -433,10 +495,10 @@ namespace QPharma.GUI
             // 
             tbTimThuoc.Anchor = AnchorStyles.None;
             tbTimThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTimThuoc.Location = new Point(1700, 11);
-            tbTimThuoc.Margin = new Padding(6, 5, 6, 5);
+            tbTimThuoc.Location = new Point(954, 0);
+            tbTimThuoc.Margin = new Padding(4, 3, 4, 3);
             tbTimThuoc.Name = "tbTimThuoc";
-            tbTimThuoc.Size = new Size(265, 37);
+            tbTimThuoc.Size = new Size(187, 27);
             tbTimThuoc.TabIndex = 15;
             tbTimThuoc.TextChanged += textBox1_TextChanged;
             // 
@@ -447,29 +509,29 @@ namespace QPharma.GUI
             dgvThuoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvThuoc.BackgroundColor = SystemColors.Control;
             dgvThuoc.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = Color.White;
-            dataGridViewCellStyle17.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle17.ForeColor = Color.Black;
-            dataGridViewCellStyle17.SelectionBackColor = Color.White;
-            dataGridViewCellStyle17.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            dgvThuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvThuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvThuoc.ColumnHeadersHeight = 50;
             dgvThuoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvThuoc.Columns.AddRange(new DataGridViewColumn[] { Column8, Column10, Column11, Column13, Column15, Column19, Column23, Column14, Column33, Column12, Column20, Column24, Column25, Column16, Column17, Column18 });
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = SystemColors.Window;
-            dataGridViewCellStyle18.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle18.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
-            dgvThuoc.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvThuoc.DefaultCellStyle = dataGridViewCellStyle2;
             dgvThuoc.Dock = DockStyle.Fill;
             dgvThuoc.EnableHeadersVisualStyles = false;
-            dgvThuoc.Location = new Point(6, 689);
-            dgvThuoc.Margin = new Padding(6, 5, 6, 5);
+            dgvThuoc.Location = new Point(4, 399);
+            dgvThuoc.Margin = new Padding(4, 3, 4, 3);
             dgvThuoc.MultiSelect = false;
             dgvThuoc.Name = "dgvThuoc";
             dgvThuoc.ReadOnly = true;
@@ -477,7 +539,7 @@ namespace QPharma.GUI
             dgvThuoc.RowHeadersWidth = 50;
             dgvThuoc.RowTemplate.Height = 50;
             dgvThuoc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvThuoc.Size = new Size(2466, 342);
+            dgvThuoc.Size = new Size(1255, 146);
             dgvThuoc.TabIndex = 19;
             dgvThuoc.CellClick += dgvThuoc_CellClick;
             dgvThuoc.CellFormatting += StripedTable_CellFormatting;
@@ -601,10 +663,10 @@ namespace QPharma.GUI
             panel6.Controls.Add(groupBox4);
             panel6.Controls.Add(groupBox3);
             panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(6, 5);
-            panel6.Margin = new Padding(6, 5, 6, 5);
+            panel6.Location = new Point(4, 3);
+            panel6.Margin = new Padding(4, 3, 4, 3);
             panel6.Name = "panel6";
-            panel6.Size = new Size(2466, 587);
+            panel6.Size = new Size(1255, 352);
             panel6.TabIndex = 20;
             // 
             // groupBox4
@@ -615,10 +677,10 @@ namespace QPharma.GUI
             groupBox4.Dock = DockStyle.Left;
             groupBox4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox4.Location = new Point(0, 0);
-            groupBox4.Margin = new Padding(6, 5, 6, 5);
+            groupBox4.Margin = new Padding(4, 3, 4, 3);
             groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(6, 5, 6, 5);
-            groupBox4.Size = new Size(431, 587);
+            groupBox4.Padding = new Padding(4, 3, 4, 3);
+            groupBox4.Size = new Size(302, 352);
             groupBox4.TabIndex = 4;
             groupBox4.TabStop = false;
             groupBox4.Text = "Hình ảnh sản phẩm";
@@ -627,10 +689,10 @@ namespace QPharma.GUI
             // 
             pictureBoxThuoc.Anchor = AnchorStyles.None;
             pictureBoxThuoc.ErrorImage = null;
-            pictureBoxThuoc.Location = new Point(26, 87);
-            pictureBoxThuoc.Margin = new Padding(6, 5, 6, 5);
+            pictureBoxThuoc.Location = new Point(18, 52);
+            pictureBoxThuoc.Margin = new Padding(4, 3, 4, 3);
             pictureBoxThuoc.Name = "pictureBoxThuoc";
-            pictureBoxThuoc.Size = new Size(393, 423);
+            pictureBoxThuoc.Size = new Size(275, 254);
             pictureBoxThuoc.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxThuoc.TabIndex = 1;
             pictureBoxThuoc.TabStop = false;
@@ -640,10 +702,10 @@ namespace QPharma.GUI
             btnXoaAnh.Anchor = AnchorStyles.None;
             btnXoaAnh.BackColor = SystemColors.Control;
             btnXoaAnh.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            btnXoaAnh.Location = new Point(90, 523);
-            btnXoaAnh.Margin = new Padding(6, 5, 6, 5);
+            btnXoaAnh.Location = new Point(63, 314);
+            btnXoaAnh.Margin = new Padding(4, 3, 4, 3);
             btnXoaAnh.Name = "btnXoaAnh";
-            btnXoaAnh.Size = new Size(111, 50);
+            btnXoaAnh.Size = new Size(78, 30);
             btnXoaAnh.TabIndex = 17;
             btnXoaAnh.Text = "Xoá ảnh";
             btnXoaAnh.UseVisualStyleBackColor = false;
@@ -653,10 +715,10 @@ namespace QPharma.GUI
             // 
             btnDoiAnh.Anchor = AnchorStyles.None;
             btnDoiAnh.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            btnDoiAnh.Location = new Point(225, 523);
-            btnDoiAnh.Margin = new Padding(6, 5, 6, 5);
+            btnDoiAnh.Location = new Point(158, 314);
+            btnDoiAnh.Margin = new Padding(4, 3, 4, 3);
             btnDoiAnh.Name = "btnDoiAnh";
-            btnDoiAnh.Size = new Size(113, 50);
+            btnDoiAnh.Size = new Size(79, 30);
             btnDoiAnh.TabIndex = 17;
             btnDoiAnh.Text = "Đổi ảnh";
             btnDoiAnh.UseVisualStyleBackColor = true;
@@ -693,11 +755,11 @@ namespace QPharma.GUI
             groupBox3.Controls.Add(label15);
             groupBox3.Controls.Add(label11);
             groupBox3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox3.Location = new Point(463, 2);
-            groupBox3.Margin = new Padding(6, 5, 6, 5);
+            groupBox3.Location = new Point(324, 1);
+            groupBox3.Margin = new Padding(4, 3, 4, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(6, 5, 6, 5);
-            groupBox3.Size = new Size(2003, 585);
+            groupBox3.Padding = new Padding(4, 3, 4, 3);
+            groupBox3.Size = new Size(1402, 351);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Thông tin thuốc";
@@ -706,10 +768,11 @@ namespace QPharma.GUI
             // 
             numGiaNhap.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             numGiaNhap.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            numGiaNhap.Location = new Point(1340, 214);
+            numGiaNhap.Location = new Point(938, 128);
+            numGiaNhap.Margin = new Padding(2);
             numGiaNhap.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
             numGiaNhap.Name = "numGiaNhap";
-            numGiaNhap.Size = new Size(250, 39);
+            numGiaNhap.Size = new Size(175, 29);
             numGiaNhap.TabIndex = 16;
             numGiaNhap.ThousandsSeparator = true;
             // 
@@ -717,30 +780,32 @@ namespace QPharma.GUI
             // 
             numGiaBan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             numGiaBan.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            numGiaBan.Location = new Point(214, 468);
+            numGiaBan.Location = new Point(150, 281);
+            numGiaBan.Margin = new Padding(2);
             numGiaBan.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
             numGiaBan.Name = "numGiaBan";
-            numGiaBan.Size = new Size(247, 39);
+            numGiaBan.Size = new Size(173, 29);
             numGiaBan.TabIndex = 15;
             numGiaBan.ThousandsSeparator = true;
             // 
             // numSL
             // 
             numSL.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numSL.Location = new Point(214, 331);
+            numSL.Location = new Point(150, 199);
+            numSL.Margin = new Padding(2);
             numSL.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
             numSL.Name = "numSL";
-            numSL.Size = new Size(247, 39);
+            numSL.Size = new Size(173, 29);
             numSL.TabIndex = 14;
             // 
             // rtbMota
             // 
             rtbMota.Anchor = AnchorStyles.None;
             rtbMota.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rtbMota.Location = new Point(1667, 238);
-            rtbMota.Margin = new Padding(6, 5, 6, 5);
+            rtbMota.Location = new Point(1167, 143);
+            rtbMota.Margin = new Padding(4, 3, 4, 3);
             rtbMota.Name = "rtbMota";
-            rtbMota.Size = new Size(301, 134);
+            rtbMota.Size = new Size(212, 82);
             rtbMota.TabIndex = 13;
             rtbMota.Text = "";
             // 
@@ -748,10 +813,10 @@ namespace QPharma.GUI
             // 
             btnNhapLaiThuoc.Anchor = AnchorStyles.None;
             btnNhapLaiThuoc.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNhapLaiThuoc.Location = new Point(1763, 410);
-            btnNhapLaiThuoc.Margin = new Padding(6, 5, 6, 5);
+            btnNhapLaiThuoc.Location = new Point(1234, 246);
+            btnNhapLaiThuoc.Margin = new Padding(4, 3, 4, 3);
             btnNhapLaiThuoc.Name = "btnNhapLaiThuoc";
-            btnNhapLaiThuoc.Size = new Size(126, 63);
+            btnNhapLaiThuoc.Size = new Size(88, 38);
             btnNhapLaiThuoc.TabIndex = 12;
             btnNhapLaiThuoc.Text = "Nhập lại";
             btnNhapLaiThuoc.UseVisualStyleBackColor = true;
@@ -764,10 +829,10 @@ namespace QPharma.GUI
             dtpkMFG.CustomFormat = "dd/MM/yyyy";
             dtpkMFG.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpkMFG.Format = DateTimePickerFormat.Custom;
-            dtpkMFG.Location = new Point(781, 460);
-            dtpkMFG.Margin = new Padding(6, 5, 6, 5);
+            dtpkMFG.Location = new Point(547, 276);
+            dtpkMFG.Margin = new Padding(4, 3, 4, 3);
             dtpkMFG.Name = "dtpkMFG";
-            dtpkMFG.Size = new Size(251, 37);
+            dtpkMFG.Size = new Size(177, 27);
             dtpkMFG.TabIndex = 6;
             dtpkMFG.Value = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
@@ -778,10 +843,10 @@ namespace QPharma.GUI
             dtpkEXP.CustomFormat = "dd/MM/yyyy";
             dtpkEXP.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpkEXP.Format = DateTimePickerFormat.Custom;
-            dtpkEXP.Location = new Point(1340, 462);
-            dtpkEXP.Margin = new Padding(6, 5, 6, 5);
+            dtpkEXP.Location = new Point(938, 277);
+            dtpkEXP.Margin = new Padding(4, 3, 4, 3);
             dtpkEXP.Name = "dtpkEXP";
-            dtpkEXP.Size = new Size(244, 37);
+            dtpkEXP.Size = new Size(172, 27);
             dtpkEXP.TabIndex = 6;
             dtpkEXP.Value = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
@@ -791,10 +856,10 @@ namespace QPharma.GUI
             cbNccThuoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbNccThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbNccThuoc.FormattingEnabled = true;
-            cbNccThuoc.Location = new Point(1340, 100);
-            cbNccThuoc.Margin = new Padding(6, 5, 6, 5);
+            cbNccThuoc.Location = new Point(938, 60);
+            cbNccThuoc.Margin = new Padding(4, 3, 4, 3);
             cbNccThuoc.Name = "cbNccThuoc";
-            cbNccThuoc.Size = new Size(250, 39);
+            cbNccThuoc.Size = new Size(176, 28);
             cbNccThuoc.TabIndex = 8;
             cbNccThuoc.SelectedIndexChanged += cbNccThuoc_SelectedIndexChanged;
             // 
@@ -804,10 +869,10 @@ namespace QPharma.GUI
             cbVitri.DropDownStyle = ComboBoxStyle.DropDownList;
             cbVitri.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbVitri.FormattingEnabled = true;
-            cbVitri.Location = new Point(1347, 330);
-            cbVitri.Margin = new Padding(6, 5, 6, 5);
+            cbVitri.Location = new Point(943, 198);
+            cbVitri.Margin = new Padding(4, 3, 4, 3);
             cbVitri.Name = "cbVitri";
-            cbVitri.Size = new Size(243, 39);
+            cbVitri.Size = new Size(171, 28);
             cbVitri.TabIndex = 7;
             cbVitri.SelectedIndexChanged += cbVitri_SelectedIndexChanged;
             // 
@@ -817,10 +882,10 @@ namespace QPharma.GUI
             cbLoai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbLoai.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbLoai.FormattingEnabled = true;
-            cbLoai.Location = new Point(777, 213);
-            cbLoai.Margin = new Padding(6, 5, 6, 5);
+            cbLoai.Location = new Point(544, 128);
+            cbLoai.Margin = new Padding(4, 3, 4, 3);
             cbLoai.Name = "cbLoai";
-            cbLoai.Size = new Size(255, 39);
+            cbLoai.Size = new Size(180, 28);
             cbLoai.TabIndex = 7;
             // 
             // cbTLThuoc
@@ -829,10 +894,10 @@ namespace QPharma.GUI
             cbTLThuoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTLThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTLThuoc.FormattingEnabled = true;
-            cbTLThuoc.Location = new Point(771, 100);
-            cbTLThuoc.Margin = new Padding(6, 5, 6, 5);
+            cbTLThuoc.Location = new Point(540, 60);
+            cbTLThuoc.Margin = new Padding(4, 3, 4, 3);
             cbTLThuoc.Name = "cbTLThuoc";
-            cbTLThuoc.Size = new Size(255, 39);
+            cbTLThuoc.Size = new Size(180, 28);
             cbTLThuoc.TabIndex = 7;
             cbTLThuoc.SelectedIndexChanged += cbTLThuoc_SelectedIndexChanged;
             // 
@@ -840,10 +905,10 @@ namespace QPharma.GUI
             // 
             tbDVT.Anchor = AnchorStyles.None;
             tbDVT.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbDVT.Location = new Point(779, 333);
-            tbDVT.Margin = new Padding(6, 5, 6, 5);
+            tbDVT.Location = new Point(545, 200);
+            tbDVT.Margin = new Padding(4, 3, 4, 3);
             tbDVT.Name = "tbDVT";
-            tbDVT.Size = new Size(254, 37);
+            tbDVT.Size = new Size(179, 27);
             tbDVT.TabIndex = 5;
             tbDVT.TextChanged += ClearTextBox_TextChanged;
             // 
@@ -851,10 +916,10 @@ namespace QPharma.GUI
             // 
             tbTenThuoc.Anchor = AnchorStyles.None;
             tbTenThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTenThuoc.Location = new Point(214, 203);
-            tbTenThuoc.Margin = new Padding(6, 5, 6, 5);
+            tbTenThuoc.Location = new Point(150, 122);
+            tbTenThuoc.Margin = new Padding(4, 3, 4, 3);
             tbTenThuoc.Name = "tbTenThuoc";
-            tbTenThuoc.Size = new Size(247, 37);
+            tbTenThuoc.Size = new Size(174, 27);
             tbTenThuoc.TabIndex = 4;
             tbTenThuoc.TextChanged += ClearTextBox_TextChanged;
             // 
@@ -862,10 +927,10 @@ namespace QPharma.GUI
             // 
             tbMaThuoc.Anchor = AnchorStyles.None;
             tbMaThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbMaThuoc.Location = new Point(214, 85);
-            tbMaThuoc.Margin = new Padding(6, 5, 6, 5);
+            tbMaThuoc.Location = new Point(150, 51);
+            tbMaThuoc.Margin = new Padding(4, 3, 4, 3);
             tbMaThuoc.Name = "tbMaThuoc";
-            tbMaThuoc.Size = new Size(247, 37);
+            tbMaThuoc.Size = new Size(174, 27);
             tbMaThuoc.TabIndex = 1;
             tbMaThuoc.TextChanged += ClearTextBox_TextChanged;
             tbMaThuoc.KeyPress += tb_NonSpace_KeyPress;
@@ -875,10 +940,10 @@ namespace QPharma.GUI
             label14.Anchor = AnchorStyles.None;
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(1134, 105);
-            label14.Margin = new Padding(6, 0, 6, 0);
+            label14.Location = new Point(794, 63);
+            label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
-            label14.Size = new Size(173, 31);
+            label14.Size = new Size(115, 20);
             label14.TabIndex = 0;
             label14.Text = "Nhà cung cấp*:";
             // 
@@ -887,10 +952,10 @@ namespace QPharma.GUI
             label13.Anchor = AnchorStyles.None;
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(611, 108);
-            label13.Margin = new Padding(6, 0, 6, 0);
+            label13.Location = new Point(428, 65);
+            label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(135, 31);
+            label13.Size = new Size(90, 20);
             label13.TabIndex = 0;
             label13.Text = "Danh mục*:";
             // 
@@ -899,10 +964,10 @@ namespace QPharma.GUI
             label19.Anchor = AnchorStyles.None;
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.Location = new Point(1660, 177);
-            label19.Margin = new Padding(6, 0, 6, 0);
+            label19.Location = new Point(1162, 106);
+            label19.Margin = new Padding(4, 0, 4, 0);
             label19.Name = "label19";
-            label19.Size = new Size(81, 31);
+            label19.Size = new Size(53, 20);
             label19.TabIndex = 0;
             label19.Text = "Mô tả:";
             // 
@@ -911,10 +976,10 @@ namespace QPharma.GUI
             label25.Anchor = AnchorStyles.None;
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label25.Location = new Point(1167, 338);
-            label25.Margin = new Padding(6, 0, 6, 0);
+            label25.Location = new Point(817, 203);
+            label25.Margin = new Padding(4, 0, 4, 0);
             label25.Name = "label25";
-            label25.Size = new Size(145, 31);
+            label25.Size = new Size(96, 20);
             label25.TabIndex = 0;
             label25.Text = "Vị trí thuốc*:";
             // 
@@ -923,10 +988,10 @@ namespace QPharma.GUI
             label24.Anchor = AnchorStyles.None;
             label24.AutoSize = true;
             label24.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label24.Location = new Point(659, 227);
-            label24.Margin = new Padding(6, 0, 6, 0);
+            label24.Location = new Point(461, 136);
+            label24.Margin = new Padding(4, 0, 4, 0);
             label24.Name = "label24";
-            label24.Size = new Size(73, 31);
+            label24.Size = new Size(48, 20);
             label24.TabIndex = 0;
             label24.Text = "Loại*:";
             // 
@@ -935,10 +1000,10 @@ namespace QPharma.GUI
             label23.Anchor = AnchorStyles.None;
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.Location = new Point(1191, 217);
-            label23.Margin = new Padding(6, 0, 6, 0);
+            label23.Location = new Point(834, 130);
+            label23.Margin = new Padding(4, 0, 4, 0);
             label23.Name = "label23";
-            label23.Size = new Size(122, 31);
+            label23.Size = new Size(81, 20);
             label23.TabIndex = 0;
             label23.Text = "Giá nhập*:";
             // 
@@ -947,10 +1012,10 @@ namespace QPharma.GUI
             label18.Anchor = AnchorStyles.None;
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.Location = new Point(71, 470);
-            label18.Margin = new Padding(6, 0, 6, 0);
+            label18.Location = new Point(50, 282);
+            label18.Margin = new Padding(4, 0, 4, 0);
             label18.Name = "label18";
-            label18.Size = new Size(109, 31);
+            label18.Size = new Size(72, 20);
             label18.TabIndex = 0;
             label18.Text = "Giá bán*:";
             // 
@@ -959,10 +1024,10 @@ namespace QPharma.GUI
             label17.Anchor = AnchorStyles.None;
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.Location = new Point(607, 347);
-            label17.Margin = new Padding(6, 0, 6, 0);
+            label17.Location = new Point(425, 208);
+            label17.Margin = new Padding(4, 0, 4, 0);
             label17.Name = "label17";
-            label17.Size = new Size(144, 31);
+            label17.Size = new Size(96, 20);
             label17.TabIndex = 0;
             label17.Text = "Đơn vị tính*:";
             // 
@@ -971,10 +1036,10 @@ namespace QPharma.GUI
             label16.Anchor = AnchorStyles.None;
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.Location = new Point(57, 337);
-            label16.Margin = new Padding(6, 0, 6, 0);
+            label16.Location = new Point(40, 202);
+            label16.Margin = new Padding(4, 0, 4, 0);
             label16.Name = "label16";
-            label16.Size = new Size(124, 31);
+            label16.Size = new Size(81, 20);
             label16.TabIndex = 0;
             label16.Text = "Số lượng*:";
             // 
@@ -983,10 +1048,10 @@ namespace QPharma.GUI
             label12.Anchor = AnchorStyles.None;
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(57, 217);
-            label12.Margin = new Padding(6, 0, 6, 0);
+            label12.Location = new Point(40, 130);
+            label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(131, 31);
+            label12.Size = new Size(87, 20);
             label12.TabIndex = 0;
             label12.Text = "Tên thuốc*:";
             // 
@@ -995,10 +1060,10 @@ namespace QPharma.GUI
             label31.Anchor = AnchorStyles.None;
             label31.AutoSize = true;
             label31.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label31.Location = new Point(579, 470);
-            label31.Margin = new Padding(6, 0, 6, 0);
+            label31.Location = new Point(405, 282);
+            label31.Margin = new Padding(4, 0, 4, 0);
             label31.Name = "label31";
-            label31.Size = new Size(178, 31);
+            label31.Size = new Size(118, 20);
             label31.TabIndex = 0;
             label31.Text = "Ngày sản xuất*:";
             // 
@@ -1007,10 +1072,10 @@ namespace QPharma.GUI
             label15.Anchor = AnchorStyles.None;
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(1139, 463);
-            label15.Margin = new Padding(6, 0, 6, 0);
+            label15.Location = new Point(797, 278);
+            label15.Margin = new Padding(4, 0, 4, 0);
             label15.Name = "label15";
-            label15.Size = new Size(169, 31);
+            label15.Size = new Size(113, 20);
             label15.TabIndex = 0;
             label15.Text = "Ngày hết hạn*:";
             // 
@@ -1019,10 +1084,10 @@ namespace QPharma.GUI
             label11.Anchor = AnchorStyles.None;
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(57, 88);
-            label11.Margin = new Padding(6, 0, 6, 0);
+            label11.Location = new Point(40, 53);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(134, 31);
+            label11.Size = new Size(89, 20);
             label11.TabIndex = 0;
             label11.Text = "Mã thuốc* :";
             // 
@@ -1030,11 +1095,11 @@ namespace QPharma.GUI
             // 
             tabTheLoai.Controls.Add(tableLayoutPanelCategory);
             tabTheLoai.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabTheLoai.Location = new Point(4, 37);
-            tabTheLoai.Margin = new Padding(6, 5, 6, 5);
+            tabTheLoai.Location = new Point(4, 26);
+            tabTheLoai.Margin = new Padding(4, 3, 4, 3);
             tabTheLoai.Name = "tabTheLoai";
-            tabTheLoai.Padding = new Padding(6, 5, 6, 5);
-            tabTheLoai.Size = new Size(2490, 1046);
+            tabTheLoai.Padding = new Padding(4, 3, 4, 3);
+            tabTheLoai.Size = new Size(1271, 554);
             tabTheLoai.TabIndex = 1;
             tabTheLoai.Text = "Danh mục thuốc";
             // 
@@ -1046,13 +1111,14 @@ namespace QPharma.GUI
             tableLayoutPanelCategory.Controls.Add(groupBox1, 0, 0);
             tableLayoutPanelCategory.Controls.Add(dgvTheLoai, 0, 2);
             tableLayoutPanelCategory.Controls.Add(panel1, 0, 1);
-            tableLayoutPanelCategory.Location = new Point(9, 13);
+            tableLayoutPanelCategory.Location = new Point(6, 8);
+            tableLayoutPanelCategory.Margin = new Padding(2);
             tableLayoutPanelCategory.Name = "tableLayoutPanelCategory";
             tableLayoutPanelCategory.RowCount = 3;
             tableLayoutPanelCategory.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanelCategory.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanelCategory.RowStyles.Add(new RowStyle(SizeType.Percent, 75F));
-            tableLayoutPanelCategory.Size = new Size(2473, 1015);
+            tableLayoutPanelCategory.Size = new Size(1731, 609);
             tableLayoutPanelCategory.TabIndex = 2;
             // 
             // groupBox1
@@ -1061,11 +1127,11 @@ namespace QPharma.GUI
             groupBox1.Controls.Add(panel2);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(6, 5);
-            groupBox1.Margin = new Padding(6, 5, 6, 5);
+            groupBox1.Location = new Point(4, 3);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(6, 5, 6, 5);
-            groupBox1.Size = new Size(2461, 142);
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(1723, 85);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh mục thuốc";
@@ -1079,10 +1145,10 @@ namespace QPharma.GUI
             panel2.Controls.Add(tbTenTheLoai);
             panel2.Controls.Add(lbName);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(6, 35);
-            panel2.Margin = new Padding(6, 5, 6, 5);
+            panel2.Location = new Point(4, 23);
+            panel2.Margin = new Padding(4, 3, 4, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2449, 102);
+            panel2.Size = new Size(1715, 59);
             panel2.TabIndex = 0;
             // 
             // cbTrangThaiTheLoai
@@ -1092,20 +1158,20 @@ namespace QPharma.GUI
             cbTrangThaiTheLoai.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTrangThaiTheLoai.FormattingEnabled = true;
             cbTrangThaiTheLoai.Items.AddRange(new object[] { Resources.Available, Resources.Unavailable });
-            cbTrangThaiTheLoai.Location = new Point(1969, 27);
-            cbTrangThaiTheLoai.Margin = new Padding(6, 5, 6, 5);
+            cbTrangThaiTheLoai.Location = new Point(1378, 15);
+            cbTrangThaiTheLoai.Margin = new Padding(4, 3, 4, 3);
             cbTrangThaiTheLoai.Name = "cbTrangThaiTheLoai";
-            cbTrangThaiTheLoai.Size = new Size(281, 39);
+            cbTrangThaiTheLoai.Size = new Size(198, 28);
             cbTrangThaiTheLoai.TabIndex = 8;
             // 
             // tbGhiChuTheLoai
             // 
             tbGhiChuTheLoai.Anchor = AnchorStyles.None;
             tbGhiChuTheLoai.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbGhiChuTheLoai.Location = new Point(1140, 25);
-            tbGhiChuTheLoai.Margin = new Padding(6, 5, 6, 5);
+            tbGhiChuTheLoai.Location = new Point(798, 14);
+            tbGhiChuTheLoai.Margin = new Padding(4, 3, 4, 3);
             tbGhiChuTheLoai.Name = "tbGhiChuTheLoai";
-            tbGhiChuTheLoai.Size = new Size(281, 37);
+            tbGhiChuTheLoai.Size = new Size(198, 27);
             tbGhiChuTheLoai.TabIndex = 6;
             // 
             // lbStatus
@@ -1113,10 +1179,10 @@ namespace QPharma.GUI
             lbStatus.Anchor = AnchorStyles.None;
             lbStatus.AutoSize = true;
             lbStatus.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbStatus.Location = new Point(1829, 32);
-            lbStatus.Margin = new Padding(6, 0, 6, 0);
+            lbStatus.Location = new Point(1280, 18);
+            lbStatus.Margin = new Padding(4, 0, 4, 0);
             lbStatus.Name = "lbStatus";
-            lbStatus.Size = new Size(124, 31);
+            lbStatus.Size = new Size(82, 20);
             lbStatus.TabIndex = 3;
             lbStatus.Text = "Trạng thái:";
             // 
@@ -1125,10 +1191,10 @@ namespace QPharma.GUI
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(1023, 28);
-            label3.Margin = new Padding(6, 0, 6, 0);
+            label3.Location = new Point(716, 16);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(98, 31);
+            label3.Size = new Size(65, 20);
             label3.TabIndex = 4;
             label3.Text = "Ghi chú:";
             // 
@@ -1136,10 +1202,10 @@ namespace QPharma.GUI
             // 
             tbTenTheLoai.Anchor = AnchorStyles.None;
             tbTenTheLoai.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTenTheLoai.Location = new Point(362, 25);
-            tbTenTheLoai.Margin = new Padding(6, 5, 6, 5);
+            tbTenTheLoai.Location = new Point(253, 14);
+            tbTenTheLoai.Margin = new Padding(4, 3, 4, 3);
             tbTenTheLoai.Name = "tbTenTheLoai";
-            tbTenTheLoai.Size = new Size(281, 37);
+            tbTenTheLoai.Size = new Size(198, 27);
             tbTenTheLoai.TabIndex = 7;
             tbTenTheLoai.TextChanged += ClearTextBox_TextChanged;
             // 
@@ -1148,10 +1214,10 @@ namespace QPharma.GUI
             lbName.Anchor = AnchorStyles.None;
             lbName.AutoSize = true;
             lbName.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbName.Location = new Point(189, 32);
-            lbName.Margin = new Padding(6, 0, 6, 0);
+            lbName.Location = new Point(132, 18);
+            lbName.Margin = new Padding(4, 0, 4, 0);
             lbName.Name = "lbName";
-            lbName.Size = new Size(149, 31);
+            lbName.Size = new Size(99, 20);
             lbName.TabIndex = 5;
             lbName.Text = "Tên thể loại*:";
             // 
@@ -1162,29 +1228,29 @@ namespace QPharma.GUI
             dgvTheLoai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTheLoai.BackgroundColor = SystemColors.Control;
             dgvTheLoai.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = Color.White;
-            dataGridViewCellStyle19.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle19.ForeColor = Color.Black;
-            dataGridViewCellStyle19.SelectionBackColor = Color.White;
-            dataGridViewCellStyle19.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
-            dgvTheLoai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvTheLoai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvTheLoai.ColumnHeadersHeight = 50;
             dgvTheLoai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvTheLoai.Columns.AddRange(new DataGridViewColumn[] { Column7, Column1, Column2, Column4, Column3, Column5, Column6 });
-            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = Color.LightGray;
-            dataGridViewCellStyle20.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle20.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.False;
-            dgvTheLoai.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.LightGray;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvTheLoai.DefaultCellStyle = dataGridViewCellStyle4;
             dgvTheLoai.Dock = DockStyle.Fill;
             dgvTheLoai.EnableHeadersVisualStyles = false;
-            dgvTheLoai.Location = new Point(6, 258);
-            dgvTheLoai.Margin = new Padding(6, 5, 6, 5);
+            dgvTheLoai.Location = new Point(4, 154);
+            dgvTheLoai.Margin = new Padding(4, 3, 4, 3);
             dgvTheLoai.MultiSelect = false;
             dgvTheLoai.Name = "dgvTheLoai";
             dgvTheLoai.ReadOnly = true;
@@ -1192,7 +1258,7 @@ namespace QPharma.GUI
             dgvTheLoai.RowHeadersWidth = 20;
             dgvTheLoai.RowTemplate.Height = 50;
             dgvTheLoai.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTheLoai.Size = new Size(2461, 752);
+            dgvTheLoai.Size = new Size(1723, 452);
             dgvTheLoai.TabIndex = 0;
             dgvTheLoai.CellClick += dgvTheLoai_CellClick;
             dgvTheLoai.CellFormatting += StripedTable_CellFormatting;
@@ -1259,19 +1325,20 @@ namespace QPharma.GUI
             panel1.Controls.Add(tbTimTheLoai);
             panel1.Controls.Add(label20);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 155);
+            panel1.Location = new Point(2, 93);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2467, 95);
+            panel1.Size = new Size(1727, 56);
             panel1.TabIndex = 3;
             // 
             // btnThemTheLoai
             // 
             btnThemTheLoai.Anchor = AnchorStyles.None;
             btnThemTheLoai.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThemTheLoai.Location = new Point(89, 19);
-            btnThemTheLoai.Margin = new Padding(6, 5, 6, 5);
+            btnThemTheLoai.Location = new Point(62, 11);
+            btnThemTheLoai.Margin = new Padding(4, 3, 4, 3);
             btnThemTheLoai.Name = "btnThemTheLoai";
-            btnThemTheLoai.Size = new Size(130, 65);
+            btnThemTheLoai.Size = new Size(91, 39);
             btnThemTheLoai.TabIndex = 3;
             btnThemTheLoai.Text = "Thêm";
             btnThemTheLoai.UseVisualStyleBackColor = true;
@@ -1284,10 +1351,10 @@ namespace QPharma.GUI
             cbTieuChiTheLoai.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTieuChiTheLoai.FormattingEnabled = true;
             cbTieuChiTheLoai.Items.AddRange(new object[] { "Mã thể loại", "Tên thể loại", "Ghi chú", "Trạng thái", "Ngày tạo", "Ngày cập nhật" });
-            cbTieuChiTheLoai.Location = new Point(1978, 23);
-            cbTieuChiTheLoai.Margin = new Padding(6, 5, 6, 5);
+            cbTieuChiTheLoai.Location = new Point(1385, 14);
+            cbTieuChiTheLoai.Margin = new Padding(4, 3, 4, 3);
             cbTieuChiTheLoai.Name = "cbTieuChiTheLoai";
-            cbTieuChiTheLoai.Size = new Size(281, 39);
+            cbTieuChiTheLoai.Size = new Size(198, 28);
             cbTieuChiTheLoai.TabIndex = 6;
             cbTieuChiTheLoai.SelectedIndexChanged += cbTieuChiTheLoai_SelectedIndexChanged;
             // 
@@ -1295,10 +1362,10 @@ namespace QPharma.GUI
             // 
             btnXoaTheLoai.Anchor = AnchorStyles.None;
             btnXoaTheLoai.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnXoaTheLoai.Location = new Point(429, 19);
-            btnXoaTheLoai.Margin = new Padding(6, 5, 6, 5);
+            btnXoaTheLoai.Location = new Point(300, 11);
+            btnXoaTheLoai.Margin = new Padding(4, 3, 4, 3);
             btnXoaTheLoai.Name = "btnXoaTheLoai";
-            btnXoaTheLoai.Size = new Size(130, 65);
+            btnXoaTheLoai.Size = new Size(91, 39);
             btnXoaTheLoai.TabIndex = 3;
             btnXoaTheLoai.Text = "Xoá";
             btnXoaTheLoai.UseVisualStyleBackColor = true;
@@ -1309,10 +1376,10 @@ namespace QPharma.GUI
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(1013, 48);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Location = new Point(709, 29);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(115, 31);
+            label1.Size = new Size(75, 20);
             label1.TabIndex = 0;
             label1.Text = "Tìm kiếm:";
             // 
@@ -1320,10 +1387,10 @@ namespace QPharma.GUI
             // 
             btnLuuTruTheLoai.Anchor = AnchorStyles.None;
             btnLuuTruTheLoai.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLuuTruTheLoai.Location = new Point(602, 19);
-            btnLuuTruTheLoai.Margin = new Padding(6, 5, 6, 5);
+            btnLuuTruTheLoai.Location = new Point(421, 11);
+            btnLuuTruTheLoai.Margin = new Padding(4, 3, 4, 3);
             btnLuuTruTheLoai.Name = "btnLuuTruTheLoai";
-            btnLuuTruTheLoai.Size = new Size(177, 65);
+            btnLuuTruTheLoai.Size = new Size(124, 39);
             btnLuuTruTheLoai.TabIndex = 3;
             btnLuuTruTheLoai.Text = "Mục lưu trữ";
             btnLuuTruTheLoai.UseVisualStyleBackColor = true;
@@ -1333,10 +1400,10 @@ namespace QPharma.GUI
             // 
             btnSuaTheLoai.Anchor = AnchorStyles.None;
             btnSuaTheLoai.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSuaTheLoai.Location = new Point(259, 19);
-            btnSuaTheLoai.Margin = new Padding(6, 5, 6, 5);
+            btnSuaTheLoai.Location = new Point(181, 11);
+            btnSuaTheLoai.Margin = new Padding(4, 3, 4, 3);
             btnSuaTheLoai.Name = "btnSuaTheLoai";
-            btnSuaTheLoai.Size = new Size(130, 65);
+            btnSuaTheLoai.Size = new Size(91, 39);
             btnSuaTheLoai.TabIndex = 3;
             btnSuaTheLoai.Text = "Sửa";
             btnSuaTheLoai.UseVisualStyleBackColor = true;
@@ -1346,10 +1413,10 @@ namespace QPharma.GUI
             // 
             tbTimTheLoai.Anchor = AnchorStyles.None;
             tbTimTheLoai.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTimTheLoai.Location = new Point(1149, 38);
-            tbTimTheLoai.Margin = new Padding(6, 5, 6, 5);
+            tbTimTheLoai.Location = new Point(804, 23);
+            tbTimTheLoai.Margin = new Padding(4, 3, 4, 3);
             tbTimTheLoai.Name = "tbTimTheLoai";
-            tbTimTheLoai.Size = new Size(281, 37);
+            tbTimTheLoai.Size = new Size(198, 27);
             tbTimTheLoai.TabIndex = 1;
             tbTimTheLoai.TextChanged += tbTimTheLoai_TextChanged;
             // 
@@ -1358,10 +1425,10 @@ namespace QPharma.GUI
             label20.Anchor = AnchorStyles.None;
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.Location = new Point(1858, 33);
-            label20.Margin = new Padding(6, 0, 6, 0);
+            label20.Location = new Point(1301, 20);
+            label20.Margin = new Padding(4, 0, 4, 0);
             label20.Name = "label20";
-            label20.Size = new Size(100, 31);
+            label20.Size = new Size(66, 20);
             label20.TabIndex = 7;
             label20.Text = "Tiêu chí:";
             // 
@@ -1369,11 +1436,11 @@ namespace QPharma.GUI
             // 
             tabNCC.Controls.Add(tableLayoutPanel1);
             tabNCC.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabNCC.Location = new Point(4, 37);
-            tabNCC.Margin = new Padding(6, 5, 6, 5);
+            tabNCC.Location = new Point(4, 26);
+            tabNCC.Margin = new Padding(4, 3, 4, 3);
             tabNCC.Name = "tabNCC";
-            tabNCC.Padding = new Padding(6, 5, 6, 5);
-            tabNCC.Size = new Size(2490, 1046);
+            tabNCC.Padding = new Padding(4, 3, 4, 3);
+            tabNCC.Size = new Size(1271, 554);
             tabNCC.TabIndex = 2;
             tabNCC.Text = "Nhà cung cấp";
             // 
@@ -1385,14 +1452,14 @@ namespace QPharma.GUI
             tableLayoutPanel1.Controls.Add(panel3, 0, 1);
             tableLayoutPanel1.Controls.Add(groupBox2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(6, 5);
-            tableLayoutPanel1.Margin = new Padding(6, 5, 6, 5);
+            tableLayoutPanel1.Location = new Point(4, 3);
+            tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 65F));
-            tableLayoutPanel1.Size = new Size(2478, 1036);
+            tableLayoutPanel1.Size = new Size(1263, 548);
             tableLayoutPanel1.TabIndex = 10;
             // 
             // dgvNhaCungCap
@@ -1402,29 +1469,29 @@ namespace QPharma.GUI
             dgvNhaCungCap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNhaCungCap.BackgroundColor = SystemColors.Control;
             dgvNhaCungCap.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = Color.White;
-            dataGridViewCellStyle21.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle21.ForeColor = Color.Black;
-            dataGridViewCellStyle21.SelectionBackColor = Color.White;
-            dataGridViewCellStyle21.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
-            dgvNhaCungCap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvNhaCungCap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvNhaCungCap.ColumnHeadersHeight = 50;
             dgvNhaCungCap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvNhaCungCap.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column9, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, Column21, Column22 });
-            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = SystemColors.Window;
-            dataGridViewCellStyle22.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle22.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle22.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.False;
-            dgvNhaCungCap.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvNhaCungCap.DefaultCellStyle = dataGridViewCellStyle6;
             dgvNhaCungCap.Dock = DockStyle.Fill;
             dgvNhaCungCap.EnableHeadersVisualStyles = false;
-            dgvNhaCungCap.Location = new Point(6, 367);
-            dgvNhaCungCap.Margin = new Padding(6, 5, 6, 5);
+            dgvNhaCungCap.Location = new Point(4, 194);
+            dgvNhaCungCap.Margin = new Padding(4, 3, 4, 3);
             dgvNhaCungCap.MultiSelect = false;
             dgvNhaCungCap.Name = "dgvNhaCungCap";
             dgvNhaCungCap.ReadOnly = true;
@@ -1432,7 +1499,7 @@ namespace QPharma.GUI
             dgvNhaCungCap.RowHeadersWidth = 62;
             dgvNhaCungCap.RowTemplate.Height = 50;
             dgvNhaCungCap.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvNhaCungCap.Size = new Size(2466, 664);
+            dgvNhaCungCap.Size = new Size(1255, 351);
             dgvNhaCungCap.TabIndex = 4;
             dgvNhaCungCap.CellClick += dgvNhaCungCap_CellClick;
             dgvNhaCungCap.CellFormatting += StripedTable_CellFormatting;
@@ -1506,10 +1573,10 @@ namespace QPharma.GUI
             // 
             panel3.Controls.Add(panel5);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(6, 264);
-            panel3.Margin = new Padding(6, 5, 6, 5);
+            panel3.Location = new Point(4, 140);
+            panel3.Margin = new Padding(4, 3, 4, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(2466, 93);
+            panel3.Size = new Size(1255, 48);
             panel3.TabIndex = 8;
             // 
             // panel5
@@ -1522,19 +1589,19 @@ namespace QPharma.GUI
             panel5.Controls.Add(tbTimNCC);
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(0, 0);
-            panel5.Margin = new Padding(6, 5, 6, 5);
+            panel5.Margin = new Padding(4, 3, 4, 3);
             panel5.Name = "panel5";
-            panel5.Size = new Size(2466, 93);
+            panel5.Size = new Size(1255, 48);
             panel5.TabIndex = 10;
             // 
             // btnXoaNCC
             // 
             btnXoaNCC.Anchor = AnchorStyles.None;
             btnXoaNCC.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnXoaNCC.Location = new Point(185, 15);
-            btnXoaNCC.Margin = new Padding(6, 5, 6, 5);
+            btnXoaNCC.Location = new Point(-106, 5);
+            btnXoaNCC.Margin = new Padding(4, 3, 4, 3);
             btnXoaNCC.Name = "btnXoaNCC";
-            btnXoaNCC.Size = new Size(131, 63);
+            btnXoaNCC.Size = new Size(92, 38);
             btnXoaNCC.TabIndex = 9;
             btnXoaNCC.Text = "Xoá";
             btnXoaNCC.UseVisualStyleBackColor = true;
@@ -1544,10 +1611,10 @@ namespace QPharma.GUI
             // 
             btnDeletedSupplier.Anchor = AnchorStyles.None;
             btnDeletedSupplier.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDeletedSupplier.Location = new Point(371, 15);
-            btnDeletedSupplier.Margin = new Padding(6, 5, 6, 5);
+            btnDeletedSupplier.Location = new Point(24, 5);
+            btnDeletedSupplier.Margin = new Padding(4, 3, 4, 3);
             btnDeletedSupplier.Name = "btnDeletedSupplier";
-            btnDeletedSupplier.Size = new Size(179, 63);
+            btnDeletedSupplier.Size = new Size(125, 38);
             btnDeletedSupplier.TabIndex = 9;
             btnDeletedSupplier.Text = "Mục lưu trữ";
             btnDeletedSupplier.UseVisualStyleBackColor = true;
@@ -1558,10 +1625,10 @@ namespace QPharma.GUI
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(1662, 32);
-            label10.Margin = new Padding(6, 0, 6, 0);
+            label10.Location = new Point(927, 15);
+            label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(140, 31);
+            label10.Size = new Size(92, 20);
             label10.TabIndex = 5;
             label10.Text = "Tiêu chí tìm:";
             // 
@@ -1572,10 +1639,10 @@ namespace QPharma.GUI
             cbTieuChiNCC.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTieuChiNCC.FormattingEnabled = true;
             cbTieuChiNCC.Items.AddRange(new object[] { "Mã nhà cung cấp", "Tên nhà cung cấp", "Điện thoại", "Email", "Ghi chú", "Trạng thái", "Ngày tạo", "Ngày cập nhật" });
-            cbTieuChiNCC.Location = new Point(1827, 22);
-            cbTieuChiNCC.Margin = new Padding(6, 5, 6, 5);
+            cbTieuChiNCC.Location = new Point(1043, 9);
+            cbTieuChiNCC.Margin = new Padding(4, 3, 4, 3);
             cbTieuChiNCC.Name = "cbTieuChiNCC";
-            cbTieuChiNCC.Size = new Size(281, 39);
+            cbTieuChiNCC.Size = new Size(198, 28);
             cbTieuChiNCC.TabIndex = 2;
             cbTieuChiNCC.SelectedIndexChanged += cbTieuChiNCC_SelectedIndexChanged;
             // 
@@ -1584,10 +1651,10 @@ namespace QPharma.GUI
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(990, 35);
-            label7.Margin = new Padding(6, 0, 6, 0);
+            label7.Location = new Point(457, 17);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(115, 31);
+            label7.Size = new Size(75, 20);
             label7.TabIndex = 5;
             label7.Text = "Tìm kiếm:";
             // 
@@ -1595,10 +1662,10 @@ namespace QPharma.GUI
             // 
             tbTimNCC.Anchor = AnchorStyles.None;
             tbTimNCC.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTimNCC.Location = new Point(1125, 22);
-            tbTimNCC.Margin = new Padding(6, 5, 6, 5);
+            tbTimNCC.Location = new Point(552, 9);
+            tbTimNCC.Margin = new Padding(4, 3, 4, 3);
             tbTimNCC.Name = "tbTimNCC";
-            tbTimNCC.Size = new Size(281, 37);
+            tbTimNCC.Size = new Size(198, 27);
             tbTimNCC.TabIndex = 6;
             tbTimNCC.TextChanged += tbTimNCC_TextChanged;
             // 
@@ -1608,11 +1675,11 @@ namespace QPharma.GUI
             groupBox2.Controls.Add(panel4);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(6, 5);
-            groupBox2.Margin = new Padding(6, 5, 6, 5);
+            groupBox2.Location = new Point(4, 3);
+            groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(6, 5, 6, 5);
-            groupBox2.Size = new Size(2466, 249);
+            groupBox2.Padding = new Padding(4, 3, 4, 3);
+            groupBox2.Size = new Size(1255, 131);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Nhà cung cấp";
@@ -1634,10 +1701,10 @@ namespace QPharma.GUI
             panel4.Controls.Add(label9);
             panel4.Controls.Add(label6);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(6, 35);
-            panel4.Margin = new Padding(6, 5, 6, 5);
+            panel4.Location = new Point(4, 23);
+            panel4.Margin = new Padding(4, 3, 4, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(2454, 209);
+            panel4.Size = new Size(1247, 105);
             panel4.TabIndex = 0;
             // 
             // cbTTNCC
@@ -1647,30 +1714,30 @@ namespace QPharma.GUI
             cbTTNCC.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbTTNCC.FormattingEnabled = true;
             cbTTNCC.Items.AddRange(new object[] { Resources.Available, Resources.Unavailable });
-            cbTTNCC.Location = new Point(1118, 138);
-            cbTTNCC.Margin = new Padding(6, 5, 6, 5);
+            cbTTNCC.Location = new Point(547, 73);
+            cbTTNCC.Margin = new Padding(4, 3, 4, 3);
             cbTTNCC.Name = "cbTTNCC";
-            cbTTNCC.Size = new Size(281, 39);
+            cbTTNCC.Size = new Size(198, 28);
             cbTTNCC.TabIndex = 15;
             // 
             // tbGhiChuNCC
             // 
             tbGhiChuNCC.Anchor = AnchorStyles.None;
             tbGhiChuNCC.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbGhiChuNCC.Location = new Point(1818, 136);
-            tbGhiChuNCC.Margin = new Padding(6, 5, 6, 5);
+            tbGhiChuNCC.Location = new Point(1037, 72);
+            tbGhiChuNCC.Margin = new Padding(4, 3, 4, 3);
             tbGhiChuNCC.Name = "tbGhiChuNCC";
-            tbGhiChuNCC.Size = new Size(281, 37);
+            tbGhiChuNCC.Size = new Size(198, 27);
             tbGhiChuNCC.TabIndex = 10;
             // 
             // btnSuaNCC
             // 
             btnSuaNCC.Anchor = AnchorStyles.None;
             btnSuaNCC.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSuaNCC.Location = new Point(2211, 129);
-            btnSuaNCC.Margin = new Padding(6, 5, 6, 5);
+            btnSuaNCC.Location = new Point(1312, 67);
+            btnSuaNCC.Margin = new Padding(4, 3, 4, 3);
             btnSuaNCC.Name = "btnSuaNCC";
-            btnSuaNCC.Size = new Size(130, 65);
+            btnSuaNCC.Size = new Size(91, 39);
             btnSuaNCC.TabIndex = 16;
             btnSuaNCC.Text = "Sửa";
             btnSuaNCC.UseVisualStyleBackColor = true;
@@ -1681,10 +1748,10 @@ namespace QPharma.GUI
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(971, 144);
-            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Location = new Point(444, 76);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(124, 31);
+            label2.Size = new Size(82, 20);
             label2.TabIndex = 4;
             label2.Text = "Trạng thái:";
             // 
@@ -1692,10 +1759,10 @@ namespace QPharma.GUI
             // 
             btnThemNCC.Anchor = AnchorStyles.None;
             btnThemNCC.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThemNCC.Location = new Point(2211, 33);
-            btnThemNCC.Margin = new Padding(6, 5, 6, 5);
+            btnThemNCC.Location = new Point(1312, 10);
+            btnThemNCC.Margin = new Padding(4, 3, 4, 3);
             btnThemNCC.Name = "btnThemNCC";
-            btnThemNCC.Size = new Size(130, 65);
+            btnThemNCC.Size = new Size(91, 39);
             btnThemNCC.TabIndex = 17;
             btnThemNCC.Text = "Thêm";
             btnThemNCC.UseVisualStyleBackColor = true;
@@ -1706,10 +1773,10 @@ namespace QPharma.GUI
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(1701, 143);
-            label4.Margin = new Padding(6, 0, 6, 0);
+            label4.Location = new Point(955, 76);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(98, 31);
+            label4.Size = new Size(65, 20);
             label4.TabIndex = 5;
             label4.Text = "Ghi chú:";
             // 
@@ -1717,20 +1784,20 @@ namespace QPharma.GUI
             // 
             tbDienThoai.Anchor = AnchorStyles.None;
             tbDienThoai.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbDienThoai.Location = new Point(1818, 46);
-            tbDienThoai.Margin = new Padding(6, 5, 6, 5);
+            tbDienThoai.Location = new Point(1037, 18);
+            tbDienThoai.Margin = new Padding(4, 3, 4, 3);
             tbDienThoai.Name = "tbDienThoai";
-            tbDienThoai.Size = new Size(281, 37);
+            tbDienThoai.Size = new Size(198, 27);
             tbDienThoai.TabIndex = 11;
             // 
             // tbTenNCC
             // 
             tbTenNCC.Anchor = AnchorStyles.None;
             tbTenNCC.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTenNCC.Location = new Point(441, 131);
-            tbTenNCC.Margin = new Padding(6, 5, 6, 5);
+            tbTenNCC.Location = new Point(73, 69);
+            tbTenNCC.Margin = new Padding(4, 3, 4, 3);
             tbTenNCC.Name = "tbTenNCC";
-            tbTenNCC.Size = new Size(258, 37);
+            tbTenNCC.Size = new Size(182, 27);
             tbTenNCC.TabIndex = 12;
             tbTenNCC.TextChanged += ClearTextBox_TextChanged;
             // 
@@ -1739,10 +1806,10 @@ namespace QPharma.GUI
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(1670, 59);
-            label8.Margin = new Padding(6, 0, 6, 0);
+            label8.Location = new Point(933, 25);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(127, 31);
+            label8.Size = new Size(84, 20);
             label8.TabIndex = 6;
             label8.Text = "Điện thoại:";
             // 
@@ -1751,10 +1818,10 @@ namespace QPharma.GUI
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(171, 136);
-            label5.Margin = new Padding(6, 0, 6, 0);
+            label5.Location = new Point(-116, 72);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(210, 31);
+            label5.Size = new Size(140, 20);
             label5.TabIndex = 7;
             label5.Text = "Tên nhà cung cấp*:";
             // 
@@ -1762,20 +1829,20 @@ namespace QPharma.GUI
             // 
             tbEmail.Anchor = AnchorStyles.None;
             tbEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbEmail.Location = new Point(1118, 46);
-            tbEmail.Margin = new Padding(6, 5, 6, 5);
+            tbEmail.Location = new Point(547, 18);
+            tbEmail.Margin = new Padding(4, 3, 4, 3);
             tbEmail.Name = "tbEmail";
-            tbEmail.Size = new Size(281, 37);
+            tbEmail.Size = new Size(198, 27);
             tbEmail.TabIndex = 13;
             // 
             // tbMaNCC
             // 
             tbMaNCC.Anchor = AnchorStyles.None;
             tbMaNCC.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbMaNCC.Location = new Point(438, 46);
-            tbMaNCC.Margin = new Padding(6, 5, 6, 5);
+            tbMaNCC.Location = new Point(71, 18);
+            tbMaNCC.Margin = new Padding(4, 3, 4, 3);
             tbMaNCC.Name = "tbMaNCC";
-            tbMaNCC.Size = new Size(263, 37);
+            tbMaNCC.Size = new Size(185, 27);
             tbMaNCC.TabIndex = 14;
             tbMaNCC.TextChanged += ClearTextBox_TextChanged;
             tbMaNCC.KeyPress += tb_NonSpace_KeyPress;
@@ -1785,10 +1852,10 @@ namespace QPharma.GUI
             label9.Anchor = AnchorStyles.None;
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(1025, 54);
-            label9.Margin = new Padding(6, 0, 6, 0);
+            label9.Location = new Point(482, 22);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(76, 31);
+            label9.Size = new Size(50, 20);
             label9.TabIndex = 8;
             label9.Text = "Email:";
             // 
@@ -1797,10 +1864,10 @@ namespace QPharma.GUI
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(171, 51);
-            label6.Margin = new Padding(6, 0, 6, 0);
+            label6.Location = new Point(-116, 21);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(207, 31);
+            label6.Size = new Size(138, 20);
             label6.TabIndex = 9;
             label6.Text = "Mã nhà cung cấp*:";
             // 
@@ -1809,11 +1876,11 @@ namespace QPharma.GUI
             tabViTriThuoc.BackColor = SystemColors.Control;
             tabViTriThuoc.Controls.Add(tableLayoutPanel2);
             tabViTriThuoc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabViTriThuoc.Location = new Point(4, 37);
-            tabViTriThuoc.Margin = new Padding(6, 5, 6, 5);
+            tabViTriThuoc.Location = new Point(4, 26);
+            tabViTriThuoc.Margin = new Padding(4, 3, 4, 3);
             tabViTriThuoc.Name = "tabViTriThuoc";
-            tabViTriThuoc.Padding = new Padding(6, 5, 6, 5);
-            tabViTriThuoc.Size = new Size(2490, 1046);
+            tabViTriThuoc.Padding = new Padding(4, 3, 4, 3);
+            tabViTriThuoc.Size = new Size(1271, 554);
             tabViTriThuoc.TabIndex = 3;
             tabViTriThuoc.Text = "Vị trí thuốc";
             // 
@@ -1825,14 +1892,15 @@ namespace QPharma.GUI
             tableLayoutPanel2.Controls.Add(panel7, 0, 1);
             tableLayoutPanel2.Controls.Add(groupBox6, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(6, 5);
-            tableLayoutPanel2.Margin = new Padding(6, 5, 6, 5);
+            tableLayoutPanel2.Location = new Point(4, 3);
+            tableLayoutPanel2.Margin = new Padding(4, 3, 4, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 75F));
-            tableLayoutPanel2.Size = new Size(2478, 1036);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 15.4958677F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 69.6281F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Size = new Size(1263, 548);
             tableLayoutPanel2.TabIndex = 16;
             // 
             // dgvViTriThuoc
@@ -1842,37 +1910,37 @@ namespace QPharma.GUI
             dgvViTriThuoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvViTriThuoc.BackgroundColor = SystemColors.Control;
             dgvViTriThuoc.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.BackColor = Color.White;
-            dataGridViewCellStyle23.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle23.ForeColor = Color.Black;
-            dataGridViewCellStyle23.SelectionBackColor = Color.White;
-            dataGridViewCellStyle23.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.True;
-            dgvViTriThuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
-            dgvViTriThuoc.ColumnHeadersHeight = 50;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvViTriThuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dgvViTriThuoc.ColumnHeadersHeight = 30;
             dgvViTriThuoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvViTriThuoc.Columns.AddRange(new DataGridViewColumn[] { Column26, Column27, Column28, Column30, Column29, Column31, Column32 });
-            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.BackColor = SystemColors.Window;
-            dataGridViewCellStyle24.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle24.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle24.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.False;
-            dgvViTriThuoc.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvViTriThuoc.DefaultCellStyle = dataGridViewCellStyle8;
             dgvViTriThuoc.Dock = DockStyle.Fill;
             dgvViTriThuoc.EnableHeadersVisualStyles = false;
-            dgvViTriThuoc.Location = new Point(6, 263);
-            dgvViTriThuoc.Margin = new Padding(6, 5, 6, 5);
+            dgvViTriThuoc.Location = new Point(4, 169);
+            dgvViTriThuoc.Margin = new Padding(4, 3, 4, 3);
             dgvViTriThuoc.MultiSelect = false;
             dgvViTriThuoc.Name = "dgvViTriThuoc";
             dgvViTriThuoc.ReadOnly = true;
             dgvViTriThuoc.RowHeadersVisible = false;
-            dgvViTriThuoc.RowHeadersWidth = 62;
+            dgvViTriThuoc.RowHeadersWidth = 20;
             dgvViTriThuoc.RowTemplate.Height = 50;
             dgvViTriThuoc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvViTriThuoc.Size = new Size(2466, 768);
+            dgvViTriThuoc.Size = new Size(1255, 376);
             dgvViTriThuoc.TabIndex = 0;
             dgvViTriThuoc.CellClick += dgvViTriThuoc_CellClick;
             dgvViTriThuoc.CellFormatting += StripedTable_CellFormatting;
@@ -1946,20 +2014,20 @@ namespace QPharma.GUI
             panel7.Controls.Add(btnXoaVT);
             panel7.Controls.Add(cbbTieuChiVT);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(6, 160);
-            panel7.Margin = new Padding(6, 5, 6, 5);
+            panel7.Location = new Point(4, 85);
+            panel7.Margin = new Padding(4, 3, 4, 3);
             panel7.Name = "panel7";
-            panel7.Size = new Size(2466, 93);
+            panel7.Size = new Size(1255, 78);
             panel7.TabIndex = 16;
             // 
             // btnThemVT
             // 
             btnThemVT.Anchor = AnchorStyles.None;
-            btnThemVT.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThemVT.Location = new Point(208, 23);
-            btnThemVT.Margin = new Padding(6, 5, 6, 5);
+            btnThemVT.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            btnThemVT.Location = new Point(62, 24);
+            btnThemVT.Margin = new Padding(4, 3, 4, 3);
             btnThemVT.Name = "btnThemVT";
-            btnThemVT.Size = new Size(100, 58);
+            btnThemVT.Size = new Size(65, 30);
             btnThemVT.TabIndex = 3;
             btnThemVT.Text = "Thêm";
             btnThemVT.UseVisualStyleBackColor = true;
@@ -1969,22 +2037,22 @@ namespace QPharma.GUI
             // 
             label30.Anchor = AnchorStyles.None;
             label30.AutoSize = true;
-            label30.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label30.Location = new Point(1002, 38);
-            label30.Margin = new Padding(6, 0, 6, 0);
+            label30.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            label30.Location = new Point(493, 30);
+            label30.Margin = new Padding(4, 0, 4, 0);
             label30.Name = "label30";
-            label30.Size = new Size(115, 31);
+            label30.Size = new Size(75, 20);
             label30.TabIndex = 13;
             label30.Text = "Tìm kiếm:";
             // 
             // btnSuaVT
             // 
             btnSuaVT.Anchor = AnchorStyles.None;
-            btnSuaVT.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSuaVT.Location = new Point(328, 25);
-            btnSuaVT.Margin = new Padding(6, 5, 6, 5);
+            btnSuaVT.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            btnSuaVT.Location = new Point(147, 27);
+            btnSuaVT.Margin = new Padding(4, 3, 4, 3);
             btnSuaVT.Name = "btnSuaVT";
-            btnSuaVT.Size = new Size(94, 55);
+            btnSuaVT.Size = new Size(61, 28);
             btnSuaVT.TabIndex = 3;
             btnSuaVT.Text = "Sửa";
             btnSuaVT.UseVisualStyleBackColor = true;
@@ -1993,22 +2061,22 @@ namespace QPharma.GUI
             // tbTimViTri
             // 
             tbTimViTri.Anchor = AnchorStyles.None;
-            tbTimViTri.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTimViTri.Location = new Point(1154, 23);
-            tbTimViTri.Margin = new Padding(6, 5, 6, 5);
+            tbTimViTri.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            tbTimViTri.Location = new Point(609, 27);
+            tbTimViTri.Margin = new Padding(4, 3, 4, 3);
             tbTimViTri.Name = "tbTimViTri";
-            tbTimViTri.Size = new Size(284, 37);
+            tbTimViTri.Size = new Size(168, 27);
             tbTimViTri.TabIndex = 14;
             tbTimViTri.TextChanged += tbTimViTri_TextChanged;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.None;
-            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(582, 23);
-            button1.Margin = new Padding(6, 5, 6, 5);
+            button1.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button1.Location = new Point(318, 27);
+            button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
-            button1.Size = new Size(157, 58);
+            button1.Size = new Size(105, 30);
             button1.TabIndex = 15;
             button1.Text = "Mục lưu trữ";
             button1.UseVisualStyleBackColor = true;
@@ -2018,22 +2086,22 @@ namespace QPharma.GUI
             // 
             label28.Anchor = AnchorStyles.None;
             label28.AutoSize = true;
-            label28.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label28.Location = new Point(1734, 28);
-            label28.Margin = new Padding(6, 0, 6, 0);
+            label28.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            label28.Location = new Point(881, 27);
+            label28.Margin = new Padding(4, 0, 4, 0);
             label28.Name = "label28";
-            label28.Size = new Size(140, 31);
+            label28.Size = new Size(92, 20);
             label28.TabIndex = 12;
             label28.Text = "Tiêu chí tìm:";
             // 
             // btnXoaVT
             // 
             btnXoaVT.Anchor = AnchorStyles.None;
-            btnXoaVT.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnXoaVT.Location = new Point(451, 23);
-            btnXoaVT.Margin = new Padding(6, 5, 6, 5);
+            btnXoaVT.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            btnXoaVT.Location = new Point(225, 27);
+            btnXoaVT.Margin = new Padding(4, 3, 4, 3);
             btnXoaVT.Name = "btnXoaVT";
-            btnXoaVT.Size = new Size(106, 55);
+            btnXoaVT.Size = new Size(69, 28);
             btnXoaVT.TabIndex = 10;
             btnXoaVT.Text = "Xoá";
             btnXoaVT.UseVisualStyleBackColor = true;
@@ -2043,13 +2111,13 @@ namespace QPharma.GUI
             // 
             cbbTieuChiVT.Anchor = AnchorStyles.None;
             cbbTieuChiVT.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbbTieuChiVT.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbbTieuChiVT.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             cbbTieuChiVT.FormattingEnabled = true;
             cbbTieuChiVT.Items.AddRange(new object[] { "Mã vị trí", "Tên vị trí", "Ghi chú", "Trạng thái", "Ngày tạo", "Ngày cập nhật" });
-            cbbTieuChiVT.Location = new Point(1898, 23);
-            cbbTieuChiVT.Margin = new Padding(6, 5, 6, 5);
+            cbbTieuChiVT.Location = new Point(996, 24);
+            cbbTieuChiVT.Margin = new Padding(4, 3, 4, 3);
             cbbTieuChiVT.Name = "cbbTieuChiVT";
-            cbbTieuChiVT.Size = new Size(293, 39);
+            cbbTieuChiVT.Size = new Size(120, 28);
             cbbTieuChiVT.TabIndex = 11;
             cbbTieuChiVT.SelectedIndexChanged += cbbTieuChiVT_SelectedIndexChanged;
             // 
@@ -2063,12 +2131,12 @@ namespace QPharma.GUI
             groupBox6.Controls.Add(tbTenViTri);
             groupBox6.Controls.Add(label29);
             groupBox6.Dock = DockStyle.Fill;
-            groupBox6.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox6.Location = new Point(6, 5);
-            groupBox6.Margin = new Padding(6, 5, 6, 5);
+            groupBox6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox6.Location = new Point(4, 3);
+            groupBox6.Margin = new Padding(4, 3, 4, 3);
             groupBox6.Name = "groupBox6";
-            groupBox6.Padding = new Padding(6, 5, 6, 5);
-            groupBox6.Size = new Size(2466, 145);
+            groupBox6.Padding = new Padding(4, 3, 4, 3);
+            groupBox6.Size = new Size(1255, 76);
             groupBox6.TabIndex = 8;
             groupBox6.TabStop = false;
             groupBox6.Text = "Vị trí thuốc";
@@ -2077,34 +2145,34 @@ namespace QPharma.GUI
             // 
             cbTTViTri.Anchor = AnchorStyles.None;
             cbTTViTri.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbTTViTri.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbTTViTri.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             cbTTViTri.FormattingEnabled = true;
             cbTTViTri.Items.AddRange(new object[] { Resources.Available, Resources.Unavailable });
-            cbTTViTri.Location = new Point(1898, 51);
-            cbTTViTri.Margin = new Padding(6, 5, 6, 5);
+            cbTTViTri.Location = new Point(1016, 25);
+            cbTTViTri.Margin = new Padding(4, 3, 4, 3);
             cbTTViTri.Name = "cbTTViTri";
-            cbTTViTri.Size = new Size(293, 39);
+            cbTTViTri.Size = new Size(100, 28);
             cbTTViTri.TabIndex = 2;
             // 
             // tbGhiChuViTri
             // 
             tbGhiChuViTri.Anchor = AnchorStyles.None;
-            tbGhiChuViTri.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbGhiChuViTri.Location = new Point(1154, 53);
-            tbGhiChuViTri.Margin = new Padding(6, 5, 6, 5);
+            tbGhiChuViTri.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            tbGhiChuViTri.Location = new Point(609, 29);
+            tbGhiChuViTri.Margin = new Padding(4, 3, 4, 3);
             tbGhiChuViTri.Name = "tbGhiChuViTri";
-            tbGhiChuViTri.Size = new Size(284, 37);
+            tbGhiChuViTri.Size = new Size(168, 27);
             tbGhiChuViTri.TabIndex = 1;
             // 
             // label26
             // 
             label26.Anchor = AnchorStyles.None;
             label26.AutoSize = true;
-            label26.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label26.Location = new Point(1751, 56);
-            label26.Margin = new Padding(6, 0, 6, 0);
+            label26.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            label26.Location = new Point(925, 29);
+            label26.Margin = new Padding(4, 0, 4, 0);
             label26.Name = "label26";
-            label26.Size = new Size(124, 31);
+            label26.Size = new Size(82, 20);
             label26.TabIndex = 0;
             label26.Text = "Trạng thái:";
             // 
@@ -2112,22 +2180,22 @@ namespace QPharma.GUI
             // 
             label27.Anchor = AnchorStyles.None;
             label27.AutoSize = true;
-            label27.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label27.Location = new Point(1020, 58);
-            label27.Margin = new Padding(6, 0, 6, 0);
+            label27.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            label27.Location = new Point(493, 32);
+            label27.Margin = new Padding(4, 0, 4, 0);
             label27.Name = "label27";
-            label27.Size = new Size(98, 31);
+            label27.Size = new Size(65, 20);
             label27.TabIndex = 0;
             label27.Text = "Ghi chú:";
             // 
             // tbTenViTri
             // 
             tbTenViTri.Anchor = AnchorStyles.None;
-            tbTenViTri.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbTenViTri.Location = new Point(432, 51);
-            tbTenViTri.Margin = new Padding(6, 5, 6, 5);
+            tbTenViTri.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            tbTenViTri.Location = new Point(180, 31);
+            tbTenViTri.Margin = new Padding(4, 3, 4, 3);
             tbTenViTri.Name = "tbTenViTri";
-            tbTenViTri.Size = new Size(265, 37);
+            tbTenViTri.Size = new Size(114, 27);
             tbTenViTri.TabIndex = 1;
             tbTenViTri.TextChanged += ClearTextBox_TextChanged;
             // 
@@ -2135,13 +2203,563 @@ namespace QPharma.GUI
             // 
             label29.Anchor = AnchorStyles.None;
             label29.AutoSize = true;
-            label29.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label29.Location = new Point(291, 54);
-            label29.Margin = new Padding(6, 0, 6, 0);
+            label29.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            label29.Location = new Point(93, 36);
+            label29.Margin = new Padding(4, 0, 4, 0);
             label29.Name = "label29";
-            label29.Size = new Size(119, 31);
+            label29.Size = new Size(79, 20);
             label29.TabIndex = 0;
             label29.Text = "Tên vị trí*:";
+            // 
+            // tabHoaDon
+            // 
+            tabHoaDon.Controls.Add(flowLayoutTimKiem);
+            tabHoaDon.Controls.Add(button5);
+            tabHoaDon.Controls.Add(ckbSelectAll);
+            tabHoaDon.Controls.Add(button2);
+            tabHoaDon.Controls.Add(button3);
+            tabHoaDon.Controls.Add(tableLayoutPanel7);
+            tabHoaDon.Location = new Point(4, 26);
+            tabHoaDon.Name = "tabHoaDon";
+            tabHoaDon.Padding = new Padding(3);
+            tabHoaDon.Size = new Size(1271, 554);
+            tabHoaDon.TabIndex = 4;
+            tabHoaDon.Text = "Hoá đơn";
+            tabHoaDon.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutTimKiem
+            // 
+            flowLayoutTimKiem.Controls.Add(btnExitSearch);
+            flowLayoutTimKiem.Controls.Add(label33);
+            flowLayoutTimKiem.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutTimKiem.Location = new Point(583, 17);
+            flowLayoutTimKiem.Name = "flowLayoutTimKiem";
+            flowLayoutTimKiem.RightToLeft = RightToLeft.No;
+            flowLayoutTimKiem.Size = new Size(357, 31);
+            flowLayoutTimKiem.TabIndex = 14;
+            // 
+            // btnExitSearch
+            // 
+            btnExitSearch.Location = new Point(245, 3);
+            btnExitSearch.Name = "btnExitSearch";
+            btnExitSearch.RightToLeft = RightToLeft.No;
+            btnExitSearch.Size = new Size(109, 23);
+            btnExitSearch.TabIndex = 1;
+            btnExitSearch.Text = "Thoát tìm kiếm";
+            btnExitSearch.UseVisualStyleBackColor = true;
+            btnExitSearch.Click += btnExitSearch_Click;
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.Dock = DockStyle.Fill;
+            label33.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            label33.ForeColor = Color.Brown;
+            label33.Location = new Point(52, 0);
+            label33.Name = "label33";
+            label33.Size = new Size(187, 29);
+            label33.TabIndex = 0;
+            label33.Text = "HIỂN THỊ KẾT QUẢ TÌM KIẾM";
+            label33.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(183, 24);
+            button5.Name = "button5";
+            button5.Size = new Size(90, 25);
+            button5.TabIndex = 13;
+            button5.Text = "Mục lưu trữ";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // ckbSelectAll
+            // 
+            ckbSelectAll.AutoSize = true;
+            ckbSelectAll.Location = new Point(369, 27);
+            ckbSelectAll.Name = "ckbSelectAll";
+            ckbSelectAll.Size = new Size(93, 21);
+            ckbSelectAll.TabIndex = 10;
+            ckbSelectAll.Text = "Chọn tất cả";
+            ckbSelectAll.UseVisualStyleBackColor = true;
+            ckbSelectAll.CheckedChanged += ckbSelectAll_CheckedChanged;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button2.BackColor = Color.SeaGreen;
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button2.ForeColor = SystemColors.Control;
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(1162, 10);
+            button2.Name = "button2";
+            button2.Size = new Size(85, 39);
+            button2.TabIndex = 8;
+            button2.Text = "Xuất file";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button3.BackColor = Color.SeaGreen;
+            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            button3.ForeColor = SystemColors.Control;
+            button3.Image = Resources.icons8_plus_32;
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(1024, 9);
+            button3.Name = "button3";
+            button3.Size = new Size(95, 41);
+            button3.TabIndex = 9;
+            button3.Text = "Bán thuốc";
+            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // tableLayoutPanel7
+            // 
+            tableLayoutPanel7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel7.ColumnCount = 2;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.63363F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 79.36637F));
+            tableLayoutPanel7.Controls.Add(tableLayoutPanel8, 0, 0);
+            tableLayoutPanel7.Controls.Add(tableLayoutPanel9, 1, 0);
+            tableLayoutPanel7.Location = new Point(22, 57);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 1;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Size = new Size(1231, 497);
+            tableLayoutPanel7.TabIndex = 6;
+            // 
+            // tableLayoutPanel8
+            // 
+            tableLayoutPanel8.ColumnCount = 1;
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel8.Controls.Add(groupBox5, 0, 0);
+            tableLayoutPanel8.Dock = DockStyle.Fill;
+            tableLayoutPanel8.Location = new Point(3, 3);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 1;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 93.89002F));
+            tableLayoutPanel8.Size = new Size(248, 491);
+            tableLayoutPanel8.TabIndex = 0;
+            // 
+            // groupBox5
+            // 
+            groupBox5.BackColor = SystemColors.Control;
+            groupBox5.Controls.Add(btnResetSearchBill);
+            groupBox5.Controls.Add(label35);
+            groupBox5.Controls.Add(cbbTrangThai);
+            groupBox5.Controls.Add(cbbNhanVien);
+            groupBox5.Controls.Add(label41);
+            groupBox5.Controls.Add(label36);
+            groupBox5.Controls.Add(label42);
+            groupBox5.Controls.Add(label37);
+            groupBox5.Controls.Add(label38);
+            groupBox5.Controls.Add(label39);
+            groupBox5.Controls.Add(cbbGiaTriDen);
+            groupBox5.Controls.Add(label40);
+            groupBox5.Controls.Add(cbbGiaTriTu);
+            groupBox5.Controls.Add(cbbDenNgay);
+            groupBox5.Controls.Add(cbbTuNgay);
+            groupBox5.Controls.Add(btnTimKiemHoaDon);
+            groupBox5.Controls.Add(tbTenKhach);
+            groupBox5.Controls.Add(tbMaTenThuoc);
+            groupBox5.Controls.Add(tbMaHoaDon);
+            groupBox5.Dock = DockStyle.Fill;
+            groupBox5.Location = new Point(3, 3);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(242, 485);
+            groupBox5.TabIndex = 0;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Tìm kiếm";
+            // 
+            // btnResetSearchBill
+            // 
+            btnResetSearchBill.Location = new Point(31, 454);
+            btnResetSearchBill.Name = "btnResetSearchBill";
+            btnResetSearchBill.Size = new Size(82, 25);
+            btnResetSearchBill.TabIndex = 9;
+            btnResetSearchBill.Text = "Nhập lại";
+            btnResetSearchBill.UseVisualStyleBackColor = true;
+            btnResetSearchBill.Click += btnResetSearchBill_Click;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Location = new Point(24, 159);
+            label35.Name = "label35";
+            label35.Size = new Size(66, 17);
+            label35.TabIndex = 8;
+            label35.Text = "Trạng thái";
+            // 
+            // cbbTrangThai
+            // 
+            cbbTrangThai.FormattingEnabled = true;
+            cbbTrangThai.Items.AddRange(new object[] { "Đã thanh toán", "Đang chờ" });
+            cbbTrangThai.Location = new Point(113, 156);
+            cbbTrangThai.Name = "cbbTrangThai";
+            cbbTrangThai.Size = new Size(107, 25);
+            cbbTrangThai.TabIndex = 7;
+            // 
+            // cbbNhanVien
+            // 
+            cbbNhanVien.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbbNhanVien.FormattingEnabled = true;
+            cbbNhanVien.Location = new Point(112, 419);
+            cbbNhanVien.Name = "cbbNhanVien";
+            cbbNhanVien.Size = new Size(108, 25);
+            cbbNhanVien.TabIndex = 6;
+            // 
+            // label41
+            // 
+            label41.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label41.AutoSize = true;
+            label41.Location = new Point(99, 310);
+            label41.Name = "label41";
+            label41.Size = new Size(76, 17);
+            label41.TabIndex = 5;
+            label41.Text = "-- Số tiền --";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Location = new Point(85, 194);
+            label36.Name = "label36";
+            label36.Size = new Size(90, 17);
+            label36.TabIndex = 5;
+            label36.Text = "-- Ngày tạo --";
+            // 
+            // label42
+            // 
+            label42.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label42.AutoSize = true;
+            label42.Location = new Point(19, 427);
+            label42.Name = "label42";
+            label42.Size = new Size(66, 17);
+            label42.TabIndex = 4;
+            label42.Text = "Nhân viên";
+            // 
+            // label37
+            // 
+            label37.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label37.AutoSize = true;
+            label37.Location = new Point(23, 386);
+            label37.Name = "label37";
+            label37.Size = new Size(31, 17);
+            label37.TabIndex = 4;
+            label37.Text = "Đến";
+            // 
+            // label38
+            // 
+            label38.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label38.AutoSize = true;
+            label38.Location = new Point(23, 273);
+            label38.Name = "label38";
+            label38.Size = new Size(63, 17);
+            label38.TabIndex = 4;
+            label38.Text = "Đến ngày";
+            // 
+            // label39
+            // 
+            label39.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label39.AutoSize = true;
+            label39.Location = new Point(19, 339);
+            label39.Name = "label39";
+            label39.Size = new Size(59, 17);
+            label39.TabIndex = 4;
+            label39.Text = "Giá trị từ";
+            // 
+            // cbbGiaTriDen
+            // 
+            cbbGiaTriDen.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbbGiaTriDen.FormattingEnabled = true;
+            cbbGiaTriDen.Location = new Point(112, 378);
+            cbbGiaTriDen.Name = "cbbGiaTriDen";
+            cbbGiaTriDen.Size = new Size(107, 25);
+            cbbGiaTriDen.TabIndex = 3;
+            cbbGiaTriDen.KeyPress += cbbGiaTriTu_KeyPress;
+            // 
+            // label40
+            // 
+            label40.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label40.AutoSize = true;
+            label40.Location = new Point(23, 231);
+            label40.Name = "label40";
+            label40.Size = new Size(55, 17);
+            label40.TabIndex = 4;
+            label40.Text = "Từ ngày";
+            // 
+            // cbbGiaTriTu
+            // 
+            cbbGiaTriTu.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbbGiaTriTu.FormattingEnabled = true;
+            cbbGiaTriTu.Location = new Point(112, 339);
+            cbbGiaTriTu.Name = "cbbGiaTriTu";
+            cbbGiaTriTu.Size = new Size(107, 25);
+            cbbGiaTriTu.TabIndex = 3;
+            cbbGiaTriTu.KeyPress += cbbGiaTriTu_KeyPress;
+            // 
+            // cbbDenNgay
+            // 
+            cbbDenNgay.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbbDenNgay.FormattingEnabled = true;
+            cbbDenNgay.Location = new Point(113, 265);
+            cbbDenNgay.Name = "cbbDenNgay";
+            cbbDenNgay.Size = new Size(107, 25);
+            cbbDenNgay.TabIndex = 3;
+            // 
+            // cbbTuNgay
+            // 
+            cbbTuNgay.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbbTuNgay.FormattingEnabled = true;
+            cbbTuNgay.Location = new Point(112, 223);
+            cbbTuNgay.Name = "cbbTuNgay";
+            cbbTuNgay.Size = new Size(107, 25);
+            cbbTuNgay.TabIndex = 3;
+            // 
+            // btnTimKiemHoaDon
+            // 
+            btnTimKiemHoaDon.Location = new Point(134, 453);
+            btnTimKiemHoaDon.Name = "btnTimKiemHoaDon";
+            btnTimKiemHoaDon.Size = new Size(85, 26);
+            btnTimKiemHoaDon.TabIndex = 2;
+            btnTimKiemHoaDon.Text = "Tìm kiếm";
+            btnTimKiemHoaDon.UseVisualStyleBackColor = true;
+            btnTimKiemHoaDon.Click += btnTimKiemHoaDon_Click;
+            // 
+            // tbTenKhach
+            // 
+            tbTenKhach.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbTenKhach.Location = new Point(24, 111);
+            tbTenKhach.Name = "tbTenKhach";
+            tbTenKhach.PlaceholderText = "Theo tên khách hàng";
+            tbTenKhach.Size = new Size(196, 25);
+            tbTenKhach.TabIndex = 0;
+            // 
+            // tbMaTenThuoc
+            // 
+            tbMaTenThuoc.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbMaTenThuoc.Location = new Point(24, 67);
+            tbMaTenThuoc.Name = "tbMaTenThuoc";
+            tbMaTenThuoc.PlaceholderText = "Theo mã, tên thuốc";
+            tbMaTenThuoc.Size = new Size(196, 25);
+            tbMaTenThuoc.TabIndex = 0;
+            // 
+            // tbMaHoaDon
+            // 
+            tbMaHoaDon.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tbMaHoaDon.Location = new Point(23, 24);
+            tbMaHoaDon.Name = "tbMaHoaDon";
+            tbMaHoaDon.PlaceholderText = "Theo mã hoá đơn";
+            tbMaHoaDon.Size = new Size(196, 25);
+            tbMaHoaDon.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            tableLayoutPanel9.ColumnCount = 1;
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel9.Controls.Add(dgvHoaDon, 0, 0);
+            tableLayoutPanel9.Controls.Add(tableLayoutPanel5, 0, 1);
+            tableLayoutPanel9.Dock = DockStyle.Fill;
+            tableLayoutPanel9.Location = new Point(257, 3);
+            tableLayoutPanel9.Name = "tableLayoutPanel9";
+            tableLayoutPanel9.RowCount = 2;
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 91.24236F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 8.757637F));
+            tableLayoutPanel9.Size = new Size(971, 491);
+            tableLayoutPanel9.TabIndex = 1;
+            // 
+            // dgvHoaDon
+            // 
+            dgvHoaDon.AllowUserToAddRows = false;
+            dgvHoaDon.AllowUserToDeleteRows = false;
+            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvHoaDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHoaDon.Columns.AddRange(new DataGridViewColumn[] { Column35, dataGridViewTextBoxColumn12, Column34, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn10 });
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle9;
+            dgvHoaDon.Dock = DockStyle.Fill;
+            dgvHoaDon.Location = new Point(3, 3);
+            dgvHoaDon.MultiSelect = false;
+            dgvHoaDon.Name = "dgvHoaDon";
+            dgvHoaDon.RowHeadersVisible = false;
+            dgvHoaDon.Size = new Size(965, 442);
+            dgvHoaDon.TabIndex = 2;
+            // 
+            // Column35
+            // 
+            Column35.FillWeight = 30F;
+            Column35.HeaderText = "Chọn";
+            Column35.Name = "Column35";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            dataGridViewTextBoxColumn12.FillWeight = 70F;
+            dataGridViewTextBoxColumn12.HeaderText = "Mã hoá đơn";
+            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // Column34
+            // 
+            Column34.HeaderText = "Trạng thái";
+            Column34.Name = "Column34";
+            Column34.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            dataGridViewTextBoxColumn11.HeaderText = "Thời gian";
+            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            dataGridViewTextBoxColumn7.HeaderText = "Khách hàng";
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.HeaderText = "Tổng tiền";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            dataGridViewTextBoxColumn10.HeaderText = "Nhân viên";
+            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 340F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 206F));
+            tableLayoutPanel5.Controls.Add(tableLayoutPanel10, 0, 0);
+            tableLayoutPanel5.Controls.Add(tableLayoutPanel6, 2, 0);
+            tableLayoutPanel5.Controls.Add(btnBillDelete, 1, 0);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(3, 451);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new Size(965, 37);
+            tableLayoutPanel5.TabIndex = 3;
+            // 
+            // tableLayoutPanel10
+            // 
+            tableLayoutPanel10.ColumnCount = 3;
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56.57143F));
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 43.42857F));
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 223F));
+            tableLayoutPanel10.Controls.Add(label32, 0, 0);
+            tableLayoutPanel10.Controls.Add(cbbPageSize, 1, 0);
+            tableLayoutPanel10.Controls.Add(lbSoDong, 2, 0);
+            tableLayoutPanel10.Location = new Point(3, 3);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 1;
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.Size = new Size(412, 31);
+            tableLayoutPanel10.TabIndex = 7;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Dock = DockStyle.Fill;
+            label32.Location = new Point(3, 0);
+            label32.Name = "label32";
+            label32.Size = new Size(100, 31);
+            label32.TabIndex = 0;
+            label32.Text = "Hiển thị tối đa";
+            label32.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cbbPageSize
+            // 
+            cbbPageSize.Dock = DockStyle.Fill;
+            cbbPageSize.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbPageSize.FormattingEnabled = true;
+            cbbPageSize.Items.AddRange(new object[] { "25", "50", "100", "200" });
+            cbbPageSize.Location = new Point(109, 3);
+            cbbPageSize.Name = "cbbPageSize";
+            cbbPageSize.Size = new Size(76, 25);
+            cbbPageSize.TabIndex = 1;
+            cbbPageSize.SelectedIndexChanged += cbbPageSize_SelectedIndexChanged;
+            // 
+            // lbSoDong
+            // 
+            lbSoDong.AutoSize = true;
+            lbSoDong.Dock = DockStyle.Fill;
+            lbSoDong.Location = new Point(191, 0);
+            lbSoDong.Name = "lbSoDong";
+            lbSoDong.Size = new Size(218, 31);
+            lbSoDong.TabIndex = 2;
+            lbSoDong.Text = "dòng (tổng cộng ...)";
+            lbSoDong.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel6
+            // 
+            tableLayoutPanel6.ColumnCount = 3;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.12782F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.87218F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 41F));
+            tableLayoutPanel6.Controls.Add(label34, 0, 0);
+            tableLayoutPanel6.Controls.Add(lbTotalPage, 2, 0);
+            tableLayoutPanel6.Controls.Add(numCurrentPage, 1, 0);
+            tableLayoutPanel6.Location = new Point(762, 3);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 1;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel6.Size = new Size(154, 31);
+            tableLayoutPanel6.TabIndex = 6;
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.Dock = DockStyle.Fill;
+            label34.Location = new Point(3, 0);
+            label34.Name = "label34";
+            label34.Size = new Size(51, 31);
+            label34.TabIndex = 3;
+            label34.Text = "Trang";
+            label34.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // lbTotalPage
+            // 
+            lbTotalPage.AutoSize = true;
+            lbTotalPage.Dock = DockStyle.Fill;
+            lbTotalPage.Location = new Point(115, 0);
+            lbTotalPage.Name = "lbTotalPage";
+            lbTotalPage.Size = new Size(36, 31);
+            lbTotalPage.TabIndex = 5;
+            lbTotalPage.Text = "/5";
+            lbTotalPage.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // numCurrentPage
+            // 
+            numCurrentPage.Dock = DockStyle.Fill;
+            numCurrentPage.Location = new Point(60, 3);
+            numCurrentPage.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numCurrentPage.Name = "numCurrentPage";
+            numCurrentPage.Size = new Size(49, 25);
+            numCurrentPage.TabIndex = 6;
+            numCurrentPage.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numCurrentPage.Click += numCurrentPage_Click;
+            numCurrentPage.KeyUp += numCurrentPage_KeyUp;
+            // 
+            // btnBillDelete
+            // 
+            btnBillDelete.Location = new Point(422, 3);
+            btnBillDelete.Name = "btnBillDelete";
+            btnBillDelete.Size = new Size(68, 28);
+            btnBillDelete.TabIndex = 11;
+            btnBillDelete.Text = "Xoá";
+            btnBillDelete.UseVisualStyleBackColor = true;
+            btnBillDelete.Click += btnBillDelete_Click;
             // 
             // errorProvider1
             // 
@@ -2160,22 +2778,22 @@ namespace QPharma.GUI
             tableLayoutPanel4.Controls.Add(tabControl1, 0, 1);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(0, 0);
-            tableLayoutPanel4.Margin = new Padding(6, 5, 6, 5);
+            tableLayoutPanel4.Margin = new Padding(4, 3, 4, 3);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 115F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(2510, 1212);
+            tableLayoutPanel4.Size = new Size(1287, 645);
             tableLayoutPanel4.TabIndex = 2;
             // 
             // QuanLyThuocGUI
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2510, 1212);
+            ClientSize = new Size(1287, 645);
             Controls.Add(tableLayoutPanel4);
-            Margin = new Padding(6, 5, 6, 5);
-            MinimumSize = new Size(1715, 1239);
+            Margin = new Padding(4, 3, 4, 3);
+            MinimumSize = new Size(1205, 634);
             Name = "QuanLyThuocGUI";
             Text = "QUẢN LÝ THUỐC";
             Load += QuanLyThuocView_Load;
@@ -2217,6 +2835,22 @@ namespace QPharma.GUI
             panel7.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
+            tabHoaDon.ResumeLayout(false);
+            tabHoaDon.PerformLayout();
+            flowLayoutTimKiem.ResumeLayout(false);
+            flowLayoutTimKiem.PerformLayout();
+            tableLayoutPanel7.ResumeLayout(false);
+            tableLayoutPanel8.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            tableLayoutPanel9.ResumeLayout(false);
+            ((ISupportInitialize)dgvHoaDon).EndInit();
+            tableLayoutPanel5.ResumeLayout(false);
+            tableLayoutPanel10.ResumeLayout(false);
+            tableLayoutPanel10.PerformLayout();
+            tableLayoutPanel6.ResumeLayout(false);
+            tableLayoutPanel6.PerformLayout();
+            ((ISupportInitialize)numCurrentPage).EndInit();
             ((ISupportInitialize)errorProvider1).EndInit();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
@@ -2382,5 +3016,54 @@ namespace QPharma.GUI
         private NumericUpDown numSL;
         private NumericUpDown numGiaBan;
         private NumericUpDown numGiaNhap;
+        private TabPage tabHoaDon;
+        private Button button5;
+        private Button btnBillDelete;
+        private CheckBox ckbSelectAll;
+        private Button button2;
+        private Button button3;
+        private TableLayoutPanel tableLayoutPanel7;
+        private TableLayoutPanel tableLayoutPanel8;
+        private GroupBox groupBox5;
+        private Label label37;
+        private Label label38;
+        private Label label39;
+        private ComboBox cbbGiaTriDen;
+        private Label label40;
+        private ComboBox cbbGiaTriTu;
+        private ComboBox cbbDenNgay;
+        private ComboBox cbbTuNgay;
+        private Button btnTimKiemHoaDon;
+        private TextBox tbTenKhach;
+        private TextBox tbMaTenThuoc;
+        private TextBox tbMaHoaDon;
+        private TableLayoutPanel tableLayoutPanel9;
+        private DataGridView dgvHoaDon;
+        private TableLayoutPanel tableLayoutPanel5;
+        private TableLayoutPanel tableLayoutPanel6;
+        private Label label34;
+        private Label lbTotalPage;
+        private NumericUpDown numCurrentPage;
+        private TableLayoutPanel tableLayoutPanel10;
+        private Label label32;
+        private ComboBox cbbPageSize;
+        private Label label36;
+        private Label label41;
+        private ComboBox cbbNhanVien;
+        private Label label42;
+        private Label lbSoDong;
+        private Label label35;
+        private ComboBox cbbTrangThai;
+        private Button btnResetSearchBill;
+        private FlowLayoutPanel flowLayoutTimKiem;
+        private Label label33;
+        private Button btnExitSearch;
+        private DataGridViewCheckBoxColumn Column35;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridViewTextBoxColumn Column34;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }

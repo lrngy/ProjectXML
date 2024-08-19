@@ -206,6 +206,15 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đang chờ.
+        /// </summary>
+        internal static string Awaiting_payment {
+            get {
+                return ResourceManager.GetString("Awaiting payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap btnDanhMuc_Image {
@@ -520,6 +529,56 @@ namespace QPharma.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_export_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-export-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_plus_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-plus-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_plus_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-plus-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_shutdown_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-shutdown-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_shutdown_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-shutdown-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ictuLogo {
             get {
                 object obj = ResourceManager.GetObject("ictuLogo", resourceCulture);
@@ -738,6 +797,24 @@ namespace QPharma.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đã thanh toán.
+        /// </summary>
+        internal static string Paid {
+            get {
+                return ResourceManager.GetString("Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng tích chọn hoá đơn để xoá.
+        /// </summary>
+        internal static string Please_check_bill_to_delete {
+            get {
+                return ResourceManager.GetString("Please check bill to delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng chọn vị trí thuốc.
         /// </summary>
         internal static string Please_choose_a_medicine_location {
@@ -923,6 +1000,16 @@ namespace QPharma.Properties {
         internal static string Please_select_the_supplier_you_want_to_edit {
             get {
                 return ResourceManager.GetString("Please select the supplier you want to edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plus {
+            get {
+                object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

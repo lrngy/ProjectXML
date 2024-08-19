@@ -2,7 +2,7 @@
 
 public class CustomerDTO
 {
-    private int id;
+    private string id;
     private string name;
     private string phone;
     private string address;
@@ -12,7 +12,23 @@ public class CustomerDTO
     private string updated;
     private string deleted;
 
-    public int Id
+    public CustomerDTO()
+    {
+    }
+    public CustomerDTO(string id, string name, string phone, string address, string note, bool status, string created, string updated, string deleted)
+    {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.note = note;
+        this.status = status;
+        this.created = created;
+        this.updated = updated;
+        this.deleted = deleted;
+    }
+
+    public string Id
     {
         get => id;
         set => id = value;

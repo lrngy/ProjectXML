@@ -270,12 +270,30 @@ public class MedicineDAL
     {
         try
         {
-            var query = "delete from medicines where medicine_id = @id";
-            SqlParameter[] sqlParameters =
+            var query = new Dictionary<string, SqlParameter[]>
             {
-                new("@id", id)
+
+                {
+                    "delete from suppliers_history where medicine_id = @id",
+                    [
+                        new ("@id", id)
+                    ]
+
+                },
+                {
+                    "delete from bill_details where medicine_id = @id",
+                    [
+                        new ("@id", id)
+                    ]
+                },
+                {
+                    "delete from medicines where medicine_id = @id",
+                    [
+                        new ("@id", id)
+                    ]
+                },
             };
-            DB.ExecuteNonQuery(query, sqlParameters);
+            DB.ExecuteTransaction(query);
             return Predefined.SUCCESS;
         }
         catch (Exception ex)

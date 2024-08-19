@@ -2,7 +2,7 @@
 
 public class BillDTO
 {
-    private int id;
+    private string id;
     private int total;
     private int customerPaid;
     private bool status;
@@ -12,8 +12,28 @@ public class BillDTO
     private string created;
     private string deleted;
     private List<BillDetailDTO> billDetails;
+    private string doctorPrescribed;
 
-    public int Id
+    public BillDTO()
+    {
+    }
+
+    public BillDTO(string id, int total, int customerPaid, bool status, string note, CustomerDTO customer, StaffDTO staff, string created, string deleted, List<BillDetailDTO> billDetails, string doctorPrescribed)
+    {
+        this.id = id;
+        this.total = total;
+        this.customerPaid = customerPaid;
+        this.status = status;
+        this.note = note;
+        this.customer = customer;
+        this.staff = staff;
+        this.created = created;
+        this.deleted = deleted;
+        this.billDetails = billDetails;
+        this.doctorPrescribed = doctorPrescribed;
+    }
+
+    public string Id
     {
         get => id;
         set => id = value;
@@ -71,5 +91,11 @@ public class BillDTO
     {
         get => billDetails;
         set => billDetails = value;
+    }
+
+    public string DoctorPrescribed
+    {
+        get => doctorPrescribed;
+        set => doctorPrescribed = value;
     }
 }

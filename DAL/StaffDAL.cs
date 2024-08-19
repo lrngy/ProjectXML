@@ -10,7 +10,7 @@ namespace QPharma.DAL
             var list = new List<StaffDTO>();
             try
             {
-                var query = "SELECT * FROM staffs";
+                var query = "SELECT * FROM staffs where staff_id != 'admin'";
                 var dt = DB.ExecuteQuery(query);
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -46,8 +46,7 @@ namespace QPharma.DAL
             try
             {
                 string query = @"SELECT * FROM staffs
-                                    WHERE
-                                        staff_deleted IS NULL AND
+                                    WHERE staff_id != 'admin' and staff_deleted IS NULL AND
                                         (
                                             LOWER(staff_id) LIKE '%' + LOWER(@searchText) + '%' OR
                                             LOWER(staff_name) LIKE '%' + LOWER(@searchText) + '%' OR
@@ -298,7 +297,9 @@ namespace QPharma.DAL
         {
             try
             {
-                var query = $"DELETE FROM staffs WHERE username = '{username}'";
+                var query = "update bills set staff_id = null";
+
+                var query1 = $"DELETE FROM staffs WHERE username = '{username}'";
 
                 string query2 = $"DELETE FROM login_log WHERE username = @username";
                 SqlParameter[] parameters2 = { new SqlParameter("@username", username) };
@@ -306,7 +307,8 @@ namespace QPharma.DAL
                 string query3 = $"DELETE FROM users WHERE username = @username";
                 SqlParameter[] parameters = { new SqlParameter("@username", username) };
 
-                if (DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
+                if(DB.ExecuteNonQuery(query) <= 0) return Predefined.ERROR;
+                if (DB.ExecuteNonQuery(query1) <= 0) return Predefined.ERROR;
                 if (DB.ExecuteNonQuery(query2, parameters2) < 0) MessageBox.Show("Xóa log thất bại!");
 
                 if (DB.ExecuteNonQuery(query3, parameters) <= 0) MessageBox.Show("Xóa người dùng thất bại!");

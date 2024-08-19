@@ -95,6 +95,7 @@ create table bills(
 bill_id int IDENTITY(1,1) primary key,
 bill_total int,
 bill_customer_paid int,
+bill_doctor_prescribed nvarchar(30),
 bill_status bit,
 bill_note ntext,
 customer_id int foreign key references customers(customer_id),
@@ -133,5 +134,5 @@ VALUES('admin', '$2a$12$o32w9utWr65ZcNmk3bDQtOuzvJ4uai4KHpqMVJVhPgXQILJ63xjZO');
 
 INSERT INTO staffs
 (staff_id, staff_name, staff_sex, staff_year_of_birth, staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)
-VALUES('nv1', 'Nguyen Van A', 1, getdate(), 1, 0, getdate(), '', '', 'admin');
+VALUES('admin', 'Nguyen Van A', 1, getdate(), 1, 0, getdate(), '', '', 'admin');
 

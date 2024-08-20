@@ -4,9 +4,49 @@ namespace QPharma.BUS
     public class BillBUS
     {
         private BillDAL billDAL;
+        private CustomerDAL customerDAL;
         public BillBUS()
         {
-            billDAL = new BillDAL();
+            billDAL = new();
+            customerDAL = new();
+        }
+
+        public int SaveBill(ref BillDTO bill)
+        {
+            int result = Predefined.ERROR;
+
+            if (string.IsNullOrEmpty(bill.Customer.Id))
+            {
+                result = customerDAL.Insert(bill.Customer);
+                if (result != Predefined.SUCCESS)
+                {
+                    return result;
+                }
+            }
+
+
+            bill.Customer = customerDAL.GetByLastCustomer();
+
+            if (bill.Customer is null)
+            {
+                return result;
+            }
+
+            if (bill.Id is null)
+            {
+                bill.Id = Convert.ToBase64String(Guid.NewGuid().ToByteArray())
+                    .Replace("/", "").Replace("+", "").Substring(0, 8);
+                result = billDAL.SaveBill(bill);
+                if (result != Predefined.SUCCESS)
+                {
+                    result = customerDAL.Delete(bill.Customer.Id);
+                }
+            }
+            else
+            {
+                result = billDAL.Update(bill);
+            }
+            return result;
         }
 
 
@@ -26,7 +66,7 @@ namespace QPharma.BUS
             return billDAL.ForceDelete(id);
         }
 
-        public (int totalPage, int numRecord, List<BillDTO> listBills) Search(int pageSize, int currentPage, string maHoaDon, string maHoacTenThuoc, 
+        public (int totalPage, int numRecord, List<BillDTO> listBills) Search(int pageSize, int currentPage, string maHoaDon, string maHoacTenThuoc,
             string tenKhachHang, int trangThai, string tuNgay, string denNgay, string giaTriTu, string giaTriDen, string maNhanVien)
         {
             StringBuilder whereClause = new StringBuilder("Where 1 = 1");
@@ -110,6 +150,11 @@ namespace QPharma.BUS
         public int ForceDeleteAll()
         {
             return billDAL.ForceDeleteAll();
+        }
+
+        public int RevertSellBill(string id)
+        {
+            return billDAL.RevertSellBill(id);
         }
     }
 }

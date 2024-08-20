@@ -77,46 +77,18 @@ public partial class MainGUI : BaseForm
         lbWelcome.Text = string.Format(Resources.Hello_text, staff.name);
     }
 
-    private string GetDayOfWeekInVietnamese(DayOfWeek dayOfWeek)
-    {
-        switch (dayOfWeek)
-        {
-            case DayOfWeek.Sunday:
-                return Resources.Sunday;
-            case DayOfWeek.Monday:
-                return Resources.Monday;
-            case DayOfWeek.Tuesday:
-                return Resources.Tuesday;
-            case DayOfWeek.Wednesday:
-                return Resources.Wednesday;
-            case DayOfWeek.Thursday:
-                return Resources.Thursday;
-            case DayOfWeek.Friday:
-                return Resources.Friday;
-            case DayOfWeek.Saturday:
-                return Resources.Saturday;
-            default:
-                return "";
-        }
-    }
+
 
     private void MainView_Load(object sender, EventArgs e)
     {
         ChangeTextWelcome();
         var currentDate = DateTime.Now;
-        var formattedDate = string.Format(Resources.Date_format,
-            GetDayOfWeekInVietnamese(currentDate.DayOfWeek),
-            currentDate.Day,
-            currentDate.Month,
-            currentDate.Year);
+        lbDate.Text = CustomDateTime.GetFormattedDate();
+        lbTime.Text = DateTime.Now.ToString(Config.Instance.ConfigureFile.TimeFormat);
 
-        lbDate.Text = formattedDate;
-
-
-        lbTime.Text = DateTime.Now.ToString( Config.Instance.ConfigureFile.TimeFormat);
         var timer = new Timer();
         timer.Interval = 1000;
-        timer.Tick += (s, args) => { lbTime.Text = DateTime.Now.ToString( Config.Instance.ConfigureFile.TimeFormat); };
+        timer.Tick += (s, args) => { lbDate.Text = CustomDateTime.GetFormattedDate(); lbTime.Text = DateTime.Now.ToString(Config.Instance.ConfigureFile.TimeFormat); };
         timer.Start();
     }
 
@@ -204,5 +176,11 @@ public partial class MainGUI : BaseForm
     private void MainGUI_FormClosed(object sender, FormClosedEventArgs e)
     {
         Application.Exit();
+    }
+
+    private void btnHoaDon_Click(object sender, EventArgs e)
+    {
+        Show(ref quanLyThuocView, () => new QuanLyThuocGUI(user, 4));
+        //quanLyThuocView.tabControl1.SelectTab(2);
     }
 }

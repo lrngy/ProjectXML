@@ -195,13 +195,13 @@ namespace QPharma.GUI
             tbTenViTri = new TextBox();
             label29 = new Label();
             tabHoaDon = new TabPage();
+            button4 = new Button();
             flowLayoutTimKiem = new FlowLayoutPanel();
             btnExitSearch = new Button();
             label33 = new Label();
             button5 = new Button();
             ckbSelectAll = new CheckBox();
-            button2 = new Button();
-            button3 = new Button();
+            btnBanHang = new Button();
             tableLayoutPanel7 = new TableLayoutPanel();
             tableLayoutPanel8 = new TableLayoutPanel();
             groupBox5 = new GroupBox();
@@ -2213,11 +2213,11 @@ namespace QPharma.GUI
             // 
             // tabHoaDon
             // 
+            tabHoaDon.Controls.Add(button4);
             tabHoaDon.Controls.Add(flowLayoutTimKiem);
             tabHoaDon.Controls.Add(button5);
             tabHoaDon.Controls.Add(ckbSelectAll);
-            tabHoaDon.Controls.Add(button2);
-            tabHoaDon.Controls.Add(button3);
+            tabHoaDon.Controls.Add(btnBanHang);
             tabHoaDon.Controls.Add(tableLayoutPanel7);
             tabHoaDon.Location = new Point(4, 26);
             tabHoaDon.Name = "tabHoaDon";
@@ -2227,12 +2227,23 @@ namespace QPharma.GUI
             tabHoaDon.Text = "Hoá đơn";
             tabHoaDon.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            button4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button4.Location = new Point(1062, 23);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 15;
+            button4.Text = "Làm mới";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // flowLayoutTimKiem
             // 
             flowLayoutTimKiem.Controls.Add(btnExitSearch);
             flowLayoutTimKiem.Controls.Add(label33);
             flowLayoutTimKiem.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutTimKiem.Location = new Point(583, 17);
+            flowLayoutTimKiem.Location = new Point(523, 17);
             flowLayoutTimKiem.Name = "flowLayoutTimKiem";
             flowLayoutTimKiem.RightToLeft = RightToLeft.No;
             flowLayoutTimKiem.Size = new Size(357, 31);
@@ -2283,35 +2294,22 @@ namespace QPharma.GUI
             ckbSelectAll.UseVisualStyleBackColor = true;
             ckbSelectAll.CheckedChanged += ckbSelectAll_CheckedChanged;
             // 
-            // button2
+            // btnBanHang
             // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button2.BackColor = Color.SeaGreen;
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            button2.ForeColor = SystemColors.Control;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(1162, 10);
-            button2.Name = "button2";
-            button2.Size = new Size(85, 39);
-            button2.TabIndex = 8;
-            button2.Text = "Xuất file";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button3.BackColor = Color.SeaGreen;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            button3.ForeColor = SystemColors.Control;
-            button3.Image = Resources.icons8_plus_32;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(1024, 9);
-            button3.Name = "button3";
-            button3.Size = new Size(95, 41);
-            button3.TabIndex = 9;
-            button3.Text = "Bán thuốc";
-            button3.TextAlign = ContentAlignment.MiddleRight;
-            button3.UseVisualStyleBackColor = false;
+            btnBanHang.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnBanHang.BackColor = Color.SeaGreen;
+            btnBanHang.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnBanHang.ForeColor = SystemColors.Control;
+            btnBanHang.Image = Resources.icons8_plus_32;
+            btnBanHang.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBanHang.Location = new Point(1155, 8);
+            btnBanHang.Name = "btnBanHang";
+            btnBanHang.Size = new Size(95, 41);
+            btnBanHang.TabIndex = 9;
+            btnBanHang.Text = "Bán thuốc";
+            btnBanHang.TextAlign = ContentAlignment.MiddleRight;
+            btnBanHang.UseVisualStyleBackColor = false;
+            btnBanHang.Click += btnBanHang_Click;
             // 
             // tableLayoutPanel7
             // 
@@ -2592,13 +2590,12 @@ namespace QPharma.GUI
             // 
             // Column35
             // 
-            Column35.FillWeight = 30F;
+            Column35.FillWeight = 35F;
             Column35.HeaderText = "Chọn";
             Column35.Name = "Column35";
             // 
             // dataGridViewTextBoxColumn12
             // 
-            dataGridViewTextBoxColumn12.FillWeight = 70F;
             dataGridViewTextBoxColumn12.HeaderText = "Mã hoá đơn";
             dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             dataGridViewTextBoxColumn12.ReadOnly = true;
@@ -2697,7 +2694,7 @@ namespace QPharma.GUI
             lbSoDong.Name = "lbSoDong";
             lbSoDong.Size = new Size(218, 31);
             lbSoDong.TabIndex = 2;
-            lbSoDong.Text = "dòng (tổng cộng ...)";
+            lbSoDong.Text = "hoá đơn (tổng cộng ...)";
             lbSoDong.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel6
@@ -3020,8 +3017,7 @@ namespace QPharma.GUI
         private Button button5;
         private Button btnBillDelete;
         private CheckBox ckbSelectAll;
-        private Button button2;
-        private Button button3;
+        private Button btnBanHang;
         private TableLayoutPanel tableLayoutPanel7;
         private TableLayoutPanel tableLayoutPanel8;
         private GroupBox groupBox5;
@@ -3058,6 +3054,7 @@ namespace QPharma.GUI
         private FlowLayoutPanel flowLayoutTimKiem;
         private Label label33;
         private Button btnExitSearch;
+        private Button button4;
         private DataGridViewCheckBoxColumn Column35;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private DataGridViewTextBoxColumn Column34;

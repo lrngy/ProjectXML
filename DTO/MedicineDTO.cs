@@ -6,8 +6,8 @@ public class MedicineDTO
     {
     }
 
-    public MedicineDTO(string id, string name, int quantity, double priceOut, CategoryDTO category, bool type,
-        string unit, string mfgDate, string expDate, SupplierDTO supplier, double priceIn,
+    public MedicineDTO(string id, string name, decimal quantity, decimal priceOut, CategoryDTO category, bool type,
+        string unit, string mfgDate, string expDate, SupplierDTO supplier, decimal priceIn,
         MedicineLocationDTO location, string description, string created, string updated, string deleted, string imagePath)
     {
         this.id = id;
@@ -32,8 +32,8 @@ public class MedicineDTO
 
     public string id { get; set; }
     public string name { get; set; }
-    public int quantity { get; set; }
-    public double price_out { get ; set; }
+    public decimal quantity { get; set; }
+    public decimal price_out { get ; set; }
     public CategoryDTO category { get; set; }
     public bool type { get; set; }
     public string unit { get; set; }
@@ -42,7 +42,7 @@ public class MedicineDTO
 
     public SupplierDTO supplier { get; set; }
 
-    public double price_in { get; set; }
+    public decimal price_in { get; set; }
     public MedicineLocationDTO location { get; set; }
     public string description { get; set; }
     public string created { get; set; }

@@ -7,6 +7,11 @@ public class CustomerBUS
     {
         customerDAL = new CustomerDAL();
     }
+
+    public List<CustomerDTO> LoadData()
+    {
+        return customerDAL.LoadData();
+    }
     public CustomerDTO GetById(string id)
     {
         return customerDAL.GetById(id);

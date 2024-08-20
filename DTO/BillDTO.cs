@@ -3,22 +3,22 @@
 public class BillDTO
 {
     private string id;
-    private int total;
-    private int customerPaid;
+    private decimal total;
+    private decimal customerPaid;
     private bool status;
     private string note;
     private CustomerDTO customer;
     private StaffDTO staff;
     private string created;
     private string deleted;
-    private List<BillDetailDTO> billDetails;
+    private List<(MedicineDTO medicine, decimal quantity, decimal price)> billDetails;
     private string doctorPrescribed;
 
     public BillDTO()
     {
     }
 
-    public BillDTO(string id, int total, int customerPaid, bool status, string note, CustomerDTO customer, StaffDTO staff, string created, string deleted, List<BillDetailDTO> billDetails, string doctorPrescribed)
+    public BillDTO(string id, decimal total, decimal customerPaid, bool status, string note, CustomerDTO customer, StaffDTO staff, string created, string deleted, List<(MedicineDTO medicine, decimal quantity, decimal price)> billDetails, string doctorPrescribed)
     {
         this.id = id;
         this.total = total;
@@ -39,13 +39,13 @@ public class BillDTO
         set => id = value;
     }
 
-    public int Total
+    public decimal Total
     {
         get => total;
         set => total = value;
     }
 
-    public int CustomerPaid
+    public decimal CustomerPaid
     {
         get => customerPaid;
         set => customerPaid = value;
@@ -87,7 +87,7 @@ public class BillDTO
         set => deleted = value;
     }
 
-    public List<BillDetailDTO> BillDetails
+    public List<(MedicineDTO medicine, decimal quantity, decimal price)> BillDetails
     {
         get => billDetails;
         set => billDetails = value;

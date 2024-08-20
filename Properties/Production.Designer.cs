@@ -12,7 +12,7 @@ namespace QPharma.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.10.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.11.0.0")]
     public sealed partial class Production : global::System.Configuration.ApplicationSettingsBase {
         
         private static Production defaultInstance = ((Production)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Production())));
@@ -119,7 +119,7 @@ namespace QPharma.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("QPharma.mdf")]
+        [global::System.Configuration.DefaultSettingValueAttribute("QPharma10.mdf")]
         public string DBFile {
             get {
                 return ((string)(this["DBFile"]));

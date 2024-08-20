@@ -170,13 +170,13 @@ namespace QPharma.DAL
                     "INSERT INTO staffs(staff_id, staff_name, staff_sex, staff_year_of_birth, " +
                     "staff_is_manager, staff_is_seller, staff_created, staff_updated, staff_deleted, username)" +
                     "VALUES(@staff_id, @staff_name, @staff_sex, @staff_year_of_birth, @staff_is_manager, @staff_is_seller," +
-                    " @staff_created, @staff_updated, @staff_deleted, @username )";
+                    " getdate(), @staff_updated, @staff_deleted, @username )";
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@staff_id", staffDTO.id),
                     new SqlParameter("@staff_name", staffDTO.name),
                     new SqlParameter("@staff_sex", staffDTO.gender),
-                    new SqlParameter("@staff_year_of_birth", staffDTO.birthday),
+                    new SqlParameter("@staff_year_of_birth", DateTime.ParseExact(staffDTO.birthday, "dd/MM/yyyy", null)),
                     new SqlParameter("@staff_is_manager", staffDTO.isManager),
                     new SqlParameter("@staff_is_seller", staffDTO.isSeller),
                     new SqlParameter("@staff_created", CustomDateTime.GetNow()),
@@ -235,7 +235,7 @@ namespace QPharma.DAL
                     new SqlParameter("@staff_id", staffDTO.id),
                     new SqlParameter("@staff_name", staffDTO.name),
                     new SqlParameter("@staff_sex", staffDTO.gender),
-                    new SqlParameter("@staff_year_of_birth", staffDTO.birthday),
+                    new SqlParameter("@staff_year_of_birth", DateTime.ParseExact(staffDTO.birthday, "dd/MM/yyyy", null)),
                     new SqlParameter("@staff_is_manager", staffDTO.isManager),
                     new SqlParameter("@staff_is_seller", staffDTO.isSeller),
                     new SqlParameter("@staff_created", SqlDbType.DateTime)

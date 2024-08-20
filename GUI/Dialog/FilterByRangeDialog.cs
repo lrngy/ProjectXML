@@ -33,8 +33,8 @@ public partial class FilterByRangeDialog : BaseForm
             return null;
         }
 
-        double priceFrom = 0, priceTo = 0;
-        if (!double.TryParse(from, out priceFrom) || !double.TryParse(to, out priceTo))
+        decimal priceFrom = 0, priceTo = 0;
+        if (!decimal.TryParse(from, out priceFrom) || !decimal.TryParse(to, out priceTo))
         {
             CustomMessageBox.ShowWarning("Vui lòng nhập giá hợp lệ");
             return null;

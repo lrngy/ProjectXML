@@ -27,6 +27,11 @@ public class CustomerDTO
         this.updated = updated;
         this.deleted = deleted;
     }
+    public CustomerDTO(string name, bool status)
+    {
+        this.name = name;
+        this.status = status;
+    }
 
     public string Id
     {

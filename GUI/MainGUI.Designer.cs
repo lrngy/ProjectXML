@@ -30,361 +30,359 @@ namespace QPharma.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGUI));
-            this.lbLogin = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnThongTin = new System.Windows.Forms.Button();
-            this.btnNhanVien = new System.Windows.Forms.Button();
-            this.btnNcc = new System.Windows.Forms.Button();
-            this.btnDanhMuc = new System.Windows.Forms.Button();
-            this.btnQlyThuoc = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thuốcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.danhMụcThuốcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nhàCungCấpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cậpNhậtThôngTinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thôngTinỨngDụngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbWelcome = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnChangePassword = new System.Windows.Forms.Button();
-            this.lbDate = new System.Windows.Forms.Label();
-            this.lbTime = new System.Windows.Forms.Label();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.SuspendLayout();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(MainGUI));
+            lbLogin = new Label();
+            groupBox1 = new GroupBox();
+            btnThongTin = new Button();
+            btnNhanVien = new Button();
+            btnNcc = new Button();
+            btnDanhMuc = new Button();
+            btnQlyThuoc = new Button();
+            menuStrip1 = new MenuStrip();
+            quảnLýToolStripMenuItem = new ToolStripMenuItem();
+            thuốcToolStripMenuItem = new ToolStripMenuItem();
+            danhMụcThuốcToolStripMenuItem = new ToolStripMenuItem();
+            nhàCungCấpToolStripMenuItem = new ToolStripMenuItem();
+            nhânViênToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            thoátToolStripMenuItem = new ToolStripMenuItem();
+            tàiKhoảnToolStripMenuItem = new ToolStripMenuItem();
+            cậpNhậtThôngTinToolStripMenuItem = new ToolStripMenuItem();
+            đổiMậtKhẩuToolStripMenuItem = new ToolStripMenuItem();
+            đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
+            trợGiúpToolStripMenuItem = new ToolStripMenuItem();
+            thôngTinỨngDụngToolStripMenuItem = new ToolStripMenuItem();
+            lbWelcome = new Label();
+            groupBox2 = new GroupBox();
+            btnLogout = new Button();
+            btnChangePassword = new Button();
+            lbDate = new Label();
+            lbTime = new Label();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            btnHoaDon = new Button();
+            groupBox1.SuspendLayout();
+            menuStrip1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            SuspendLayout();
             // 
             // lbLogin
             // 
-            this.lbLogin.AutoSize = true;
-            this.lbLogin.BackColor = System.Drawing.Color.White;
-            this.lbLogin.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLogin.Location = new System.Drawing.Point(440, 75);
-            this.lbLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbLogin.Name = "lbLogin";
-            this.lbLogin.Size = new System.Drawing.Size(211, 32);
-            this.lbLogin.TabIndex = 1;
-            this.lbLogin.Text = "Quản lý hiệu thuốc";
+            lbLogin.AutoSize = true;
+            lbLogin.BackColor = Color.White;
+            lbLogin.Font = new Font("Segoe UI", 18F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lbLogin.Location = new Point(342, 56);
+            lbLogin.Name = "lbLogin";
+            lbLogin.Size = new Size(211, 32);
+            lbLogin.TabIndex = 1;
+            lbLogin.Text = "Quản lý hiệu thuốc";
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.btnThongTin);
-            this.groupBox1.Controls.Add(this.btnNhanVien);
-            this.groupBox1.Controls.Add(this.btnNcc);
-            this.groupBox1.Controls.Add(this.btnDanhMuc);
-            this.groupBox1.Controls.Add(this.btnQlyThuoc);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(60, 246);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1028, 394);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Lựa chọn chức năng quản lý";
+            groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(btnThongTin);
+            groupBox1.Controls.Add(btnNhanVien);
+            groupBox1.Controls.Add(btnNcc);
+            groupBox1.Controls.Add(btnDanhMuc);
+            groupBox1.Controls.Add(btnHoaDon);
+            groupBox1.Controls.Add(btnQlyThuoc);
+            groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            groupBox1.Location = new Point(47, 184);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(2);
+            groupBox1.Size = new Size(800, 296);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Lựa chọn chức năng quản lý";
             // 
             // btnThongTin
             // 
-            this.btnThongTin.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTin.Image = ((System.Drawing.Image)(resources.GetObject("btnThongTin.Image")));
-            this.btnThongTin.Location = new System.Drawing.Point(370, 242);
-            this.btnThongTin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnThongTin.Name = "btnThongTin";
-            this.btnThongTin.Size = new System.Drawing.Size(296, 117);
-            this.btnThongTin.TabIndex = 3;
-            this.btnThongTin.Text = "Thông tin cá nhân";
-            this.btnThongTin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnThongTin.UseVisualStyleBackColor = true;
-            this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click);
+            btnThongTin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThongTin.Image = (Image)resources.GetObject("btnThongTin.Image");
+            btnThongTin.Location = new Point(552, 179);
+            btnThongTin.Margin = new Padding(3, 4, 3, 4);
+            btnThongTin.Name = "btnThongTin";
+            btnThongTin.Size = new Size(230, 88);
+            btnThongTin.TabIndex = 3;
+            btnThongTin.Text = "Thông tin cá nhân";
+            btnThongTin.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnThongTin.UseVisualStyleBackColor = true;
+            btnThongTin.Click += btnThongTin_Click;
             // 
             // btnNhanVien
             // 
-            this.btnNhanVien.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhanVien.Image = ((System.Drawing.Image)(resources.GetObject("btnNhanVien.Image")));
-            this.btnNhanVien.Location = new System.Drawing.Point(33, 245);
-            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNhanVien.Name = "btnNhanVien";
-            this.btnNhanVien.Size = new System.Drawing.Size(291, 111);
-            this.btnNhanVien.TabIndex = 1;
-            this.btnNhanVien.Text = global::QPharma.Properties.Resources.Staff;
-            this.btnNhanVien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNhanVien.UseVisualStyleBackColor = true;
-            this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
+            btnNhanVien.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNhanVien.Image = (Image)resources.GetObject("btnNhanVien.Image");
+            btnNhanVien.Location = new Point(288, 184);
+            btnNhanVien.Margin = new Padding(3, 4, 3, 4);
+            btnNhanVien.Name = "btnNhanVien";
+            btnNhanVien.Size = new Size(226, 83);
+            btnNhanVien.TabIndex = 1;
+            btnNhanVien.Text = Resources.Staff;
+            btnNhanVien.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnNhanVien.UseVisualStyleBackColor = true;
+            btnNhanVien.Click += btnNhanVien_Click;
             // 
             // btnNcc
             // 
-            this.btnNcc.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNcc.Image = ((System.Drawing.Image)(resources.GetObject("btnNcc.Image")));
-            this.btnNcc.Location = new System.Drawing.Point(710, 74);
-            this.btnNcc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNcc.Name = "btnNcc";
-            this.btnNcc.Size = new System.Drawing.Size(296, 111);
-            this.btnNcc.TabIndex = 0;
-            this.btnNcc.Text = "Nhà cung cấp";
-            this.btnNcc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNcc.UseVisualStyleBackColor = true;
-            this.btnNcc.Click += new System.EventHandler(this.btnNcc_Click);
+            btnNcc.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNcc.Image = (Image)resources.GetObject("btnNcc.Image");
+            btnNcc.Location = new Point(552, 56);
+            btnNcc.Margin = new Padding(3, 4, 3, 4);
+            btnNcc.Name = "btnNcc";
+            btnNcc.Size = new Size(230, 83);
+            btnNcc.TabIndex = 0;
+            btnNcc.Text = "Nhà cung cấp";
+            btnNcc.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnNcc.UseVisualStyleBackColor = true;
+            btnNcc.Click += btnNcc_Click;
             // 
             // btnDanhMuc
             // 
-            this.btnDanhMuc.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhMuc.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhMuc.Image")));
-            this.btnDanhMuc.Location = new System.Drawing.Point(370, 74);
-            this.btnDanhMuc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnDanhMuc.Name = "btnDanhMuc";
-            this.btnDanhMuc.Size = new System.Drawing.Size(294, 111);
-            this.btnDanhMuc.TabIndex = 0;
-            this.btnDanhMuc.Text = "Danh mục thuốc";
-            this.btnDanhMuc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDanhMuc.UseVisualStyleBackColor = true;
-            this.btnDanhMuc.Click += new System.EventHandler(this.btnDanhMuc_Click);
+            btnDanhMuc.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDanhMuc.Image = (Image)resources.GetObject("btnDanhMuc.Image");
+            btnDanhMuc.Location = new Point(288, 56);
+            btnDanhMuc.Margin = new Padding(3, 4, 3, 4);
+            btnDanhMuc.Name = "btnDanhMuc";
+            btnDanhMuc.Size = new Size(229, 83);
+            btnDanhMuc.TabIndex = 0;
+            btnDanhMuc.Text = "Danh mục thuốc";
+            btnDanhMuc.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnDanhMuc.UseVisualStyleBackColor = true;
+            btnDanhMuc.Click += btnDanhMuc_Click;
             // 
             // btnQlyThuoc
             // 
-            this.btnQlyThuoc.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQlyThuoc.Image = ((System.Drawing.Image)(resources.GetObject("btnQlyThuoc.Image")));
-            this.btnQlyThuoc.Location = new System.Drawing.Point(33, 74);
-            this.btnQlyThuoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnQlyThuoc.Name = "btnQlyThuoc";
-            this.btnQlyThuoc.Size = new System.Drawing.Size(291, 111);
-            this.btnQlyThuoc.TabIndex = 0;
-            this.btnQlyThuoc.Text = "Thuốc";
-            this.btnQlyThuoc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQlyThuoc.UseVisualStyleBackColor = true;
-            this.btnQlyThuoc.Click += new System.EventHandler(this.btnQlyThuoc_Click);
+            btnQlyThuoc.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnQlyThuoc.Image = (Image)resources.GetObject("btnQlyThuoc.Image");
+            btnQlyThuoc.Location = new Point(26, 56);
+            btnQlyThuoc.Margin = new Padding(3, 4, 3, 4);
+            btnQlyThuoc.Name = "btnQlyThuoc";
+            btnQlyThuoc.Size = new Size(226, 83);
+            btnQlyThuoc.TabIndex = 0;
+            btnQlyThuoc.Text = "Thuốc";
+            btnQlyThuoc.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnQlyThuoc.UseVisualStyleBackColor = true;
+            btnQlyThuoc.Click += btnQlyThuoc_Click;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLýToolStripMenuItem,
-            this.tàiKhoảnToolStripMenuItem,
-            this.trợGiúpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1546, 27);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            menuStrip1.ImageScalingSize = new Size(24, 24);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { quảnLýToolStripMenuItem, tàiKhoảnToolStripMenuItem, trợGiúpToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new Padding(7, 2, 0, 2);
+            menuStrip1.Size = new Size(1202, 25);
+            menuStrip1.TabIndex = 3;
+            menuStrip1.Text = "menuStrip1";
             // 
             // quảnLýToolStripMenuItem
             // 
-            this.quảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thuốcToolStripMenuItem,
-            this.danhMụcThuốcToolStripMenuItem,
-            this.nhàCungCấpToolStripMenuItem,
-            this.nhânViênToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.thoátToolStripMenuItem});
-            this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(67, 21);
-            this.quảnLýToolStripMenuItem.Text = global::QPharma.Properties.Resources.Manager;
+            quảnLýToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { thuốcToolStripMenuItem, danhMụcThuốcToolStripMenuItem, nhàCungCấpToolStripMenuItem, nhânViênToolStripMenuItem, toolStripSeparator1, thoátToolStripMenuItem });
+            quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
+            quảnLýToolStripMenuItem.Size = new Size(67, 21);
+            quảnLýToolStripMenuItem.Text = Resources.Manager;
             // 
             // thuốcToolStripMenuItem
             // 
-            this.thuốcToolStripMenuItem.Name = "thuốcToolStripMenuItem";
-            this.thuốcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.thuốcToolStripMenuItem.Text = "Thuốc";
-            this.thuốcToolStripMenuItem.Click += new System.EventHandler(this.thuốcToolStripMenuItem_Click);
+            thuốcToolStripMenuItem.Name = "thuốcToolStripMenuItem";
+            thuốcToolStripMenuItem.Size = new Size(177, 22);
+            thuốcToolStripMenuItem.Text = "Thuốc";
+            thuốcToolStripMenuItem.Click += thuốcToolStripMenuItem_Click;
             // 
             // danhMụcThuốcToolStripMenuItem
             // 
-            this.danhMụcThuốcToolStripMenuItem.Name = "danhMụcThuốcToolStripMenuItem";
-            this.danhMụcThuốcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.danhMụcThuốcToolStripMenuItem.Text = "Danh mục thuốc";
-            this.danhMụcThuốcToolStripMenuItem.Click += new System.EventHandler(this.danhMụcThuốcToolStripMenuItem_Click);
+            danhMụcThuốcToolStripMenuItem.Name = "danhMụcThuốcToolStripMenuItem";
+            danhMụcThuốcToolStripMenuItem.Size = new Size(177, 22);
+            danhMụcThuốcToolStripMenuItem.Text = "Danh mục thuốc";
+            danhMụcThuốcToolStripMenuItem.Click += danhMụcThuốcToolStripMenuItem_Click;
             // 
             // nhàCungCấpToolStripMenuItem
             // 
-            this.nhàCungCấpToolStripMenuItem.Name = "nhàCungCấpToolStripMenuItem";
-            this.nhàCungCấpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.nhàCungCấpToolStripMenuItem.Text = "Nhà cung cấp";
-            this.nhàCungCấpToolStripMenuItem.Click += new System.EventHandler(this.nhàCungCấpToolStripMenuItem_Click);
+            nhàCungCấpToolStripMenuItem.Name = "nhàCungCấpToolStripMenuItem";
+            nhàCungCấpToolStripMenuItem.Size = new Size(177, 22);
+            nhàCungCấpToolStripMenuItem.Text = "Nhà cung cấp";
+            nhàCungCấpToolStripMenuItem.Click += nhàCungCấpToolStripMenuItem_Click;
             // 
             // nhânViênToolStripMenuItem
             // 
-            this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
-            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.nhânViênToolStripMenuItem.Text = global::QPharma.Properties.Resources.Staff;
-            this.nhânViênToolStripMenuItem.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
+            nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
+            nhânViênToolStripMenuItem.Size = new Size(177, 22);
+            nhânViênToolStripMenuItem.Text = Resources.Staff;
+            nhânViênToolStripMenuItem.Click += nhânViênToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(174, 6);
             // 
             // thoátToolStripMenuItem
             // 
-            this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.thoátToolStripMenuItem.Text = "Thoát";
-            this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
+            thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
+            thoátToolStripMenuItem.Size = new Size(177, 22);
+            thoátToolStripMenuItem.Text = "Thoát";
+            thoátToolStripMenuItem.Click += thoátToolStripMenuItem_Click;
             // 
             // tàiKhoảnToolStripMenuItem
             // 
-            this.tàiKhoảnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cậpNhậtThôngTinToolStripMenuItem,
-            this.đổiMậtKhẩuToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
-            this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
-            this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(78, 21);
-            this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
+            tàiKhoảnToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cậpNhậtThôngTinToolStripMenuItem, đổiMậtKhẩuToolStripMenuItem, đăngXuấtToolStripMenuItem });
+            tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
+            tàiKhoảnToolStripMenuItem.Size = new Size(78, 21);
+            tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             // 
             // cậpNhậtThôngTinToolStripMenuItem
             // 
-            this.cậpNhậtThôngTinToolStripMenuItem.Name = "cậpNhậtThôngTinToolStripMenuItem";
-            this.cậpNhậtThôngTinToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.cậpNhậtThôngTinToolStripMenuItem.Text = "Cập nhật thông tin";
-            this.cậpNhậtThôngTinToolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtThôngTinToolStripMenuItem_Click);
+            cậpNhậtThôngTinToolStripMenuItem.Name = "cậpNhậtThôngTinToolStripMenuItem";
+            cậpNhậtThôngTinToolStripMenuItem.Size = new Size(192, 22);
+            cậpNhậtThôngTinToolStripMenuItem.Text = "Cập nhật thông tin";
+            cậpNhậtThôngTinToolStripMenuItem.Click += cậpNhậtThôngTinToolStripMenuItem_Click;
             // 
             // đổiMậtKhẩuToolStripMenuItem
             // 
-            this.đổiMậtKhẩuToolStripMenuItem.Name = "đổiMậtKhẩuToolStripMenuItem";
-            this.đổiMậtKhẩuToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.đổiMậtKhẩuToolStripMenuItem.Text = "Đổi mật khẩu";
-            this.đổiMậtKhẩuToolStripMenuItem.Click += new System.EventHandler(this.đổiMậtKhẩuToolStripMenuItem_Click);
+            đổiMậtKhẩuToolStripMenuItem.Name = "đổiMậtKhẩuToolStripMenuItem";
+            đổiMậtKhẩuToolStripMenuItem.Size = new Size(192, 22);
+            đổiMậtKhẩuToolStripMenuItem.Text = "Đổi mật khẩu";
+            đổiMậtKhẩuToolStripMenuItem.Click += đổiMậtKhẩuToolStripMenuItem_Click;
             // 
             // đăngXuấtToolStripMenuItem
             // 
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
-            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
+            đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            đăngXuấtToolStripMenuItem.Size = new Size(192, 22);
+            đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click;
             // 
             // trợGiúpToolStripMenuItem
             // 
-            this.trợGiúpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thôngTinỨngDụngToolStripMenuItem});
-            this.trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
-            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(70, 21);
-            this.trợGiúpToolStripMenuItem.Text = "Trợ giúp";
+            trợGiúpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { thôngTinỨngDụngToolStripMenuItem });
+            trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
+            trợGiúpToolStripMenuItem.Size = new Size(70, 21);
+            trợGiúpToolStripMenuItem.Text = "Trợ giúp";
             // 
             // thôngTinỨngDụngToolStripMenuItem
             // 
-            this.thôngTinỨngDụngToolStripMenuItem.Name = "thôngTinỨngDụngToolStripMenuItem";
-            this.thôngTinỨngDụngToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.thôngTinỨngDụngToolStripMenuItem.Text = "Thông tin";
-            this.thôngTinỨngDụngToolStripMenuItem.Click += new System.EventHandler(this.thôngTinỨngDụngToolStripMenuItem_Click);
+            thôngTinỨngDụngToolStripMenuItem.Name = "thôngTinỨngDụngToolStripMenuItem";
+            thôngTinỨngDụngToolStripMenuItem.Size = new Size(135, 22);
+            thôngTinỨngDụngToolStripMenuItem.Text = "Thông tin";
+            thôngTinỨngDụngToolStripMenuItem.Click += thôngTinỨngDụngToolStripMenuItem_Click;
             // 
             // lbWelcome
             // 
-            this.lbWelcome.AutoEllipsis = true;
-            this.lbWelcome.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWelcome.Location = new System.Drawing.Point(1236, 75);
-            this.lbWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbWelcome.Name = "lbWelcome";
-            this.lbWelcome.Size = new System.Drawing.Size(292, 35);
-            this.lbWelcome.TabIndex = 4;
-            this.lbWelcome.Text = "Xin chào";
-            this.lbWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lbWelcome.AutoEllipsis = true;
+            lbWelcome.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbWelcome.Location = new Point(961, 56);
+            lbWelcome.Name = "lbWelcome";
+            lbWelcome.Size = new Size(227, 26);
+            lbWelcome.TabIndex = 4;
+            lbWelcome.Text = "Xin chào";
+            lbWelcome.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.btnLogout);
-            this.groupBox2.Controls.Add(this.btnChangePassword);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox2.Location = new System.Drawing.Point(1302, 131);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(159, 143);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thao tác nhanh";
+            groupBox2.BackColor = Color.Transparent;
+            groupBox2.Controls.Add(btnLogout);
+            groupBox2.Controls.Add(btnChangePassword);
+            groupBox2.ForeColor = SystemColors.ActiveCaptionText;
+            groupBox2.Location = new Point(1013, 98);
+            groupBox2.Margin = new Padding(3, 4, 3, 4);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(3, 4, 3, 4);
+            groupBox2.Size = new Size(124, 107);
+            groupBox2.TabIndex = 5;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Thao tác nhanh";
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(9, 89);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(138, 35);
-            this.btnLogout.TabIndex = 6;
-            this.btnLogout.Text = "Đăng xuất";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            btnLogout.Location = new Point(7, 67);
+            btnLogout.Margin = new Padding(3, 4, 3, 4);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(107, 26);
+            btnLogout.TabIndex = 6;
+            btnLogout.Text = "Đăng xuất";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnChangePassword
             // 
-            this.btnChangePassword.Location = new System.Drawing.Point(9, 29);
-            this.btnChangePassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(138, 35);
-            this.btnChangePassword.TabIndex = 6;
-            this.btnChangePassword.Text = "Đổi mật khẩu";
-            this.btnChangePassword.UseVisualStyleBackColor = true;
-            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
+            btnChangePassword.Location = new Point(7, 22);
+            btnChangePassword.Margin = new Padding(3, 4, 3, 4);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(107, 26);
+            btnChangePassword.TabIndex = 6;
+            btnChangePassword.Text = "Đổi mật khẩu";
+            btnChangePassword.UseVisualStyleBackColor = true;
+            btnChangePassword.Click += btnChangePassword_Click;
             // 
             // lbDate
             // 
-            this.lbDate.AutoEllipsis = true;
-            this.lbDate.BackColor = System.Drawing.Color.Transparent;
-            this.lbDate.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(56, 160);
-            this.lbDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(404, 35);
-            this.lbDate.TabIndex = 4;
-            this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lbDate.AutoEllipsis = true;
+            lbDate.BackColor = Color.Transparent;
+            lbDate.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbDate.Location = new Point(44, 120);
+            lbDate.Name = "lbDate";
+            lbDate.Size = new Size(314, 26);
+            lbDate.TabIndex = 4;
+            lbDate.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lbTime
             // 
-            this.lbTime.AutoEllipsis = true;
-            this.lbTime.BackColor = System.Drawing.Color.Transparent;
-            this.lbTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTime.Location = new System.Drawing.Point(84, 191);
-            this.lbTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(292, 35);
-            this.lbTime.TabIndex = 4;
-            this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lbTime.AutoEllipsis = true;
+            lbTime.BackColor = Color.Transparent;
+            lbTime.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTime.Location = new Point(65, 143);
+            lbTime.Name = "lbTime";
+            lbTime.Size = new Size(227, 26);
+            lbTime.TabIndex = 4;
+            lbTime.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 20);
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(122, 20);
+            // 
+            // btnHoaDon
+            // 
+            btnHoaDon.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHoaDon.Image = Resources.bill__1_;
+            btnHoaDon.Location = new Point(26, 184);
+            btnHoaDon.Margin = new Padding(3, 4, 3, 4);
+            btnHoaDon.Name = "btnHoaDon";
+            btnHoaDon.Size = new Size(226, 83);
+            btnHoaDon.TabIndex = 0;
+            btnHoaDon.Text = "Hoá đơn";
+            btnHoaDon.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnHoaDon.UseVisualStyleBackColor = true;
+            btnHoaDon.Click += btnHoaDon_Click;
             // 
             // MainGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::QPharma.Properties.Resources.MainBackgroundImage;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1546, 906);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.lbTime);
-            this.Controls.Add(this.lbDate);
-            this.Controls.Add(this.lbWelcome);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lbLogin);
-            this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "MainGUI";
-            this.Text = "Q-Pharma - TỔNG QUAN";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainGUI_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainGUI_FormClosed);
-            this.Load += new System.EventHandler(this.MainView_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Resources.MainBackgroundImage;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1202, 680);
+            Controls.Add(groupBox2);
+            Controls.Add(lbTime);
+            Controls.Add(lbDate);
+            Controls.Add(lbWelcome);
+            Controls.Add(groupBox1);
+            Controls.Add(lbLogin);
+            Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "MainGUI";
+            Text = "Q-Pharma - TỔNG QUAN";
+            FormClosing += MainGUI_FormClosing;
+            FormClosed += MainGUI_FormClosed;
+            Load += MainView_Load;
+            groupBox1.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -417,5 +415,6 @@ namespace QPharma.GUI
         private System.Windows.Forms.ToolStripMenuItem thôngTinỨngDụngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private Button btnHoaDon;
     }
 }

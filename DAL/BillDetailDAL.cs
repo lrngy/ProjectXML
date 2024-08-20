@@ -2,29 +2,27 @@
 
 public class BillDetailDAL
 {
-    public List<BillDetailDTO> GetById(string id)
+    public List<(MedicineDTO medicine, decimal quantity, decimal price)> GetById(string id)
     {
-        List<BillDetailDTO> billDetail = null;
+        List<(MedicineDTO medicine, decimal quantity, decimal price)> billDetailList = new();
         try
         {
             string query = "SELECT * FROM bill_details WHERE bill_id = @id";
             SqlParameter[] sqlParameters = { new SqlParameter("@id", id) };
             var dt = DB.ExecuteQuery(query, sqlParameters);
-            billDetail = new List<BillDetailDTO>();
             foreach (DataRow dr in dt.Rows)
             {
                 var medicine = new MedicineDAL().GetById(dr["medicine_id"].ToString());
-                var quantity = int.Parse(dr["bill_detail_quantity"].ToString());
-                var price = int.Parse(dr["bill_detail_price"].ToString());
-                billDetail.Add(new BillDetailDTO(medicine, quantity, price));
+                var quantity = decimal.Parse(dt.Rows[0]["bill_detail_quantity"].ToString());
+                var price = decimal.Parse(dt.Rows[0]["bill_detail_price"].ToString());
+                billDetailList.Add((medicine, quantity, price));
             }
-
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
         }
 
-        return billDetail;
+        return billDetailList;
     }
 }

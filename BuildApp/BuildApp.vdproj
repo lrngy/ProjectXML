@@ -245,15 +245,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Q-Pharma"
-        "ProductCode" = "8:{4553C4D3-2708-410B-AA43-CF2F18F58F8B}"
-        "PackageCode" = "8:{68E03F78-BD6B-431C-977B-7DD26C25BD91}"
+        "ProductCode" = "8:{79040F27-356B-4F80-A6BA-B029BADCE57D}"
+        "PackageCode" = "8:{C20DB38C-BBF5-4C26-A63B-F493C93A6759}"
         "UpgradeCode" = "8:{09262B6E-F87C-40D8-8941-FE9BAB417E79}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.9"
+        "ProductVersion" = "8:1.0.10"
         "Manufacturer" = "8:Group Four"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -795,7 +795,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_108B09F4B3904626927A56A9F4C7C498"
             {
-            "SourcePath" = "8:..\\obj\\Production\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\obj\\DevDatabase\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_690EB668A4A04B278C5AA78BA39C9F96"

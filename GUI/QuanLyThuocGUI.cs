@@ -52,15 +52,22 @@ public partial class QuanLyThuocGUI : BaseForm
                 lbHeader.Text = Resources.Medicine_location_management;
                 break;
             case 4:
-                if (isSearching)
-                {
-                    btnTimKiemHoaDon_Click(sender, e);
-                }
-                else
-                {
-                    HoaDon_Load();
-                }
+                RefreshBill();
                 break;
+        }
+    }
+
+    private void RefreshBill()
+    {
+        var sender = new object();
+        var e = new EventArgs();
+        if (isSearching)
+        {
+            btnTimKiemHoaDon_Click(sender, e);
+        }
+        else
+        {
+            HoaDon_Load();
         }
     }
 
@@ -83,8 +90,6 @@ public partial class QuanLyThuocGUI : BaseForm
         cbbGiaTriTu.Items.Clear();
         cbbGiaTriDen.Items.Clear();
         cbbNhanVien.Items.Clear();
-
-
 
 
         cbbTuNgay.Items.AddRange(dateList);
@@ -121,8 +126,6 @@ public partial class QuanLyThuocGUI : BaseForm
         oldNumRecord = numRecord;
         isOldDataHoaDon = true;
         HienThiHoaDon(result.listBills);
-
-
     }
 
     private void HienThiHoaDon(List<BillDTO> list)
@@ -131,7 +134,7 @@ public partial class QuanLyThuocGUI : BaseForm
         ckbSelectAll.Checked = false;
         BeginInvoke(() => { dgvHoaDon.ClearSelection(); });
 
-        lbSoDong.Text = $"dòng (tổng cộng {numRecord} dòng)";
+        lbSoDong.Text = $"hoá đơn (tổng cộng {numRecord} hoá đơn)";
         for (var i = 0; i < list.Count; i++)
         {
             if (!list[i].Deleted.Equals("")) continue;
@@ -952,7 +955,7 @@ public partial class QuanLyThuocGUI : BaseForm
 
 
             int quantity = -1;
-            double priceIn = -1, priceOut = -1;
+            decimal priceIn = -1, priceOut = -1;
 
 
             bool CheckValidNumber()
@@ -963,14 +966,14 @@ public partial class QuanLyThuocGUI : BaseForm
                     ShowValidateError(numSL, Resources.Quantity_must_be_a_number);
                     isValid = false;
                 }
-                if (!double.TryParse(priceInText, out priceIn))
+                if (!decimal.TryParse(priceInText, out priceIn))
                 {
 
                     ShowValidateError(numGiaNhap, Resources.Price_must_be_a_number);
                     isValid = false;
                 }
 
-                if (!double.TryParse(priceOutText, out priceOut))
+                if (!decimal.TryParse(priceOutText, out priceOut))
                 {
 
                     ShowValidateError(numGiaBan, Resources.Price_must_be_a_number);
@@ -1198,7 +1201,7 @@ public partial class QuanLyThuocGUI : BaseForm
             }
 
             int quantity = -1;
-            double priceIn = -1, priceOut = -1;
+            decimal priceIn = -1, priceOut = -1;
 
 
             bool CheckValidNumber()
@@ -1209,14 +1212,14 @@ public partial class QuanLyThuocGUI : BaseForm
                     ShowValidateError(numSL, Resources.Quantity_must_be_a_number);
                     isValid = false;
                 }
-                if (!double.TryParse(priceInText, out priceIn))
+                if (!decimal.TryParse(priceInText, out priceIn))
                 {
 
                     ShowValidateError(numGiaNhap, Resources.Price_must_be_a_number);
                     isValid = false;
                 }
 
-                if (!double.TryParse(priceOutText, out priceOut))
+                if (!decimal.TryParse(priceOutText, out priceOut))
                 {
 
                     ShowValidateError(numGiaBan, Resources.Price_must_be_a_number);
@@ -1863,28 +1866,14 @@ public partial class QuanLyThuocGUI : BaseForm
         cbbPageSizeIndex = cbbPageSize.SelectedIndex;
         isOldDataHoaDon = false;
         numCurrentPage.Value = numCurrentPage.Minimum;
-        if (isSearching)
-        {
-            btnTimKiemHoaDon_Click(sender, e);
-        }
-        else
-        {
-            HoaDon_Load();
-        }
+        RefreshBill();
     }
 
 
     private void numCurrentPage_Click(object sender, EventArgs e)
     {
         isOldDataHoaDon = false;
-        if (isSearching)
-        {
-            btnTimKiemHoaDon_Click(sender, e);
-        }
-        else
-        {
-            HoaDon_Load();
-        }
+        RefreshBill();
     }
 
     private void numCurrentPage_KeyUp(object sender, KeyEventArgs e)
@@ -2056,5 +2045,17 @@ public partial class QuanLyThuocGUI : BaseForm
             }
         };
         deletedBillDialog.ShowDialog();
+    }
+
+    private void button4_Click(object sender, EventArgs e)
+    {
+        oldNumRecord = 0;
+        RefreshBill();
+    }
+
+    private void btnBanHang_Click(object sender, EventArgs e)
+    {
+        BanHangGUI banHangGUI = new BanHangGUI(user, RefreshBill);
+        banHangGUI.Show();
     }
 }

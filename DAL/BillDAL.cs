@@ -392,4 +392,40 @@ public class BillDAL
 
         return Predefined.ERROR;
     }
+
+    public BillDTO GetById(string id)
+    {
+        BillDTO bill = null;
+        try
+        {
+            var query = "select * from bills where bill_id = @id";
+            SqlParameter[] sqlParameters = { new SqlParameter("@id", id) };
+            var dt = DB.ExecuteQuery(query, sqlParameters);
+            if (dt.Rows.Count == 0)
+            {
+                return bill;
+            }
+            DataRow dr = dt.Rows[0];
+            var total = decimal.Parse(dr["bill_total"].ToString());
+            var customerPaid = decimal.Parse(dr["bill_customer_paid"].ToString());
+            var status = bool.Parse(dr["bill_status"].ToString());
+            var note = dr["bill_note"].ToString();
+            var created = !string.IsNullOrEmpty(dr["bill_created"].ToString()) ? DateTime.Parse(dr["bill_created"].ToString()).ToString("dd/MM/yyyy HH:mm:ss") : "";
+            var deleted = !string.IsNullOrEmpty(dr["bill_deleted"].ToString()) ? DateTime.Parse(dr["bill_deleted"].ToString()).ToString("dd/MM/yyyy HH:mm:ss") : "";
+            var doctorPrescribed = dr["bill_doctor_prescribed"].ToString();
+            var customer = new CustomerDAL().GetById(dr["customer_id"].ToString());
+            var staff = StaffDAL.GetById(dr["staff_id"].ToString());
+            var billDetails = new BillDetailDAL().GetById(dr["bill_id"].ToString());
+
+            bill = new BillDTO(id, total, customerPaid, status, note,
+                customer, staff, created, deleted,
+                billDetails, doctorPrescribed);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.StackTrace);
+        }
+
+        return bill;
+    }
 }

@@ -119,7 +119,7 @@ namespace QPharma.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("QPharma10.mdf")]
+        [global::System.Configuration.DefaultSettingValueAttribute("QPharma11.mdf")]
         public string DBFile {
             get {
                 return ((string)(this["DBFile"]));

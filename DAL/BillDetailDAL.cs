@@ -13,8 +13,8 @@ public class BillDetailDAL
             foreach (DataRow dr in dt.Rows)
             {
                 var medicine = new MedicineDAL().GetById(dr["medicine_id"].ToString());
-                var quantity = decimal.Parse(dt.Rows[0]["bill_detail_quantity"].ToString());
-                var price = decimal.Parse(dt.Rows[0]["bill_detail_price"].ToString());
+                var quantity = decimal.Parse(dr["bill_detail_quantity"].ToString());
+                var price = decimal.Parse(dr["bill_detail_price"].ToString());
                 billDetailList.Add((medicine, quantity, price));
             }
         }

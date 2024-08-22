@@ -54,8 +54,13 @@ public partial class QuanLyThuocGUI : BaseForm
             case 4:
                 RefreshBill();
                 break;
+            case 5:
+                LoadThongKe();
+                break;
         }
     }
+
+
 
     private void RefreshBill()
     {
@@ -1573,7 +1578,7 @@ public partial class QuanLyThuocGUI : BaseForm
 
         var list = medicineBUS.LoadData().Where(medicine =>
         {
-            var expireDate = DateTime.Parse(medicine.expDate);
+            var expireDate = DateTime.ParseExact(medicine.expDate, "dd/MM/yyyy", null);
             switch (cbLocDuLieuThuoc.SelectedIndex)
             {
                 case 2:
@@ -2055,7 +2060,59 @@ public partial class QuanLyThuocGUI : BaseForm
 
     private void btnBanHang_Click(object sender, EventArgs e)
     {
-        BanHangGUI banHangGUI = new BanHangGUI(user, RefreshBill);
-        banHangGUI.Show();
+        BanThuocGUI banThuocGui = new BanThuocGUI(user, () =>
+            {
+                isOldDataHoaDon = false;
+                RefreshBill();
+            }
+            );
+        banThuocGui.Show();
+    }
+
+    private void dgvHoaDon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.ColumnIndex != dgvHoaDon.Columns[0].Index && e.RowIndex >= 0)
+        {
+            var id = dgvHoaDon.Rows[e.RowIndex].Cells[1].Value.ToString();
+            var bill = billBUS.GetById(id);
+            if (bill == null) return;
+            BanThuocGUI banThuocGui = new BanThuocGUI(user, bill, () =>
+            {
+                isOldDataHoaDon = false;
+                RefreshBill();
+            }
+                );
+            banThuocGui.Show();
+        }
+    }
+
+    private void LoadThongKe()
+    {
+        StatDAL statDAL = new();
+        var listAllDoanhThuLoiNhuan = statDAL.TatCaDoanhThuLoiNhuan();
+        foreach (var item in listAllDoanhThuLoiNhuan)
+        {
+            dgvDoanhThuAll.Rows.Add(item.doanhthu, item.loinhuan);
+        }
+
+
+        var listDoanhThuTheoNgay = statDAL.DoanhThuNgay();
+        foreach (var item in listDoanhThuTheoNgay)
+        {
+            dgvDoanhThuNgay.Rows.Add(item.ngay.Split(" ")[0], item.doanhthu, item.loinhuan);
+        }
+
+        var listDoanhThuTheoThang = statDAL.DoanhThuThang();
+        foreach (var item in listDoanhThuTheoThang)
+        {
+            dgvDoanhThuThang.Rows.Add(item.nam, item.thang, item.doanhthu, item.loinhuan);
+        }
+
+        var listDoanhThuThuoc = statDAL.DoanhThuThuoc();
+        foreach (var item in listDoanhThuThuoc)
+        {
+            dgvDoanhThuThuoc.Rows.Add(item.mathuoc, item.tenthuoc, item.gianhap, item.giaban, item.soluong, item.doanhthu, item.loinhuan);
+        }
+
     }
 }

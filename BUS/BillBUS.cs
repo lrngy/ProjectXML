@@ -49,6 +49,11 @@ namespace QPharma.BUS
             return result;
         }
 
+        public BillDTO GetById(string id)
+        {
+            return billDAL.GetById(id);
+        }
+
 
         public (int totalPage, int numRecord, List<BillDTO> listBills) LoadData(int pageSize, int currentPage,
             bool isNotDeleted = true)

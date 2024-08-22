@@ -72,7 +72,7 @@
     <DefineConstants>$(DefineConstants);DevDatabase</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="QPharma10.mdf" />
+    <None Remove="QPharma11.mdf" />
     <None Remove="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +93,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="QPharma10.mdf">
+    <Content Include="QPharma11.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

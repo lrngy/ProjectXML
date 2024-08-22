@@ -33,7 +33,7 @@
       <Value Profile="(Default)">Images</Value>
     </Setting>
     <Setting Name="DBFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">QPharma10.mdf</Value>
+      <Value Profile="(Default)">QPharma11.mdf</Value>
     </Setting>
   </Settings>
 </SettingsFile>

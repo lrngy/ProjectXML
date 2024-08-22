@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace QPharma.GUI
 {
 
-    public partial class BanHangGUI : BaseForm
+    public partial class BanThuocGUI : BaseForm
     {
         class CalculatorMoney(string id, decimal quantity, decimal price)
         {
@@ -43,7 +43,7 @@ namespace QPharma.GUI
         private BillDTO billDTO;
         public delegate void UpdateHandler();
         public UpdateHandler updateBill;
-        public BanHangGUI(UserDTO user, UpdateHandler updateBill)
+        public BanThuocGUI(UserDTO user, UpdateHandler updateBill)
         {
             InitializeComponent();
             this.updateBill = updateBill;
@@ -53,16 +53,18 @@ namespace QPharma.GUI
             billDTO = new();
         }
 
-        public BanHangGUI(UserDTO user, BillDTO bill, UpdateHandler updateBill)
+        public BanThuocGUI(UserDTO user, BillDTO bill, UpdateHandler updateBill)
         {
             InitializeComponent();
             this.updateBill = updateBill;
             this.user = user;
             billDTO = bill;
-            medicineBillList = bill.BillDetails.Select(tuple => tuple.medicine).ToList();
-            medicineBillList.ForEach(medicine => calculateMoneyList.Add(new CalculatorMoney(medicine?.id, medicine.quantity, (decimal)medicine.price_out)));
+            medicineBillList = bill.BillDetails.Select(detail => detail.medicine).ToList();
+            bill.BillDetails.ForEach(detail => calculateMoneyList.Add(new CalculatorMoney(detail.medicine.id, detail.quantity, detail.price)));
+            //medicineBillList.ForEach(medicine => calculateMoneyList.Add(new CalculatorMoney(medicine?.id, medicine.quantity, (decimal)medicine.price_out)));
             medicineList = medicineBUS.LoadData().Where(medicine => medicineBillList.All(medicineBill => medicine?.id != medicineBill?.id))
                 .ToList();
+            billState = bill.Status ? BillState.Paid : BillState.Waiting;
         }
 
         private void BanHangGUI_Load(object sender, EventArgs e)
@@ -93,6 +95,7 @@ namespace QPharma.GUI
                 btnSave.Enabled = true;
                 btnThanhToan.Enabled = true;
                 dgvMedicineBill.ReadOnly = false;
+                return;
             }
 
             if (billState == BillState.Waiting)
@@ -103,6 +106,7 @@ namespace QPharma.GUI
                 dgvMedicineBill.ReadOnly = false;
             }
 
+
             if (billState == BillState.Paid)
             {
                 btnCancel.Enabled = true;
@@ -110,6 +114,14 @@ namespace QPharma.GUI
                 btnThanhToan.Enabled = false;
                 dgvMedicineBill.ReadOnly = true;
             }
+            numKhachDua.Text = billDTO.CustomerPaid.ToString();
+            cbbKhachHang.Text = $"{billDTO.Customer.Id}-{billDTO.Customer.Name}";
+            tbBacSi.Text = billDTO.DoctorPrescribed;
+            lbTrangThai.Text = $"Trạng thái: {(billDTO.Status ? "Đã thanh toán" : "Đang chờ")}";
+            lbTrangThai.BackColor = billDTO.Status ? Color.LightGreen : Color.BurlyWood;
+            DateTime datetime = DateTime.ParseExact(billDTO.Created, "dd/MM/yyyy HH:mm:ss", null);
+            lbDate.Text = $"{CustomDateTime.GetFormattedDate(datetime.ToString("dd/MM/yyyy"), "{0}, {1}/{2}/{3}")}, {datetime.ToString("HH:mm")}";
+            lbHeading.Text = $"Hoá đơn: {billDTO.Id}";
 
         }
         private void LoadMedicineList()
@@ -383,11 +395,6 @@ namespace QPharma.GUI
             if (result == Predefined.SUCCESS)
             {
                 CustomMessageBox.ShowSuccess("Lưu hoá đơn thành công");
-                lbTrangThai.Text = $"Trạng thái: {(billDTO.Status ? "Đã thanh toán" : "Đang chờ")}";
-                lbTrangThai.BackColor = billDTO.Status ? Color.LightGreen : Color.BurlyWood;
-                DateTime datetime = DateTime.ParseExact(billDTO.Created, "dd/MM/yyyy HH:mm:ss", null);
-                lbDate.Text = $"{CustomDateTime.GetFormattedDate(datetime.ToString("dd/MM/yyyy"), "{0}, {1}/{2}/{3}")}, {datetime.ToString("HH:mm")}";
-                lbHeading.Text = $"Hoá đơn: {billDTO.Id}";
                 billState = BillState.Waiting;
                 UpdateAll();
             }
@@ -414,11 +421,6 @@ namespace QPharma.GUI
             if (result == Predefined.SUCCESS)
             {
                 CustomMessageBox.ShowSuccess("Thanh toán hoá đơn thành công");
-                lbTrangThai.Text = $"Trạng thái: {(billDTO.Status ? "Đã thanh toán" : "Đang chờ")}";
-                lbTrangThai.BackColor = billDTO.Status ? Color.LightGreen : Color.BurlyWood;
-                DateTime datetime = DateTime.ParseExact(billDTO.Created, "dd/MM/yyyy HH:mm:ss", null);
-                lbDate.Text = $"{CustomDateTime.GetFormattedDate(datetime.ToString("dd/MM/yyyy"), "{0}, {1}/{2}/{3}")}, {datetime.ToString("HH:mm")}";
-                lbHeading.Text = $"Hoá đơn: {billDTO.Id}";
                 billState = BillState.Paid;
                 UpdateAll();
             }
@@ -440,6 +442,8 @@ namespace QPharma.GUI
                 if (result == Predefined.SUCCESS)
                 {
                     CustomMessageBox.ShowSuccess("Huỷ bỏ hoá đơn thành công");
+                    Dispose();
+
                 }
                 else
                 {
@@ -450,6 +454,11 @@ namespace QPharma.GUI
             {
                 Debug.WriteLine(ex.StackTrace);
             }
+        }
+
+        private void btnToiThieu_Click(object sender, EventArgs e)
+        {
+            numKhachDua.Value = calculateMoneyList.Sum(c => c.total);
         }
     }
 }

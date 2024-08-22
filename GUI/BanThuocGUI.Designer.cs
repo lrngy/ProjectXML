@@ -1,6 +1,6 @@
 ﻿namespace QPharma.GUI
 {
-    partial class BanHangGUI
+    partial class BanThuocGUI
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tableLayoutPanel9 = new TableLayoutPanel();
             label2 = new Label();
             dgvMedicine = new DataGridView();
@@ -86,6 +86,8 @@
             btnAddToSellBill = new Button();
             toolTip1 = new ToolTip(components);
             errorProvider1 = new ErrorProvider(components);
+            tableLayoutPanel16 = new TableLayoutPanel();
+            btnToiThieu = new Button();
             tableLayoutPanel9.SuspendLayout();
             ((ISupportInitialize)dgvMedicine).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -107,6 +109,7 @@
             tableLayoutPanel15.SuspendLayout();
             tableLayoutPanel10.SuspendLayout();
             ((ISupportInitialize)errorProvider1).BeginInit();
+            tableLayoutPanel16.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel9
@@ -252,8 +255,8 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Column2.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Column2.DefaultCellStyle = dataGridViewCellStyle2;
             Column2.FillWeight = 80F;
             Column2.HeaderText = "SL bán";
             Column2.Name = "Column2";
@@ -413,10 +416,10 @@
             // tableLayoutPanel13
             // 
             tableLayoutPanel13.ColumnCount = 2;
-            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.3139153F));
-            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.68608F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.0078735F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.99213F));
             tableLayoutPanel13.Controls.Add(label8, 0, 0);
-            tableLayoutPanel13.Controls.Add(numKhachDua, 1, 0);
+            tableLayoutPanel13.Controls.Add(tableLayoutPanel16, 1, 0);
             tableLayoutPanel13.Dock = DockStyle.Fill;
             tableLayoutPanel13.Location = new Point(643, 71);
             tableLayoutPanel13.Name = "tableLayoutPanel13";
@@ -432,7 +435,7 @@
             label8.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             label8.Location = new Point(3, 0);
             label8.Name = "label8";
-            label8.Size = new Size(103, 62);
+            label8.Size = new Size(102, 62);
             label8.TabIndex = 0;
             label8.Text = "Khách đưa (*):";
             label8.TextAlign = ContentAlignment.MiddleLeft;
@@ -442,10 +445,10 @@
             numKhachDua.Anchor = AnchorStyles.Left;
             numKhachDua.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             numKhachDua.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
-            numKhachDua.Location = new Point(112, 16);
+            numKhachDua.Location = new Point(3, 13);
             numKhachDua.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
             numKhachDua.Name = "numKhachDua";
-            numKhachDua.Size = new Size(120, 29);
+            numKhachDua.Size = new Size(157, 29);
             numKhachDua.TabIndex = 1;
             numKhachDua.ThousandsSeparator = true;
             numKhachDua.ValueChanged += numKhachDua_ValueChanged;
@@ -733,14 +736,40 @@
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             errorProvider1.ContainerControl = this;
             // 
-            // BanHangGUI
+            // tableLayoutPanel16
+            // 
+            tableLayoutPanel16.ColumnCount = 2;
+            tableLayoutPanel16.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.8522072F));
+            tableLayoutPanel16.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 63.1477928F));
+            tableLayoutPanel16.Controls.Add(numKhachDua, 0, 0);
+            tableLayoutPanel16.Controls.Add(btnToiThieu, 1, 0);
+            tableLayoutPanel16.Dock = DockStyle.Fill;
+            tableLayoutPanel16.Location = new Point(111, 3);
+            tableLayoutPanel16.Name = "tableLayoutPanel16";
+            tableLayoutPanel16.RowCount = 1;
+            tableLayoutPanel16.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel16.Size = new Size(521, 56);
+            tableLayoutPanel16.TabIndex = 2;
+            // 
+            // btnToiThieu
+            // 
+            btnToiThieu.Anchor = AnchorStyles.Left;
+            btnToiThieu.Location = new Point(195, 16);
+            btnToiThieu.Name = "btnToiThieu";
+            btnToiThieu.Size = new Size(75, 23);
+            btnToiThieu.TabIndex = 2;
+            btnToiThieu.Text = "Tối thiểu";
+            btnToiThieu.UseVisualStyleBackColor = true;
+            btnToiThieu.Click += btnToiThieu_Click;
+            // 
+            // BanThuocGUI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1334, 611);
             Controls.Add(tableLayoutPanel11);
-            Name = "BanHangGUI";
-            Text = "Bán Hàng";
+            Name = "BanThuocGUI";
+            Text = "Bán Thuốc";
             Activated += BanHangGUI_Activated;
             Load += BanHangGUI_Load;
             tableLayoutPanel9.ResumeLayout(false);
@@ -772,6 +801,7 @@
             tableLayoutPanel15.ResumeLayout(false);
             tableLayoutPanel10.ResumeLayout(false);
             ((ISupportInitialize)errorProvider1).EndInit();
+            tableLayoutPanel16.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -832,5 +862,7 @@
         private ErrorProvider errorProvider1;
         private TableLayoutPanel tableLayoutPanel10;
         private Button btnAddToSellBill;
+        private TableLayoutPanel tableLayoutPanel16;
+        private Button btnToiThieu;
     }
 }

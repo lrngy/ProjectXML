@@ -181,6 +181,6 @@ public partial class MainGUI : BaseForm
     private void btnHoaDon_Click(object sender, EventArgs e)
     {
         Show(ref quanLyThuocView, () => new QuanLyThuocGUI(user, 4));
-        //quanLyThuocView.tabControl1.SelectTab(2);
+        quanLyThuocView.tabControl1.SelectTab(4);
     }
 }
